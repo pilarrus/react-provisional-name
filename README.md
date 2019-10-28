@@ -1,5 +1,3 @@
-Probando branch
-
 # FIRST STEPS
 
 - Install google-chrome
