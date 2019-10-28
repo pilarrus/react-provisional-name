@@ -9,7 +9,10 @@
     "@types/react-dom": "16.9.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-icons": "^3.7.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "styled-components": "^4.3.2",
     "typescript": "3.6.2"
   },
   "scripts": {
@@ -38,8 +41,13 @@
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.2.0",
     "@testing-library/user-event": "^7.1.1",
+    "@types/faker": "^4.1.5",
+    "@types/react-router-dom": "^4.3.5",
+    "@types/styled-components": "^4.1.19",
     "@types/testing-library__dom": "^6.4.0",
     "@types/testing-library__react": "^9.1.1",
-    "@types/testing-library__user-event": "^4.1.1"
+    "@types/testing-library__user-event": "^4.1.1",
+    "faker": "^4.1.0",
+    "node-sass": "^4.13.0"
   }
 }
