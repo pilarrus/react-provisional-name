@@ -10,5 +10,6 @@ const App: React.FC = () => {
     </div>
   );
 };
+//prueba2
 
 export default App;
