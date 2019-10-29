@@ -1,0 +1,50 @@
+body {
+  background-color: $color-grey-dark;
+}
+header {
+  background-color: $color-purple-nav;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  height: 15vh;
+  top: 0px;
+  position: sticky;
+  border: solid 1px lightgray;
+}
+
+.navbar {
+  display: block;
+  width: 85%;
+  float: right; /*float:*/
+  height: 100%;
+}
+.navbar .buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /*justify-content: flex-start;*/
+  height: 100%;
+}
+nav .buttons-container a {
+  align-self: center;
+  border: solid 3px lightgray;
+  padding: 0% 2%;
+  margin: 1%;
+  border-radius: 5%;
+  text-decoration: none;
+  color: black;
+  font-family: $font-tittle;
+  font-size: 3rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  width: 8%;
+  float: left;
+  position: relative;
+  left: 1%;
+}
+.logo img {
+  align-self: center;
+  width: 100%;
+}
