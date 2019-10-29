@@ -3,8 +3,7 @@ import Social from "../containers/SocialHome";
 
 const Home: React.FC = () => {
   return (
-    <div className="azul">
-      Hello from homepage
+    <div>
       <Social />
     </div>
   );
