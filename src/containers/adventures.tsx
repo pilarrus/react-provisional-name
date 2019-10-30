@@ -1,19 +1,19 @@
 import React from "react";
+import Adventure from "./adventure";
 
 const Adventures = () => {
   return (
-    <div className="red">
-      Hello from Adventures
+    <section>
       <div>
         <h2>Nuestras aventuras</h2>
       </div>
       <div>
-        <div>Aventura</div>
-        <div>Aventura</div>
-        <div>Aventura</div>
+        <Adventure/>
+        <Adventure/>
+        <Adventure/>
       </div>
       <button>Ver más aventuras</button>
-    </div>
+    </section>
   );
 };
 
