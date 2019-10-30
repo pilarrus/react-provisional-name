@@ -1,6 +1,3 @@
-body {
-  background-color: $color-grey-dark;
-}
 header {
   background-color: $color-purple-nav;
   padding-top: 1vw;
@@ -14,7 +11,7 @@ header {
 .navbar {
   display: block;
   width: 85%;
-  float: right; /*float:*/
+  float: right; /*float: left*/
   height: 100%;
 }
 .navbar .buttons-container {

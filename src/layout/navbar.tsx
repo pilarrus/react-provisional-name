@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import climber from "../images/climber.jpeg";
 import logo from "../images/LogoSinFondo.png";
 
 export default class Navbar extends Component {
@@ -15,6 +16,9 @@ export default class Navbar extends Component {
             <a href="/">Menu</a>
           </div>
         </nav>
+        <div className="climber">
+          <img src={climber} alt="tiarron" />
+        </div>
       </header>
     );
   }
