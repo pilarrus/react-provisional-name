@@ -1,0 +1,61 @@
+.social {
+  height: 75vh;
+  /*background-image: linear-gradient(
+    to left,
+    $color-blue-dark,
+    rgba(255, 255, 255, 0.212)
+  );*/
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 55vh);
+
+  // lado izquiero
+  &__left{
+    background-color: green;
+    width: 50vw;
+    height: 75vh;
+    float: left;
+    text-align: center;
+
+    &-title{
+      font-family: $font-tittle;
+    }
+
+    &-btn{
+      font-family: $font-content;
+    }
+  }  // fin lado izquierdo
+
+      // lado derecho
+
+  &__right{
+    background-color: blue;
+    width: 50vw;
+    height: 75vh;
+    float: left;
+
+    &-image{
+      width: 50vw;
+
+      img{
+        width: 30vh;
+        clip-path: circle(50% at 50% 50%);
+      }
+    }
+
+    &-form{
+      background-color: red;
+      //display: none;
+    }
+
+    &-login{
+      background-color: yellow;
+      //display: none;
+    }
+
+  }
+
+  // Hasta aquí refactorizado
+
+}
+
+
+

@@ -5,6 +5,7 @@ const App: React.FC = () => {
   return (
     <div data-testid="main">
       <Home />
+
     </div>
   );
 };

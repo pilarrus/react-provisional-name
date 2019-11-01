@@ -1,10 +1,10 @@
 import React from "react";
-import Social from "../containers/SocialHome";
+import SocialHome from "../containers/SocialHome";
 
 const Home: React.FC = () => {
   return (
     <div>
-      <Social />
+      <SocialHome />
     </div>
   );
 };
