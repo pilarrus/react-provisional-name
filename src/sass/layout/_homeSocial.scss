@@ -4,6 +4,7 @@
 
   h1{
     text-align: center;
+    margin:20px 0 20px 0;
   }
   
   &__box{
@@ -11,12 +12,12 @@
     justify-content: center;
 
     &-info-register{
-      width: 800px;
+      width: 1000px;
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
       background-image: url("../../images/landscape2.jpg");
-      background-position: center;
+      background-position: bottom;
       background-size: cover;
       -webkit-box-shadow: 0px 0px 69px -32px rgba(0,0,0,0.75);
       -moz-box-shadow: 0px 0px 69px -32px rgba(0,0,0,0.75);
@@ -26,8 +27,8 @@
   }
   
   &__left{
-    width: 50%;
-    min-width: 400px;
+    width: 40%;
+    min-width: 320px;
     display: flex;
     justify-content: center;
     
@@ -37,31 +38,71 @@
 
 
       button{
-        font-size: 1.5rem;
-        color: white;
-        background-color: $color-purple;
-        border: none;
-        border-radius: 4px;
-        padding: 10px;
-        cursor: pointer;
+        @include btn-purple;
       }
     }
   }
 
   &__right{
-    width: 50%;
+    width: 60%;
     min-width: 400px;
-    padding: 40px;
-    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px 40px 40px 75px;
+    background-color: rgba(255, 255, 255, 0.6);
     clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
 
+    .form{
+
+        &-input{
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
+          padding: 1.5rem 2rem;
+          border-radius: 2px;
+          background-color: rgba(255, 255, 255, 0.5);
+          border: none;
+          border-bottom: 2px solid transparent;
+          width: 100%;
+          display: block;
+
+          &:focus{
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba(black, .1);
+            border-bottom: 2px solid $color-purple;
+          }
+        }
+
+        &-submit{
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          padding-top: 25px;
+        }
+
+      label{
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+      }
+        
+      span{
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
+          padding: 1.2rem;
+        }
+
+        
+
+        input[type="submit"]{
+          @include btn-purple;
+
+        }
+
+
+      }
+      
+  
   }
 }
- /* background-image: linear-gradient(
-    to left,
-    $color-blue-dark,
-    rgba(255, 255, 255, 0.212)
-  );
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 55vh);
-}*/
+
 
