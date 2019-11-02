@@ -1,61 +1,67 @@
 .social {
+  max-width: 100%;
   height: 75vh;
-  /*background-image: linear-gradient(
+
+  h1{
+    text-align: center;
+  }
+  
+  &__box{
+    display: flex;
+    justify-content: center;
+
+    &-info-register{
+      width: 800px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      background-image: url("../../images/landscape2.jpg");
+      background-position: center;
+      background-size: cover;
+      -webkit-box-shadow: 0px 0px 69px -32px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 69px -32px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 69px -32px rgba(0,0,0,0.75);
+      border-radius: 4px;
+    }
+  }
+  
+  &__left{
+    width: 50%;
+    min-width: 400px;
+    display: flex;
+    justify-content: center;
+    
+    &-btn{
+      display: flex;
+      align-items: center;
+
+
+      button{
+        font-size: 1.5rem;
+        color: white;
+        background-color: $color-purple;
+        border: none;
+        border-radius: 4px;
+        padding: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__right{
+    width: 50%;
+    min-width: 400px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+
+  }
+}
+ /* background-image: linear-gradient(
     to left,
     $color-blue-dark,
     rgba(255, 255, 255, 0.212)
-  );*/
+  );
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 55vh);
-
-  // lado izquiero
-  &__left{
-    background-color: green;
-    width: 50vw;
-    height: 75vh;
-    float: left;
-    text-align: center;
-
-    &-title{
-      font-family: $font-tittle;
-    }
-
-    &-btn{
-      font-family: $font-content;
-    }
-  }  // fin lado izquierdo
-
-      // lado derecho
-
-  &__right{
-    background-color: blue;
-    width: 50vw;
-    height: 75vh;
-    float: left;
-
-    &-image{
-      width: 50vw;
-
-      img{
-        width: 30vh;
-        clip-path: circle(50% at 50% 50%);
-      }
-    }
-
-    &-form{
-      background-color: red;
-      //display: none;
-    }
-
-    &-login{
-      background-color: yellow;
-      //display: none;
-    }
-
-  }
-
-  // Hasta aquí refactorizado
-
-}
-
-
+}*/
 

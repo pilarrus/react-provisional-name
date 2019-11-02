@@ -1,15 +1,15 @@
 import React from "react";
 import Form from "./Form";
-import CoffeeImage from "./Image";
 import Login from "./Login";
 
 
-const Register = () =>
+
+const Register: React.FC = () =>
+
   (
     <div className="social__right">
-      <CoffeeImage />
-      <Login />
       <Form />
+      <Login />
     </div>
   )
 

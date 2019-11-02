@@ -1,10 +1,9 @@
 import React from "react";
 
 
-const Button: React.FC<{ title: string, labelButton: string }> = ({ title = "", labelButton }) => (
-  <div className="social__right-btn">
-    <p>{title}</p>
-    <button>{labelButton}</button>
+const Button: React.FC<{ title: string }> = ({ title = "" }) => (
+  <div className="social__left-btn">
+    <button>{title}</button>
   </div>
 );
 

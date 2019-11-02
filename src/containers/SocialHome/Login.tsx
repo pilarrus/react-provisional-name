@@ -5,7 +5,7 @@ export const Login = () => {
     <div className="social__right-login">
       <label> Usuario y contraseña</label>
       <form>
-        <label>Usuario:</label>
+        <label>Email:</label>
         <input type="text"></input>
         <br />
         <label>Contraseña:</label>

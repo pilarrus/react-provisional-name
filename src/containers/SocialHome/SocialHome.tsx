@@ -6,7 +6,7 @@ class SocialHome extends React.Component {
 
   state = {
     clickLogin: false,
-    clickRegister: false
+    clickRegister: true
   }
 
   stateHandler = {
@@ -18,8 +18,14 @@ class SocialHome extends React.Component {
 
     return (
       <div className="social" >
-        <Info />
-        <Register />
+
+        <h1>Red social</h1>
+        <div className="social__box">
+          <div className="social__box-info-register">
+            <Info />
+            <Register />
+          </div>
+        </div>
       </div >
     )
   }
