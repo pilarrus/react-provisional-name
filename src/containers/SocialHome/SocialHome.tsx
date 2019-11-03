@@ -5,25 +5,24 @@ import Register from "./Register";
 class SocialHome extends React.Component {
 
   state = {
-    clickLogin: false,
-    clickRegister: true
+    clickLogin: false
   }
 
-  stateHandler = {
-
-
+  stateHandler = () => {
+    this.setState({
+      clickLogin: !this.state.clickLogin
+    });
   };
 
   render() {
 
     return (
       <div className="social" >
-
         <h1>Red social</h1>
         <div className="social__box">
-          <div className="social__box-info-register">
-            <Info />
-            <Register />
+          <div className="social__box-container">
+            <Info changeState={this.stateHandler} login={this.state.clickLogin} />
+            <Register login={this.state.clickLogin} />
           </div>
         </div>
       </div >

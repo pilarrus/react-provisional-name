@@ -3,7 +3,6 @@ import React from "react";
 export const Login = () => {
   return (
     <div className="social__right-login">
-
       <form className="form">
         <input type="text" placeholder="Email" className="form-input"></input>
         <input type="password" placeholder="Contraseña" className="form-input"></input>
@@ -11,7 +10,7 @@ export const Login = () => {
           <input type="submit" value="Acceder" />
         </div>
       </form>
-    </div>
+    </div >
   )
 }
 

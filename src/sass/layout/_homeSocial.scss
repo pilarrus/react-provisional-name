@@ -1,7 +1,6 @@
 .social {
   max-width: 100%;
 
-
   h1{
     text-align: center;
     margin:20px 0 20px 0;
@@ -10,9 +9,9 @@
   &__box{
     display: flex;
     justify-content: center;
+    height: 440px;
  
-
-    &-info-register{
+    &-container{
       width: 1000px;
       display: flex;
       justify-content: space-around;
@@ -50,7 +49,10 @@
     padding: 40px 40px 40px 75px;
     background-color: rgba(255, 255, 255, 0.6);
     clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+    display: flex;
+    align-items: center;
 
+   
     .form{
 
       &-input{
@@ -83,15 +85,17 @@
         @include btn-purple;
 
       }
+
+      /*&-login-box{
+        @include form-style-box; 
+        display: flex;
+        justify-content: center;
+      }*/
     }
 
     &-login{
-
-      @include form-style-box;
-    }
-  
-      
-  
+       
+    }  
   }
 }
 

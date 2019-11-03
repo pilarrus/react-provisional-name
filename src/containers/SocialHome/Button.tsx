@@ -1,12 +1,9 @@
 import React from "react";
 
-// Generalizado: le pasas el nombre de la clase y el contenido del botón
-
-const Button: React.FC<{ title: string, nameClass: string }> = ({ title, nameClass }) => (
+const Button: React.FC<{ title: string, nameClass: string, changeState?: () => void }> = ({ title, nameClass, changeState }) => (
   <div className={nameClass}>
-    <button>{title}</button>
+    <button onClick={changeState} >{title}</button>
   </div>
 );
-
 
 export default Button;

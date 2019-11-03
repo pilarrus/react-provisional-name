@@ -1,11 +1,11 @@
 import React from "react";
 import Button from "./Button";
 
-export const Info = () => {
+export const Info: React.FC<{ changeState: () => void, login: boolean }> = ({ changeState, login }) => {
 
   return (
     <div className="social__left">
-      <Button title="¿Ya eres miembro?" nameClass="social__left-btn" />
+      <Button title={login ? "¿No eres miembro? Pincha aquí" : "¿Ya eres miembro?"} nameClass="social__left-btn" changeState={changeState} />
     </div>
   )
 }
