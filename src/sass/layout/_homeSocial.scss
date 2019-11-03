@@ -1,6 +1,6 @@
 .social {
   max-width: 100%;
-  height: 75vh;
+
 
   h1{
     text-align: center;
@@ -10,6 +10,7 @@
   &__box{
     display: flex;
     justify-content: center;
+ 
 
     &-info-register{
       width: 1000px;
@@ -52,54 +53,43 @@
 
     .form{
 
-        &-input{
-          margin-bottom: 1rem;
-          font-size: 1.5rem;
-          padding: 1.5rem 2rem;
-          border-radius: 2px;
-          background-color: rgba(255, 255, 255, 0.5);
-          border: none;
-          border-bottom: 2px solid transparent;
-          width: 100%;
-          display: block;
-
-          &:focus{
-            outline: none;
-            box-shadow: 0 1rem 2rem rgba(black, .1);
-            border-bottom: 2px solid $color-purple;
-          }
+      &-input{
+      @include form-style-box;
+        &:focus{
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba(black, .1);
+          border-bottom: 2px solid $color-purple;
         }
-
-        &-submit{
-          justify-content: center;
-          display: flex;
-          align-items: center;
-          padding-top: 25px;
-        }
-
-      label{
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin-left: 2rem;
-        margin-top: .7rem;
-        display: block;
       }
-        
-      span{
-          margin-bottom: 1rem;
-          font-size: 1.5rem;
-          padding: 1.2rem;
+
+      &-select{
+
+        display: flex;
+        justify-content: space-between;
+        select{
+          @include form-style-box;
+          width: 48%;
         }
-
-        
-
-        input[type="submit"]{
-          @include btn-purple;
-
-        }
-
+      }
+          
+      &-submit{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        padding-top: 25px;
+      }
+ 
+      input[type="submit"]{
+        @include btn-purple;
 
       }
+    }
+
+    &-login{
+
+      @include form-style-box;
+    }
+  
       
   
   }
