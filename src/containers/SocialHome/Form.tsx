@@ -3,23 +3,45 @@ import React from "react";
 export const Form = () => {
   return (
     <div className="social__right-form">
-
       <form action="#" className="form">
-        <input type="text" placeholder="Nombre y Apellidos" className="form-input" required />
-        <input type="email" placeholder="E-mail" className="form-input" required />
-        <input type="date" className="form-input" placeholder="Fecha de nacimiento" required></input>
-        <input type="password" placeholder="Contraseña" className="form-input" />
+        <input
+          type="text"
+          placeholder="Nombre y Apellidos"
+          className="form-input"
+          required
+        />
+        <input
+          type="email"
+          placeholder="E-mail"
+          className="form-input"
+          required
+        />
+        <input
+          type="text"
+          className="form-input"
+          placeholder="Edad"
+          required
+        ></input>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          className="form-input"
+        />
 
         <div className="form-select">
-          <select name="select" defaultValue={'Default'}  >
-            <option value="Default" disabled >Género</option>
+          <select name="select" defaultValue={"Default"}>
+            <option value="Default" disabled>
+              Género
+            </option>
             <option value="female">Mujer</option>
             <option value="male">Hombre</option>
             <option value="other">Otro</option>
           </select>
 
-          <select name="select" defaultValue={'Default'}>
-            <option value="Default" disabled >Nivel de aventurer@</option>
+          <select name="select" defaultValue={"Default"}>
+            <option value="Default" disabled>
+              Nivel de aventurer@
+            </option>
             <option value="beginner">Principiante</option>
             <option value="intermediate">Intermedio</option>
             <option value="professional">Profesional</option>
@@ -30,8 +52,8 @@ export const Form = () => {
           <input type="submit" value="Regístrate" />
         </div>
       </form>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
 export default Form;
