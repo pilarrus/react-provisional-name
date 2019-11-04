@@ -1,3 +1,6 @@
+body {
+  background-color: $color-grey-dark;
+}
 header {
   background-color: $color-purple-nav;
   padding-top: 1vw;
@@ -11,7 +14,7 @@ header {
 .navbar {
   display: block;
   width: 85%;
-  float: right; /*float: left*/
+  float: right; /*float:*/
   height: 100%;
 }
 .navbar .buttons-container {
@@ -21,16 +24,18 @@ header {
   /*justify-content: flex-start;*/
   height: 100%;
 }
-nav .buttons-container a {
-  align-self: center;
-  border: solid 3px lightgray;
-  padding: 0% 2%;
-  margin: 1%;
-  border-radius: 5%;
-  text-decoration: none;
-  color: black;
-  font-family: $font-tittle;
-  font-size: 3rem;
+nav .buttons-container {
+  a {
+    align-self: center;
+    border: solid 3px lightgray;
+    padding: 0% 2%;
+    margin: 1%;
+    border-radius: 5%;
+    text-decoration: none;
+    color: black;
+    font-family: $font-tittle;
+    font-size: 3rem;
+  }
 }
 
 .logo {
@@ -40,8 +45,8 @@ nav .buttons-container a {
   float: left;
   position: relative;
   left: 1%;
-}
-.logo img {
-  align-self: center;
-  width: 100%;
+  img {
+    align-self: center;
+    width: 100%;
+  }
 }
