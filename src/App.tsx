@@ -5,7 +5,11 @@ const App: React.FC = () => {
   return (
     <div data-testid="main">
       <Home />
+<<<<<<< HEAD
 
+=======
+      <Error />
+>>>>>>> develop
     </div>
   );
 };
