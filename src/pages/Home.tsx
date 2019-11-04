@@ -1,11 +1,12 @@
 import React from "react";
-import Adventures from "../containers/adventures";
+//import Adventures from "../components/Adventures";
+import AdventuresContainer from "../containers/Adventures";
 
 const Home = () => {
   return (
     <div className="azul">
       Hello from homepage
-      <Adventures />
+      <AdventuresContainer />
     </div>
   );
 };
