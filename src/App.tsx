@@ -7,7 +7,6 @@ const App: React.FC = () => {
     <div data-testid="main">
       <Home />
       <Error />
-
     </div>
   );
 };
