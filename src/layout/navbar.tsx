@@ -1,25 +1,50 @@
 import React, { Component } from "react";
-import climber from "../images/climber.jpeg";
-import logo from "../images/LogoSinFondo.png";
+import { Link } from "react-router-dom";
+import logo from "../images/logo2SinFondo.png";
 
 export default class Navbar extends Component {
   render() {
     return (
-      <header className="header">
+      <nav className="navbar">
         <div className="logo">
-          <img src={logo} alt="pingus" />
+          <Link to="/">
+            <img src={logo} alt="pingus" />
+          </Link>
         </div>
-        <nav className="navbar">
-          <div className="buttons-container">
-            <a href="/">Menu</a>
-            <a href="/">Menu</a>
-            <a href="/">Menu</a>
-          </div>
-        </nav>
-        <div className="climber">
-          <img src={climber} alt="tiarron" />
+
+        <div className="buttons-container">
+          <ul>
+            <li>
+              <Link to="/" className="navh__tab">
+                HOME
+              </Link>
+            </li>
+            <li className="submenu">
+              <Link to="/" className="navh__tab">
+                SUBMENU
+              </Link>
+
+              <ul className="contenidosubmenu">
+                <li>
+                  <Link to="/" className="navh__tab">
+                    Crear Grupo
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/" className="navh__tab">
+                    Grupos Disponibles
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <Link to="/" className="navh__tab">
+                Registro
+              </Link>
+            </li>
+          </ul>
         </div>
-      </header>
+      </nav>
     );
   }
 }
