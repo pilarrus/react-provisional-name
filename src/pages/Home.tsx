@@ -5,7 +5,7 @@ import SocialHome from "../containers/SocialHome";
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <div data-testid="home-page">
       <AdventuresContainer />
       <SocialHome />
     </div>
