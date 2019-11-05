@@ -1,12 +1,13 @@
 import React from "react";
 //import Adventures from "../components/Adventures";
 import AdventuresContainer from "../containers/Adventures";
+import SocialHome from "../containers/SocialHome";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
-    <div className="azul">
-      Hello from homepage
+    <div>
       <AdventuresContainer />
+      <SocialHome />
     </div>
   );
 };
