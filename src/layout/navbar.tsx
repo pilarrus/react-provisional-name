@@ -24,7 +24,7 @@ export default class Navbar extends Component {
                 SUBMENU
               </Link>
 
-              <ul className="contenidosubmenu">
+              <ul className="contentsubmenu">
                 <li>
                   <Link to="/" className="navh__tab">
                     Crear Grupo
