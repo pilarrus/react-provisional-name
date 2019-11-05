@@ -1,17 +1,17 @@
 .social {
   max-width: 100%;
 
-  h1{
+  h1 {
     text-align: center;
-    margin:20px 0 20px 0;
+    margin: 20px 0 20px 0;
   }
-  
-  &__box{
+
+  &__box {
     display: flex;
     justify-content: center;
     height: 440px;
- 
-    &-container{
+
+    &-container {
       width: 1000px;
       display: flex;
       justify-content: space-around;
@@ -19,31 +19,30 @@
       background-image: url("../../images/landscape2.jpg");
       background-position: bottom;
       background-size: cover;
-      -webkit-box-shadow: 0px 0px 69px -32px rgba(0,0,0,0.75);
-      -moz-box-shadow: 0px 0px 69px -32px rgba(0,0,0,0.75);
-      box-shadow: 0px 0px 69px -32px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 0px 0px 69px -32px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 0px 69px -32px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 0px 69px -32px rgba(0, 0, 0, 0.75);
       border-radius: 4px;
     }
   }
-  
-  &__left{
+
+  &__left {
     width: 40%;
     min-width: 320px;
     display: flex;
     justify-content: center;
-    
-    &-btn{
+
+    &-btn {
       display: flex;
       align-items: center;
 
-
-      button{
+      button {
         @include btn-purple;
       }
     }
   }
 
-  &__right{
+  &__right {
     width: 60%;
     min-width: 400px;
     padding: 40px 40px 40px 75px;
@@ -52,51 +51,35 @@
     display: flex;
     align-items: center;
 
-   
-    .form{
-
-      &-input{
-      @include form-style-box;
-        &:focus{
+    .form {
+      &-input {
+        @include form-style-box;
+        &:focus {
           outline: none;
-          box-shadow: 0 1rem 2rem rgba(black, .1);
+          box-shadow: 0 1rem 2rem rgba(black, 0.1);
           border-bottom: 2px solid $color-purple;
         }
       }
 
-      &-select{
-
+      &-select {
         display: flex;
         justify-content: space-between;
-        select{
+        select {
           @include form-style-box;
           width: 48%;
         }
       }
-          
-      &-submit{
+
+      &-submit {
         justify-content: center;
         display: flex;
         align-items: center;
         padding-top: 25px;
       }
- 
-      input[type="submit"]{
+
+      input[type="submit"] {
         @include btn-purple;
-
       }
-
-      /*&-login-box{
-        @include form-style-box; 
-        display: flex;
-        justify-content: center;
-      }*/
     }
-
-    &-login{
-       
-    }  
   }
 }
-
-
