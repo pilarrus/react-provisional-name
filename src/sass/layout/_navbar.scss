@@ -1,0 +1,126 @@
+/*header {
+  background-color: $color-purple-nav;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  height: 15vh;
+  top: 0px;
+  position: sticky;
+  border: solid 1px lightgray;
+}*/
+.logo {
+  display: flex;
+  align-items: center;
+  width: 10%;
+  float: left;
+  position: relative;
+  left: 1%;
+  img {
+    align-self: center;
+    width: 100%;
+  }
+}
+
+.navbar {
+  display: block;
+  width: 100%;
+  float: right; /*float:left*/
+}
+.navbar .buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  //justify-content: flex-start;
+}
+nav .buttons-container {
+  a {
+    align-self: center;
+    //border: solid 1px lightgray;
+    padding: 0% 2%;
+    margin: 1%;
+    //border-radius: 5%;
+    text-decoration: none;
+    color: black;
+    font-family: $font-tittle;
+    font-size: 3rem;
+  }
+}
+.contenidosubmenu {
+  display: none;
+  z-index: 10000;
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}
+.submenu:hover .contenidosubmenu {
+  display: block;
+  animation: prueba 2s;
+}
+@keyframes prueba {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+ul {
+  padding: 5px;
+  margin: 0;
+}
+li {
+  display: inline-block;
+  text-align: center;
+  padding: 5px;
+  margin: 2px;
+}
+
+li {
+  .navh__tab {
+    position: relative;
+    text-decoration: none;
+  }
+}
+
+//------------PRUEBA--------------------------
+
+.navh__tab {
+  display: inline-block;
+  width: $navh-tab-width;
+
+  position: relative;
+  z-index: 10;
+
+  cursor: pointer;
+
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-align: center;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 4px;
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+
+    background-color: $color-grey-dark;
+    z-index: -1;
+    /* HOVER OUT */
+    transition: height 0.2s, width 0.2s 0.1s;
+  }
+
+  &:hover {
+    &:before {
+      content: "";
+      width: $navh-tab-width;
+
+      z-index: -1;
+      /* HOVER IN */
+      transition: width 0.5s, height 0.5s 0.5s;
+    }
+  }
+}
