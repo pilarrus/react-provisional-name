@@ -4,7 +4,7 @@ import React from "react";
 const AdventureComponent = (props: { name: string, photo: string, info: string; }) => {
   return (
     <div className="col-1-of-3 adventure" data-testid="adventure">
-      <div>
+      <div >
         <img src={props.photo} alt="adventure"/>
       </div>
       <div>

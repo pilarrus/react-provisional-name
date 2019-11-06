@@ -1,4 +1,4 @@
-.row {
+/*.row {
   max-width: $grid-width;
   margin: 0 auto;
 
@@ -16,11 +16,17 @@
   .col-1-of-3 {
     width: calc((100% - (2 * #{$gutter-horizontal})) / 3);
   }
-}
+}*/
 
 .container-flex {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
+  max-width: 100%;
+}
+
+[class^="col-"] {
+  background-color: $color-blue-light;
+  width: 30%;
 }
