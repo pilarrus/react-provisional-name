@@ -12,7 +12,7 @@ export default class Adventures extends Component<{
       <div className="father">
         <h2 className="center">Nuestras aventuras</h2>
       </div>
-      <div className="row">
+      <div className="row container-flex">
         {adventures.map(adventure => (
           <AdventureComponent
             key={adventure.name}
