@@ -1,4 +1,7 @@
 import React from "react";
+import config from "../../confing";
+
+const postalCode = "28022";
 
 class WeatherHome extends React.Component {
   state = {
@@ -6,11 +9,15 @@ class WeatherHome extends React.Component {
   };
 
   async componentDidMount() {
+    console.log(">>>>>>", process.env)
     const url =
-      "https://opendata.aemet.es/opendata/api/prediccion/especifica/municipio/diaria/28022?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbGlzYWdjdWJlcm9AZ21haWwuY29tIiwianRpIjoiNDk4YjQ0M2QtOGI1YS00NGRiLTkwZjAtMDBjZjEzZTQ2MTgzIiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE1NzI4OTc1NjgsInVzZXJJZCI6IjQ5OGI0NDNkLThiNWEtNDRkYi05MGYwLTAwY2YxM2U0NjE4MyIsInJvbGUiOiIifQ.KrdD3zhTh2V6mHwgIv4WUKOqT1akysqmf-nTfxuK9nY";
+      `${config.aemet.url}/${postalCode}?api_key=${config.aemet.apiKey}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data.datos);
+    const url2 = data.datos;
+    const response2 = await fetch(url2);
+    const data2 = await response2.json()
+    console.log(data2)
   }
 
   render() {
