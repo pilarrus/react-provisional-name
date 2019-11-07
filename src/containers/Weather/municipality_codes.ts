@@ -1,897 +1,899 @@
-﻿﻿[
+﻿﻿const madridMun = [
 	{
 		"codpro": "28",
 		"codmun": "001",
-		"name": "Acebeda"
+		"label": "Acebeda"
 	},
 	{
 		"codpro": "28",
 		"codmun": "002",
-		"name": "Ajalvir"
+		"label": "Ajalvir"
 	},
 	{
 		"codpro": "28",
 		"codmun": "003",
-		"name": "Alameda del Valle"
+		"label": "Alameda del Valle"
 	},
 	{
 		"codpro": "28",
 		"codmun": "004",
-		"name": "El Alamo"
+		"label": "El Alamo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "005",
-		"name": "Alcalá de Henares"
+		"label": "Alcalá de Henares"
 	},
 	{
 		"codpro": "28",
 		"codmun": "006",
-		"name": "Alcobendas"
+		"label": "Alcobendas"
 	},
 	{
 		"codpro": "28",
 		"codmun": "007",
-		"name": "Alcorcón"
+		"label": "Alcorcón"
 	},
 	{
 		"codpro": "28",
 		"codmun": "008",
-		"name": "Aldea del Fresno"
+		"label": "Aldea del Fresno"
 	},
 	{
 		"codpro": "28",
 		"codmun": "009",
-		"name": "Algete"
+		"label": "Algete"
 	},
 	{
 		"codpro": "28",
 		"codmun": "010",
-		"name": "Alpedrete"
+		"label": "Alpedrete"
 	},
 	{
 		"codpro": "28",
 		"codmun": "011",
-		"name": "Ambite"
+		"label": "Ambite"
 	},
 	{
 		"codpro": "28",
 		"codmun": "012",
-		"name": "Anchuelo"
+		"label": "Anchuelo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "013",
-		"name": "Aranjuez"
+		"label": "Aranjuez"
 	},
 	{
 		"codpro": "28",
 		"codmun": "014",
-		"name": "Arganda del Rey"
+		"label": "Arganda del Rey"
 	},
 	{
 		"codpro": "28",
 		"codmun": "015",
-		"name": "Arroyomolinos"
+		"label": "Arroyomolinos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "016",
-		"name": "Atazar"
+		"label": "Atazar"
 	},
 	{
 		"codpro": "28",
 		"codmun": "017",
-		"name": "Batres"
+		"label": "Batres"
 	},
 	{
 		"codpro": "28",
 		"codmun": "018",
-		"name": "Becerril de la Sierra"
+		"label": "Becerril de la Sierra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "019",
-		"name": "Belmonte de Tajo"
+		"label": "Belmonte de Tajo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "021",
-		"name": "Berrueco"
+		"label": "Berrueco"
 	},
 	{
 		"codpro": "28",
 		"codmun": "020",
-		"name": "Berzosa del Lozoya"
+		"label": "Berzosa del Lozoya"
 	},
 	{
 		"codpro": "28",
 		"codmun": "022",
-		"name": "Boadilla del Monte"
+		"label": "Boadilla del Monte"
 	},
 	{
 		"codpro": "28",
 		"codmun": "023",
-		"name": "Boalo"
+		"label": "Boalo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "024",
-		"name": "Braojos"
+		"label": "Braojos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "025",
-		"name": "Brea de Tajo"
+		"label": "Brea de Tajo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "026",
-		"name": "Brunete"
+		"label": "Brunete"
 	},
 	{
 		"codpro": "28",
 		"codmun": "027",
-		"name": "Buitrago del Lozoya"
+		"label": "Buitrago del Lozoya"
 	},
 	{
 		"codpro": "28",
 		"codmun": "028",
-		"name": "Bustarviejo"
+		"label": "Bustarviejo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "029",
-		"name": "Cabanillas de la Sierra"
+		"label": "Cabanillas de la Sierra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "030",
-		"name": "Cabrera"
+		"label": "Cabrera"
 	},
 	{
 		"codpro": "28",
 		"codmun": "031",
-		"name": "Cadalso de los Vidrios"
+		"label": "Cadalso de los Vidrios"
 	},
 	{
 		"codpro": "28",
 		"codmun": "032",
-		"name": "Camarma de Esteruelas"
+		"label": "Camarma de Esteruelas"
 	},
 	{
 		"codpro": "28",
 		"codmun": "033",
-		"name": "Campo Real"
+		"label": "Campo Real"
 	},
 	{
 		"codpro": "28",
 		"codmun": "034",
-		"name": "Canencia"
+		"label": "Canencia"
 	},
 	{
 		"codpro": "28",
 		"codmun": "035",
-		"name": "Carabaña"
+		"label": "Carabaña"
 	},
 	{
 		"codpro": "28",
 		"codmun": "036",
-		"name": "Casarrubuelos"
+		"label": "Casarrubuelos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "037",
-		"name": "Cenicientos"
+		"label": "Cenicientos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "038",
-		"name": "Cercedilla"
+		"label": "Cercedilla"
 	},
 	{
 		"codpro": "28",
 		"codmun": "039",
-		"name": "Cervera de Buitrago"
+		"label": "Cervera de Buitrago"
 	},
 	{
 		"codpro": "28",
 		"codmun": "051",
-		"name": "Chapineria"
+		"label": "Chapineria"
 	},
 	{
 		"codpro": "28",
 		"codmun": "052",
-		"name": "Chinchon"
+		"label": "Chinchon"
 	},
 	{
 		"codpro": "28",
 		"codmun": "040",
-		"name": "Ciempozuelos"
+		"label": "Ciempozuelos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "041",
-		"name": "Cobeña"
+		"label": "Cobeña"
 	},
 	{
 		"codpro": "28",
 		"codmun": "046",
-		"name": "Collado Mediano"
+		"label": "Collado Mediano"
 	},
 	{
 		"codpro": "28",
 		"codmun": "047",
-		"name": "Collado Villalba"
+		"label": "Collado Villalba"
 	},
 	{
 		"codpro": "28",
 		"codmun": "043",
-		"name": "Colmenar de Oreja"
+		"label": "Colmenar de Oreja"
 	},
 	{
 		"codpro": "28",
 		"codmun": "042",
-		"name": "Colmenar del Arroyo"
+		"label": "Colmenar del Arroyo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "045",
-		"name": "Colmenar Viejo"
+		"label": "Colmenar Viejo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "044",
-		"name": "Colmenarejo"
+		"label": "Colmenarejo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "048",
-		"name": "Corpa"
+		"label": "Corpa"
 	},
 	{
 		"codpro": "28",
 		"codmun": "049",
-		"name": "Coslada"
+		"label": "Coslada"
 	},
 	{
 		"codpro": "28",
 		"codmun": "050",
-		"name": "Cubas de la Sagra"
+		"label": "Cubas de la Sagra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "053",
-		"name": "Daganzo de Arriba"
+		"label": "Daganzo de Arriba"
 	},
 	{
 		"codpro": "28",
 		"codmun": "054",
-		"name": "Escorial"
+		"label": "Escorial"
 	},
 	{
 		"codpro": "28",
 		"codmun": "055",
-		"name": "Estremera"
+		"label": "Estremera"
 	},
 	{
 		"codpro": "28",
 		"codmun": "056",
-		"name": "Fresnedillas de la Oliva"
+		"label": "Fresnedillas de la Oliva"
 	},
 	{
 		"codpro": "28",
 		"codmun": "057",
-		"name": "Fresno de Torote"
+		"label": "Fresno de Torote"
 	},
 	{
 		"codpro": "28",
 		"codmun": "058",
-		"name": "Fuenlabrada"
+		"label": "Fuenlabrada"
 	},
 	{
 		"codpro": "28",
 		"codmun": "059",
-		"name": "Fuente el Saz de Jarama"
+		"label": "Fuente el Saz de Jarama"
 	},
 	{
 		"codpro": "28",
 		"codmun": "060",
-		"name": "Fuentidueña de Tajo"
+		"label": "Fuentidueña de Tajo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "061",
-		"name": "Galapagar"
+		"label": "Galapagar"
 	},
 	{
 		"codpro": "28",
 		"codmun": "062",
-		"name": "Garganta de los Montes"
+		"label": "Garganta de los Montes"
 	},
 	{
 		"codpro": "28",
 		"codmun": "063",
-		"name": "Gargantilla del Lozoya y Pinilla de Buitrago"
+		"label": "Gargantilla del Lozoya y Pinilla de Buitrago"
 	},
 	{
 		"codpro": "28",
 		"codmun": "064",
-		"name": "Gascones"
+		"label": "Gascones"
 	},
 	{
 		"codpro": "28",
 		"codmun": "065",
-		"name": "Getafe"
+		"label": "Getafe"
 	},
 	{
 		"codpro": "28",
 		"codmun": "066",
-		"name": "Griñón"
+		"label": "Griñón"
 	},
 	{
 		"codpro": "28",
 		"codmun": "067",
-		"name": "Guadalix de la Sierra"
+		"label": "Guadalix de la Sierra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "068",
-		"name": "Guadarrama"
+		"label": "Guadarrama"
 	},
 	{
 		"codpro": "28",
 		"codmun": "069",
-		"name": "Hiruela"
+		"label": "Hiruela"
 	},
 	{
 		"codpro": "28",
 		"codmun": "070",
-		"name": "Horcajo de la Sierra-Aoslos"
+		"label": "Horcajo de la Sierra-Aoslos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "071",
-		"name": "Horcajuelo de la Sierra"
+		"label": "Horcajuelo de la Sierra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "072",
-		"name": "Hoyo de Manzanares"
+		"label": "Hoyo de Manzanares"
 	},
 	{
 		"codpro": "28",
 		"codmun": "073",
-		"name": "Humanes de Madrid"
+		"label": "Humanes de Madrid"
 	},
 	{
 		"codpro": "28",
 		"codmun": "074",
-		"name": "Leganés"
+		"label": "Leganés"
 	},
 	{
 		"codpro": "28",
 		"codmun": "075",
-		"name": "Loeches"
+		"label": "Loeches"
 	},
 	{
 		"codpro": "28",
 		"codmun": "076",
-		"name": "Lozoya"
+		"label": "Lozoya"
 	},
 	{
 		"codpro": "28",
 		"codmun": "901",
-		"name": "Lozoyuela-Navas-Sieteiglesias"
+		"label": "Lozoyuela-Navas-Sieteiglesias"
 	},
 	{
 		"codpro": "28",
 		"codmun": "078",
-		"name": "Madarcos"
+		"label": "Madarcos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "079",
-		"name": "Madrid"
+		"label": "Madrid"
 	},
 	{
 		"codpro": "28",
 		"codmun": "080",
-		"name": "Majadahonda"
+		"label": "Majadahonda"
 	},
 	{
 		"codpro": "28",
 		"codmun": "082",
-		"name": "Manzanares el Real"
+		"label": "Manzanares el Real"
 	},
 	{
 		"codpro": "28",
 		"codmun": "083",
-		"name": "Meco"
+		"label": "Meco"
 	},
 	{
 		"codpro": "28",
 		"codmun": "084",
-		"name": "Mejorada del Campo"
+		"label": "Mejorada del Campo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "085",
-		"name": "Miraflores de la Sierra"
+		"label": "Miraflores de la Sierra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "086",
-		"name": "Molar"
+		"label": "Molar"
 	},
 	{
 		"codpro": "28",
 		"codmun": "087",
-		"name": "Molinos"
+		"label": "Molinos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "088",
-		"name": "Montejo de la Sierra"
+		"label": "Montejo de la Sierra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "089",
-		"name": "Moraleja de Enmedio"
+		"label": "Moraleja de Enmedio"
 	},
 	{
 		"codpro": "28",
 		"codmun": "090",
-		"name": "Moralzarzal"
+		"label": "Moralzarzal"
 	},
 	{
 		"codpro": "28",
 		"codmun": "091",
-		"name": "Morata de Tajuña"
+		"label": "Morata de Tajuña"
 	},
 	{
 		"codpro": "28",
 		"codmun": "092",
-		"name": "Móstoles"
+		"label": "Móstoles"
 	},
 	{
 		"codpro": "28",
 		"codmun": "093",
-		"name": "Navacerrada"
+		"label": "Navacerrada"
 	},
 	{
 		"codpro": "28",
 		"codmun": "094",
-		"name": "Navalafuente"
+		"label": "Navalafuente"
 	},
 	{
 		"codpro": "28",
 		"codmun": "095",
-		"name": "Navalagamella"
+		"label": "Navalagamella"
 	},
 	{
 		"codpro": "28",
 		"codmun": "096",
-		"name": "Navalcarnero"
+		"label": "Navalcarnero"
 	},
 	{
 		"codpro": "28",
 		"codmun": "097",
-		"name": "Navarredonda y San Mamés"
+		"label": "Navarredonda y San Mamés"
 	},
 	{
 		"codpro": "28",
 		"codmun": "099",
-		"name": "Navas del Rey"
+		"label": "Navas del Rey"
 	},
 	{
 		"codpro": "28",
 		"codmun": "100",
-		"name": "Nuevo Baztán"
+		"label": "Nuevo Baztán"
 	},
 	{
 		"codpro": "28",
 		"codmun": "101",
-		"name": "Olmeda de las Fuentes"
+		"label": "Olmeda de las Fuentes"
 	},
 	{
 		"codpro": "28",
 		"codmun": "102",
-		"name": "Orusco de Tajuña"
+		"label": "Orusco de Tajuña"
 	},
 	{
 		"codpro": "28",
 		"codmun": "104",
-		"name": "Paracuellos de Jarama"
+		"label": "Paracuellos de Jarama"
 	},
 	{
 		"codpro": "28",
 		"codmun": "106",
-		"name": "Parla"
+		"label": "Parla"
 	},
 	{
 		"codpro": "28",
 		"codmun": "107",
-		"name": "Patones"
+		"label": "Patones"
 	},
 	{
 		"codpro": "28",
 		"codmun": "108",
-		"name": "Pedrezuela"
+		"label": "Pedrezuela"
 	},
 	{
 		"codpro": "28",
 		"codmun": "109",
-		"name": "Pelayos de la Presa"
+		"label": "Pelayos de la Presa"
 	},
 	{
 		"codpro": "28",
 		"codmun": "110",
-		"name": "Perales de Tajuña"
+		"label": "Perales de Tajuña"
 	},
 	{
 		"codpro": "28",
 		"codmun": "111",
-		"name": "Pezuela de las Torres"
+		"label": "Pezuela de las Torres"
 	},
 	{
 		"codpro": "28",
 		"codmun": "112",
-		"name": "Pinilla del Valle"
+		"label": "Pinilla del Valle"
 	},
 	{
 		"codpro": "28",
 		"codmun": "113",
-		"name": "Pinto"
+		"label": "Pinto"
 	},
 	{
 		"codpro": "28",
 		"codmun": "114",
-		"name": "Piñuécar-Gandullas"
+		"label": "Piñuécar-Gandullas"
 	},
 	{
 		"codpro": "28",
 		"codmun": "115",
-		"name": "Pozuelo de Alarcón"
+		"label": "Pozuelo de Alarcón"
 	},
 	{
 		"codpro": "28",
 		"codmun": "116",
-		"name": "Pozuelo del Rey"
+		"label": "Pozuelo del Rey"
 	},
 	{
 		"codpro": "28",
 		"codmun": "117",
-		"name": "Prádena del Rincón"
+		"label": "Prádena del Rincón"
 	},
 	{
 		"codpro": "28",
 		"codmun": "118",
-		"name": "Puebla de la Sierra"
+		"label": "Puebla de la Sierra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "902",
-		"name": "Puentes Viejas"
+		"label": "Puentes Viejas"
 	},
 	{
 		"codpro": "28",
 		"codmun": "119",
-		"name": "Quijorna"
+		"label": "Quijorna"
 	},
 	{
 		"codpro": "28",
 		"codmun": "120",
-		"name": "Rascafría"
+		"label": "Rascafría"
 	},
 	{
 		"codpro": "28",
 		"codmun": "121",
-		"name": "Redueña"
+		"label": "Redueña"
 	},
 	{
 		"codpro": "28",
 		"codmun": "122",
-		"name": "Ribatejada"
+		"label": "Ribatejada"
 	},
 	{
 		"codpro": "28",
 		"codmun": "123",
-		"name": "Rivas-Vaciamadrid"
+		"label": "Rivas-Vaciamadrid"
 	},
 	{
 		"codpro": "28",
 		"codmun": "124",
-		"name": "Robledillo de la Jara"
+		"label": "Robledillo de la Jara"
 	},
 	{
 		"codpro": "28",
 		"codmun": "125",
-		"name": "Robledo de Chavela"
+		"label": "Robledo de Chavela"
 	},
 	{
 		"codpro": "28",
 		"codmun": "126",
-		"name": "Robregordo"
+		"label": "Robregordo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "127",
-		"name": "Rozas de Madrid"
+		"label": "Rozas de Madrid"
 	},
 	{
 		"codpro": "28",
 		"codmun": "128",
-		"name": "Rozas de Puerto Real"
+		"label": "Rozas de Puerto Real"
 	},
 	{
 		"codpro": "28",
 		"codmun": "129",
-		"name": "San Agustín del Guadalix"
+		"label": "San Agustín del Guadalix"
 	},
 	{
 		"codpro": "28",
 		"codmun": "130",
-		"name": "San Fernando de Henares"
+		"label": "San Fernando de Henares"
 	},
 	{
 		"codpro": "28",
 		"codmun": "131",
-		"name": "San Lorenzo de El Escorial"
+		"label": "San Lorenzo de El Escorial"
 	},
 	{
 		"codpro": "28",
 		"codmun": "132",
-		"name": "San Martín de la Vega"
+		"label": "San Martín de la Vega"
 	},
 	{
 		"codpro": "28",
 		"codmun": "133",
-		"name": "San Martín de Valdeiglesias"
+		"label": "San Martín de Valdeiglesias"
 	},
 	{
 		"codpro": "28",
 		"codmun": "134",
-		"name": "San Sebastián de los Reyes"
+		"label": "San Sebastián de los Reyes"
 	},
 	{
 		"codpro": "28",
 		"codmun": "135",
-		"name": "Santa María de la Alameda"
+		"label": "Santa María de la Alameda"
 	},
 	{
 		"codpro": "28",
 		"codmun": "136",
-		"name": "Santorcaz"
+		"label": "Santorcaz"
 	},
 	{
 		"codpro": "28",
 		"codmun": "137",
-		"name": "Santos de la Humosa"
+		"label": "Santos de la Humosa"
 	},
 	{
 		"codpro": "28",
 		"codmun": "138",
-		"name": "Serna del Monte"
+		"label": "Serna del Monte"
 	},
 	{
 		"codpro": "28",
 		"codmun": "140",
-		"name": "Serranillos del Valle"
+		"label": "Serranillos del Valle"
 	},
 	{
 		"codpro": "28",
 		"codmun": "141",
-		"name": "Sevilla la Nueva"
+		"label": "Sevilla la Nueva"
 	},
 	{
 		"codpro": "28",
 		"codmun": "143",
-		"name": "Somosierra"
+		"label": "Somosierra"
 	},
 	{
 		"codpro": "28",
 		"codmun": "144",
-		"name": "Soto del Real"
+		"label": "Soto del Real"
 	},
 	{
 		"codpro": "28",
 		"codmun": "145",
-		"name": "Talamanca de Jarama"
+		"label": "Talamanca de Jarama"
 	},
 	{
 		"codpro": "28",
 		"codmun": "146",
-		"name": "Tielmes"
+		"label": "Tielmes"
 	},
 	{
 		"codpro": "28",
 		"codmun": "147",
-		"name": "Titulcia"
+		"label": "Titulcia"
 	},
 	{
 		"codpro": "28",
 		"codmun": "148",
-		"name": "Torrejón de Ardoz"
+		"label": "Torrejón de Ardoz"
 	},
 	{
 		"codpro": "28",
 		"codmun": "149",
-		"name": "Torrejón de la Calzada"
+		"label": "Torrejón de la Calzada"
 	},
 	{
 		"codpro": "28",
 		"codmun": "150",
-		"name": "Torrejón de Velasco"
+		"label": "Torrejón de Velasco"
 	},
 	{
 		"codpro": "28",
 		"codmun": "151",
-		"name": "Torrelaguna"
+		"label": "Torrelaguna"
 	},
 	{
 		"codpro": "28",
 		"codmun": "152",
-		"name": "Torrelodones"
+		"label": "Torrelodones"
 	},
 	{
 		"codpro": "28",
 		"codmun": "153",
-		"name": "Torremocha de Jarama"
+		"label": "Torremocha de Jarama"
 	},
 	{
 		"codpro": "28",
 		"codmun": "154",
-		"name": "Torres de la Alameda"
+		"label": "Torres de la Alameda"
 	},
 	{
 		"codpro": "28",
 		"codmun": "903",
-		"name": "Tres Cantos"
+		"label": "Tres Cantos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "155",
-		"name": "Valdaracete"
+		"label": "Valdaracete"
 	},
 	{
 		"codpro": "28",
 		"codmun": "156",
-		"name": "Valdeavero"
+		"label": "Valdeavero"
 	},
 	{
 		"codpro": "28",
 		"codmun": "157",
-		"name": "Valdelaguna"
+		"label": "Valdelaguna"
 	},
 	{
 		"codpro": "28",
 		"codmun": "158",
-		"name": "Valdemanco"
+		"label": "Valdemanco"
 	},
 	{
 		"codpro": "28",
 		"codmun": "159",
-		"name": "Valdemaqueda"
+		"label": "Valdemaqueda"
 	},
 	{
 		"codpro": "28",
 		"codmun": "160",
-		"name": "Valdemorillo"
+		"label": "Valdemorillo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "161",
-		"name": "Valdemoro"
+		"label": "Valdemoro"
 	},
 	{
 		"codpro": "28",
 		"codmun": "162",
-		"name": "Valdeolmos-Alalpardo"
+		"label": "Valdeolmos-Alalpardo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "163",
-		"name": "Valdepiélagos"
+		"label": "Valdepiélagos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "164",
-		"name": "Valdetorres de Jarama"
+		"label": "Valdetorres de Jarama"
 	},
 	{
 		"codpro": "28",
 		"codmun": "165",
-		"name": "Valdilecha"
+		"label": "Valdilecha"
 	},
 	{
 		"codpro": "28",
 		"codmun": "166",
-		"name": "Valverde de Alcalá"
+		"label": "Valverde de Alcalá"
 	},
 	{
 		"codpro": "28",
 		"codmun": "167",
-		"name": "Velilla de San Antonio"
+		"label": "Velilla de San Antonio"
 	},
 	{
 		"codpro": "28",
 		"codmun": "168",
-		"name": "El Vellón"
+		"label": "El Vellón"
 	},
 	{
 		"codpro": "28",
 		"codmun": "169",
-		"name": "Venturada"
+		"label": "Venturada"
 	},
 	{
 		"codpro": "28",
 		"codmun": "171",
-		"name": "Villa del Prado"
+		"label": "Villa del Prado"
 	},
 	{
 		"codpro": "28",
 		"codmun": "170",
-		"name": "Villaconejos"
+		"label": "Villaconejos"
 	},
 	{
 		"codpro": "28",
 		"codmun": "172",
-		"name": "Villalbilla"
+		"label": "Villalbilla"
 	},
 	{
 		"codpro": "28",
 		"codmun": "173",
-		"name": "Villamanrique de Tajo"
+		"label": "Villamanrique de Tajo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "174",
-		"name": "Villamanta"
+		"label": "Villamanta"
 	},
 	{
 		"codpro": "28",
 		"codmun": "175",
-		"name": "Villamantilla"
+		"label": "Villamantilla"
 	},
 	{
 		"codpro": "28",
 		"codmun": "176",
-		"name": "Villanueva de la Cañada"
+		"label": "Villanueva de la Cañada"
 	},
 	{
 		"codpro": "28",
 		"codmun": "178",
-		"name": "Villanueva de Perales"
+		"label": "Villanueva de Perales"
 	},
 	{
 		"codpro": "28",
 		"codmun": "177",
-		"name": "Villanueva del Pardillo"
+		"label": "Villanueva del Pardillo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "179",
-		"name": "Villar del Olmo"
+		"label": "Villar del Olmo"
 	},
 	{
 		"codpro": "28",
 		"codmun": "180",
-		"name": "Villarejo de Salvanés"
+		"label": "Villarejo de Salvanés"
 	},
 	{
 		"codpro": "28",
 		"codmun": "181",
-		"name": "Villaviciosa de Odón"
+		"label": "Villaviciosa de Odón"
 	},
 	{
 		"codpro": "28",
 		"codmun": "182",
-		"name": "Villavieja del Lozoya"
+		"label": "Villavieja del Lozoya"
 	},
 	{
 		"codpro": "28",
 		"codmun": "183",
-		"name": "Zarzalejo"
+		"label": "Zarzalejo"
 	}
 ]
+
+export default madridMun;
