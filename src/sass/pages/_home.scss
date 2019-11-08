@@ -1,13 +1,43 @@
 .adventures {
-  background-color: $color-blue-dark;
+  background-color: $color-grey-light;
   text-align: center;
+  @include flex($flex-direction-column, $flex-nowrap, $justify-content-center, $align-items-center, $align-content-center);
 
+  h1 {
+    font-family: $font-tittle;
+    font-size: 2rem;
+    letter-spacing: 1rem;
+    margin: 20px 0 10px 0;
+  }
+
+  &__container {
+    width: 75%;
+    @include flex($flex-direction-row, $flex-wrap, $justify-content-space-around, $align-items-center, $align-content-center);
+  }
+
+  button {
+    margin: 10px 0 20px 0;
+  }
 }
 
 .adventure {
+  width: 300px;
+  background-color: $color-blue-light;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  color: $color-grey-dark;
+  box-shadow: 0 1px 5px $color-grey-dark;
+
   img {
     height: auto;
     max-width: 100%;
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+
+  h3 {
+    font-family: $font-tittle;
+    font-size: 1.5rem;
+    letter-spacing: 1rem;
   }
 }
