@@ -1,39 +1,54 @@
 import React from "react";
-import Title from "../../components/Reusable/Title";
-import WeatherMountain from "./WeatherMountain";
+import config from "../../config";
+import PruebaSelect from "./PruebaSelect";
+import Selected from "./Selected";
 import WeatherMunicipality from "./WeatherMunicipality";
 
 class WeatherHome extends React.Component {
   state = {
     loading: false,
     dataTemperature: [],
-    dataMountain: []
+    selectedMun: "28079"
   };
 
-  /*
-  
-  EL FETCH ES IGUAL QUE HACER ESTO:
-  
-  const url = `${config.aemet.url}/${postalCode}?api_key=${config.aemet.apiKey}`;
-  const response = await fetch(url);
-  const data = await response.json();
-      
-  const url2 = data.datos;
-  const response2 = await fetch(url2);
-  const data2 = await response2.json();
-      
-  console.log(data2);
-  
-  */
+  componentDidMount() {
+    //console.log(">>>>>>", process.env);
+    fetch(
+      `${config.aemet.urltemperature}/${this.state.selectedMun}?api_key=${config.aemet.apiKey}`
+    )
+      .then(response => response.json())
+      .then(response => fetch(response.datos).then(response => response.json()))
+      .then(data => this.setState({ loading: true, dataTemperature: data }));
+  }
 
   render() {
-    return (
-      <div className="weather">
-        <Title title="¿Qué tiempo hace hoy?" />
-        <WeatherMunicipality />
-        <WeatherMountain />
-      </div>
-    );
+    if (this.state.dataTemperature.length > 0) {
+      return (
+        <section>
+          <WeatherMunicipality
+            tempMax={
+              this.state.dataTemperature[0]["prediccion"]["dia"][0][
+                "temperatura"
+              ]["maxima"]
+            }
+            tempMin={
+              this.state.dataTemperature[0]["prediccion"]["dia"][0][
+                "temperatura"
+              ]["minima"]
+            }
+            municipality={this.state.dataTemperature[0]["nombre"]}
+          />
+          <Selected />
+          <PruebaSelect />
+        </section>
+      );
+    } else {
+      return (
+        <div className="weather-charge">
+          <p>Cargando...</p>
+        </div>
+      );
+    }
   }
 }
 
