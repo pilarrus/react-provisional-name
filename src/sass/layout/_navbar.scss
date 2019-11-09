@@ -1,39 +1,28 @@
-.logo {
-  display: flex;
-  align-items: center;
-  width: 10%;
-  img {
-    align-self: center;
-    width: 100%;
-  }
-}
-
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-.navbar .buttons-container {
+
+nav .buttons-container {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-}
-nav .buttons-container {
+
   a {
-    align-self: center;
     padding: 0% 2%;
     margin: 1%;
     text-decoration: none;
     color: black;
     font-family: $font-tittle;
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 .contentsubmenu {
   display: none;
   z-index: 10000;
   position: absolute;
-  top: 10%;
+  top: 15%;
   right: 5%;
+  background-color: $color-blue-light;
 }
 .submenu:hover .contentsubmenu {
   display: block;
@@ -54,8 +43,7 @@ ul {
 li {
   display: inline-block;
   text-align: center;
-  padding: 5px;
-  margin: 2px;
+  margin-right: 70px;
 }
 
 li {
