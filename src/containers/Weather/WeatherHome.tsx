@@ -1,28 +1,51 @@
 import React from "react";
+import Select from "react-select";
 import config from "../../config";
-import PruebaSelect from "./PruebaSelect";
-import Selected from "./Selected";
+import madridMun from "./municipality_codes";
 import WeatherMunicipality from "./WeatherMunicipality";
+
+const options = madridMun;
 
 class WeatherHome extends React.Component {
   state = {
     loading: false,
     dataTemperature: [],
-    selectedMun: "28079"
+    selectedOption: null
   };
 
   componentDidMount() {
     //console.log(">>>>>>", process.env);
+    if (this.state.selectedOption == null) {
+      console.log(">>>>>>>>>>>>>>", this.state.selectedOption);
+      fetch(
+        `${config.aemet.urltemperature}/28050?api_key=${config.aemet.apiKey}`
+      )
+        .then(response => response.json())
+        .then(response =>
+          fetch(response.datos).then(response => response.json())
+        )
+        .then(data => this.setState({ loading: true, dataTemperature: data }));
+    }
+  }
+
+  componentDidUpdate() {
     fetch(
-      `${config.aemet.urltemperature}/${this.state.selectedMun}?api_key=${config.aemet.apiKey}`
+      `${config.aemet.urltemperature}/${this.state.selectedOption}?api_key=${config.aemet.apiKey}`
     )
       .then(response => response.json())
       .then(response => fetch(response.datos).then(response => response.json()))
       .then(data => this.setState({ loading: true, dataTemperature: data }));
   }
 
+  handleChange = (selectedOption: any) => {
+    this.setState({ selectedOption: 28 + selectedOption.codmun });
+    console.log(selectedOption);
+  };
+
   render() {
     if (this.state.dataTemperature.length > 0) {
+      const { selectedOption } = this.state;
+      console.log(selectedOption);
       return (
         <section>
           <WeatherMunicipality
@@ -38,8 +61,17 @@ class WeatherHome extends React.Component {
             }
             municipality={this.state.dataTemperature[0]["nombre"]}
           />
-          <Selected />
-          <PruebaSelect />
+          <div className="weather__select">
+            <p>Busca tu municipio</p>
+            <div className="weather__select-box">
+              <Select
+                value={selectedOption}
+                options={options}
+                isClearable={true}
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
         </section>
       );
     } else {
