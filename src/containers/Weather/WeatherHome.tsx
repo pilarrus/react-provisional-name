@@ -1,7 +1,7 @@
 import React from "react";
+import Title from "../../components/Reusable/Title";
 import WeatherMountain from "./WeatherMountain";
 import WeatherMunicipality from "./WeatherMunicipality";
-
 
 class WeatherHome extends React.Component {
   state = {
@@ -9,7 +9,6 @@ class WeatherHome extends React.Component {
     dataTemperature: [],
     dataMountain: []
   };
-
 
   /*
   
@@ -28,10 +27,13 @@ class WeatherHome extends React.Component {
   */
 
   render() {
-    return <div className="weather">
-      <WeatherMunicipality />
-      <WeatherMountain />
-    </div>;
+    return (
+      <div className="weather">
+        <Title title="¿Qué tiempo hace hoy?" />
+        <WeatherMunicipality />
+        <WeatherMountain />
+      </div>
+    );
   }
 }
 
