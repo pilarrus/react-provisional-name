@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { typeAdventure } from "../types/adventure";
-import AdventureComponent from './Adventure';
+import AdventureComponent from "./Adventure";
+import Title from "./Reusable/Title";
 
 export default class Adventures extends Component<{
   adventures: typeAdventure[];
@@ -9,21 +10,21 @@ export default class Adventures extends Component<{
     const { adventures } = this.props;
     return (
       <section className="adventures">
-      <div className="father">
-        <h2 className="center">Nuestras aventuras</h2>
-      </div>
-      <div className="row">
-        {adventures.map(adventure => (
-          <AdventureComponent
-            key={adventure.name}
-            name={adventure.name}
-            photo={adventure.photo}
-            info={adventure.info}
-          />
-        ))}
-      </div>
-      <button className="btn-purple">Ver más aventuras</button>
-    </section>
+        <Title title="Nuestras aventuras" />
+        <div className="adventures__container">
+          <div className="adventures__container-box">
+            {adventures.map(adventure => (
+              <AdventureComponent
+                key={adventure.name}
+                name={adventure.name}
+                photo={adventure.photo}
+                info={adventure.info}
+              />
+            ))}
+          </div>
+          <button className="btn-purple">Ver más aventuras</button>
+        </div>
+      </section>
     );
   }
 }
