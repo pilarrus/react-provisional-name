@@ -6,22 +6,30 @@ import WeatherMunicipality from "./WeatherMunicipality";
 
 const options = madridMun;
 
+const madrid = {
+  codpro: "28",
+  codmun: "079",
+  label: "Madrid",
+  value: "Madrid"
+};
+
 class WeatherHome extends React.Component {
   state = {
     loading: false,
     dataTemperature: [],
-    selectedOption: madridMun[77]
+    selectedOption: madrid
   };
 
   componentDidMount() {
-    const madrid = madridMun[77].codpro + madridMun[77].codmun;
-    this.handleapi(madrid);
+    this.handleapi(
+      this.state.selectedOption.codpro + this.state.selectedOption.codmun
+    );
   }
 
   componentDidUpdate() {
-    const municipality =
-      this.state.selectedOption.codpro + this.state.selectedOption.codmun;
-    this.handleapi(municipality);
+    this.handleapi(
+      this.state.selectedOption.codpro + this.state.selectedOption.codmun
+    );
   }
 
   handleapi = (selectedOption: string) => {
