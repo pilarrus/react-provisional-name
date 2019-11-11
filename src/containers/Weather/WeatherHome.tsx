@@ -47,7 +47,7 @@ class WeatherHome extends React.Component {
       const { selectedOption } = this.state;
       console.log(selectedOption);
       return (
-        <section>
+        <section data-testid="weatherTest">
           <WeatherMunicipality
             tempMax={
               this.state.dataTemperature[0]["prediccion"]["dia"][0][
