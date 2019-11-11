@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { typeAdventure } from "../types/adventure";
 import AdventureComponent from "./Adventure";
+import Title from "./Reusable/Title";
 
 export default class Adventures extends Component<{
   adventures: typeAdventure[];
@@ -9,8 +10,9 @@ export default class Adventures extends Component<{
     const { adventures } = this.props;
     return (
       <section className="adventures">
-        <h1>Nuestras aventuras</h1>
+        <Title title="Nuestras aventuras" />
         <div className="adventures__container">
+          <div className="adventures__container-box">
             {adventures.map(adventure => (
               <AdventureComponent
                 key={adventure.name}
@@ -19,8 +21,9 @@ export default class Adventures extends Component<{
                 info={adventure.info}
               />
             ))}
+          </div>
+          <button className="btn-purple">Ver más aventuras</button>
         </div>
-        <button className="btn-purple">Ver más aventuras</button>
       </section>
     );
   }
