@@ -18,7 +18,7 @@ class WeatherHome extends React.Component {
     if (this.state.selectedOption == null) {
       console.log(">>>>>>>>>>>>>>", this.state.selectedOption);
       fetch(
-        `${config.aemet.urltemperature}/28050?api_key=${config.aemet.apiKey}`
+        `${config.aemet.urltemperature}/28079?api_key=${config.aemet.apiKey}`
       )
         .then(response => response.json())
         .then(response =>
