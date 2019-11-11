@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/logo2SinFondo.png";
+import logo from "../images/logoMadridAdventure.png";
 
 export default class Navbar extends Component {
   render() {
@@ -16,12 +16,12 @@ export default class Navbar extends Component {
           <ul>
             <li>
               <Link to="/" className="navh__tab">
-                HOME
+                Home
               </Link>
             </li>
             <li className="submenu">
               <Link to="/" className="navh__tab">
-                SUBMENU
+                Grupos
               </Link>
 
               <ul className="contentsubmenu">
