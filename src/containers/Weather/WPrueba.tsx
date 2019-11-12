@@ -5,7 +5,6 @@ import madridMun from "./municipality_codes";
 import WeatherMunicipality from "./WeatherMunicipality";
 
 const options = madridMun;
-console.log(options);
 
 const madrid = {
   codpro: "28",
@@ -52,24 +51,21 @@ class WeatherHome extends React.Component {
 
   render() {
     if (this.state.dataTemperature.length > 0) {
+      const apiName = this.state.dataTemperature[0]["nombre"];
+      const maxTemp = this.state.dataTemperature[0]["prediccion"]["dia"][0][
+        "temperatura"
+      ]["maxima"];
+      const minTemp = this.state.dataTemperature[0]["prediccion"]["dia"][0][
+        "temperatura"
+      ]["minima"];
       const value = null;
-      const name = options.filter(
-        option => option.name == this.state.dataTemperature[0]["nombre"]
-      );
+      const name = options.filter(option => option.name == apiName);
 
       return (
         <section data-testid="weatherTest">
           <WeatherMunicipality
-            tempMax={
-              this.state.dataTemperature[0]["prediccion"]["dia"][0][
-                "temperatura"
-              ]["maxima"]
-            }
-            tempMin={
-              this.state.dataTemperature[0]["prediccion"]["dia"][0][
-                "temperatura"
-              ]["minima"]
-            }
+            tempMax={maxTemp}
+            tempMin={minTemp}
             municipality={name[0].value}
           />
           <div className="weather__select">
