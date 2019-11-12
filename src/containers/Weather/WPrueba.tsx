@@ -5,17 +5,15 @@ import madridMun from "./municipality_codes";
 import WeatherMunicipality from "./WeatherMunicipality";
 
 const options = madridMun;
+console.log(options);
 
 const madrid = {
   codpro: "28",
-  codmun: "079",
-  label: "Madrid",
-  value: "Madrid"
+  codmun: "079"
 };
 
 class WeatherHome extends React.Component {
   state = {
-    loading: false,
     dataTemperature: [],
     selectedOption: madrid
   };
@@ -27,27 +25,23 @@ class WeatherHome extends React.Component {
   }
 
   componentDidUpdate(_: {}, prevState: any) {
-    if (this.state.selectedOption.codpro + this.state.selectedOption.codmun !== prevState.selectedOption.codpro + prevState.selectedOption.codmun) {
+    if (
+      this.state.selectedOption.codpro + this.state.selectedOption.codmun !==
+      prevState.selectedOption.codpro + prevState.selectedOption.codmun
+    ) {
       this.handleapi(
         this.state.selectedOption.codpro + this.state.selectedOption.codmun
       );
     }
-
   }
 
   handleapi = (selectedOption: string) => {
-    console.log(">>>>>>> DENTRO DE HANDLEAPI", selectedOption);
     fetch(
       `${config.aemet.urltemperature}/${selectedOption}?api_key=${config.aemet.apiKey}`
     )
       .then(response => response.json())
-      .then(response => fetch(response.datos).then(response => {
-        return response.json()
-      }))
-      .then(data => {
-
-        this.setState({ loading: true, dataTemperature: data })
-      });
+      .then(response => fetch(response.datos).then(response => response.json()))
+      .then(data => this.setState({ dataTemperature: data }));
   };
 
   handleChange = (selectedOption: any) => {
@@ -59,23 +53,24 @@ class WeatherHome extends React.Component {
   render() {
     if (this.state.dataTemperature.length > 0) {
       const value = null;
+      const name = options.filter(
+        option => option.name == this.state.dataTemperature[0]["nombre"]
+      );
 
-      //console.log(">>>> SELECTEDOPTION DEL STATE", selectedOption);
-      //console.log("TYPEOF SELECTEDOPTION", typeof selectedOption);
       return (
         <section data-testid="weatherTest">
           <WeatherMunicipality
             tempMax={
               this.state.dataTemperature[0]["prediccion"]["dia"][0][
-              "temperatura"
+                "temperatura"
               ]["maxima"]
             }
             tempMin={
               this.state.dataTemperature[0]["prediccion"]["dia"][0][
-              "temperatura"
+                "temperatura"
               ]["minima"]
             }
-            municipality={this.state.dataTemperature[0]["nombre"]}
+            municipality={name[0].value}
           />
           <div className="weather__select">
             <p>Busca tu municipio</p>
@@ -101,15 +96,3 @@ class WeatherHome extends React.Component {
 }
 
 export default WeatherHome;
-
-// JAVIER:
-
-//¿por qué al poner el tipo string en handlechange que son object y
-// cómo usar bien el componentdidupdate con prevprops y prevstate
-
-/*type MunProps = {
-  codpro: string;
-  codmun: string;
-  label: string;
-  value: string;
-};*/
