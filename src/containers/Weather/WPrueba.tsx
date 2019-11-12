@@ -27,7 +27,7 @@ class WeatherHome extends React.Component {
   }
 
   componentDidUpdate(_: {}, prevState: any) {
-    if (this.state.selectedOption.codpro + this.state.selectedOption.codmun != prevState.selectedOption.codpro + prevState.selectedOption.codmun) {
+    if (this.state.selectedOption.codpro + this.state.selectedOption.codmun !== prevState.selectedOption.codpro + prevState.selectedOption.codmun) {
       this.handleapi(
         this.state.selectedOption.codpro + this.state.selectedOption.codmun
       );

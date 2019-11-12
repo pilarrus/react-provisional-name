@@ -1,4 +1,5 @@
 ﻿﻿// eslint-disable-next-line
+/*eslint unicode-bom:["error", "always"]*/
 const madridMun = [
   { codpro: "28", codmun: "001", label: "Acebeda, La", value: "Acebeda, La" },
   { codpro: "28", codmun: "002", label: "Ajalvir", value: "Ajalvir" },

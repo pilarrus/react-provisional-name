@@ -10,6 +10,4 @@ const convertDegreesToThermalSensation = (degrees: number): string => {
   return thermalSensation;
 };
 
-const equalsString = (x: string, y: string) => x === y ? true : false;
-
-export {convertDegreesToThermalSensation, equalsString};
+export {convertDegreesToThermalSensation};
