@@ -16,7 +16,7 @@ class SocialHome extends React.Component {
 
   render() {
     return (
-      <section className="social">
+      <section className="social" data-testid="socialTest">
         <Title title="Red social" />
         <div className="social__box">
           <div className="social__box-container">

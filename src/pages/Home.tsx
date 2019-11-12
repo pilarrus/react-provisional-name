@@ -1,14 +1,14 @@
 import React from "react";
 import AdventuresContainer from "../containers/Adventures";
 import SocialHome from "../containers/SocialHome";
-import WeatherHome from "../containers/Weather/WeatherHome";
+import WeatherPrueba from "../containers/Weather/WPrueba";
 
 const Home: React.FC = () => {
   return (
     <div data-testid="home-page">
       <AdventuresContainer />
       <SocialHome />
-      <WeatherHome />
+      <WeatherPrueba />
     </div>
   );
 };

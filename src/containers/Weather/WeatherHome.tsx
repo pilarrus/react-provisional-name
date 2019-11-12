@@ -10,7 +10,7 @@ class WeatherHome extends React.Component {
   state = {
     loading: false,
     dataTemperature: [],
-    selectedOption: null
+    selectedOption: undefined
   };
 
   componentDidMount() {
@@ -28,18 +28,28 @@ class WeatherHome extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    fetch(
-      `${config.aemet.urltemperature}/${this.state.selectedOption}?api_key=${config.aemet.apiKey}`
-    )
-      .then(response => response.json())
-      .then(response => fetch(response.datos).then(response => response.json()))
-      .then(data => this.setState({ loading: true, dataTemperature: data }));
+  // CUANDO SE ACTUALIZA EL COMPONENTE HACE UNA PETICION A LA API CON EL NUEVO CODIGO DE MUNICIPIO
+  componentDidUpdate(prevState: any) {
+    if (prevState.selectedOption !== this.state.selectedOption) {
+      console.log("son distintos");
+      fetch(
+        `${config.aemet.urltemperature}/${this.state.selectedOption}?api_key=${config.aemet.apiKey}`
+      )
+        .then(response => response.json())
+        .then(response =>
+          fetch(response.datos).then(response => response.json())
+        )
+        .then(data => this.setState({ loading: true, dataTemperature: data }));
+    } else {
+      console.log("son iguales");
+    }
+
+    console.log("PREVState", prevState);
   }
 
   handleChange = (selectedOption: any) => {
     this.setState({ selectedOption: 28 + selectedOption.codmun });
-    console.log(selectedOption);
+    console.log("Ha seleccionado: ", selectedOption);
   };
 
   render() {
@@ -47,7 +57,7 @@ class WeatherHome extends React.Component {
       const { selectedOption } = this.state;
       console.log(selectedOption);
       return (
-        <section>
+        <section data-testid="weatherTest">
           <WeatherMunicipality
             tempMax={
               this.state.dataTemperature[0]["prediccion"]["dia"][0][
