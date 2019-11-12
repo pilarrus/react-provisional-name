@@ -26,10 +26,13 @@ class WeatherHome extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    this.handleapi(
-      this.state.selectedOption.codpro + this.state.selectedOption.codmun
-    );
+  componentDidUpdate(_: {}, prevState: any) {
+    if (this.state.selectedOption.codpro + this.state.selectedOption.codmun != prevState.selectedOption.codpro + prevState.selectedOption.codmun) {
+      this.handleapi(
+        this.state.selectedOption.codpro + this.state.selectedOption.codmun
+      );
+    }
+
   }
 
   handleapi = (selectedOption: string) => {
@@ -38,8 +41,13 @@ class WeatherHome extends React.Component {
       `${config.aemet.urltemperature}/${selectedOption}?api_key=${config.aemet.apiKey}`
     )
       .then(response => response.json())
-      .then(response => fetch(response.datos).then(response => response.json()))
-      .then(data => this.setState({ loading: true, dataTemperature: data }));
+      .then(response => fetch(response.datos).then(response => {
+        return response.json()
+      }))
+      .then(data => {
+
+        this.setState({ loading: true, dataTemperature: data })
+      });
   };
 
   handleChange = (selectedOption: any) => {
@@ -51,6 +59,7 @@ class WeatherHome extends React.Component {
   render() {
     if (this.state.dataTemperature.length > 0) {
       const value = null;
+
       //console.log(">>>> SELECTEDOPTION DEL STATE", selectedOption);
       //console.log("TYPEOF SELECTEDOPTION", typeof selectedOption);
       return (
@@ -58,12 +67,12 @@ class WeatherHome extends React.Component {
           <WeatherMunicipality
             tempMax={
               this.state.dataTemperature[0]["prediccion"]["dia"][0][
-                "temperatura"
+              "temperatura"
               ]["maxima"]
             }
             tempMin={
               this.state.dataTemperature[0]["prediccion"]["dia"][0][
-                "temperatura"
+              "temperatura"
               ]["minima"]
             }
             municipality={this.state.dataTemperature[0]["nombre"]}
