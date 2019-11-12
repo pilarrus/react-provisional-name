@@ -8,9 +8,7 @@ const options = madridMun;
 
 const madrid = {
   codpro: "28",
-  codmun: "079",
-  label: "Madrid",
-  value: "Madrid"
+  codmun: "079"
 };
 
 class WeatherHome extends React.Component {
@@ -37,7 +35,6 @@ class WeatherHome extends React.Component {
   }
 
   handleapi = (selectedOption: string) => {
-    console.log(">>>>>>> DENTRO DE HANDLEAPI", selectedOption);
     fetch(
       `${config.aemet.urltemperature}/${selectedOption}?api_key=${config.aemet.apiKey}`
     )
@@ -62,8 +59,6 @@ class WeatherHome extends React.Component {
     if (this.state.dataTemperature.length > 0) {
       const value = null;
 
-      //console.log(">>>> SELECTEDOPTION DEL STATE", selectedOption);
-      //console.log("TYPEOF SELECTEDOPTION", typeof selectedOption);
       return (
         <section data-testid="weatherTest">
           <WeatherMunicipality
