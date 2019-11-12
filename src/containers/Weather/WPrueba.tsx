@@ -5,7 +5,7 @@ import madridMun from "./municipality_codes";
 import WeatherMunicipality from "./WeatherMunicipality";
 
 const options = madridMun;
-console.log(options);
+//console.log("jkjjkjjk",options);
 
 const madrid = {
   codpro: "28",
@@ -54,7 +54,7 @@ class WeatherHome extends React.Component {
     if (this.state.dataTemperature.length > 0) {
       const value = null;
       const name = options.filter(
-        option => option.name == this.state.dataTemperature[0]["nombre"]
+        option => option.name === this.state.dataTemperature[0]["nombre"]
       );
 
       return (
