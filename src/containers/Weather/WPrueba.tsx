@@ -5,6 +5,7 @@ import madridMun from "./municipality_codes";
 import WeatherMunicipality from "./WeatherMunicipality";
 
 const options = madridMun;
+console.log(options);
 
 const madrid = {
   codpro: "28",
@@ -39,14 +40,8 @@ class WeatherHome extends React.Component {
       `${config.aemet.urltemperature}/${selectedOption}?api_key=${config.aemet.apiKey}`
     )
       .then(response => response.json())
-      .then(response =>
-        fetch(response.datos).then(response => {
-          return response.json();
-        })
-      )
-      .then(data => {
-        this.setState({ dataTemperature: data });
-      });
+      .then(response => fetch(response.datos).then(response => response.json()))
+      .then(data => this.setState({ dataTemperature: data }));
   };
 
   handleChange = (selectedOption: any) => {
@@ -58,6 +53,9 @@ class WeatherHome extends React.Component {
   render() {
     if (this.state.dataTemperature.length > 0) {
       const value = null;
+      const name = options.filter(
+        option => option.name == this.state.dataTemperature[0]["nombre"]
+      );
 
       return (
         <section data-testid="weatherTest">
@@ -72,7 +70,7 @@ class WeatherHome extends React.Component {
                 "temperatura"
               ]["minima"]
             }
-            municipality={this.state.dataTemperature[0]["nombre"]}
+            municipality={name[0].value}
           />
           <div className="weather__select">
             <p>Busca tu municipio</p>
@@ -98,15 +96,3 @@ class WeatherHome extends React.Component {
 }
 
 export default WeatherHome;
-
-// JAVIER:
-
-//¿por qué al poner el tipo string en handlechange que son object y
-// cómo usar bien el componentdidupdate con prevprops y prevstate
-
-/*type MunProps = {
-  codpro: string;
-  codmun: string;
-  label: string;
-  value: string;
-};*/
