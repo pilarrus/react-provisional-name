@@ -15,7 +15,6 @@ const madrid = {
 
 class WeatherHome extends React.Component {
   state = {
-    loading: false,
     dataTemperature: [],
     selectedOption: madrid
   };
@@ -27,12 +26,14 @@ class WeatherHome extends React.Component {
   }
 
   componentDidUpdate(_: {}, prevState: any) {
-    if (this.state.selectedOption.codpro + this.state.selectedOption.codmun != prevState.selectedOption.codpro + prevState.selectedOption.codmun) {
+    if (
+      this.state.selectedOption.codpro + this.state.selectedOption.codmun !==
+      prevState.selectedOption.codpro + prevState.selectedOption.codmun
+    ) {
       this.handleapi(
         this.state.selectedOption.codpro + this.state.selectedOption.codmun
       );
     }
-
   }
 
   handleapi = (selectedOption: string) => {
@@ -41,12 +42,13 @@ class WeatherHome extends React.Component {
       `${config.aemet.urltemperature}/${selectedOption}?api_key=${config.aemet.apiKey}`
     )
       .then(response => response.json())
-      .then(response => fetch(response.datos).then(response => {
-        return response.json()
-      }))
+      .then(response =>
+        fetch(response.datos).then(response => {
+          return response.json();
+        })
+      )
       .then(data => {
-
-        this.setState({ loading: true, dataTemperature: data })
+        this.setState({ dataTemperature: data });
       });
   };
 
@@ -67,12 +69,12 @@ class WeatherHome extends React.Component {
           <WeatherMunicipality
             tempMax={
               this.state.dataTemperature[0]["prediccion"]["dia"][0][
-              "temperatura"
+                "temperatura"
               ]["maxima"]
             }
             tempMin={
               this.state.dataTemperature[0]["prediccion"]["dia"][0][
-              "temperatura"
+                "temperatura"
               ]["minima"]
             }
             municipality={this.state.dataTemperature[0]["nombre"]}

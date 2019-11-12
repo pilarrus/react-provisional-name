@@ -1,4 +1,5 @@
-﻿﻿const madridMun = [
+﻿﻿/*eslint unicode-bom: ["error", "always"]*/
+const madridMun = [
   {"codpro":"28","codmun":"001","label":"Acebeda, La","value":"Acebeda, La"},
   {"codpro":"28","codmun":"002","label":"Ajalvir","value":"Ajalvir"},
   {"codpro":"28","codmun":"003","label":"Alameda del Valle","value":"Alameda del Valle"},

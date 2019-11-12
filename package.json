@@ -50,6 +50,10 @@
     "@types/testing-library__dom": "^6.4.0",
     "@types/testing-library__react": "^9.1.1",
     "@types/testing-library__user-event": "^4.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-react": "^7.16.0",
     "faker": "^4.1.0",
     "node-sass": "^4.13.0"
   }
