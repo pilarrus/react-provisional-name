@@ -59,7 +59,7 @@ class WeatherHome extends React.Component {
         "temperatura"
       ]["minima"];
       const value = null;
-      const name = options.filter(option => option.name == apiName);
+      const name = options.filter(option => option.name === apiName);
 
       return (
         <section data-testid="weatherTest">
