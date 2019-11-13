@@ -1,14 +1,15 @@
 import React from "react";
+import config from "../config";
 import AdventuresContainer from "../containers/Adventures";
 import SocialHome from "../containers/SocialHome";
 import WeatherPrueba from "../containers/Weather/WPrueba";
 import { convertDegreesToThermalSensation } from "../utils/functions";
 
-//import Select from "react-select";
-import config from "../config";
-//import madridMun from "./municipality_codes";
-
-//const options = madridMun;
+type dataTemperatureType = {
+  "name": string;
+  "max": number;
+  "min": number;
+};
 
 const madrid = {
   codpro: "28",
@@ -17,8 +18,9 @@ const madrid = {
 
 class Home extends React.Component {
   state = {
-    dataTemperature: [],
-    selectedOption: madrid
+    dataTemperature: {} as dataTemperatureType,
+    selectedOption: madrid,
+    lenght: 0
   };
 
   componentDidMount() {
@@ -45,25 +47,24 @@ class Home extends React.Component {
       .then(response => response.json())
       .then(response => fetch(response.datos).then(response => response.json()))
       .then(data => {
-        //console.log(data[0]);
-        let temperaturesMunicipality = {
-          name: data[0].nombre,
+        var temperaturesMunicipality = {
+          name: data[0]["nombre"],
           max: data[0]["prediccion"]["dia"][0]["temperatura"]["maxima"],
           min: data[0]["prediccion"]["dia"][0]["temperatura"]["minima"],
         };
-        console.log(temperaturesMunicipality);
-        this.setState({ dataTemperature: data });
+        this.setState({ dataTemperature: temperaturesMunicipality, lenght: 1 });
       });
-      
+
   };
 
   render() {
-    if (this.state.dataTemperature.length > 0) {
-      let degrees: number = this.state.dataTemperature[0]["prediccion"]["dia"][0]["temperatura"]["maxima"];
-      console.log("maxDegrees", degrees);
-      let thermalSensationAPI: string = convertDegreesToThermalSensation(degrees);
-      //console.log("thermalSensation", thermalSensationAPI);
-      
+    if (this.state.lenght > 0) {
+
+
+      let degree = this.state.dataTemperature.max;
+      let thermalSensationAPI: string = convertDegreesToThermalSensation(degree);
+
+
       return (
         <div data-testid="home-page">
           <AdventuresContainer thermalSensationAPI={thermalSensationAPI} />
@@ -72,6 +73,7 @@ class Home extends React.Component {
         </div>
       );
     } else {
+
       return (
         <div className="weather-charge">
           <p>Cargando...</p>
