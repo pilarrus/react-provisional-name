@@ -1,6 +1,6 @@
-import climbing from "../images/adventure_climbing.jpg";
-import rafting from "../images/adventure_rafting.jpg";
-import zip_lines from "../images/adventure_zip_lines.jpg";
+import climbing from "../images/adventures/climbing.jpg";
+import rafting from "../images/adventures/rafting.jpg";
+import zip_lines from "../images/adventures/zip_lines.jpg";
 
 export default [
   {

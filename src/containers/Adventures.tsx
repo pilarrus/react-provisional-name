@@ -3,7 +3,9 @@ import Adventures from "../components/Adventures";
 import { typeAdventure } from "../types/adventure";
 import fetch from "../utils/mockFetch";
 
-class AdventuresContainer extends React.Component {
+class AdventuresContainer extends React.Component<{
+  thermalSensationAPI: string;
+}> {
   state = {
     adventures: []
   };
@@ -35,8 +37,9 @@ class AdventuresContainer extends React.Component {
   }
 
   public render() {
+    let thermalSensationAPI = this.props.thermalSensationAPI;
     const { adventures } = this.state;
-    return <Adventures adventures={adventures} />;
+    return <Adventures adventures={adventures} thermalSensationAPI={thermalSensationAPI} />;
   }
 }
 

@@ -1,4 +1,15 @@
 {
+<<<<<<< HEAD
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "eslint.autoFixOnSave": true,
+    "tslint.autoFixOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    //"prettier.singleQuote": false
+  }
+=======
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "eslint.autoFixOnSave": true,
@@ -8,3 +19,4 @@
   }
   //"prettier.singleQuote": false
 }
+>>>>>>> eliapi
