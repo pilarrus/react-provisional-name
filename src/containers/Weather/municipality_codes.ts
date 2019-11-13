@@ -1,4 +1,4 @@
-﻿﻿﻿﻿/*eslint unicode-bom: ["error", "always"]*/
+﻿﻿/*eslint unicode-bom: ["error", "always"]*/
 const madridMun = [
   {"codpro":"28","codmun":"001","name":"Acebeda, La","label":"Acebeda, La","value":"Acebeda, La"},
   {"codpro":"28","codmun":"002","name":"Ajalvir","label":"Ajalvir","value":"Ajalvir"},
