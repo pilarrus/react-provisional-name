@@ -2,24 +2,38 @@ import React from "react";
 import config from "../config";
 import AdventuresContainer from "../containers/Adventures";
 import SocialHome from "../containers/SocialHome";
-import WeatherPrueba from "../containers/Weather/WPrueba";
+import madridMun from "../containers/Weather/municipality_codes";
+import WeatherPrueba2 from "../containers/Weather/WPruebaApiHome";
 import { convertDegreesToThermalSensation } from "../utils/functions";
 
 type dataTemperatureType = {
-  "name": string;
-  "max": number;
-  "min": number;
+  name: string;
+  max: number;
+  min: number;
 };
+
+type selectedOptionType = {
+  codmun: string;
+  codpro: string;
+  label: string;
+  name: string;
+  value: string;
+};
+
+const options = madridMun;
 
 const madrid = {
   codpro: "28",
-  codmun: "079"
+  codmun: "079",
+  label: "MAdrd",
+  name: "MAdrd",
+  value: "MAdrd"
 };
 
 class Home extends React.Component {
   state = {
     dataTemperature: {} as dataTemperatureType,
-    selectedOption: madrid,
+    selectedOption: madrid as selectedOptionType,
     lenght: 0
   };
 
@@ -50,30 +64,39 @@ class Home extends React.Component {
         var temperaturesMunicipality = {
           name: data[0]["nombre"],
           max: data[0]["prediccion"]["dia"][0]["temperatura"]["maxima"],
-          min: data[0]["prediccion"]["dia"][0]["temperatura"]["minima"],
+          min: data[0]["prediccion"]["dia"][0]["temperatura"]["minima"]
         };
         this.setState({ dataTemperature: temperaturesMunicipality, lenght: 1 });
       });
+  };
 
+  handleChange = (selectedOption: selectedOptionType) => {
+    console.log(">>>>>>>>>>>>", selectedOption);
+    this.setState({ selectedOption });
   };
 
   render() {
     if (this.state.lenght > 0) {
-
-
       let degree = this.state.dataTemperature.max;
-      let thermalSensationAPI: string = convertDegreesToThermalSensation(degree);
-
+      let thermalSensationAPI: string = convertDegreesToThermalSensation(
+        degree
+      );
+      const apiName = this.state.dataTemperature.name;
+      const name = options.filter(option => option.name === apiName);
 
       return (
         <div data-testid="home-page">
           <AdventuresContainer thermalSensationAPI={thermalSensationAPI} />
           <SocialHome />
-          <WeatherPrueba />
+          <WeatherPrueba2
+            tempMax={this.state.dataTemperature.max}
+            tempMin={this.state.dataTemperature.min}
+            municipality={name[0].value}
+            handlerState={this.handleChange}
+          />
         </div>
       );
     } else {
-
       return (
         <div className="weather-charge">
           <p>Cargando...</p>
@@ -81,6 +104,6 @@ class Home extends React.Component {
       );
     }
   }
-};
+}
 
 export default Home;

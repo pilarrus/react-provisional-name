@@ -2,8 +2,8 @@ import React from "react";
 import Title from "../../components/Reusable/Title";
 
 const WeatherMunicipality: React.FC<{
-  tempMax: string;
-  tempMin: string;
+  tempMax: number;
+  tempMin: number;
   municipality: string;
 }> = ({ tempMax, tempMin, municipality }) => (
   <div className="weather">
