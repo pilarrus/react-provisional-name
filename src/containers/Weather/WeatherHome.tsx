@@ -1,97 +1,38 @@
 import React from "react";
 import Select from "react-select";
-import config from "../../config";
 import madridMun from "./municipality_codes";
 import WeatherMunicipality from "./WeatherMunicipality";
 
 const options = madridMun;
 
-class WeatherHome extends React.Component {
-  state = {
-    loading: false,
-    dataTemperature: [],
-    selectedOption: undefined
-  };
+type props = {
+  tempMax: number;
+  tempMin: number;
+  municipality: string;
+  handlerState: (option: any) => void;
+};
 
-  componentDidMount() {
-    //console.log(">>>>>>", process.env);
-    if (this.state.selectedOption == null) {
-      console.log(">>>>>>>>>>>>>>", this.state.selectedOption);
-      fetch(
-        `${config.aemet.urltemperature}/28079?api_key=${config.aemet.apiKey}`
-      )
-        .then(response => response.json())
-        .then(response =>
-          fetch(response.datos).then(response => response.json())
-        )
-        .then(data => this.setState({ loading: true, dataTemperature: data }));
-    }
-  }
+const value = null;
 
-  // CUANDO SE ACTUALIZA EL COMPONENTE HACE UNA PETICION A LA API CON EL NUEVO CODIGO DE MUNICIPIO
-  componentDidUpdate(prevState: any) {
-    if (prevState.selectedOption !== this.state.selectedOption) {
-      console.log("son distintos");
-      fetch(
-        `${config.aemet.urltemperature}/${this.state.selectedOption}?api_key=${config.aemet.apiKey}`
-      )
-        .then(response => response.json())
-        .then(response =>
-          fetch(response.datos).then(response => response.json())
-        )
-        .then(data => this.setState({ loading: true, dataTemperature: data }));
-    } else {
-      console.log("son iguales");
-    }
-
-    console.log("PREVState", prevState);
-  }
-
-  handleChange = (selectedOption: any) => {
-    this.setState({ selectedOption: 28 + selectedOption.codmun });
-    console.log("Ha seleccionado: ", selectedOption);
-  };
-
-  render() {
-    if (this.state.dataTemperature.length > 0) {
-      const { selectedOption } = this.state;
-      console.log(selectedOption);
-      return (
-        <section data-testid="weatherTest">
-          <WeatherMunicipality
-            tempMax={
-              this.state.dataTemperature[0]["prediccion"]["dia"][0][
-                "temperatura"
-              ]["maxima"]
-            }
-            tempMin={
-              this.state.dataTemperature[0]["prediccion"]["dia"][0][
-                "temperatura"
-              ]["minima"]
-            }
-            municipality={this.state.dataTemperature[0]["nombre"]}
-          />
-          <div className="weather__select">
-            <p>Busca tu municipio</p>
-            <div className="weather__select-box">
-              <Select
-                value={selectedOption}
-                options={options}
-                isClearable={true}
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-        </section>
-      );
-    } else {
-      return (
-        <div className="weather-charge">
-          <p>Cargando...</p>
-        </div>
-      );
-    }
-  }
-}
+const WeatherHome: React.FC<props> = props => (
+  <section data-testid="weatherTest">
+    <WeatherMunicipality
+      tempMax={props.tempMax}
+      tempMin={props.tempMin}
+      municipality={props.municipality}
+    />
+    <div className="weather__select">
+      <p>Busca tu municipio</p>
+      <div className="weather__select-box">
+        <Select
+          value={value}
+          options={options}
+          isClearable={true}
+          onChange={props.handlerState}
+        />
+      </div>
+    </div>
+  </section>
+);
 
 export default WeatherHome;

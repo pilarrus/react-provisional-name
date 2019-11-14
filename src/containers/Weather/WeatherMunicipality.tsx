@@ -27,29 +27,3 @@ const WeatherMunicipality: React.FC<{
 );
 
 export default WeatherMunicipality;
-
-/*componentDidUpdate() {
-    // POR MUNICIPIOS
-    console.log(this.state.dataTemperature[0]);
-    console.log("Municipio", this.state.dataTemperature[0]["nombre"]);
-    console.log(
-      "Día",
-      this.state.dataTemperature[0]["prediccion"]["dia"][0]["fecha"]
-    );
-    console.log(
-      this.state.dataTemperature[0]["prediccion"]["dia"][0]["temperatura"]
-    );
-    console.log(
-      "Temperatura máxima",
-      this.state.dataTemperature[0]["prediccion"]["dia"][0]["temperatura"][
-        "maxima"
-      ]
-    );
-    console.log(
-      "Temperatura mínima",
-      this.state.dataTemperature[0]["prediccion"]["dia"][0]["temperatura"][
-        "minima"
-      ]
-    );
-    console.log(this.state.loading);
-  }*/

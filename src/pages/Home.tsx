@@ -3,7 +3,7 @@ import config from "../config";
 import AdventuresContainer from "../containers/Adventures";
 import SocialHome from "../containers/SocialHome";
 import madridMun from "../containers/Weather/municipality_codes";
-import WeatherPrueba2 from "../containers/Weather/WPruebaApiHome";
+import WeatherHome from "../containers/Weather/WeatherHome";
 import { convertDegreesToThermalSensation } from "../utils/functions";
 
 type dataTemperatureType = {
@@ -12,28 +12,17 @@ type dataTemperatureType = {
   min: number;
 };
 
-type selectedOptionType = {
-  codmun: string;
-  codpro: string;
-  label: string;
-  name: string;
-  value: string;
-};
-
 const options = madridMun;
 
 const madrid = {
   codpro: "28",
-  codmun: "079",
-  label: "MAdrd",
-  name: "MAdrd",
-  value: "MAdrd"
+  codmun: "079"
 };
 
 class Home extends React.Component {
   state = {
     dataTemperature: {} as dataTemperatureType,
-    selectedOption: madrid as selectedOptionType,
+    selectedOption: madrid,
     lenght: 0
   };
 
@@ -70,8 +59,7 @@ class Home extends React.Component {
       });
   };
 
-  handleChange = (selectedOption: selectedOptionType) => {
-    console.log(">>>>>>>>>>>>", selectedOption);
+  handleChange = (selectedOption: any) => {
     this.setState({ selectedOption });
   };
 
@@ -88,7 +76,7 @@ class Home extends React.Component {
         <div data-testid="home-page">
           <AdventuresContainer thermalSensationAPI={thermalSensationAPI} />
           <SocialHome />
-          <WeatherPrueba2
+          <WeatherHome
             tempMax={this.state.dataTemperature.max}
             tempMin={this.state.dataTemperature.min}
             municipality={name[0].value}
