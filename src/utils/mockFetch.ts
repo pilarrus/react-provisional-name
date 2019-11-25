@@ -1,4 +1,4 @@
-import adventures from "../fake-data/adventuresCopy";
+import adventures from "../fake-data/adventures";
 
 type JSONResponse<T> = {
   json: () => Promise<T>;

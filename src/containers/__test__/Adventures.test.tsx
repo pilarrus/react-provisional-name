@@ -1,8 +1,39 @@
-import { render, waitForElement } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import React from "react";
 import AdventuresContainer from "../Adventures";
 
-test("if adventures are fetched", async () => {
-  const { getAllByTestId } = render(<AdventuresContainer thermalSensationAPI="cold"/>);
-  await waitForElement(() => getAllByTestId("adventure"));
+test("warmth adventures", async () => {
+  const { findAllByTestId, findByText } = render(<AdventuresContainer thermalSensationAPI="warmth"/>);
+  const adventures = await findAllByTestId('adventure');
+  expect(adventures.length).toBe(3);
+  const adventure1 = await findByText(/escalada/i);
+  expect(adventure1).toBeInTheDocument();
+  const adventure2 = await findByText(/tirolinas/i);
+  expect(adventure2).toBeInTheDocument();
+  const adventure3 = await findByText(/quad/i);
+  expect(adventure3).toBeInTheDocument();
+});
+
+test("very hot adventures", async () => {
+  const { findAllByTestId, findByText } = render(<AdventuresContainer thermalSensationAPI="very hot"/>);
+  const adventures = await findAllByTestId('adventure');
+  expect(adventures.length).toBe(3);
+  const adventure1 = await findByText(/rafting/i);
+  expect(adventure1).toBeInTheDocument();
+  const adventure2 = await findByText(/piragüísmo/i);
+  expect(adventure2).toBeInTheDocument();
+  const adventure3 = await findByText(/moto de agua/i);
+  expect(adventure3).toBeInTheDocument();
+});
+
+test("cold adventures", async () => {
+  const { findAllByTestId, findByText } = render(<AdventuresContainer thermalSensationAPI="cold"/>);
+  const adventures = await findAllByTestId('adventure');
+  expect(adventures.length).toBe(3);
+  const adventure1 = await findByText(/senderismo/i);
+  expect(adventure1).toBeInTheDocument();
+  const adventure2 = await findByText(/ski/i);
+  expect(adventure2).toBeInTheDocument();
+  const adventure3 = await findByText(/snowboard/i);
+  expect(adventure3).toBeInTheDocument();
 });
