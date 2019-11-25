@@ -1,6 +1,7 @@
 import React from "react";
 import config from "../config";
 import AdventuresContainer from "../containers/Adventures";
+import Slider from "../containers/Slider/Slider";
 import SocialHome from "../containers/SocialHome";
 import madridMun from "../containers/Weather/municipality_codes";
 import WeatherHome from "../containers/Weather/WeatherHome";
@@ -74,6 +75,7 @@ class Home extends React.Component {
 
       return (
         <div data-testid="home-page">
+          <Slider />
           <AdventuresContainer thermalSensationAPI={thermalSensationAPI} />
           <SocialHome />
           <WeatherHome
