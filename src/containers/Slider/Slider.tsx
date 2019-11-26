@@ -13,11 +13,11 @@ const images = [
   },
   {
     src:
-      "https://images.unsplash.com/photo-1558029062-a37889b87526?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80"
+      "https://images.unsplash.com/photo-1489914169085-9b54fdd8f2a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
   },
   {
     src:
-      "https://images.unsplash.com/photo-1558088458-b65180740294?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1579&q=80"
+      "https://images.unsplash.com/photo-1495895828857-6bbf2f319e73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80"
   },
   {
     src:
@@ -34,7 +34,7 @@ function Slider() {
       } else {
         setIndex(index + 1);
       }
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [index]);
 
