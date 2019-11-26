@@ -8,9 +8,7 @@ const AdventureComponent = (props: {
   const style = {
     backgroundImage: "url(" + props.photo + ")",
     backgroundPosition: "top",
-    backgroundSize: "cover",
-    cliPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
-    backgroundColor: "rgba(255, 255, 255, 0.6)"
+    backgroundSize: "cover"
   };
 
   return (

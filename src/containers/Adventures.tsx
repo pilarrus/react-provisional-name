@@ -16,13 +16,6 @@ class AdventuresContainer extends React.Component<{
     this._isMounted = true;
     fetch<typeAdventure[]>("/adventures")
       .then(response => response.json())
-      .then(adventures =>
-        adventures.map(({ ...rest }) => {
-          return {
-            ...rest
-          };
-        })
-      )
       .then(adventures => {
         if (this._isMounted) {
           this.setState({

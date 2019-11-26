@@ -28,7 +28,7 @@ export default class Adventures extends Component<{
               />
             ))}
           </div>
-          <button className="btn-purple">Ver más aventuras</button>
+          <a href="/adventures"><button className="btn-purple">Ver más aventuras</button></a>
         </div>
       </section>
     );
