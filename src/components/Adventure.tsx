@@ -1,17 +1,21 @@
 import React from "react";
-//import { typeAdventure } from "../types/adventure";
 
-const AdventureComponent = (props: { name: string, photo: string, info: string; }) => {
+const AdventureComponent = (props: {
+  name: string;
+  photo: string;
+  info: string;
+}) => {
+  const style = {
+    backgroundImage: "url(" + props.photo + ")",
+    backgroundPosition: "top",
+    backgroundSize: "cover"
+  };
+
   return (
-    <div className="col-1-of-3 adventure" data-testid="adventure">
-      <div>
-        <img src={props.photo} alt="adventure"/>
-      </div>
-      <div>
+    <div className="adventure" data-testid="adventure" style={style}>
+      <div className="adventure__content">
         <h3>{props.name}</h3>
-      </div>
-      <div>
-        {props.info}
+        <p>{props.info}</p>
       </div>
     </div>
   );
