@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 import madridMun from "./municipality_codes";
 import WeatherMunicipality from "./WeatherMunicipality";
@@ -12,27 +12,33 @@ type props = {
   handlerState: (option: any) => void;
 };
 
-const value = null;
+const WeatherHome: React.FC<props> = props => {
+  const [value, setValue] = useState(props.municipality);
 
-const WeatherHome: React.FC<props> = props => (
-  <section data-testid="weatherTest">
-    <WeatherMunicipality
-      tempMax={props.tempMax}
-      tempMin={props.tempMin}
-      municipality={props.municipality}
-    />
-    <div className="weather__select">
-      <p>Busca tu municipio</p>
-      <div className="weather__select-box">
-        <Select
-          value={value}
-          options={options}
-          isClearable={true}
-          onChange={props.handlerState}
-        />
+  const handleChange = (v: any) => {
+    setValue(v);
+    props.handlerState(v);
+  };
+  return (
+    <section data-testid="weatherTest">
+      <WeatherMunicipality
+        tempMax={props.tempMax}
+        tempMin={props.tempMin}
+        municipality={props.municipality}
+      />
+      <div className="weather__select">
+        <p>Busca tu municipio</p>
+        <div className="weather__select-box">
+          <Select<any>
+            value={value}
+            options={options}
+            isClearable={true}
+            onChange={handleChange}
+          />
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default WeatherHome;

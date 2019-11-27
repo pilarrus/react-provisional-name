@@ -7,6 +7,11 @@ import madridMun from "../containers/Weather/municipality_codes";
 import WeatherHome from "../containers/Weather/WeatherHome";
 import { convertDegreesToThermalSensation } from "../utils/functions";
 
+type Code = {
+  codpro: string;
+  codmun: string;
+};
+
 type dataTemperatureType = {
   name: string;
   max: number;
@@ -15,7 +20,7 @@ type dataTemperatureType = {
 
 const options = madridMun;
 
-const madrid = {
+const madrid: Code = {
   codpro: "28",
   codmun: "079"
 };
@@ -28,25 +33,22 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    this.handleapi(
-      this.state.selectedOption.codpro + this.state.selectedOption.codmun
-    );
+    this.handleapi(this.state.selectedOption);
   }
 
   componentDidUpdate(_: {}, prevState: any) {
-    if (
-      this.state.selectedOption.codpro + this.state.selectedOption.codmun !==
-      prevState.selectedOption.codpro + prevState.selectedOption.codmun
-    ) {
-      this.handleapi(
-        this.state.selectedOption.codpro + this.state.selectedOption.codmun
-      );
+    if (prevState.selectedOption !== this.state.selectedOption) {
+      this.handleapi(this.state.selectedOption);
     }
   }
 
-  handleapi = (selectedOption: string) => {
+  handleapi = (selectedOption: Code | null) => {
+    if (!selectedOption) {
+      selectedOption = madrid;
+    }
     fetch(
-      `${config.aemet.urltemperature}/${selectedOption}?api_key=${config.aemet.apiKey}`
+      `${config.aemet.urltemperature}/${selectedOption.codpro +
+        selectedOption.codmun}?api_key=${config.aemet.apiKey}`
     )
       .then(response => response.json())
       .then(response => fetch(response.datos).then(response => response.json()))
