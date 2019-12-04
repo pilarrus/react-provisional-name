@@ -12,12 +12,14 @@ const AdventureComponent = (props: {
   };
 
   return (
-    <div className="adventure" data-testid="adventure" style={style}>
-      <div className="adventure__content">
-        <h3>{props.name}</h3>
-        <p>{props.info}</p>
+    <a href="/grupos">
+      <div className="adventure" data-testid="adventure" style={style}>
+        <div className="adventure__content">
+          <h3>{props.name}</h3>
+          <p>{props.info}</p>
+        </div>
       </div>
-    </div>
+    </a>
   );
 };
 
