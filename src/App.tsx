@@ -1,9 +1,9 @@
 import React from "react";
+import { Route, Switch } from "react-router";
 import Navbar from "./layout/navbar";
+import Adventures from "./pages/Adventures";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
-import Adventures from "./pages/Adventures";
-import {Route, Switch} from "react-router";
 
 const App: React.FC = () => {
   return (

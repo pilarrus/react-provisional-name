@@ -5,6 +5,7 @@ interface props {
 }
 
 export const Profile: React.FC<props> = props => {
+  console.log(props);
   return (
     <div>
       {props.data.map(e => (
