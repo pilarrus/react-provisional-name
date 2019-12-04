@@ -48,6 +48,7 @@
     align-items: center;
 
     .form {
+      animation: fadein 1s;
       &-input {
         @include form-style-box;
         font-family: $font-tittle;
@@ -80,5 +81,14 @@
         @include btn-purple;
       }
     }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Load from "../components/Reusable/Loading";
 import config from "../config";
 import AdventuresContainer from "../containers/Adventures";
 import Slider from "../containers/Slider/Slider";
@@ -91,7 +92,7 @@ class Home extends React.Component {
     } else {
       return (
         <div className="weather-charge">
-          <p>Cargando...</p>
+          <Load />
         </div>
       );
     }
