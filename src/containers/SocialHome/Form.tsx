@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 export const Form = (props: RouteComponentProps) => {
@@ -8,24 +8,34 @@ export const Form = (props: RouteComponentProps) => {
   const [password, setPassword] = useState("");
   const [gender, setGender] = useState("");
   const [status, setStatus] = useState("");
-  const [data, setData] = useState<string[]>([]);
+  const [chargeData, setChargeData] = useState(false);
+  //const [data, setData] = useState<string[]>([]);
 
-  console.log("@@@@@@", props);
+  //console.log("@@@@@@", props);
 
-  const handlerSubmit = (event: any) => {
+  useEffect(() => {
+    if (status !== "" && gender !== "") {
+      setChargeData(true);
+    }
+  }, [status, gender]);
+
+  const submit = (event: FormEvent) => {
     event.preventDefault();
-    setData([name, email, age, password, gender, status]);
+    if (chargeData) {
+      props.history.push("/profile", {
+        name,
+        email,
+        age,
+        password,
+        gender,
+        status
+      });
+    }
   };
 
-  const submit = (event: any) => {
-    event.preventDefault();
-    props.history.push("/profile");
-  };
-
-  console.log(data);
   return (
     <div className="social__right-form">
-      <form action="#" className="form" onSubmit={handlerSubmit}>
+      <form action="#" className="form" onSubmit={submit}>
         <input
           type="text"
           placeholder="Nombre y Apellidos"
@@ -93,12 +103,7 @@ export const Form = (props: RouteComponentProps) => {
         </div>
 
         <div className="form-submit">
-          <input
-            type="submit"
-            name="submit"
-            value="Regístrate"
-            onClick={submit}
-          />
+          <input type="submit" name="submit" value="Regístrate" />
         </div>
       </form>
     </div>
