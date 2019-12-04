@@ -5,9 +5,23 @@ export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
   const data = RouteComponentProps.location.state; // datos que recibo del formulario de registro
   console.log(data);
   return (
-    <div>
-      Welcome {data.name}
-      <div>bien</div>
+    <div className="profile">
+      <div className="profile__left"> Welcome {data.name}</div>
+      <div className="profile__center">
+        <img src="../images/profile/noimage.jpg" />
+      </div>
+      <div className="profile__right">
+        <ul>
+          <div>
+            <li>Configuración</li>
+            <li>Temas</li>
+            <li>Logout</li>
+          </div>
+        </ul>
+      </div>
+
+      <div>Mis grupos</div>
+      <div>Mis Amigos</div>
     </div>
   );
 };
