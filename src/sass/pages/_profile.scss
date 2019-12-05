@@ -1,11 +1,20 @@
+@mixin cajas {
+  background-color: #fa396f;
+  width: 50%;
+  height: 300px;
+  color: white;
+  font-size: 40px;
+}
+
 .profile {
   display: flex;
   &__left {
-    background-color: #fa396f;
-    width: 50%;
-    height: 300px;
-    color: white;
-    font-size: 40px;
+    @include cajas;
+
+    &-groups {
+      @include cajas;
+      background-color: #c7889a;
+    }
   }
 
   &__center {
@@ -18,6 +27,11 @@
 
   &__right {
     width: 20%;
+
+    &-friends {
+      @include cajas;
+      background-color: #88c788;
+    }
     ul {
       background-color: #9188c7;
       height: 100%;
