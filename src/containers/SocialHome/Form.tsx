@@ -11,7 +11,7 @@ export const Form = (props: RouteComponentProps) => {
   const [chargeData, setChargeData] = useState(false);
   //const [data, setData] = useState<string[]>([]);
 
-  //console.log("@@@@@@", props);
+  console.log("@@@@@@", props);
 
   useEffect(() => {
     if (status !== "" && gender !== "") {
