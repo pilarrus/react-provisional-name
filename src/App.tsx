@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch, useLocation } from "react-router";
 import Navbar from "./layout/navbar";
+import NavbarProfile from "./layout/NavbarProfile";
 import Adventures from "./pages/Adventures";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
@@ -11,7 +12,7 @@ const App: React.FC = () => {
 
   return (
     <div data-testid="main">
-      {pathname !== "/profile" ? <Navbar /> : null}
+      {pathname !== "/profile" ? <Navbar /> : <NavbarProfile />}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/adventures" component={Adventures} />

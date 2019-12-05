@@ -2,7 +2,7 @@ import React from "react";
 import { RouteComponentProps } from "react-router";
 import noimage from "../images/profile/noimage.png";
 export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
-  const data = RouteComponentProps.location.state; // datos que recibo del formulario de registro
+  let data = RouteComponentProps.location.state; // datos que recibo del formulario de registro
   console.log(data);
 
   const styleImg = {
@@ -10,12 +10,17 @@ export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
     height: "300px"
   };
 
+  if (data === undefined) {
+    data = {
+      name: "SIn nombre"
+    }
+  }
   return (
     <div>
       <section className="profile">
         <div className="profile__left"> Welcome {data.name}</div>
         <div className="profile__center">
-          <img src={noimage} style={styleImg} />
+          <img src={noimage} style={styleImg} alt="you" />
         </div>
         <div className="profile__right">
           <ul>
