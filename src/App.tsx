@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch, useLocation } from "react-router";
 import Navbar from "./layout/navbar";
 import Adventures from "./pages/Adventures";
 import Error from "./pages/Error";
@@ -7,9 +7,11 @@ import Home from "./pages/Home";
 import { Profile } from "./pages/Profile";
 
 const App: React.FC = () => {
+  const { pathname } = useLocation();
+
   return (
     <div data-testid="main">
-      <Navbar />
+      {pathname !== "/profile" ? <Navbar /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/adventures" component={Adventures} />
