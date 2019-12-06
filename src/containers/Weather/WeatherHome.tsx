@@ -9,15 +9,17 @@ type props = {
   tempMax: number;
   tempMin: number;
   municipality: string;
-  handlerState: (option: any) => void;
+  change: (option: any) => void;
 };
+
+
 
 const WeatherHome: React.FC<props> = props => {
   const [value, setValue] = useState(props.municipality);
-
+  console.log(props);
   const handleChange = (v: any) => {
     setValue(v);
-    props.handlerState(v);
+    props.change(v);
   };
   return (
     <section data-testid="weatherTest">

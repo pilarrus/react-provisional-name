@@ -1,16 +1,10 @@
-.navbar {
-  display: flex;
-  justify-content: space-around;
+/*.navbar {
+  background-color: $color-title;
 }
 
 nav .buttons-container {
-  display: flex;
-  align-items: center;
-
+ 
   a {
-    padding: 0% 2%;
-    margin: 1%;
-    text-decoration: none;
     color: black;
     font-family: $font-tittle;
     font-size: 2rem;
@@ -18,10 +12,6 @@ nav .buttons-container {
 }
 .contentsubmenu {
   display: none;
-  z-index: 10000;
-  position: absolute;
-  top: 12%;
-  right: 5%;
   background-color: $color-blue-light;
 }
 .submenu:hover .contentsubmenu {
@@ -36,14 +26,11 @@ nav .buttons-container {
     opacity: 1;
   }
 }
-ul {
-  padding: 5px;
-  margin: 0;
-}
+
 li {
   display: inline-block;
   text-align: center;
-  margin-right: 70px;
+
 }
 
 li {
@@ -53,40 +40,59 @@ li {
   }
 }
 
-//------------PRUEBA--------------------------
 
-.navh__tab {
-  display: inline-block;
-  width: $navh-tab-width;
-  position: relative;
-  z-index: 10;
-  cursor: pointer;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-align: center;
+*/
 
-  &:before {
-    content: "";
-    display: block;
-    width: 0px;
-    height: 4px;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    background-color: $color-grey-dark;
-    z-index: -1;
-    /* HOVER OUT */
-    transition: height 0.2s, width 0.2s 0.1s;
+.nav{
+  background-color:#72b8d3;
+  height: 100%;
+
+  &__logo{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
   }
 
-  &:hover {
-    &:before {
-      content: "";
-      width: $navh-tab-width;
-      z-index: -1;
-      /* HOVER IN */
-      transition: width 0.5s, height 0.5s 0.5s;
-    }
+  &__links-link{
+      display:block;
+      text-decoration: none;
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: all ease 0.25s;
+      color: white;
+      font-family: $font-tittle;
+      font-size: 2rem;
+
+
+      &-1:hover{
+        background-color: rgba(231, 77, 60, 0.705);
+      }
+      &-2:hover{
+        background-color: rgba(135, 78, 160, 0.705);
+      }
+      &-3:hover{
+        background-color: rgba(41, 127, 185, 0.705) ;
+      }
+      &-4:hover{
+        background-color: rgba(39, 174, 95, 0.705) ;
+    
+      }
+
+  }
+  
+}
+
+
+nav a:hover{
+	color: rgba(255,255,255,1);
+  border-bottom-color:rgba(255,255,255,0.4);
+}
+
+@keyframes move {
+  from {
+    width: 30%;
+  }
+  to {
+    width: 20%;
   }
 }

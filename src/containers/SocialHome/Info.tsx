@@ -5,7 +5,7 @@ export const Info: React.FC<{ changeState: () => void, login: boolean }> = ({ ch
 
   return (
     <div className="social__left">
-      <Button title={login ? "¿No eres miembro? Pincha aquí" : "¿Ya eres miembro?"} nameClass="social__left-btn" changeState={changeState} />
+      <Button title={login ? "¿Ya eres miembro? Click aquí" : "¿No eres miembro? Click aquí"} nameClass="social__left-btn" changeState={changeState} />
     </div>
   )
 }

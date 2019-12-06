@@ -9,8 +9,8 @@ export default class Adventures extends Component<{
 }> {
   render() {
     let thermalSensationAPI = this.props.thermalSensationAPI;
-    
-    let adventures = this.props.adventures.filter(adventure => 
+
+    let adventures = this.props.adventures.filter(adventure =>
       (adventure.thermalSensation === thermalSensationAPI) ? true : false
     );
 
@@ -28,7 +28,7 @@ export default class Adventures extends Component<{
               />
             ))}
           </div>
-          <a href="/adventures"><button className="btn-purple">Ver más aventuras</button></a>
+          <a href="/alladventures"><button className="btn-purple">Ver más aventuras</button></a>
         </div>
       </section>
     );
