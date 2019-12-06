@@ -12,7 +12,9 @@ import { Profile } from "./pages/Profile";
 const App: React.FC = () => {
   const { pathname } = useLocation();
 
+
   return (
+
     <div data-testid="main" className="main">
       <div className="main__navbar">
         {pathname !== "/profile" ? <Navbar /> : <NavbarProfile />}
