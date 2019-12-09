@@ -41,6 +41,8 @@
       $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+        $("#main-content").toggleClass("toggle-main-content");
+        $("#main-content").toggleClass("toggle-main-content-0");
       });
 
       $(window).resize(function (e) {

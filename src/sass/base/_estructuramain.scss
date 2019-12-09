@@ -1,6 +1,15 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
 
+.toggle-main-content{
+  padding-left: 250px;
+  transition: all 0.5s;
+}
+.toggle-main-content-0{
+  padding-left: 0px;
+  transition: all 0.5s
+}
+
 .hm-gradient {
     background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
@@ -24,14 +33,17 @@
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  transition: all 0.5s e/loginase;
 }
 #wrapper.toggled {
   padding-left: 250px;
 }
+.navbar-collapse {
+  z-index: 100000;
+}
 #sidebar-wrapper {
   top: 81px;
-  z-index: 1000;
+  z-index: 10;
   position: fixed;
   left: 0px;
   width: 0;
@@ -136,7 +148,6 @@
   padding-left: 250px;
 }
 #sidebar-wrapper {
-  z-index: 1000;
   position: fixed;
   left: 0px;
   width: 0;

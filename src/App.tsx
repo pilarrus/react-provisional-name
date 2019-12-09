@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <Nav />
         <Sidebar />
       </div>
-      <div className="main__content">
+      <div id="main-content" className="main__content toggle-main-content">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/adventures" component={ApiAdventures} />

@@ -11,7 +11,7 @@ export default class Nav extends Component {
 
     return (
 
-      <nav className="navbar navbar-expand-lg navbar-dark cyan " >
+      <nav className="navbar navbar-expand-lg navbar-dark cyan" >
         <a href="#menu-toggle" id="menu-toggle" className=""><span className="navbar-toggler-icon"></span></a>
         <Link to="/" className="navbar-brand font-bold logoHOR"><img src={logo} /></Link>
         <a className="navbar-brand font-bold logoVERT" href="#"><img src={logo2} /></a>
