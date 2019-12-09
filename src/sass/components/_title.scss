@@ -1,10 +1,28 @@
-.title {
+@mixin title(){
   padding: 10px;
   text-align: center;
   font-size: 2rem;
-  letter-spacing: 1rem;
   font-family: $font-tittle;
   width: 100%;
-  background-color: $color-title;
-  //background-image: linear-gradient(to right, rgb(172, 212, 222), rgba(20, 136, 182, 0.596));
+  color: white;
 }
+
+  .redclass{
+    @include title();
+    background-color: #ff1b5faf;  
+  }
+
+  .defaultclass{
+    @include title();
+    background-color: #1babffaf;  
+  }
+
+  
+
+
+// background-color: #79aefe; 
+// background-color: #314190;
+// background-color: #279636; 
+// background-color: #7d5d81;
+// background-color: #ead24c; 
+

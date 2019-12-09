@@ -1,12 +1,22 @@
 import React from "react";
 
-const Title: React.FC<{ title: string; nameClass?: string }> = ({
+const name = (title: string) => {
+  return title === "Nuestras aventuras"
+    ? "redclass" : title === "Grupos"
+      ? "clearblueclass" : title === "Eventos"
+        ? "greenclass" : title === "Nosotros"
+          ? "purpleclass" : title === "Contacto"
+            ? "yellowclass" : "defaultclass";
+
+}
+
+const Title: React.FC<{ title: string }> = ({
   title,
-  nameClass = "title"
 }) => (
-  <div>
-    <h1 className={nameClass}>{title}</h1>
-  </div>
-);
+
+    <div>
+      <h1 className={name(title)}>{title}</h1>
+    </div>
+  );
 
 export default Title;

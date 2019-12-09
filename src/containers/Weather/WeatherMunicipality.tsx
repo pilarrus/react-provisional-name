@@ -1,28 +1,46 @@
 import React from "react";
-import Title from "../../components/Reusable/Title";
+import nieve from "../../images/weather/nevando.svg";
+import nube from "../../images/weather/nube.svg";
+import sol from "../../images/weather/tiempo.svg";
 
+const style = {
+  width: "50px",
+  height: "50px"
+};
 const WeatherMunicipality: React.FC<{
   tempMax: number;
   tempMin: number;
   municipality: string;
 }> = ({ tempMax, tempMin, municipality }) => (
   <div className="weather">
-    <Title title="El tiempo" />
+    <p className="weather__p"> El tiempo en {municipality}</p>
     <div className="weather__content">
-      <div className="weather__content-name">
-        <p>{municipality}</p>
+
+      <div className="weather__content-temp">
+        <p>
+          Máxima <span>{tempMax}°C</span>
+          <i>{tempMax <= 7
+            ? <img src={nieve} style={style} />
+            : tempMax <= 15
+              ? <img src={nube} style={style} />
+              : <img src={sol} style={style} />}
+          </i>
+        </p>
       </div>
       <div className="weather__content-temp">
-        <div>
-          <p>
-            Máxima <span>{tempMax}°C</span>
-          </p>
-          <p>
-            Mínima <span>{tempMin}°C</span>
-          </p>
-        </div>
+        <p>
+          Mínima <span>{tempMin}°C</span>
+
+          <i>{tempMin <= 7
+            ? <img src={nieve} style={style} />
+            : tempMin <= 15
+              ? <img src={nube} style={style} />
+              : <img src={sol} style={style} />}
+          </i>
+        </p>
       </div>
     </div>
+
   </div>
 );
 

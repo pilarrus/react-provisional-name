@@ -12,27 +12,29 @@ type props = {
   change: (option: any) => void;
 };
 
-
-
 const WeatherHome: React.FC<props> = props => {
+
   const [value, setValue] = useState(props.municipality);
-  console.log(props);
   const handleChange = (v: any) => {
+    console.log(v);
     setValue(v);
     props.change(v);
   };
+  console.log(value);
   return (
+
     <section data-testid="weatherTest">
       <WeatherMunicipality
         tempMax={props.tempMax}
         tempMin={props.tempMin}
         municipality={props.municipality}
       />
-      <div className="weather__select">
+      <div className="weather__p">
         <p>Busca tu municipio</p>
         <div className="weather__select-box">
           <Select<any>
             value={value}
+            placeholder="Municipios"
             options={options}
             isClearable={true}
             onChange={handleChange}
