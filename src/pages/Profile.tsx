@@ -3,61 +3,44 @@ import { RouteComponentProps } from "react-router";
 import noimage from "../images/profile/noimage.png";
 export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
   let data = RouteComponentProps.location.state; // datos que recibo del formulario de registro
-  console.log(data);
+  console.log(data.name);
 
   const styleImg = {
-    width: "100%",
-    height: "300px"
+    width: "50px",
+    height: "50px"
   };
 
   if (data === undefined) {
     data = {
-      name: "SIn nombre"
-    }
+      name: "Sin nombre"
+    };
   }
   return (
     <div>
+      <h1> `${data.name}`</h1>
+      <div className="card">
+        <h1>{data.name}</h1>
+        <p className="title">CEO & Founder, Example</p>
+        <p>Harvard University</p>
+        <div>
+          <i className="fa fa-dribbble"></i>
+
+          <i className="fa fa-twitter"></i>
+
+          <i className="fa fa-linkedin"></i>
+
+          <i className="fa fa-facebook"></i>
+        </div>
+        <p>
+          <button>Contact</button>
+        </p>
+      </div>
       <section className="profile">
-        <div className="profile__left"> Welcome {data.name}</div>
-        <div className="profile__center">
-          <img src={noimage} style={styleImg} alt="you" />
-        </div>
-        <div className="profile__right">
-          <ul>
-            <div>
-              <li>Configuración</li>
-              <li>Temas</li>
-              <li>Logout</li>
-            </div>
-          </ul>
-        </div>
+        <img src={noimage} style={styleImg} alt="you" />
       </section>
 
-      <section className="profile">
-        <div className="profile__left-groups">Mis grupos</div>
-        <div className="profile__right-friends">Mis Amigos</div>
-      </section>
+      <div className="profile__left-groups">Mis grupos</div>
+      <div className="profile__right-friends">Mis Amigos</div>
     </div>
   );
 };
-
-/*
-
-import React from "react";
-
-interface props {
-  data: string[];
-}
-
-export const Profile: React.FC<props> = props => {
-  console.log(props);
-  return (
-    <div>
-      {props.data.map(e => (
-        <div key={e}> {e} </div>
-      ))}
-    </div>
-  );
-};
-
-*/

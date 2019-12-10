@@ -15,32 +15,35 @@ const WeatherMunicipality: React.FC<{
   <div className="weather">
     <p className="weather__p"> El tiempo en {municipality}</p>
     <div className="weather__content">
-
       <div className="weather__content-temp">
         <p>
           Máxima <span>{tempMax}°C</span>
-          <i>{tempMax <= 7
-            ? <img src={nieve} style={style} />
-            : tempMax <= 15
-              ? <img src={nube} style={style} />
-              : <img src={sol} style={style} />}
+          <i>
+            {tempMax <= 7 ? (
+              <img src={nieve} style={style} alt="img" />
+            ) : tempMax <= 15 ? (
+              <img src={nube} style={style} alt="img" />
+            ) : (
+              <img src={sol} style={style} alt="img" />
+            )}
           </i>
         </p>
       </div>
       <div className="weather__content-temp">
         <p>
           Mínima <span>{tempMin}°C</span>
-
-          <i>{tempMin <= 7
-            ? <img src={nieve} style={style} />
-            : tempMin <= 15
-              ? <img src={nube} style={style} />
-              : <img src={sol} style={style} />}
+          <i>
+            {tempMin <= 7 ? (
+              <img src={nieve} style={style} alt="img" />
+            ) : tempMin <= 15 ? (
+              <img src={nube} style={style} alt="img" />
+            ) : (
+              <img src={sol} style={style} alt="img" />
+            )}
           </i>
         </p>
       </div>
     </div>
-
   </div>
 );
 
