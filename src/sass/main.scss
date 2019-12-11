@@ -2,20 +2,18 @@
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
-@import "base/animations";
 @import "base/base";
 @import "base/typography";
-@import "base/utilities";
-@import "base/estructuramain";
+
+@import "layout/sidebar";
+@import "layout/navbar";
 
 @import "components/button";
 @import "components/title";
 @import "components/loading";
-
-@import "layout/header";
-@import "layout/homeSocial";
-@import "layout/weather";
+@import "components/slider";
+@import "components/form";
+@import "components/weather";
 
 @import "pages/home";
-
-@import "layout/slider";
+@import "pages/adventures";

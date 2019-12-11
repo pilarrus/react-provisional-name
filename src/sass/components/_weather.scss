@@ -1,17 +1,17 @@
 .weather {
+  margin-top: 285px;
 
-  margin-top: 320px;
-
-  &__p{
+  &__p {
     background-color: #000000;
     @include title();
     font-size: 20px;
     color: #999999;
-    &:hover{
+
+    &:hover {
       color: white;
     }
   }
-    
+
   &__content {
     color: white;
     display: flex;
@@ -19,25 +19,23 @@
 
     &-temp {
       text-align: center;
-      
     }
   }
 
   &__select {
-   // display: flex;
-   // flex-direction: column;
-   color: white;
-  
+    // display: flex;
+    // flex-direction: column;
+    color: white;
 
     p {
       font-family: $font-content;
-
     }
 
     &-box {
+      font-size: 12px;
       text-align: left;
       color: black;
-      //width: 230px;
+      height: 15px;
     }
   }
 }
