@@ -15,11 +15,10 @@ type props = {
 const WeatherHome: React.FC<props> = props => {
   const [value, setValue] = useState(props.municipality);
   const handleChange = (v: any) => {
-    console.log(v);
     setValue(v);
     props.change(v);
   };
-  console.log(value);
+
   return (
     <section data-testid="weatherTest">
       <WeatherMunicipality

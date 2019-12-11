@@ -1,46 +1,58 @@
 import React from "react";
 import { RouteComponentProps } from "react-router";
-import noimage from "../images/profile/noimage.png";
+import noimage from "../images/profile/noimage2.png";
+
 export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
   let data = RouteComponentProps.location.state; // datos que recibo del formulario de registro
-  console.log(data.name);
-
-  const styleImg = {
-    width: "50px",
-    height: "50px"
-  };
 
   if (data === undefined) {
     data = {
       name: "Sin nombre"
     };
   }
+
+  console.log(data);
   return (
-    <div>
-      <h1> `${data.name}`</h1>
-      <div className="card">
-        <h1>{data.name}</h1>
-        <p className="title">CEO & Founder, Example</p>
-        <p>Harvard University</p>
-        <div>
-          <i className="fa fa-dribbble"></i>
-
-          <i className="fa fa-twitter"></i>
-
-          <i className="fa fa-linkedin"></i>
-
-          <i className="fa fa-facebook"></i>
+    <div className="profile">
+      <div className="profile__box">
+        <div className="profile__name">
+          <h1>
+            {data.gender === "male"
+              ? "Bienvenido"
+              : data.gender === "female"
+              ? "Bienvenida"
+              : "Bienvenid@"}
+            {data.name}
+          </h1>
+          <p className="title">Nivel {data.status}</p>
         </div>
-        <p>
-          <button>Contact</button>
-        </p>
+        <div className="profile__picture">
+          <img src={noimage} alt="you" />
+        </div>
       </div>
-      <section className="profile">
-        <img src={noimage} style={styleImg} alt="you" />
-      </section>
 
-      <div className="profile__left-groups">Mis grupos</div>
-      <div className="profile__right-friends">Mis Amigos</div>
+      <div className="profile__card">
+        <div className="profile__card-box">
+          <div>
+            <p>Contacta conmigo </p>
+            <button>Email</button>
+          </div>
+
+          <div>
+            <i className="fa fa-dribbble"></i>
+
+            <i className="fa fa-twitter"></i>
+
+            <i className="fa fa-linkedin"></i>
+
+            <i className="fa fa-facebook"></i>
+          </div>
+        </div>
+      </div>
+      <div className="profile__friends">
+        <div>Mis grupos</div>
+        <div>Mis Amigos</div>
+      </div>
     </div>
   );
 };

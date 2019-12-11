@@ -1,0 +1,45 @@
+.profile {
+  background-image: url("../../images/profile/profileMountain.jpeg");
+  background-position: top;
+  background-size: cover;
+  padding: 30px 0 40px 0;
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: Lilita One;
+  }
+  &__picture {
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+
+  &__card {
+    display: flex;
+    justify-content: center;
+
+    &-box {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100px;
+      border-radius: 10px;
+      p {
+        display: inline;
+      }
+      background-color: white;
+      width: 500px;
+    }
+  }
+
+  &__friends {
+    background-color: yellowgreen;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
