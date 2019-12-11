@@ -12,7 +12,7 @@ const AdventureComponent = (props: {
   };
 
   return (
-    <a href="/grupos">
+    <a href="/groups">
       <div className="adventure" data-testid="adventure" style={style}>
         <div className="adventure__content">
           <h3>{props.name}</h3>

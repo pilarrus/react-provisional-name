@@ -8,7 +8,7 @@ import Adventures from "./pages/Adventures";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import { Profile } from "./pages/Profile";
-import Grupos from "./pages/Grupos";
+import Groups from "./pages/Groups";
 
 const App: React.FC = () => {
 
@@ -26,7 +26,7 @@ const App: React.FC = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/adventures" component={ApiAdventures} />
           <Route exact path="/alladventures" component={Adventures} />
-          <Route exact path="/grupos" component={Grupos} />
+          <Route exact path="/groups" component={Groups} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/login" component={SocialHome} />
           <Route component={Error} />
