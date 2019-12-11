@@ -14,7 +14,7 @@ export default class Sidebar extends Component {
               <Link to="/adventures">Aventuras</Link>
             </li>
             <li>
-              <Link to="/">Grupos</Link>
+              <Link to="/groups">Grupos</Link>
             </li>
             <li>
               <Link to="/">El tiempo</Link>

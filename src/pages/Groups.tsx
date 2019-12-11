@@ -14,7 +14,7 @@ let adventures = Object.keys(fetchGrupos);
   })
 );*/
 
-const Grupos = () => {
+const Grupos: React.FC = () => {
   return (
     <section>
       <Title title="Grupos" />
@@ -22,7 +22,15 @@ const Grupos = () => {
         {adventures.map(adventure => {
           let groups = fetchGrupos[adventure];
           if (Array.isArray(groups)) {
-            return groups.map(group => <Group key={group.name} name={group.name} />);
+            return groups.map(group => (
+              <Group
+                key={group.name}
+                name={group.name}
+                place={group.place}
+                //date={JSON.stringify(group.date)}
+                timestamp={group.timestamp}
+              />
+            ));
           } else {
             return [];
           }

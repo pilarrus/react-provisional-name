@@ -4,8 +4,9 @@ export default {
   escalada: [
     {
       name: "No seas psoe que quiero ir a la montaña",
-      fecha: new Date(2020, 1, 15),
-      lugar: "Buitrago de Lozoya",
+      //date: new Date(2020, 1, 15, 16, 30),
+      timestamp: 1579102200,
+      place: "Buitrago de Lozoya",
       sizeGroup: 10,
       users: []
     }
@@ -14,15 +15,17 @@ export default {
   rafting: [
     {
       name: "Menos Madrid y más campo",
-      fecha: new Date(2020, 2, 17),
-      lugar: "Buitrago de Lozoya",
+      //date: new Date(2020, 2, 17),
+      timestamp: 1581957000,
+      place: "Guadarrama",
       sizeGroup: 10,
       users: []
     },
     {
       name: "Podemos ir al río",
-      fecha: new Date(2020, 12, 12),
-      lugar: "Buitrago de Lozoya",
+      //date: new Date(2020, 12, 12),
+      timestamp: 1607783400,
+      place: "Rascafría",
       sizeGroup: 10,
       users: []
     }
@@ -31,15 +34,17 @@ export default {
   moto_de_agua: [
     {
       name: "Ciudadanos caminando",
-      fecha: new Date(2019, 12, 13),
-      lugar: "Buitrago de Lozoya",
+      //date: new Date(2019, 12, 13),
+      timestamp: 1576236600,
+      place: "San Martín de Valdeiglesias",
       sizeGroup: 10,
       users: []
     },
     {
       name: "Pepe y Pepa se van de juega",
-      fecha: new Date(2019, 12, 30),
-      lugar: "Buitrago de Lozoya",
+      //date: new Date(2019, 12, 30),
+      timestamp: 1577705400,
+      place: "El Atazar",
       sizeGroup: 10,
       users: []
     }
@@ -48,8 +53,9 @@ export default {
   senderismo: [
     {
       name: "Enanitos en el VoxQue",
-      fecha: new Date(2020, 8, 21),
-      lugar: "Buitrago de Lozoya",
+      //date: new Date(2020, 8, 21),
+      timestamp: 1598005800,
+      place: "Navacerrada",
       sizeGroup: 10,
       users: []
     }

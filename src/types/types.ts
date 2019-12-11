@@ -10,8 +10,9 @@ export type Users = User[];
 
 export type Group = {
   name: string,
-  fecha: Date,
-  lugar: string,
+  timestamp: number,
+  //date: Date,
+  place: string,
   sizeGroup: number,
   users: string[]
 };
