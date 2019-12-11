@@ -11,6 +11,9 @@ export default class Sidebar extends Component {
           }
           <ul className="sidebar-nav">
             <li>
+              <Link to="/"></Link>
+            </li>
+            <li>
               <Link to="/adventures">Aventuras</Link>
             </li>
             <li>
