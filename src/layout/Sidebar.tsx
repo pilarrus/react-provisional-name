@@ -6,9 +6,12 @@ export default class Sidebar extends Component {
     return (
       <div id="wrapper" className="toggled">
         <div id="sidebar-wrapper">
+          {
+            // da el estilo lateral
+          }
           <ul className="sidebar-nav">
-            <li className="sidebar-brand">
-              <Link to="/">Menú principal</Link>
+            <li>
+              <Link to="/"></Link>
             </li>
             <li>
               <Link to="/adventures">Aventuras</Link>
@@ -16,9 +19,7 @@ export default class Sidebar extends Component {
             <li>
               <Link to="/groups">Grupos</Link>
             </li>
-            <li>
-              <Link to="/">El tiempo</Link>
-            </li>
+
             <li>
               <Link to="/">Eventos</Link>
             </li>
@@ -29,10 +30,8 @@ export default class Sidebar extends Component {
               <Link to="/">Contacto</Link>
             </li>
           </ul>
-
           <ul>
             <li>
-              {" "}
               <ApiWeather />
             </li>
           </ul>

@@ -7,9 +7,9 @@ export default class Nav extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark cyan">
-        <a href="#menu-toggle" id="menu-toggle" className="">
+        <i id="menu-toggle" className="">
           <span className="navbar-toggler-icon"></span>
-        </a>
+        </i>
         <Link to="/" className="navbar-brand font-bold logoHOR">
           <img src={logo} alt="logo" />
         </Link>
@@ -45,20 +45,17 @@ export default class Nav extends Component {
               >
                 <i className="fa fa-gear mr-2"></i>Cambiar tema
               </Link>
-              <div
-                className="dropdown-menu dropdown-menu-right dropdown-cyan"
-                aria-labelledby="navbarDropdownMenuLink-4"
-              >
-                <Link to="/" className="dropdown-item" href="#">
+              <div className="dropdown-menu">
+                <Link to="/" className="dropdown-item">
                   Tema turquesa (original)
                 </Link>
-                <Link to="/" className="dropdown-item" href="#">
+                <Link to="/" className="dropdown-item">
                   Tema clarito
                 </Link>
-                <Link to="/" className="dropdown-item" href="#">
+                <Link to="/" className="dropdown-item">
                   Tema oscuro
                 </Link>
-                <Link to="/" className="dropdown-item" href="#">
+                <Link to="/" className="dropdown-item">
                   Tema violeta
                 </Link>
               </div>

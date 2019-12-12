@@ -1,10 +1,10 @@
-import {render, findByText} from '@testing-library/react';
-import React from 'react';
-import Adventures from '../Adventures';
+import { render } from "@testing-library/react";
+import React from "react";
+import Adventures from "../Adventures";
 
 test("our adventures", async () => {
-  const { findAllByTestId, findByText } = render(<Adventures/>);
-  const adventures = await findAllByTestId('adventure');
+  const { findAllByTestId, findByText } = render(<Adventures />);
+  const adventures = await findAllByTestId("adventure");
   expect(adventures.length).toBe(9);
   const adventure1 = await findByText(/escalada/i);
   expect(adventure1).toBeVisible();

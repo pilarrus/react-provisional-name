@@ -11,11 +11,7 @@ import { Profile } from "./pages/Profile";
 import Groups from "./pages/Groups";
 
 const App: React.FC = () => {
-
-
-
   return (
-
     <div data-testid="main" className="main">
       <div className="main__navbar">
         <Nav />
@@ -32,7 +28,7 @@ const App: React.FC = () => {
           <Route component={Error} />
         </Switch>
       </div>
-    </div >
+    </div>
   );
 };
 
