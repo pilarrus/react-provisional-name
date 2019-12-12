@@ -48,18 +48,42 @@ const Nav: React.FC = () => {
               <i className="fa fa-gear mr-2"></i>Cambiar tema
             </Link>
             <div className="dropdown-menu">
-              <Link to="/" className="dropdown-item">
-                Tema turquesa (original)
-              </Link>
-              <Link to="/" className="dropdown-item">
-                Tema clarito
-              </Link>
-              <Link to="/" className="dropdown-item">
-                Tema oscuro
-              </Link>
-              <Link to="/" className="dropdown-item">
-                Tema violeta
-              </Link>
+              <button
+                className="dropdown-item"
+                onClick={() => {
+                  context.setColorNav("cyan");
+                  context.setColorSide("black");
+                }}
+              >
+                Tema turquesa
+              </button>
+              <button
+                className="dropdown-item"
+                onClick={() => {
+                  context.setColorNav("green");
+                  context.setColorSide("darkgreen");
+                }}
+              >
+                Tema verde
+              </button>
+              <button
+                className="dropdown-item"
+                onClick={() => {
+                  context.setColorNav("purple");
+                  context.setColorSide("darkpurple");
+                }}
+              >
+                Tema morado
+              </button>
+              <button
+                className="dropdown-item"
+                onClick={() => {
+                  context.setColorNav("red");
+                  context.setColorSide("darkred");
+                }}
+              >
+                Tema rojo
+              </button>
             </div>
           </li>
           <li className="nav-item dropdown">

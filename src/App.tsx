@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 import ApiAdventures from "./containers/ApiAdventures";
-import SocialHome from "./containers/SocialHome";
+import LoginRegister from "./containers/Form";
 import ColorContext from "./contexts/ColorContext";
 import Nav from "./layout/Nav";
 import Sidebar from "./layout/Sidebar";
@@ -32,7 +32,7 @@ const App: React.FC = () => {
           <Route exact path="/alladventures" component={Adventures} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/login" component={SocialHome} />
+          <Route exact path="/login" component={LoginRegister} />
           <Route component={Error} />
         </Switch>
       </div>
