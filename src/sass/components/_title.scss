@@ -1,4 +1,4 @@
-@mixin title(){
+@mixin title() {
   padding: 10px;
   text-align: center;
   font-size: 2rem;
@@ -7,22 +7,22 @@
   color: white;
 }
 
-  .redclass{
-    @include title();
-    background-color: #ff1b5faf;  
-  }
+.redclass {
+  @include title();
+  background-color: #ff1b5faf;
+}
 
-  .defaultclass{
-    @include title();
-    background-color: #1babffaf;  
-  }
+.clearblueclass {
+  @include title();
+  background-color: #7d5d81;
+}
+.defaultclass {
+  @include title();
+  background-color: #1babffaf;
+}
 
-  
-
-
-// background-color: #79aefe; 
+// background-color: #79aefe;
 // background-color: #314190;
-// background-color: #279636; 
+// background-color: #279636;
 // background-color: #7d5d81;
-// background-color: #ead24c; 
-
+// background-color: #ead24c;

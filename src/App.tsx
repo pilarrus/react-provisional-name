@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 import ApiAdventures from "./containers/ApiAdventures";
 import SocialHome from "./containers/SocialHome";
+import ColorContext from "./contexts/ColorContext";
 import Nav from "./layout/Nav";
 import Sidebar from "./layout/Sidebar";
 import Adventures from "./pages/Adventures";
 import Error from "./pages/Error";
+import Groups from "./pages/Groups";
 import Home from "./pages/Home";
 import { Profile } from "./pages/Profile";
-import Groups from "./pages/Groups";
 
 const App: React.FC = () => {
+  const [colorNav, setColorNav] = useState("cyan");
+  const [colorSide, setColorSide] = useState("black");
+
   return (
     <div data-testid="main" className="main">
       <div className="main__navbar">
-        <Nav />
-        <Sidebar />
+        <ColorContext.Provider
+          value={{ colorNav, colorSide, setColorNav, setColorSide }}
+        >
+          <Nav />
+          <Sidebar />
+        </ColorContext.Provider>
       </div>
       <div id="main-content" className="main__content toggle-main-content">
         <Switch>
