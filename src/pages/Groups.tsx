@@ -1,6 +1,7 @@
 import React from "react";
-import Title from "../components/Reusable/Title";
+import { RouteComponentProps, withRouter } from "react-router";
 import Group from "../components/Group";
+import Title from "../components/Reusable/Title";
 import fetchGrupos from "../fake-data/groups";
 
 let adventures = Object.keys(fetchGrupos);
@@ -14,7 +15,20 @@ let adventures = Object.keys(fetchGrupos);
   })
 );*/
 
-const Grupos: React.FC = () => {
+/*adventures.map(adventure => {
+  let groups = fetchGrupos[adventure];
+  console.log(groups);
+  /*if (Array.isArray(groups)) {
+    groups.map(group => console.log(group.name));
+  }*/
+//});
+//props.match.params.activity
+
+const Grupos: React.FC<RouteComponentProps<{activity?: string}>> = RouteComponentProps => {
+  let activity = RouteComponentProps.match.params.activity;
+  console.log(activity);
+  //console.log(">>>>", props.match.params.activity);
+
   return (
     <section>
       <Title title="Grupos" />
@@ -27,7 +41,6 @@ const Grupos: React.FC = () => {
                 key={group.name}
                 name={group.name}
                 place={group.place}
-                //date={JSON.stringify(group.date)}
                 timestamp={group.timestamp}
               />
             ));
@@ -40,4 +53,4 @@ const Grupos: React.FC = () => {
   );
 };
 
-export default Grupos;
+export default withRouter(Grupos);

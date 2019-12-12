@@ -6,9 +6,9 @@ import Nav from "./layout/Nav";
 import Sidebar from "./layout/Sidebar";
 import Adventures from "./pages/Adventures";
 import Error from "./pages/Error";
+import Groups from "./pages/Groups";
 import Home from "./pages/Home";
 import { Profile } from "./pages/Profile";
-import Groups from "./pages/Groups";
 
 const App: React.FC = () => {
   return (
@@ -22,6 +22,7 @@ const App: React.FC = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/adventures" component={ApiAdventures} />
           <Route exact path="/alladventures" component={Adventures} />
+          <Route exact path="/groups/:activity" component={Groups} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/login" component={SocialHome} />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AdventureComponent = (props: {
   name: string;
@@ -12,14 +13,14 @@ const AdventureComponent = (props: {
   };
 
   return (
-    <a href="/groups">
+    <Link to={`/groups/${props.name}`}>
       <div className="adventure" data-testid="adventure" style={style}>
         <div className="adventure__content">
           <h3>{props.name}</h3>
           <p>{props.info}</p>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 
