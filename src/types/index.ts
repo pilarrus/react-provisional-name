@@ -25,4 +25,10 @@ export type Group = {
   users: string[]
 };
 
-export type Groups = {[index: string]: Group[] | string};
+//export type Groups = {[index: string]: Group[] | string};
+export type Groups = {
+  [id: string] : {
+    adventure: string,
+    groups: Group[] | string
+  }
+};

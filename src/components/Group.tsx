@@ -17,13 +17,15 @@ const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
   let dia = date.getDate();
   let mes = date.getMonth()+1;
   let año = date.getFullYear();
+  let hour = date.getHours();
+  let minutes = date.getMinutes();
 
   return (
     <div className="group" style={groupStyle}>
       <h3>{name}</h3>
       <p>{place}</p>
-      <p>{dia + "/" + mes + "/" + año}</p>
-      <button type="submit"></button>
+      <p>{dia + "/" + mes + "/" + año + " " + hour + ":" + minutes}</p>
+      <button type="submit">Ver</button>
     </div>
   );
 };
