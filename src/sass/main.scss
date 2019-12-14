@@ -5,8 +5,9 @@
 @import "base/base";
 @import "base/typography";
 
-@import "layout/nav&side";
 @import "layout/colors";
+@import "layout/nav";
+@import "layout/sidebar";
 
 @import "components/button";
 @import "components/title";
