@@ -8,13 +8,8 @@ const App: React.FC = () => {
   const [colorSide, setColorSide] = useState("black");
   const [closeSideBar, setOpenSideBar] = useState(true);
 
-
-
-
   const handleSideBar = () => {
-    console.log("click");
-    console.log(">>>>>DENTRO DE FUNCION", closeSideBar);
-    setOpenSideBar(!setOpenSideBar);
+    setOpenSideBar(!closeSideBar);
   }
 
   console.log(">>>>>fuera DE FUNCION", closeSideBar);
