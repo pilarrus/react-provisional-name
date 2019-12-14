@@ -3,17 +3,14 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ColorContext from "../contexts/ColorContext";
 import logo from "../images/logos/logoBlanco.png";
-
-const Nav2: React.FC = (props) => {
-  console.log("ESTOY EN NAV", props);
+//change: (option: any) => void;
+const Nav2: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
   const context = useContext(ColorContext);
-  //console.log(context);
   return (
 
     <div className={`navbar ${context.colorNav}`}>
       <div className="toggle-sidebar" >
-        //@ts-ignore
-        <Link to="/" onClick={props.handleSideBar}>
+        <Link to="/" onClick={handleSideBar}>
           <span></span>
           <span></span>
           <span></span>

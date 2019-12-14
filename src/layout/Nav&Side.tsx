@@ -12,18 +12,13 @@ const App: React.FC = () => {
     setOpenSideBar(!closeSideBar);
   }
 
-  console.log(">>>>>fuera DE FUNCION", closeSideBar);
-
   return (
 
     <div>
       <ColorContext.Provider
         value={{ colorNav, colorSide, setColorNav, setColorSide }}
       >
-
-        //@ts-ignore
         <Nav handleSideBar={handleSideBar} />
-        //@ts-ignore
         <Sidebar sidebar={closeSideBar} />
       </ColorContext.Provider>
     </div>

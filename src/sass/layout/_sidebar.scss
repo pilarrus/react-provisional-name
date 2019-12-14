@@ -24,9 +24,64 @@
   list-style: none;
   padding: 15px 20px;
   cursor: pointer;
+  width: 100%;
+  position: relative;
 
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    -webkit-transition: width 0.2s ease-in;
+    -moz-transition: width 0.2s ease-in;
+    -ms-transition: width 0.2s ease-in;
+    transition: width 0.2s ease-in;
+  }
+
+  &:nth-child(1):before  {
+    background-color: #c0486c;
+  }
+  &:nth-child(2):before  {
+    background-color: #79aefe;
+  }
+  &:nth-child(3):before  {
+    background-color: #314190;
+  }
+  &:nth-child(4):before {
+    background-color: #279636;
+  }
+  &:nth-child(5):before {
+    background-color: #7d5d81;
+  }
+
+  &:hover:before,
+  &:hover:before {
+    width: 100%;
+    -webkit-transition: width 0.2s ease-in;
+    -moz-transition: width 0.2s ease-in;
+    -ms-transition: width 0.2s ease-in;
+    transition: width 0.2s ease-in;
+}
+  
   a{
     color: #999999;
     text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus{
+      color: #fff;
+      text-decoration: none;
+      background-color: transparent;
+    }
   }
 }
+
+
+
+
+
+
