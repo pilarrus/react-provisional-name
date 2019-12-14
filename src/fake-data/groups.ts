@@ -51,7 +51,7 @@ export default {
         users: []
       },
       {
-        name: "Pepe y Pepa se van de juega",
+        name: "Pepe y Pepa se van de juerga",
         timestamp: 1577705400,
         place: "El Atazar",
         sizeGroup: 10,

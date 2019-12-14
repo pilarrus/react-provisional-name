@@ -5,15 +5,6 @@ import Title from "../components/Reusable/Title";
 import fetchGrupos from "../fake-data/groups";
 
 let adventuresID = Object.keys(fetchGrupos);
-//console.log(adventuresID);
-/*console.log(
-  adventuresID.map(adventureID => {
-    let groups = fetchGrupos[adventureID].groups;
-    if (Array.isArray(groups)) {
-      groups.map(group => console.log(group.name));
-    }
-  })
-);*/
 
 const Grupos: React.FC<RouteComponentProps<{
   activityID?: string;
@@ -21,14 +12,16 @@ const Grupos: React.FC<RouteComponentProps<{
   let params = RouteComponentProps.match.params;
   //console.log(params);
   if (Object.keys(params).length === 0) {
-    console.log(RouteComponentProps);
+    //console.log(RouteComponentProps);
     return (
       <section>
         <Title title="Grupos" />
         <div className="grupos__container">
           {adventuresID.map(adventureID => {
+            //let adventure = fetchGrupos[adventureID].adventure;
             let groups = fetchGrupos[adventureID].groups;
             //console.log(groups);
+            //console.log(adventure);
             if (Array.isArray(groups)) {
               return groups.map(group => (
                 <Group
@@ -54,8 +47,8 @@ const Grupos: React.FC<RouteComponentProps<{
         <div className="grupos__container">
           {adventuresID.map(adventureID => {
             if (adventureID === activityID) {
-              console.log(activityID);
-              console.log(adventureID);
+              //console.log(activityID);
+              //console.log(adventureID);
               let groups = fetchGrupos[adventureID].groups;
               //console.log(groups);
               if (Array.isArray(groups)) {
@@ -82,37 +75,7 @@ const Grupos: React.FC<RouteComponentProps<{
         </div>
       </section>
     );
-    /*adventuresID.map(adventureID => {
-      if(adventureID === activityID) {
-        console.log(activityID);
-        console.log(adventureID);
-      }
-    });*/
   }
-
-  /*return (
-    <section>
-      <Title title="Grupos" />
-      <div className="grupos__container">
-        {adventuresID.map(adventureID => {
-          let groups = fetchGrupos[adventureID].groups;
-          //console.log(groups);
-          if (Array.isArray(groups)) {
-            return groups.map(group => (
-              <Group
-                key={group.name}
-                name={group.name}
-                place={group.place}
-                timestamp={group.timestamp}
-              />
-            ));
-          } else {
-            return [];
-          }
-        })}
-      </div>
-    </section>
-  );*/
 };
 
 export default withRouter(Grupos);

@@ -26,9 +26,24 @@ export type Group = {
 };
 
 //export type Groups = {[index: string]: Group[] | string};
+
 export type Groups = {
   [id: string] : {
     adventure: string,
     groups: Group[] | string
   }
+};
+
+export type Group2 = {
+  name: string,
+  adventureName: string,
+  adventureID: string,
+  timestamp: number,
+  place: string,
+  sizeGroup: number,
+  users: string[]
+};
+
+export type Groups2 = {
+  [index: string]: Group2
 };
