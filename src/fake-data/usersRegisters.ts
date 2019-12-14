@@ -1,5 +1,5 @@
 import faker from "faker";
-import { Users } from "../types/types";
+import { Users } from "../types";
 
 export default [
   {

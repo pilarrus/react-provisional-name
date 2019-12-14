@@ -18,7 +18,6 @@ const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
   let mes = date.getMonth()+1;
   let año = date.getFullYear();
 
-  //console.log(date);
   return (
     <div className="group" style={groupStyle}>
       <h3>{name}</h3>

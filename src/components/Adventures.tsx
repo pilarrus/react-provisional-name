@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { typeAdventure } from "../types/adventure";
+import { TypeAdventure } from "../types";
 import AdventureComponent from "./Adventure";
 import Title from "./Reusable/Title";
 
 export default class Adventures extends Component<{
-  adventures: typeAdventure[];
+  adventures: TypeAdventure[];
   thermalSensationAPI: string;
 }> {
   render() {
@@ -21,7 +21,8 @@ export default class Adventures extends Component<{
           <div className="adventures__container-box">
             {adventures.map(adventure => (
               <AdventureComponent
-                key={adventure.name}
+                key={adventure.id}
+                id={adventure.id}
                 name={adventure.name}
                 photo={adventure.photo}
                 info={adventure.info}

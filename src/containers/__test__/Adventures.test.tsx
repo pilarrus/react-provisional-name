@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import AdventuresContainer from "../Adventures";
 
-test("warmth adventures", async () => {
+test.skip("warmth adventures", async () => {
   const { findAllByTestId, findByText } = render(<AdventuresContainer thermalSensationAPI="warmth"/>);
   const adventures = await findAllByTestId('adventure');
   expect(adventures.length).toBe(3);
@@ -14,7 +14,7 @@ test("warmth adventures", async () => {
   expect(adventure3).toBeInTheDocument();
 });
 
-test("very hot adventures", async () => {
+test.skip("very hot adventures", async () => {
   const { findAllByTestId, findByText } = render(<AdventuresContainer thermalSensationAPI="very hot"/>);
   const adventures = await findAllByTestId('adventure');
   expect(adventures.length).toBe(3);
@@ -26,7 +26,7 @@ test("very hot adventures", async () => {
   expect(adventure3).toBeInTheDocument();
 });
 
-test("cold adventures", async () => {
+test.skip("cold adventures", async () => {
   const { findAllByTestId, findByText } = render(<AdventuresContainer thermalSensationAPI="cold"/>);
   const adventures = await findAllByTestId('adventure');
   expect(adventures.length).toBe(3);

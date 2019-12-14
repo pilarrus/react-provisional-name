@@ -1,4 +1,4 @@
-import { Groups } from "../types/types";
+import { Groups } from "../types";
 
 export default {
   escalada: [

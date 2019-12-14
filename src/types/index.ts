@@ -1,3 +1,11 @@
+export type TypeAdventure = {
+  id: string;
+  name: string;
+  photo: string;
+  info: string;
+  thermalSensation: string;
+};
+
 export type User = {
   nick: string;
   email: string;

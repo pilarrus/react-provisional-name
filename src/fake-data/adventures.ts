@@ -7,9 +7,11 @@ import quad from "../images/adventures/quad.jpg";
 import hiking from "../images/adventures/hiking.jpg";
 import ski from "../images/adventures/ski.jpg";
 import snowboard from "../images/adventures/snowboard.jpg";
+import { TypeAdventure } from '../types';
 
 export default [
   {
+    id: '1',
     name: "Escalada",
     photo: climbing,
     info:
@@ -17,6 +19,7 @@ export default [
     thermalSensation: "warmth"
   },
   {
+    id: '2',
     name: "Tirolinas",
     photo: zip_lines,
     info:
@@ -24,6 +27,7 @@ export default [
     thermalSensation: "warmth"
   },
   {
+    id: '3',
     name: "Rafting",
     photo: rafting,
     info:
@@ -31,6 +35,7 @@ export default [
     thermalSensation: "very hot"
   },
   {
+    id: '4',
     name: "Piragüísmo",
     photo: canoeing,
     info:
@@ -38,6 +43,7 @@ export default [
     thermalSensation: "very hot"
   },
   {
+    id: '5',
     name: "Moto de agua",
     photo: jet_ski,
     info:
@@ -45,6 +51,7 @@ export default [
     thermalSensation: "very hot"
   },
   {
+    id: '6',
     name: "Quad",
     photo: quad,
     info:
@@ -52,6 +59,7 @@ export default [
     thermalSensation: "warmth"
   },
   {
+    id: '7',
     name: "Senderismo",
     photo: hiking,
     info:
@@ -59,6 +67,7 @@ export default [
     thermalSensation: "cold"
   },
   {
+    id: '8',
     name: "Ski",
     photo: ski,
     info:
@@ -66,10 +75,11 @@ export default [
     thermalSensation: "cold"
   },
   {
+    id: '9',
     name: "Snowboard",
     photo: snowboard,
     info:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sintpraesen tium magni",
     thermalSensation: "cold"
   }
-];
+] as TypeAdventure[];

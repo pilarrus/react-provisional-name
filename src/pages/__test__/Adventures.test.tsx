@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import Adventures from "../Adventures";
 
-test("our adventures", async () => {
+test.skip("our adventures", async () => {
   const { findAllByTestId, findByText } = render(<Adventures />);
   const adventures = await findAllByTestId("adventure");
   expect(adventures.length).toBe(9);

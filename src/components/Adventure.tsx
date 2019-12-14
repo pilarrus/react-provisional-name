@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AdventureComponent = (props: {
+  id: string;
   name: string;
   photo: string;
   info: string;
@@ -13,7 +14,7 @@ const AdventureComponent = (props: {
   };
 
   return (
-    <Link to={`/groups/${props.name}`}>
+    <Link to={`/groups/${props.id}`}>
       <div className="adventure" data-testid="adventure" style={style}>
         <div className="adventure__content">
           <h3>{props.name}</h3>

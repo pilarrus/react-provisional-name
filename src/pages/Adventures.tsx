@@ -12,7 +12,8 @@ class Adventures extends React.Component {
           <div className="adventures__container-box">
             {adventures.map(adventure => (
               <AdventureComponent
-                key={adventure.name}
+                key={adventure.id}
+                id={adventure.id}
                 name={adventure.name}
                 photo={adventure.photo}
                 info={adventure.info}

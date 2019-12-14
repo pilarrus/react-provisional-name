@@ -5,7 +5,7 @@ import Title from "../components/Reusable/Title";
 import fetchGrupos from "../fake-data/groups";
 
 let adventures = Object.keys(fetchGrupos);
-
+console.log(adventures);
 /*console.log(
   adventures.map(adventure => {
     let groups = fetchGrupos[adventure];
@@ -15,19 +15,20 @@ let adventures = Object.keys(fetchGrupos);
   })
 );*/
 
-/*adventures.map(adventure => {
-  let groups = fetchGrupos[adventure];
-  console.log(groups);
-  /*if (Array.isArray(groups)) {
-    groups.map(group => console.log(group.name));
-  }*/
-//});
-//props.match.params.activity
-
 const Grupos: React.FC<RouteComponentProps<{activity?: string}>> = RouteComponentProps => {
-  let activity = RouteComponentProps.match.params.activity;
-  console.log(activity);
-  //console.log(">>>>", props.match.params.activity);
+  let params = RouteComponentProps.match.params;
+  if(Object.keys(params).length === 0) {
+    console.log(RouteComponentProps);
+  } else {
+    let activity = RouteComponentProps.match.params.activity;
+    console.log(activity);
+    /*adventures.map(adventure => {
+      if(adventure === activity) {
+        console.log(activity);
+        console.log(adventure)
+      }
+    });*/
+  }
 
   return (
     <section>

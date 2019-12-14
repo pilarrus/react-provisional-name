@@ -1,6 +1,6 @@
 import React from "react";
 import Adventures from "../components/Adventures";
-import { typeAdventure } from "../types/adventure";
+import { TypeAdventure } from "../types";
 import fetch from "../utils/mockFetch";
 
 class AdventuresContainer extends React.Component<{
@@ -14,7 +14,7 @@ class AdventuresContainer extends React.Component<{
 
   componentDidMount() {
     this._isMounted = true;
-    fetch<typeAdventure[]>("/adventures")
+    fetch<TypeAdventure[]>("/adventures")
       .then(response => response.json())
       .then(adventures => {
         if (this._isMounted) {
