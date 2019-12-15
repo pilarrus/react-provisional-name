@@ -1,33 +1,13 @@
 import React from "react";
-import { Route, Switch } from "react-router";
-import ApiAdventures from "./containers/ApiAdventures";
-import LoginRegister from "./containers/Form";
-import NavSide from "./layout/Nav&Side";
-import Adventures from "./pages/Adventures";
-import Error from "./pages/Error";
-import Groups from "./pages/Groups";
-import Home from "./pages/Home";
-import { Profile } from "./pages/Profile";
+import Home from "./layout/Home";
 
 
 const App: React.FC = () => {
 
+
   return (
-    <div data-testid="main" className="main">
-      <div>
-        <NavSide />
-      </div>
-      <div id="main-content" className="main__content toggle-main-content">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/adventures" component={ApiAdventures} />
-          <Route exact path="/alladventures" component={Adventures} />
-          <Route exact path="/groups" component={Groups} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/login" component={LoginRegister} />
-          <Route component={Error} />
-        </Switch>
-      </div>
+    <div data-testid="main">
+      <Home />
     </div>
   );
 };

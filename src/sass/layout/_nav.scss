@@ -7,6 +7,38 @@
   align-items: center;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
   padding:5px 20px;
+
+
+  a{
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 10px;
+    text-decoration: none;
+    border: none;
+
+    &:visited{
+      color: white;
+    }
+  }
+
+  button{
+    background-color: white;
+    border: none;
+    padding:10px;
+    width: 100%;
+    text-align: left;
+    font-family: $font-content;
+  }
+
+  &__theme{
+    position: relative;
+    &-submenu{
+      top: 50px;
+      z-index: 111;
+      position: absolute;
+      
+    }
+  }
 }
 /* BotÃ³n para abrir cerrar la sidebar */
 .navbar .toggle-sidebar{
@@ -59,6 +91,8 @@
   border-bottom: 0;
   border-left: .3em solid transparent;
 }
+
+
 
 /*-------------------------
 -----   MEDIA QUERIES RESPONSIVE

@@ -3,43 +3,28 @@ import { Link } from "react-router-dom";
 import ApiWeather from "../containers/ApiWeather";
 import ColorContext from "../contexts/ColorContext";
 
-const Sidebar: React.FC = () => {
+const Sidebar: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
   const context = useContext(ColorContext);
 
-  return (
-    <div id="wrapper" className="toggled">
-      <div id="sidebar-wrapper" className={`${context.colorSide}`}>
-        {
-          // da el estilo lateral
-        }
-        <ul className="sidebar-nav">
-          <li>
-            <Link to="/"></Link>
-          </li>
-          <li>
-            <Link to="/adventures">Aventuras</Link>
-          </li>
-          <li>
-            <Link to="/groups">Grupos</Link>
-          </li>
+  const style = {
+    classClose: "oculta"
+  }
 
-          <li>
-            <Link to="/">Eventos</Link>
-          </li>
-          <li>
-            <Link to="/">Nosotros</Link>
-          </li>
-          <li>
-            <Link to="/">Contacto</Link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <ApiWeather />
-          </li>
-        </ul>
-      </div>
+  return (
+    <div className={`sidebar ${context.colorSide} ${sidebar ? "" : style.classClose}`}>
+      <ul>
+        <li><Link to="/adventures">Aventuras</Link></li>
+        <li><Link to="/groups">Grupos</Link></li>
+        <li><Link to="/">Eventos</Link></li>
+        <li><Link to="/">Nosotros</Link></li>
+        <li><Link to="/">Contacto</Link></li>
+        <li>
+          <ApiWeather />
+        </li>
+
+      </ul>
     </div>
+
   );
 };
 

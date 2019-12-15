@@ -8,6 +8,8 @@
 @import "layout/colors";
 @import "layout/nav";
 @import "layout/sidebar";
+@import "layout/main";
+
 
 @import "components/button";
 @import "components/title";
@@ -16,6 +18,5 @@
 @import "components/form";
 @import "components/weather";
 
-@import "pages/home";
 @import "pages/adventures";
 @import "pages/profile";

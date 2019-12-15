@@ -5,6 +5,7 @@ export const Login = (props: RouteComponentProps) => {
   console.log(props);
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const submit = (event: FormEvent) => {
     event.preventDefault();
     props.history.push("/profile", {

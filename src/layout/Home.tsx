@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import ColorContext from "../contexts/ColorContext";
-import Nav from "./Nav2";
-import Sidebar from "./Sidebar2";
+import Main from "./Main";
+import Nav from "./Nav";
+import Sidebar from "./Sidebar";
+
 
 const App: React.FC = () => {
   const [colorNav, setColorNav] = useState("cyan");
@@ -12,6 +14,7 @@ const App: React.FC = () => {
     setOpenSideBar(!closeSideBar);
   }
 
+
   return (
 
     <div>
@@ -20,6 +23,8 @@ const App: React.FC = () => {
       >
         <Nav handleSideBar={handleSideBar} />
         <Sidebar sidebar={closeSideBar} />
+        <Main sidebar={closeSideBar} />
+
       </ColorContext.Provider>
     </div>
 

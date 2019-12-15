@@ -65,10 +65,11 @@
     -ms-transition: width 0.2s ease-in;
     transition: width 0.2s ease-in;
 }
-  
   a{
-    color: #999999;
+    display: block;
+    color: #ddd;
     text-decoration: none;
+
 
     &:hover,
     &:active,

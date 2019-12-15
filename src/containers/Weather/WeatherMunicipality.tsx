@@ -5,7 +5,9 @@ import sol from "../../images/weather/tiempo.svg";
 
 const style = {
   width: "50px",
-  height: "50px"
+  height: "50px",
+  marginTop: "10px"
+
 };
 const WeatherMunicipality: React.FC<{
   tempMax: number;
@@ -24,8 +26,8 @@ const WeatherMunicipality: React.FC<{
             ) : tempMax <= 15 ? (
               <img src={nube} style={style} alt="img" />
             ) : (
-              <img src={sol} style={style} alt="img" />
-            )}
+                  <img src={sol} style={style} alt="img" />
+                )}
           </i>
         </p>
       </div>
@@ -38,8 +40,8 @@ const WeatherMunicipality: React.FC<{
             ) : tempMin <= 15 ? (
               <img src={nube} style={style} alt="img" />
             ) : (
-              <img src={sol} style={style} alt="img" />
-            )}
+                  <img src={sol} style={style} alt="img" />
+                )}
           </i>
         </p>
       </div>
