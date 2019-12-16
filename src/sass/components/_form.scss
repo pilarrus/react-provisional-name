@@ -4,7 +4,7 @@
   &__box {
     display: flex;
     justify-content: center;
-    // height: 440px;
+    height: 400px;
     margin: $separateSection;
 
     &-container {
@@ -41,7 +41,7 @@
   &__right {
     width: 60%;
     min-width: 400px;
-    padding: 40px 40px 40px 75px;
+    padding: 40px 40px 40px 120px;
     background-color: rgba(255, 255, 255, 0.493);
     clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
     display: flex;
@@ -55,7 +55,7 @@
         &:focus {
           outline: none;
           box-shadow: 0 1px 5px $color-grey-dark;
-          border-bottom: 2px solid $color-purple;
+          border-bottom: 2px solid $color-blue-dark;
         }
       }
 
