@@ -1,9 +1,14 @@
 .profile {
-  background-image: url("../../images/profile/profileMountain.jpeg");
-  background-position: top;
-  background-size: cover;
-  padding: 30px 0 40px 0;
+  //padding: 30px 0 40px 0;
   &__box {
+    height: 300px;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.308),
+        rgba(35, 131, 155, 0.514)
+      ),
+      url("../../images/profile/profileMountain.jpeg");
+    background-position: top;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -11,8 +16,8 @@
   }
   &__picture {
     img {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
     }
   }
@@ -31,15 +36,21 @@
       p {
         display: inline;
       }
-      background-color: white;
-      width: 500px;
     }
   }
 
   &__friends {
-    background-color: yellowgreen;
-    height: 300px;
     display: flex;
     justify-content: space-evenly;
+
+    &-groups {
+      background-color: rebeccapurple;
+      width: 50%;
+    }
+
+    &-friends {
+      background-color: rosybrown;
+      width: 50%;
+    }
   }
 }

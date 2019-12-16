@@ -1,17 +1,16 @@
-import faker from "faker";
 import { Users } from "../types";
 
 export default [
   {
     nick: "anita89",
-    email: faker.internet.email(),
+    email: "anita@jejemail.com",
     name: "Ana",
     misgrupos: [],
     misAmigos: ["paroar666"]
   },
   {
     nick: "paroar666",
-    email: faker.internet.email(),
+    email: "pablito@jejemail.com",
     name: "Pablo",
     misgrupos: ["enanitos del VoxQ"],
     misAmigos: []

@@ -1,5 +1,12 @@
+$color1: #79aefe;
+$color2: #314190;
+$color3: #279636;
+$color4: #7d5d81;
+$color5: #ead24c;
+$color6: #ff1b5faf;
+
 @mixin title() {
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   font-size: 2rem;
   font-family: $font-tittle;
@@ -9,12 +16,12 @@
 
 .redclass {
   @include title();
-  background-color: #ff1b5faf;
+  background-color: $color6;
 }
 
 .clearblueclass {
   @include title();
-  background-color: #7d5d81;
+  background-color: $color4;
 }
 .defaultclass {
   @include title();

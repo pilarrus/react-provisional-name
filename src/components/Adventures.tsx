@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { TypeAdventure } from "../types";
+import { Link } from "react-router-dom";
 import AdventureComponent from "./Adventure";
 import Title from "./Reusable/Title";
 
@@ -29,9 +30,9 @@ export default class Adventures extends Component<{
               />
             ))}
           </div>
-          <a href="/alladventures">
+          <Link to="/alladventures">
             <button className="adventures__btn">Ver más aventuras</button>
-          </a>
+          </Link>
         </div>
       </section>
     );
