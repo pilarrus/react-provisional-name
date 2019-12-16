@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import Adventures from "../components/Adventures";
+import Adventures from "../pages/Adventures";
 import ApiAdventures from "../containers/ApiAdventures";
 import LoginRegister from "../containers/Form";
 import Error from "../pages/Error";
