@@ -25,7 +25,7 @@ const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
       <h3>{name}</h3>
       <p>{place}</p>
       <p>{dia + "/" + mes + "/" + año + " " + hour + ":" + minutes}</p>
-      <button type="submit">Ver</button>
+      <button type="submit" className="btn btn--rainbow">Ver</button>
     </div>
   );
 };
