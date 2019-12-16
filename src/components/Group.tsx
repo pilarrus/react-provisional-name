@@ -9,7 +9,8 @@ type PropsGroup = {
 
 const groupStyle = {
   height: "200px",
-  border: "1px solid black"
+  border: "1px solid black",
+  borderRadius: "5px"
 };
 
 const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
@@ -25,7 +26,9 @@ const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
       <h3>{name}</h3>
       <p>{place}</p>
       <p>{dia + "/" + mes + "/" + año + " " + hour + ":" + minutes}</p>
-      <button type="submit" className="btn btn--rainbow">Ver</button>
+      <div className="btn--rainbow">
+        <button type="submit" className="btn">Ver</button>
+      </div>
     </div>
   );
 };

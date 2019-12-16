@@ -62,10 +62,14 @@ const Grupos: React.FC<RouteComponentProps<{
                 ));
               } else {
                 return (
-                <div key="key">
-                  <p>{groups}</p>
-                  <button type="submit">Crear grupo</button>
-                </div>
+                  <div key="key">
+                    <p>{groups}</p>
+                    <div className="btn--rainbow">
+                      <button type="submit" className="btn">
+                      Crear grupo
+                      </button>
+                    </div>
+                  </div>
                 );
               }
             } else {

@@ -3,10 +3,15 @@
 }
 
 .btn {
-  border-radius: 10px;
+  border-radius: 1em;
+  color: #000 !important;
+  background-color: #fff;
+  padding: 0.3rem 2.13rem;
 
   &--rainbow {
 
+    width: fit-content;
+    
     background-image: linear-gradient(
       to right,
       #fdde5c 0%,
@@ -17,5 +22,9 @@
       #65beb3 calc(100% / 6 * 5),
       #70db96 100%
     );
+
+    background-clip: padding-box;
+    //border: 5px solid transparent;
+    border-radius: 1em;
   }
 }
