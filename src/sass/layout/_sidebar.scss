@@ -3,24 +3,25 @@
 -------------------------*/
 
 /* El propio bloque de la sidebar. De ancho mide 250px, pero la tenemos escondida -250px a la izquierda, por lo tanto no se ve */
-.sidebar{
+.sidebar {
   position: fixed;
   width: 250px;
   height: 100%;
   left: 0px;
   transition: all 400ms ease-in-out;
-  z-index: 111;
+
+  padding-top: 79px;
 }
 /* Al pulsar el botÃ³n hamburguesa, los -250px los convertimos en 0px, lo que hace que se pegue a la parte izquierda de la pantalla */
-.sidebar.oculta{
-  left:-250px;
+.sidebar.oculta {
+  left: -250px;
 }
 
-.sidebar.mostrar{
+.sidebar.mostrar {
   left: 250px;
 }
 /* Cada botÃ³n de la sidebar */
-.sidebar ul li{
+.sidebar ul li {
   list-style: none;
   padding: 15px 20px;
   cursor: pointer;
@@ -41,13 +42,13 @@
     transition: width 0.2s ease-in;
   }
 
-  &:nth-child(1):before  {
+  &:nth-child(1):before {
     background-color: #c0486c;
   }
-  &:nth-child(2):before  {
+  &:nth-child(2):before {
     background-color: #79aefe;
   }
-  &:nth-child(3):before  {
+  &:nth-child(3):before {
     background-color: #314190;
   }
   &:nth-child(4):before {
@@ -64,25 +65,18 @@
     -moz-transition: width 0.2s ease-in;
     -ms-transition: width 0.2s ease-in;
     transition: width 0.2s ease-in;
-}
-  a{
+  }
+  a {
     display: block;
     color: #ddd;
     text-decoration: none;
 
-
     &:hover,
     &:active,
-    &:focus{
+    &:focus {
       color: #fff;
       text-decoration: none;
       background-color: transparent;
     }
   }
 }
-
-
-
-
-
-
