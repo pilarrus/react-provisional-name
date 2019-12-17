@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import FormatDate from "./Reusable/FormatDate";
 import ButtonRainbow from "./Reusable/ButtonRainbow";
+import { TypeGroup } from "../types";
+//import useState from 'react';
 
 type PropsGroup = {
-  name: string;
-  place: string;
-  timestamp: number;
+  group: TypeGroup;
 };
 
 const groupStyle = {
@@ -14,15 +14,42 @@ const groupStyle = {
   borderRadius: "5px"
 };
 
-const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
+export default class Group extends Component<PropsGroup> {
+  state = {
+    isOpen: false
+  };
+
+  handleState = () => {
+    this.setState({ isOpen: !this.state.isOpen});
+    //console.log(this.state.isOpen);
+  };
+
+  render() {
+    const { group } = this.props;
+    return (
+      <div className="group" style={groupStyle}>
+        <h3>{group.name}</h3>
+        <p>{group.place}</p>
+        <FormatDate timestamp={group.timestamp}/>
+        <ButtonRainbow text="VER" changeState={this.handleState} />
+      </div>
+    );
+  }
+}
+
+/*const Group: React.FC<PropsGroup> = ({ group }) => {
+  const [isOpen, setIsOpen] = useState("false");
+
+  const handleState = () => setIsOpen(!isOpen);
+
   return (
     <div className="group" style={groupStyle}>
-      <h3>{name}</h3>
-      <p>{place}</p>
-      <FormatDate timestamp={timestamp}/>
-      <ButtonRainbow text="VER" />
+      <h3>{group.name}</h3>
+      <p>{group.place}</p>
+      <FormatDate timestamp={group.timestamp}/>
+      <ButtonRainbow text="VER" changeState={handleState} />
     </div>
   );
 };
 
-export default Group;
+export default Group;*/

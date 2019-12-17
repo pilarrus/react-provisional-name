@@ -27,9 +27,7 @@ const Grupos: React.FC<RouteComponentProps<{
               return groups.map(group => (
                 <Group
                   key={group.name}
-                  name={group.name}
-                  place={group.place}
-                  timestamp={group.timestamp}
+                  group={group}
                 />
               ));
             } else {
@@ -56,17 +54,14 @@ const Grupos: React.FC<RouteComponentProps<{
               if (Array.isArray(groups)) {
                 return groups.map(group => (
                   <Group
-                    key={group.name}
-                    name={group.name}
-                    place={group.place}
-                    timestamp={group.timestamp}
-                  />
+                  key={group.name}
+                  group={group}
+                />
                 ));
               } else {
                 return (
                   <div key="key">
                     <p>{groups}</p>
-                    <ButtonRainbow text="Crear grupo" />
                   </div>
                 );
               }
