@@ -1,5 +1,5 @@
 import React from "react";
-//import { Group } from "../types/types";
+import FormatDate from "./Reusable/FormatDate";
 
 type PropsGroup = {
   name: string;
@@ -14,18 +14,11 @@ const groupStyle = {
 };
 
 const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
-  let date = new Date(timestamp * 1000);
-  let dia = date.getDate();
-  let mes = date.getMonth()+1;
-  let año = date.getFullYear();
-  let hour = date.getHours();
-  let minutes = date.getMinutes();
-
   return (
     <div className="group" style={groupStyle}>
       <h3>{name}</h3>
       <p>{place}</p>
-      <p>{dia + "/" + mes + "/" + año + " " + hour + ":" + minutes}</p>
+      <FormatDate timestamp={timestamp}/>
       <div className="btn--rainbow">
         <button type="submit" className="btn">VER</button>
       </div>
