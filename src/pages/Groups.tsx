@@ -3,6 +3,7 @@ import { RouteComponentProps, withRouter } from "react-router";
 import Group from "../components/Group";
 import Title from "../components/Reusable/Title";
 import fetchGrupos from "../fake-data/groups";
+import ButtonRainbow from "../components/Reusable/ButtonRainbow";
 
 let adventuresID = Object.keys(fetchGrupos);
 
@@ -36,6 +37,7 @@ const Grupos: React.FC<RouteComponentProps<{
             }
           })}
         </div>
+        <ButtonRainbow text="Añadir grupo" />
       </section>
     );
   } else {
@@ -64,11 +66,7 @@ const Grupos: React.FC<RouteComponentProps<{
                 return (
                   <div key="key">
                     <p>{groups}</p>
-                    <div className="btn--rainbow">
-                      <button type="submit" className="btn">
-                      Crear grupo
-                      </button>
-                    </div>
+                    <ButtonRainbow text="Crear grupo" />
                   </div>
                 );
               }
@@ -77,6 +75,7 @@ const Grupos: React.FC<RouteComponentProps<{
             }
           })}
         </div>
+        <ButtonRainbow text="Añadir grupo" />
       </section>
     );
   }

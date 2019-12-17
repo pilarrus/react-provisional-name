@@ -1,5 +1,6 @@
 import React from "react";
 import FormatDate from "./Reusable/FormatDate";
+import ButtonRainbow from "./Reusable/ButtonRainbow";
 
 type PropsGroup = {
   name: string;
@@ -19,9 +20,7 @@ const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
       <h3>{name}</h3>
       <p>{place}</p>
       <FormatDate timestamp={timestamp}/>
-      <div className="btn--rainbow">
-        <button type="submit" className="btn">VER</button>
-      </div>
+      <ButtonRainbow text="VER" />
     </div>
   );
 };
