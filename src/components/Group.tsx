@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-//import React, { useState } from "react";
 import FormatDate from "./Reusable/FormatDate";
 import ButtonRainbow from "./Reusable/ButtonRainbow";
 import { TypeGroup } from "../types";
 import GroupModal from "./GroupModal";
-//import useState from 'react';
 
 type PropsGroup = {
   group: TypeGroup;
@@ -23,7 +21,6 @@ export default class Group extends Component<PropsGroup> {
 
   handleState = () => {
     this.setState({ isOpen: !this.state.isOpen});
-    //console.log(this.state.isOpen);
   };
 
   render() {
@@ -41,20 +38,3 @@ export default class Group extends Component<PropsGroup> {
       );
   }
 }
-
-/*const Group: React.FC<PropsGroup> = ({ group }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleState = () => setIsOpen(!isOpen);
-
-  return (
-    <div className="group" style={groupStyle}>
-      <h3>{group.name}</h3>
-      <p>{group.place}</p>
-      <FormatDate timestamp={group.timestamp}/>
-      <ButtonRainbow text="VER" changeState={handleState} />
-    </div>
-  );
-};
-
-export default Group;*/

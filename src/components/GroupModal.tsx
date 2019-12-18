@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TypeGroup } from "../types";
 
 type PropsGroup = {
   group: TypeGroup;
-  changeState?: () => void;
+  changeState: () => void;
 };
 
 const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (event.keyCode === 27) {
+        changeState();
+      }
+    };
+    window.addEventListener("keydown", handleKeydown);
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, [changeState]);
 
   return (
     <div id="id01" className="group__modal" onClick={changeState}>
-      <div className="group__modal--content">
+      <div className="group__modal--content" onClick={e => e.stopPropagation()}>
         <div className="group__modal--container">
           <p>{group.name}</p>
           <p>Fecha: {group.timestamp}</p>
