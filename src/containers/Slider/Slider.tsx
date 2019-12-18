@@ -4,7 +4,7 @@ import RightArrow from "../../components/Slider/RightArrow";
 import Slide from "../../components/Slider/Slide";
 
 export default class Slider extends Component {
-  constructor(props) {
+  constructor(props: Readonly<{}>) {
     super(props);
 
     this.state = {
@@ -45,7 +45,7 @@ export default class Slider extends Component {
   render() {
     return (
       <div className="slider">
-        {this.state.images.map((image, i) => (
+        {this.state.images.map((image: any, i: string | number | undefined) => (
           <Slide key={i} image={image} />
         ))}
 
