@@ -1,13 +1,4 @@
 .profile {
-  //padding: 30px 0 40px 0;
-  background-image: linear-gradient(
-      rgba(231, 223, 223, 0.603),
-      rgb(222, 226, 220)
-    ),
-    url("../../images/profile/profileBack.jpeg");
-  background-position: top;
-  background-size: cover;
-
   &__box {
     display: flex;
     align-items: center;
@@ -41,21 +32,6 @@
     }
   }
 
-  &__friends {
-    display: flex;
-    justify-content: space-evenly;
-
-    &-groups {
-      background-color: rebeccapurple;
-      width: 50%;
-    }
-
-    &-friends {
-      background-color: rosybrown;
-      width: 50%;
-    }
-  }
-
   //caja para todos los elementos
   .name_box {
     background-color: rgba(241, 246, 248, 0.438);
@@ -72,7 +48,7 @@
 
 .friends_box {
   margin: 10px;
-  width: 50%;
+
   background-color: rgb(253, 254, 255);
   border-radius: 5px;
 
@@ -81,19 +57,6 @@
     display: flex;
     align-content: space-around;
   }
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  background-color: white;
-}
-
-table,
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
 }
 
 .friends_img {

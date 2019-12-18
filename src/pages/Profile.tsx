@@ -1,8 +1,10 @@
 import React from "react";
 import { RouteComponentProps } from "react-router";
+import Friends from "../components/Profile/Friends";
 import Table2 from "../components/Profile/Table";
 import dataUsers from "../fake-data/usersRegisters";
 import person1 from "../images/profile/person1.jpg";
+
 export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
   let data = RouteComponentProps.location.state; // datos que recibo del formulario de registro
 
@@ -45,27 +47,9 @@ export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
         //fin caja nombre y foto
       }
 
-      <div className="profile__friends">
-        <div className="profile__friends-groups groups_box">
-          <Table2 />
-        </div>
-        <div className="profile__friends-friends friends_box">
-          <h1>Amig@s</h1>
-          <div>
-            <div className="friends_img">
-              <span>Pablo666</span>
-              <img src={person1} />
-            </div>
-            <div className="friends_img">
-              <span>Pablo666</span>
-              <img src={person1} />
-            </div>
-            <div className="friends_img">
-              <span>Pablo666</span>
-              <img src={person1} />
-            </div>
-          </div>
-        </div>
+      <div>
+        <Table2 />
+        <Friends />
       </div>
     </div>
   );

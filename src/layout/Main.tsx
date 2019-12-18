@@ -1,21 +1,18 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import Adventures from "../pages/Adventures";
+import LoginRegister from "../components/Form";
 import ApiAdventures from "../containers/ApiAdventures";
-import LoginRegister from "../containers/Form";
+import Adventures from "../pages/Adventures";
 import Error from "../pages/Error";
 import Groups from "../pages/Groups";
 import Home from "../pages/Home";
 import { Profile } from "../pages/Profile";
 
-
 const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
-
   let style = "";
-  sidebar ? style = "padding" : style = "nopadding";
+  sidebar ? (style = "padding") : (style = "nopadding");
 
   return (
-
     <div className={`main ${style}`}>
       <Switch>
         <Route exact path="/" component={Home} />
@@ -27,7 +24,6 @@ const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
         <Route component={Error} />
       </Switch>
     </div>
-
   );
 };
 
