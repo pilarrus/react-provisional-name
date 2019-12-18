@@ -18,12 +18,14 @@ export const Login = (props: RouteComponentProps) => {
     <div className="social__right-login">
       <form className="form" onSubmit={submit}>
         <input
+          required
           type="text"
-          placeholder="Email"
+          placeholder="Nombre de usuario"
           className="form-input"
           onChange={e => setUsername(e.target.value.trim())}
         ></input>
         <input
+          required
           type="password"
           placeholder="Contraseña"
           className="form-input"

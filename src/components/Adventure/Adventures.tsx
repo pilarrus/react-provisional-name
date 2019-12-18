@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { typeAdventure } from "../../types/adventure";
+import { TypeAdventure } from "../../types";
 import Title from "../Reusable/Title";
 import AdventureComponent from "./Adventure";
 
 export default class Adventures extends Component<{
-  adventures: typeAdventure[];
+  adventures: TypeAdventure[];
   thermalSensationAPI: string;
 }> {
   render() {
