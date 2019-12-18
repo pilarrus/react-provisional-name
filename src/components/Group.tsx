@@ -3,6 +3,7 @@ import FormatDate from "./Reusable/FormatDate";
 import ButtonRainbow from "./Reusable/ButtonRainbow";
 import { TypeGroup } from "../types";
 import GroupModal from "./GroupModal";
+import Select2 from "./Reusable/Select";
 
 type PropsGroup = {
   group: TypeGroup;
@@ -33,6 +34,7 @@ export default class Group extends Component<PropsGroup> {
           <p>{group.place}</p>
           <FormatDate timestamp={group.timestamp}/>
           <ButtonRainbow text="VER" changeState={this.handleState} />
+          <Select2/>
         </div>
         </>
       );

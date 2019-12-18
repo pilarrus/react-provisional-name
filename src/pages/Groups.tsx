@@ -1,9 +1,10 @@
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
+import AddGroup from "../components/AddGroup";
 import Group from "../components/Group";
+import ButtonRainbow from "../components/Reusable/ButtonRainbow";
 import Title from "../components/Reusable/Title";
 import fetchGrupos from "../fake-data/groups";
-import ButtonRainbow from "../components/Reusable/ButtonRainbow";
 
 let adventuresID = Object.keys(fetchGrupos);
 
@@ -25,10 +26,7 @@ const Grupos: React.FC<RouteComponentProps<{
             //console.log(adventure);
             if (Array.isArray(groups)) {
               return groups.map(group => (
-                <Group
-                  key={group.name}
-                  group={group}
-                />
+                <Group key={group.name} group={group} />
               ));
             } else {
               return [];
@@ -36,6 +34,7 @@ const Grupos: React.FC<RouteComponentProps<{
           })}
         </div>
         <ButtonRainbow text="Añadir grupo" />
+        <AddGroup />
       </section>
     );
   } else {
@@ -53,10 +52,7 @@ const Grupos: React.FC<RouteComponentProps<{
               //console.log(groups);
               if (Array.isArray(groups)) {
                 return groups.map(group => (
-                  <Group
-                  key={group.name}
-                  group={group}
-                />
+                  <Group key={group.name} group={group} />
                 ));
               } else {
                 return (
