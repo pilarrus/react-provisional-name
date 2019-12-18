@@ -1,5 +1,6 @@
 import React from "react";
 import { RouteComponentProps } from "react-router";
+import Table2 from "../components/Profile/Table";
 import dataUsers from "../fake-data/usersRegisters";
 import person1 from "../images/profile/person1.jpg";
 export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
@@ -46,37 +47,7 @@ export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
 
       <div className="profile__friends">
         <div className="profile__friends-groups groups_box">
-          <h1>Este mes:</h1>
-          <table>
-            <tr>
-              <th>Fecha</th>
-              <th>Día de la semana</th>
-              <th>Aventura</th>
-              <th>Lugar</th>
-              <th>Hora</th>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td>Viernes</td>
-              <td>Escalada</td>
-              <td>Guadarrama</td>
-              <td>10:00</td>
-            </tr>
-            <tr>
-              <td>Día 13</td>
-              <td>Viernes</td>
-              <td>Escalada</td>
-              <td>Guadarrama</td>
-              <td>10:00</td>
-            </tr>
-            <tr>
-              <td>Día 13</td>
-              <td>Viernes</td>
-              <td>Escalada</td>
-              <td>Guadarrama</td>
-              <td>10:00</td>
-            </tr>
-          </table>
+          <Table2 />
         </div>
         <div className="profile__friends-friends friends_box">
           <h1>Amig@s</h1>

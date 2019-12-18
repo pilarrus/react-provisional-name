@@ -26,7 +26,7 @@ const WeatherHome: React.FC<props> = props => {
         tempMin={props.tempMin}
         municipality={props.municipality}
       />
-      <div >
+      <div>
         <p className="weather__p">Busca tu municipio</p>
         <div className="weather__select-box">
           <div className="select">

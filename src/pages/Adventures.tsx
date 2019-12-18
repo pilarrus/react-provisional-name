@@ -1,7 +1,7 @@
-import React from 'react';
-import Title from '../components/Reusable/Title';
-import adventures from '../fake-data/adventures';
-import AdventureComponent from '../components/Adventure';
+import React from "react";
+import AdventureComponent from "../components/Adventure/Adventure";
+import Title from "../components/Reusable/Title";
+import adventures from "../fake-data/adventures";
 
 class Adventures extends React.Component {
   render() {
