@@ -4,7 +4,7 @@ import React from "react";
 const { Option } = Select;
 
 type SelectType = {
-  placeholder: string;
+  placeholder?: string;
   options: any[];
 };
 
