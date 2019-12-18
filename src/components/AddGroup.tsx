@@ -2,24 +2,19 @@ import React from "react";
 import Title from "./Reusable/Title";
 import adventures from "../fake-data/adventures";
 import Select2 from "./Reusable/Select";
+import { Input } from 'antd';
 
 const AddGroup = () => {
   return (
-    <div className="group__modal">
-      <div className="group__modal--content">
-        <div className="group__modal--container">
+    <div className="modal">
+      <div className="modal__content">
+        <div className="modal__container">
           <Title title="Añadir Grupo" />
           <form action="">
-            <input type="text" placeholder="Nombre" />
-            <label htmlFor="">Tipo Actividad:</label>
-            <select name="" id="">
-              {adventures.map(adventure => (
-                <option key={adventure.id}>{adventure.name}</option>
-              ))}
-            </select>
-            <Select2/>
-            <label htmlFor="">Fecha</label>
-            <input type="date" name="" id=""/>
+            <Input placeholder="Nombre del grupo" />
+            <br/>
+            <Select2 placeholder="Tipo de Actividad" options={adventures}/>
+            <br/>
           </form>
         </div>
       </div>

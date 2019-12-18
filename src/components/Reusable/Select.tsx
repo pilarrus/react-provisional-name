@@ -1,10 +1,14 @@
 import { Select } from "antd";
 import React from "react";
-import adventures from "../../fake-data/adventures";
 
 const { Option } = Select;
 
-const Select2: React.FC = () => {
+type SelectType = {
+  placeholder: string;
+  options: any[];
+};
+
+const Select2: React.FC<SelectType> = ({placeholder, options}) => {
   function onChange(value: any) {
     console.log(`selected ${value}`);
   }
@@ -25,7 +29,7 @@ const Select2: React.FC = () => {
     <Select
       showSearch
       style={{ width: 200 }}
-      placeholder="Select a person"
+      placeholder={placeholder}
       optionFilterProp="children"
       onChange={onChange}
       onFocus={onFocus}
@@ -36,8 +40,8 @@ const Select2: React.FC = () => {
         option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
       }
     >
-      {adventures.map(adventure => (
-        <Option key={adventure.id}>{adventure.name}</Option>
+      {options.map(op => (
+        <Option key={op.id}>{op.name}</Option>
       ))}
     </Select>
   );
