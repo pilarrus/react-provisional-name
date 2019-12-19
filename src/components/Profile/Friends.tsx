@@ -1,24 +1,27 @@
 import React from "react";
-import person1 from "../../images/profile/person1.jpg";
+import users from "../../fake-data/usersRegisters";
 
-export const Friends: React.FC = () => {
+export const Friends: React.FC<{ friends: string[] }> = props => {
+  /***
+   recorre los amigos que llegan por props (map ¿por qué con forEach no funciona?)
+   por cada amigo filtra los usuarios (usersRegisters) del json que coincidan con el amigo mapeado
+   con ello se obtiene el objeto con la imagen
+  ***/
+  var myFriends = props.friends.map(element => {
+    return users.filter(option => option.nick === element);
+  });
+
   return (
-    <div className="friends_box">
+    <div className="friends">
       <h1>Amig@s</h1>
-      <div>
-        <div className="friends_img">
-          <span>Pablo666</span>
-          <img src={person1} alt="friend" />
-        </div>
-        <div className="friends_img">
-          <span>Pablo666</span>
-          <img src={person1} alt="friend" />
-        </div>
-        <div className="friends_img">
-          <span>Pablo666</span>
-          <img src={person1} alt="friend" />
-        </div>
-      </div>
+      {myFriends.map(friends =>
+        friends.map(friend => (
+          <div className="friends_img">
+            <span>{friend.name}</span>
+            <img src={friend.img} alt="friend" />
+          </div>
+        ))
+      )}
     </div>
   );
 };

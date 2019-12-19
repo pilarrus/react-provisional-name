@@ -10,11 +10,12 @@ export type User = {
   id: number;
   nick: string;
   password: string;
-  nivel: string;
+  level: string;
   email: string;
   name: string;
-  misgrupos: string[];
-  misAmigos: string[];
+  myGroups: string[];
+  myFriends: string[];
+  gender: string;
   img: string;
 };
 
