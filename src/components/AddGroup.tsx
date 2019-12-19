@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Title from "./Reusable/Title";
 import adventures from "../fake-data/adventures";
 import Select2 from "./Reusable/Select";
 import { Input, DatePicker, TimePicker, InputNumber, Button } from "antd";
 import moment from 'moment';
 
-const AddGroup = () => {
+type PropsAddGroup = {
+  changeState: () => void;
+};
+
+const AddGroup: React.FC<PropsAddGroup> = ({changeState}) => {
   const places = [
     { id: 1, name: "Buitrago de Lozoya" },
     { id: 2, name: "El Atazar" },
@@ -15,9 +19,19 @@ const AddGroup = () => {
     { id: 6, name: "San Martín de Valdeiglesias" },
   ];
 
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (event.keyCode === 27) {
+        changeState();
+      }
+    };
+    window.addEventListener("keydown", handleKeydown);
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, [changeState]);
+
   return (
-    <div className="modal">
-      <div className="modal__content">
+    <div className="modal" onClick={changeState}>
+      <div className="modal__content" onClick={e => e.stopPropagation()}>
         <div className="modal__container">
           <Title title="Añadir Grupo" />
           <form action="">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import AddGroup from "../components/AddGroup";
 import Group from "../components/Group";
@@ -11,6 +11,8 @@ let adventuresID = Object.keys(fetchGrupos);
 const Grupos: React.FC<RouteComponentProps<{
   activityID?: string;
 }>> = RouteComponentProps => {
+  const [isOpen, setIsOpen] = useState(false);
+
   let params = RouteComponentProps.match.params;
   //console.log(params);
   if (Object.keys(params).length === 0) {
@@ -33,8 +35,8 @@ const Grupos: React.FC<RouteComponentProps<{
             }
           })}
         </div>
-        <ButtonRainbow text="Añadir grupo" />
-        <AddGroup />
+        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
+        {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)}/> : ""}
       </section>
     );
   } else {
@@ -66,7 +68,8 @@ const Grupos: React.FC<RouteComponentProps<{
             }
           })}
         </div>
-        <ButtonRainbow text="Añadir grupo" />
+        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
+        {isOpen && <AddGroup changeState={() => setIsOpen(!isOpen)}/>}
       </section>
     );
   }
