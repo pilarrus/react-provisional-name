@@ -1,65 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { RouteComponentProps } from "react-router";
 import Friends from "../components/Profile/Friends";
+import Info from "../components/Profile/PersonalInfo";
 import Table2 from "../components/Profile/Table";
-import dataUsers from "../fake-data/usersRegisters";
-import person1 from "../images/profile/person1.jpg";
+import { User } from "../types";
 
-export const Profile: React.FC<RouteComponentProps> = RouteComponentProps => {
-  let data = RouteComponentProps.location.state; // datos que recibo del formulario de registro o del login
-  console.log("*******", data.name, data.password);
-  if (data === undefined) {
-    data = {
-      name: "Sin nombre"
-    };
-  }
+/*export type User = {
+  id: number;
+  nick: string;
+  password: string;
+  nivel: string;
+  email: string;
+  name: string;
+  misgrupos: string[];
+  misAmigos: string[];
+  img: string;
+};*/
 
-  const [userExist, setUserExist] = useState(false);
+export const Profile: React.FC<RouteComponentProps<
+  {},
+  {},
+  User
+>> = RouteComponentProps => {
+  let user = RouteComponentProps.location.state; // datos que recibo del formulario de registro o del login
 
-  console.log(dataUsers[0]);
-  console.log(userExist);
-
-  useEffect(() => {
-    dataUsers.map(e => {
-      if (e.name === data.name && e.password === data.password) {
-        return setUserExist(true);
-      } else {
-        return null; // preguntar: por qué me obliga a retornar algo
-      }
-    });
-  }, [data.name, data.password]);
+  console.log(user);
+  // console.log("***EN PROFILE", RouteComponentProps.history.location.state.data);
 
   return (
     <div className="profile">
-      <img src={dataUsers[0].img} alt="img" />
-      {
-        //caja nombre y foto
-      }
-      <div className="profile__box name_box">
-        <div className="profile__name">
-          <h1>
-            {data.gender === "male"
-              ? "Bienvenido"
-              : data.gender === "female"
-              ? "Bienvenida"
-              : "Bienvenid@"}
-            <span> {data.name}</span>
-          </h1>
-          <p className="title">Nivel {data.status}</p>
-        </div>
-
-        <div className="profile__picture">
-          <img src={person1} alt="you" />
-        </div>
-      </div>
-
-      {
-        //fin caja nombre y foto
-      }
-
+      {'<img src={dataUsers[0].img} alt="img" />'}
       <div>
         <Table2 />
         <Friends />
+        <Info data={user} />"
       </div>
     </div>
   );

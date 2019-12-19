@@ -1,7 +1,7 @@
 import img1 from "../images/profile/person1.jpg";
 import { Users } from "../types";
 
-export default [
+export default ([
   {
     id: 0,
     nick: "Anita",
@@ -11,7 +11,8 @@ export default [
     name: "Ana",
     misgrupos: [],
     misAmigos: ["Paroar", "Pilarusi", "Albertillo"],
-    img: img1
+    img: img1,
+    gender: "female"
   },
   {
     id: 1,
@@ -22,7 +23,8 @@ export default [
     name: "Pablo",
     misgrupos: ["enanitos del VoxQ"],
     misAmigos: ["Marcela"],
-    img: img1
+    img: img1,
+    gender: "male"
   },
   {
     id: 2,
@@ -33,7 +35,8 @@ export default [
     name: "Pilar",
     misgrupos: ["enanitos del VoxQ"],
     misAmigos: ["Albertillo", "Anita"],
-    img: img1
+    img: img1,
+    gender: "female"
   },
   {
     id: 3,
@@ -44,7 +47,8 @@ export default [
     name: "Alberto",
     misgrupos: ["enanitos del VoxQ"],
     misAmigos: ["Pilarusi", "Anita", "Paroar", "Marcela"],
-    img: img1
+    img: img1,
+    gender: "male"
   },
   {
     id: 4,
@@ -55,6 +59,7 @@ export default [
     name: "Marcela",
     misgrupos: ["enanitos del VoxQ"],
     misAmigos: [],
-    img: img1
+    img: img1,
+    gender: "female"
   }
-] as Users;
+] as unknown) as Users;
