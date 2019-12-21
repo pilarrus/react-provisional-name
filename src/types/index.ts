@@ -21,7 +21,7 @@ export type User = {
 
 export type Users = User[];
 
-export type Group = {
+export type TypeGroup = {
   name: string,
   timestamp: number,
   place: string,
@@ -32,6 +32,6 @@ export type Group = {
 export type Groups = {
   [id: string] : {
     adventure: string,
-    groups: Group[] | string
+    groups: TypeGroup[] | string
   }
 };

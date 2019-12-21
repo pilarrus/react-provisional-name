@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router";
+import AddGroup from "../components/AddGroup";
 import Group from "../components/Group";
+import ButtonRainbow from "../components/Reusable/ButtonRainbow";
 import Title from "../components/Reusable/Title";
 import fetchGrupos from "../fake-data/groups";
 
@@ -9,6 +11,8 @@ let adventuresID = Object.keys(fetchGrupos);
 const Grupos: React.FC<RouteComponentProps<{
   activityID?: string;
 }>> = RouteComponentProps => {
+  const [isOpen, setIsOpen] = useState(false);
+
   let params = RouteComponentProps.match.params;
   //console.log(params);
   if (Object.keys(params).length === 0) {
@@ -24,18 +28,15 @@ const Grupos: React.FC<RouteComponentProps<{
             //console.log(adventure);
             if (Array.isArray(groups)) {
               return groups.map(group => (
-                <Group
-                  key={group.name}
-                  name={group.name}
-                  place={group.place}
-                  timestamp={group.timestamp}
-                />
+                <Group key={group.name} group={group} />
               ));
             } else {
               return [];
             }
           })}
         </div>
+        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
+        {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)}/> : ""}
       </section>
     );
   } else {
@@ -53,22 +54,12 @@ const Grupos: React.FC<RouteComponentProps<{
               //console.log(groups);
               if (Array.isArray(groups)) {
                 return groups.map(group => (
-                  <Group
-                    key={group.name}
-                    name={group.name}
-                    place={group.place}
-                    timestamp={group.timestamp}
-                  />
+                  <Group key={group.name} group={group} />
                 ));
               } else {
                 return (
                   <div key="key">
                     <p>{groups}</p>
-                    <div className="btn--rainbow">
-                      <button type="submit" className="btn">
-                      Crear grupo
-                      </button>
-                    </div>
                   </div>
                 );
               }
@@ -77,6 +68,8 @@ const Grupos: React.FC<RouteComponentProps<{
             }
           })}
         </div>
+        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
+        {isOpen && <AddGroup changeState={() => setIsOpen(!isOpen)}/>}
       </section>
     );
   }

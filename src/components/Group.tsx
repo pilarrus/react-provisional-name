@@ -1,10 +1,11 @@
-import React from "react";
-//import { Group } from "../types/types";
+import React, { Component } from "react";
+import FormatDate from "./Reusable/FormatDate";
+import ButtonRainbow from "./Reusable/ButtonRainbow";
+import { TypeGroup } from "../types";
+import GroupModal from "./GroupModal";
 
 type PropsGroup = {
-  name: string;
-  place: string;
-  timestamp: number;
+  group: TypeGroup;
 };
 
 const groupStyle = {
@@ -13,24 +14,27 @@ const groupStyle = {
   borderRadius: "5px"
 };
 
-const Group: React.FC<PropsGroup> = ({ name, place, timestamp }) => {
-  let date = new Date(timestamp * 1000);
-  let dia = date.getDate();
-  let mes = date.getMonth()+1;
-  let año = date.getFullYear();
-  let hour = date.getHours();
-  let minutes = date.getMinutes();
+export default class Group extends Component<PropsGroup> {
+  state = {
+    isOpen: false
+  };
 
-  return (
-    <div className="group" style={groupStyle}>
-      <h3>{name}</h3>
-      <p>{place}</p>
-      <p>{dia + "/" + mes + "/" + año + " " + hour + ":" + minutes}</p>
-      <div className="btn--rainbow">
-        <button type="submit" className="btn">VER</button>
-      </div>
-    </div>
-  );
-};
+  handleState = () => {
+    this.setState({ isOpen: !this.state.isOpen});
+  };
 
-export default Group;
+  render() {
+    const { group } = this.props;
+      return (
+        <>
+        {this.state.isOpen && <GroupModal group={group} changeState={this.handleState}/>}
+        <div className="group" style={groupStyle}>
+          <h3>{group.name}</h3>
+          <p>{group.place}</p>
+          <FormatDate timestamp={group.timestamp}/>
+          <ButtonRainbow text="VER" changeState={this.handleState} />
+        </div>
+        </>
+      );
+  }
+}
