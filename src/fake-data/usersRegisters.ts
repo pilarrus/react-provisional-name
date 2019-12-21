@@ -1,18 +1,69 @@
+import alberto from "../images/profile/alberto.jpeg";
+import ana from "../images/profile/ana.jpg";
+import marcela from "../images/profile/marcela.jpg";
+import pablo from "../images/profile/pablo.jpg";
+import pili from "../images/profile/pili.jpg";
 import { Users } from "../types";
 
 export default [
   {
-    nick: "anita89",
-    email: "anita@jejemail.com",
+    id: 0,
+    nick: "Anita",
+    password: "123",
+    level: "principiante",
+    email: "anita@aventura.com",
     name: "Ana",
-    misgrupos: [],
-    misAmigos: ["paroar666"]
+    myGroups: [],
+    myFriends: ["Paroar", "Pilarusi", "Albertillo"],
+    img: ana,
+    gender: "female"
   },
   {
-    nick: "paroar666",
-    email: "pablito@jejemail.com",
+    id: 1,
+    nick: "Paroar",
+    password: "123",
+    level: "principiante",
+    email: "pablito@aventura.com",
     name: "Pablo",
-    misgrupos: ["enanitos del VoxQ"],
-    misAmigos: []
+    myGroups: ["enanitos del VoxQ"],
+    myFriends: ["Marcela"],
+    img: pablo,
+    gender: "male"
+  },
+  {
+    id: 2,
+    nick: "Pilarusi",
+    password: "123",
+    level: "principiante",
+    email: "pili@aventura.com",
+    name: "Pilar",
+    myGroups: ["enanitos del VoxQ"],
+    myFriends: ["Albertillo", "Anita"],
+    img: pili,
+    gender: "female"
+  },
+  {
+    id: 3,
+    nick: "Albertillo",
+    password: "123",
+    level: "principiante",
+    email: "alberto@aventura.com",
+    name: "Alberto",
+    myGroups: ["enanitos del VoxQ"],
+    myFriends: ["Pilarusi", "Anita", "Paroar", "Marcela"],
+    img: alberto,
+    gender: "male"
+  },
+  {
+    id: 4,
+    nick: "Marcela",
+    password: "123",
+    level: "principiante",
+    email: "marcerla@aventura.com",
+    name: "Marcela",
+    myGroups: ["enanitos del VoxQ"],
+    myFriends: [],
+    img: marcela,
+    gender: "female"
   }
 ] as Users;

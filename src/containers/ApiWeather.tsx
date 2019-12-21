@@ -1,8 +1,8 @@
 import React from "react";
 import Load from "../components/Reusable/Loading";
+import madridMun from "../components/Weather/municipality_codes";
+import WeatherHome from "../components/Weather/WeatherHome";
 import config from "../config";
-import madridMun from "./Weather/municipality_codes";
-import WeatherHome from "./Weather/WeatherHome";
 
 type Code = {
   codpro: string;
@@ -45,7 +45,7 @@ class ApiWeather extends React.Component {
     }
     fetch(
       `${config.aemet.urltemperature}/${selectedOption.codpro +
-      selectedOption.codmun}?api_key=${config.aemet.apiKey}`
+        selectedOption.codmun}?api_key=${config.aemet.apiKey}`
     )
       .then(response => response.json())
       .then(response => fetch(response.datos).then(response => response.json()))
@@ -63,28 +63,22 @@ class ApiWeather extends React.Component {
     this.setState({ selectedOption });
   };
 
-
   render() {
-
     if (this.state.lenght > 0) {
-
-
-
       const apiName = this.state.dataTemperature.name;
       const name = options.filter(option => option.name === apiName);
 
       return (
         <div data-testid="home-page" className="main__homepage">
-
           <WeatherHome
             tempMax={this.state.dataTemperature.max}
             tempMin={this.state.dataTemperature.min}
             municipality={name[0].value}
-            change={this.handleChange} />
-        </div >
+            change={this.handleChange}
+          />
+        </div>
       );
     } else {
-
       return (
         <div className="weather-charge">
           <Load />
@@ -95,4 +89,3 @@ class ApiWeather extends React.Component {
 }
 
 export default ApiWeather;
-

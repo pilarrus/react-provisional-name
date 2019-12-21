@@ -7,17 +7,17 @@ export const Form = (props: RouteComponentProps) => {
   const [age, setAge] = useState("");
   const [password, setPassword] = useState("");
   const [gender, setGender] = useState("");
-  const [status, setStatus] = useState("");
+  const [level, setLevel] = useState("");
   const [chargeData, setChargeData] = useState(false);
   //const [data, setData] = useState<string[]>([]);
 
   console.log("@@@@@@", props);
 
   useEffect(() => {
-    if (status !== "" && gender !== "") {
+    if (level !== "" && gender !== "") {
       setChargeData(true);
     }
-  }, [status, gender]);
+  }, [level, gender]);
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
@@ -28,7 +28,7 @@ export const Form = (props: RouteComponentProps) => {
         age,
         password,
         gender,
-        status
+        level
       });
     }
   };
@@ -89,9 +89,9 @@ export const Form = (props: RouteComponentProps) => {
 
           <select
             required
-            name="status"
+            name="level"
             defaultValue={"Default"}
-            onChange={e => setStatus(e.target.value)}
+            onChange={e => setLevel(e.target.value)}
           >
             <option value="Default" disabled>
               Nivel de aventurer@

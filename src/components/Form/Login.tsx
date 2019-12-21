@@ -1,29 +1,46 @@
 import React, { FormEvent, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import dataUsers from "../../fake-data/usersRegisters";
 
 export const Login = (props: RouteComponentProps) => {
-  console.log(props);
+  //console.log(props);
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    props.history.push("/profile", {
-      name,
-      password
-    });
+    //Comprobar que existe, si existe enviar la info
+    const user = dataUsers.find(
+      u => u.name === name && u.password === password
+    );
+
+    if (user) {
+      props.history.push("/profile", user);
+    } else {
+      setMessage("Introduce los datos correctos");
+      setUsername("");
+      setPassword("");
+    }
+
+    // preguntar: por qué me obliga a retornar algo
   };
 
   return (
     <div className="social__right-login">
+      {message ? <h1> {message}</h1> : null}
       <form className="form" onSubmit={submit}>
         <input
+          value={name}
+          required
           type="text"
-          placeholder="Email"
+          placeholder="Usuario"
           className="form-input"
           onChange={e => setUsername(e.target.value.trim())}
         ></input>
         <input
+          value={password}
+          required
           type="password"
           placeholder="Contraseña"
           className="form-input"

@@ -7,11 +7,16 @@ export type TypeAdventure = {
 };
 
 export type User = {
+  id: number;
   nick: string;
+  password: string;
+  level: string;
   email: string;
   name: string;
-  misgrupos: string[];
-  misAmigos: string[];
+  myGroups: string[];
+  myFriends: string[];
+  gender: string;
+  img: string;
 };
 
 export type Users = User[];

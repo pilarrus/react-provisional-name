@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "../../components/Reusable/Title";
+import Title from "../Reusable/Title";
 import Info from "./Info";
 import Register from "./Register";
 

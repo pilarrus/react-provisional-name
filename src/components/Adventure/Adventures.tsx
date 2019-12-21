@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { TypeAdventure } from "../types";
 import { Link } from "react-router-dom";
+import { TypeAdventure } from "../../types";
+import Title from "../Reusable/Title";
 import AdventureComponent from "./Adventure";
-import Title from "./Reusable/Title";
 
 export default class Adventures extends Component<{
   adventures: TypeAdventure[];
