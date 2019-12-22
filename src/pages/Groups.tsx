@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router";
-import AddGroup from "../components/AddGroup";
-import Group from "../components/Group";
+import AddGroup from "../components/Group/AddGroup";
+import Group from "../components/Group/Group";
 import ButtonRainbow from "../components/Reusable/ButtonRainbow";
 import Title from "../components/Reusable/Title";
 import fetchGrupos from "../fake-data/groups";

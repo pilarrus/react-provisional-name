@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import { TypeGroup } from "../types";
+import { TypeGroup } from "../../types";
+import ButtonRainbow from "../Reusable/ButtonRainbow";
+import FormatDate from "../Reusable/FormatDate";
 
 type PropsGroup = {
   group: TypeGroup;
@@ -22,13 +24,14 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
       <div className="modal__content" onClick={e => e.stopPropagation()}>
         <div className="modal__container">
           <p>{group.name}</p>
-          <p>Fecha: {group.timestamp}</p>
+          <div>Fecha: <FormatDate timestamp={group.timestamp}/></div>
           <p>Lugar: {group.place}</p>
           <p>Tamaño máximo: {group.sizeGroup}</p>
-          <p>Usuarios:</p>
+          <p>Usuarios apuntados:</p>
           {group.users.map(user => (
             <div>{user}</div>
           ))}
+          <ButtonRainbow text="APUNTARME" />
         </div>
       </div>
     </div>

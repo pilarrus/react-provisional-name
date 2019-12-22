@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Title from "./Reusable/Title";
-import adventures from "../fake-data/adventures";
-import Select2 from "./Reusable/Select";
+import Title from "../Reusable/Title";
+import adventures from "../../fake-data/adventures";
+import Select2 from "../Reusable/Select";
 import { Input, DatePicker, TimePicker, InputNumber, Button } from "antd";
 import moment from 'moment';
 

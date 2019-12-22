@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import FormatDate from "./Reusable/FormatDate";
-import ButtonRainbow from "./Reusable/ButtonRainbow";
-import { TypeGroup } from "../types";
+import FormatDate from "../Reusable/FormatDate";
+import ButtonRainbow from "../Reusable/ButtonRainbow";
+import { TypeGroup } from "../../types";
 import GroupModal from "./GroupModal";
 
 type PropsGroup = {
