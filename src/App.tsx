@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import LoginContext from "./contexts/LoginContext";
 import Home from "./layout/Home";
 
 
 const App: React.FC = () => {
 
-
+  const [log, setLog] = useState(false);
   return (
     <div data-testid="main">
-      <Home />
+      <LoginContext.Provider value={{ log, setLog }}>
+        <Home />
+      </LoginContext.Provider>
     </div>
   );
 };

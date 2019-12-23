@@ -10,7 +10,7 @@ export const Login = (props: RouteComponentProps) => {
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    //Comprobar que existe, si existe enviar la info
+
     const user = dataUsers.find(
       u => u.name === name && u.password === password
     );
@@ -22,8 +22,6 @@ export const Login = (props: RouteComponentProps) => {
       setUsername("");
       setPassword("");
     }
-
-    // preguntar: por qué me obliga a retornar algo
   };
 
   return (
