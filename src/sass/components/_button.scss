@@ -1,3 +1,30 @@
 .adventures__btn {
   @include btn-purple;
 }
+
+.btn {
+  border-radius: 1em;
+  color: #000 !important;
+  background-color: #fff;
+  padding: 0.3rem 2.13rem;
+
+  &--rainbow {
+
+    width: fit-content;
+    padding: 3px;
+    background-image: linear-gradient(
+      to right,
+      #fdde5c 0%,
+      #f8ab5e calc(100% / 6),
+      #f56a62 calc(100% / 6 * 2),
+      #a176c8 calc(100% / 6 * 3),
+      #759beb calc(100% / 6 * 4),
+      #65beb3 calc(100% / 6 * 5),
+      #70db96 100%
+    );
+
+    background-clip: padding-box;
+    //border: 5px solid transparent;
+    border-radius: 1em;
+  }
+}

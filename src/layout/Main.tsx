@@ -18,6 +18,7 @@ const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
         <Route exact path="/" component={Home} />
         <Route exact path="/adventures" component={ApiAdventures} />
         <Route exact path="/alladventures" component={Adventures} />
+        <Route exact path="/groups/:activityID" component={Groups} />
         <Route exact path="/groups" component={Groups} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/login" component={LoginRegister} />

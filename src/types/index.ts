@@ -21,17 +21,17 @@ export type User = {
 
 export type Users = User[];
 
-export type Group = {
-  name: string;
-  timestamp: number;
-  place: string;
-  sizeGroup: number;
-  users: string[];
+export type TypeGroup = {
+  name: string,
+  timestamp: number,
+  place: string,
+  sizeGroup: number,
+  users: string[]
 };
 
 export type Groups = {
-  [id: string]: {
-    adventure: string;
-    groups: Group[] | string;
-  };
+  [id: string] : {
+    adventure: string,
+    groups: TypeGroup[] | string
+  }
 };
