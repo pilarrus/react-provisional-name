@@ -26,13 +26,9 @@ const Grupos: React.FC<RouteComponentProps<{
             let groups = fetchGrupos[adventureID].groups;
             //console.log(groups);
             //console.log(adventure);
-            if (Array.isArray(groups)) {
-              return groups.map(group => (
-                <Group key={group.name} group={group} />
-              ));
-            } else {
-              return [];
-            }
+            return Array.isArray(groups)
+            ? groups.map(group => (<Group key={group.name} group={group} />))
+            : []
           })}
         </div>
         <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
