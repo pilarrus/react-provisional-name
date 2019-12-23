@@ -1,6 +1,9 @@
 import { Groups } from "../types";
+import alberto from "../images/profile/alberto.jpeg";
 import ana from "../images/profile/ana.jpg";
+import marcela from "../images/profile/marcela.jpg";
 import pablo from "../images/profile/pablo.jpg";
+import pili from "../images/profile/pili.jpg";
 
 export default {
   1: {
@@ -36,7 +39,7 @@ export default {
         timestamp: 1607783400,
         place: "Rascafría",
         sizeGroup: 10,
-        users: []
+        users: [{nick: "Albertillo", img: alberto}, {nick: "Marcela", img: marcela}]
       }
     ]
   },
@@ -52,7 +55,7 @@ export default {
         timestamp: 1576236600,
         place: "San Martín de Valdeiglesias",
         sizeGroup: 10,
-        users: []
+        users: [{nick: "Anita", img: ana}]
       },
       {
         name: "Pepe y Pepa se van de juerga",
@@ -75,7 +78,7 @@ export default {
         timestamp: 1598005800,
         place: "Navacerrada",
         sizeGroup: 10,
-        users: []
+        users: [{nick: "Anita", img: ana}, {nick: "Paroar", img: pablo}, {nick: "Pilarusi", img: pili}]
       }
     ]
   },
