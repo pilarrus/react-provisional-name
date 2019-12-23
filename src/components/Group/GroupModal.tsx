@@ -40,7 +40,7 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
           <p>Usuarios apuntados:</p>
           {group.users !== [] &&
             users.map((user) => (
-              <Avatar nick={user.nick} img={user.img} />
+              <Avatar key={user.nick} nick={user.nick} img={user.img} />
             ))}
           <ButtonRainbow text="APUNTARME" />
         </div>
