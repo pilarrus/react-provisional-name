@@ -21,12 +21,18 @@ export type User = {
 
 export type Users = User[];
 
+export type PartialUser = {
+  nick: string;
+  img: string
+}
+export type Users2 = PartialUser[];
+
 export type TypeGroup = {
   name: string,
   timestamp: number,
   place: string,
   sizeGroup: number,
-  users: string[]
+  users: PartialUser[] | []
 };
 
 export type Groups = {

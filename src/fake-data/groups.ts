@@ -1,4 +1,6 @@
 import { Groups } from "../types";
+import ana from "../images/profile/ana.jpg";
+import pablo from "../images/profile/pablo.jpg";
 
 export default {
   1: {
@@ -9,7 +11,9 @@ export default {
         timestamp: 1579102200,
         place: "Buitrago de Lozoya",
         sizeGroup: 10,
-        users: []
+        users: [
+          {nick: "Anita", img: ana}, {nick: "Paroar", img: pablo}
+        ]
       }
     ]
   },
