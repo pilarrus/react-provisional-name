@@ -42,31 +42,19 @@ const Grupos: React.FC<RouteComponentProps<{
   } else {
     let activityID = RouteComponentProps.match.params.activityID;
     //console.log(activityID);
+    let idFound = adventuresID.find(adventureID => adventureID === activityID);
+    //console.log("id-->>>", idFound);
+    //@ts-ignore
+    let groups = fetchGrupos[idFound].groups;
+    //console.log(groups);
     return (
       <section>
         <Title title="Grupos" />
         <div className="grupos__container">
-          {adventuresID.map(adventureID => {
-            if (adventureID === activityID) {
-              //console.log(activityID);
-              //console.log(adventureID);
-              let groups = fetchGrupos[adventureID].groups;
-              //console.log(groups);
-              if (Array.isArray(groups)) {
-                return groups.map(group => (
-                  <Group key={group.name} group={group} />
-                ));
-              } else {
-                return (
-                  <div key="key">
-                    <p>{groups}</p>
-                  </div>
-                );
-              }
-            } else {
-              return [];
-            }
-          })}
+          { Array.isArray(groups)
+            ? groups.map(group => (<Group key={group.name} group={group} />))
+            : (<p key="key">{groups}</p>)
+          }
         </div>
         <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
         {isOpen && <AddGroup changeState={() => setIsOpen(!isOpen)}/>}
