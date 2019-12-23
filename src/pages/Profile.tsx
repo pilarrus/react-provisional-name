@@ -1,5 +1,6 @@
 import React from "react";
 import { RouteComponentProps } from "react-router";
+import Form from "../components/Form/SocialHome";
 import Friends from "../components/Profile/Friends";
 import Info from "../components/Profile/PersonalInfo";
 import Table2 from "../components/Profile/Table";
@@ -12,11 +13,16 @@ export const Profile: React.FC<RouteComponentProps<
 >> = RouteComponentProps => {
   let user = RouteComponentProps.location.state; // datos que recibo del formulario de registro o del login
 
-  return (
-    <div className="profile">
+  if (user) {
+    return (<div className="profile">
       <Info user={user} />
-      {user.myFriends ? <Friends friends={user.myFriends} /> : null}
+      {user.myFriends ? <Friends friends={user.myFriends} /> : <div>Todavía no tienes amig@s</div>}
       <Table2 />
     </div>
-  );
+    );
+  } else {
+    return (<Form />);
+  }
+
+
 };
