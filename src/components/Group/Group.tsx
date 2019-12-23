@@ -20,21 +20,26 @@ export default class Group extends Component<PropsGroup> {
   };
 
   handleState = () => {
-    this.setState({ isOpen: !this.state.isOpen});
+    this.setState({ isOpen: !this.state.isOpen });
   };
 
   render() {
     const { group } = this.props;
-      return (
-        <>
-        {this.state.isOpen && <GroupModal group={group} changeState={this.handleState}/>}
+    return (
+      <>
+        {this.state.isOpen && (
+          <GroupModal group={group} changeState={this.handleState} />
+        )}
         <div className="group" style={groupStyle}>
           <h3>{group.name}</h3>
           <p>{group.place}</p>
-          <FormatDate timestamp={group.timestamp}/>
+          <FormatDate timestamp={group.timestamp} />
+          <p>
+            Nº de usuarios apuntados: {group.users.length} de {group.sizeGroup}
+          </p>
           <ButtonRainbow text="VER" changeState={this.handleState} />
         </div>
-        </>
-      );
+      </>
+    );
   }
 }
