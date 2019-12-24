@@ -13,7 +13,6 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
 
   return (
     <div className="profile__friends">
-      <h1 className="profile-title">Amig@s</h1>
       <div className="profile__friends-box">
         {myFriends.map(friends =>
           friends.map(friend => (

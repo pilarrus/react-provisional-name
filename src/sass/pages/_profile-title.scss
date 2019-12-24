@@ -1,5 +1,5 @@
 $stroke: #0d1b1e;
-$shadow: #2dc7ff;
+$shadow: $themeOriginalNav;
 
 $size: 5rem;
 $halftone: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAHElEQVQYV2NUVFT8f//+fUYGBgYGMAEDcA5IBQCKJQVmn76DhAAAAABJRU5ErkJggg==");
@@ -38,7 +38,7 @@ $halftone: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKL
 
   &--shadow {
     text-align: center;
-    text-shadow: 6px 6px $shadow;
+    text-shadow: 5px 2px $shadow;
   }
 
   &--halftone {
