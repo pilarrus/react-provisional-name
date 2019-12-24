@@ -6,20 +6,23 @@ export const Info: React.FC<{
   user: User;
 }> = ({ user }) => {
   return (
-    <div className="profile__name">
-      <div className="profile__name-welcome">
-        <h1>
+    <div className="profile__info">
+      <div className="profile__info-name">
+        <h1 className="heading heading--stroke heading--shadow">
           {user.gender === "male"
             ? "Bienvenido"
             : user.gender === "female"
             ? "Bienvenida"
             : "Bienvenid@"}
-          <span> {user.name}</span>
+          <br></br>
+          <span className="heading heading--stroke heading--shadow">
+            {user.name}
+          </span>
         </h1>
-        <p>Nivel {user.level}</p>
       </div>
-      <div className="profile__name-picture">
+      <div className="profile__info-picture">
         <img src={user.img === undefined ? noimage : user.img} alt="you" />
+        <p className="profile__info-picture-text">Nivel {user.level}</p>
       </div>
     </div>
   );

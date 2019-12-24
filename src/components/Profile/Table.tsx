@@ -20,8 +20,6 @@ export const Table2: React.FC = () => {
         >
           <Button>Darme de baja</Button>
         </Popconfirm>
-
-
       )
     }
   ];
@@ -40,35 +38,29 @@ export const Table2: React.FC = () => {
       date: "13-12-2019",
       day: "Viernes",
       place: "Guadarrama",
-      time:
-        "10:00"
+      time: "10:00"
     },
     {
       key: 2,
       date: "13-12-2019",
       day: "Viernes",
       place: "Guadarrama",
-      time:
-        "10:00"
+      time: "10:00"
     },
     {
       key: 3,
       date: "13-12-2019",
       day: "Viernes",
       place: "Guadarrama",
-      time:
-        "10:00"
+      time: "10:00"
     }
   ];
   return (
-    <div>
+    <div className="profile__table">
       <h1>Este mes:</h1>
       <Table
-        className="profile-table"
         columns={columns}
-        expandedRowRender={record => (
-          <p style={{ margin: 0 }}>{record.time}</p>
-        )}
+        expandedRowRender={record => <p style={{ margin: 0 }}>{record.time}</p>}
         dataSource={data}
       />
     </div>
@@ -76,4 +68,3 @@ export const Table2: React.FC = () => {
 };
 
 export default Table2;
-

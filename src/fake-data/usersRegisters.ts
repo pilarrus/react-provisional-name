@@ -1,8 +1,8 @@
 import alberto from "../images/profile/alberto.jpeg";
-import ana from "../images/profile/ana.jpg";
+import ana from "../images/profile/ana.jpeg";
 import marcela from "../images/profile/marcela.jpg";
-import pablo from "../images/profile/pablo.jpg";
-import pili from "../images/profile/pili.jpg";
+import pablo from "../images/profile/pablo.jpeg";
+import pili from "../images/profile/pili.jpeg";
 import { Users } from "../types";
 
 export default [

@@ -12,16 +12,20 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
   });
 
   return (
-    <div className="friends">
-      <h1>Amig@s</h1>
-      {myFriends.map(friends =>
-        friends.map(friend => (
-          <div className="friends_img">
-            <span>{friend.name}</span>
-            <img src={friend.img} alt="friend" />
-          </div>
-        ))
-      )}
+    <div className="profile__friends">
+      <h1 className="profile-title">Amig@s</h1>
+      <div className="profile__friends-box">
+        {myFriends.map(friends =>
+          friends.map(friend => (
+            <div className="friends_img">
+              <img src={friend.img} alt="friend" className="image" />
+              <div className="middle">
+                <span className="text">{friend.name}</span>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };

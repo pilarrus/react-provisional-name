@@ -35,8 +35,11 @@ const Grupos: React.FC<RouteComponentProps<{
             }
           })}
         </div>
-        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
-        {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)}/> : ""}
+        <ButtonRainbow
+          text="Añadir grupo"
+          changeState={() => setIsOpen(!isOpen)}
+        />
+        {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)} /> : ""}
       </section>
     );
   } else {
@@ -68,8 +71,11 @@ const Grupos: React.FC<RouteComponentProps<{
             }
           })}
         </div>
-        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
-        {isOpen && <AddGroup changeState={() => setIsOpen(!isOpen)}/>}
+        <ButtonRainbow
+          text="Añadir grupo"
+          changeState={() => setIsOpen(!isOpen)}
+        />
+        {isOpen && <AddGroup changeState={() => setIsOpen(!isOpen)} />}
       </section>
     );
   }
