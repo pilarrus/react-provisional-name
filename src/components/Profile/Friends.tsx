@@ -1,6 +1,5 @@
 import React from "react";
 import users from "../../fake-data/usersRegisters";
-
 export const Friends: React.FC<{ friends: string[] }> = props => {
   /***
    recorre los amigos que llegan por props (map ¿por qué con forEach no funciona?)
@@ -24,6 +23,11 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
             </div>
           ))
         )}
+        <div className="friends_img">
+          <div className="middle">
+            <span className="text">+</span>
+          </div>
+        </div>
       </div>
     </div>
   );
