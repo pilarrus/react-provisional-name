@@ -1,5 +1,6 @@
 import React from "react";
 import noimage from "../../images/profile/noimage.png";
+import icon from "../../images/profile/user.svg";
 import { User } from "../../types";
 
 export const Info: React.FC<{
@@ -19,6 +20,9 @@ export const Info: React.FC<{
             {user.name}
           </span>
         </h1>
+        <div className="icon__friends">
+          <img src={icon} alt="icon" className="icon" />
+        </div>
       </div>
       <div className="profile__info-picture">
         <img
