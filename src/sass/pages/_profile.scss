@@ -1,12 +1,12 @@
 .profile {
   // INFO DE ARRIBA
+  background-color: rgba(235, 236, 232, 0.767);
   &__info {
     display: flex;
     width: 100%;
-    background-color: rgba(82, 154, 187, 0.404);
 
-    border: 10px solid white;
-    border-radius: 30px;
+    // border: 10px solid white;
+    //border-radius: 30px;
     padding: 18px;
 
     &-name {
@@ -26,7 +26,7 @@
       padding: 10px;
 
       .image {
-        border-radius: 30px;
+        border-radius: 20px;
         opacity: 1;
         display: block;
         width: 100%;
@@ -65,12 +65,35 @@
 
   //GRUPOS
   &__groups {
-    background-color: salmon;
+    border-radius: 20px;
+    margin: 10px 10px 30px 10px;
+    background-color: rgba(222, 223, 222, 0.884);
+    display: flex;
+    justify-content: space-around;
+    &-b1 {
+      border-radius: 20px;
+      padding: 30px;
+      width: 40%;
+      cursor: pointer;
+      background-color: rgba(82, 154, 187, 0.404);
+      color: white;
+      font-size: 16px;
+      border: none;
+      margin-bottom: 10px;
+      transition: 0.5s;
+
+      &:hover {
+        background-color: rgb(210, 216, 157);
+      }
+    }
   }
 
   //AMIGOS
   &__friends {
     //  background-color: rebeccapurple;
+    border-radius: 20px;
+    margin: 10px 10px 30px 10px;
+    background-color: rgba(222, 223, 222, 0.884);
 
     &-box {
       padding: 35px;

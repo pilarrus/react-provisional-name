@@ -10,7 +10,7 @@ $halftone: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKL
 }
 
 @mixin stroke-color($property) {
-  -webkit-text-stroke-color: $property;
+  //-webkit-text-stroke-color: $property;
   -moz-text-stroke-color: $property;
 }
 
