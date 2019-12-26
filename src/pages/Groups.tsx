@@ -3,6 +3,7 @@ import fetch from "../utils/mockFetch";
 import { Groups, Groups2 } from "../types";
 import { RouteComponentProps, withRouter } from "react-router";
 import GroupsComponent from "../components/Group/Groups";
+import Load from "../components/Reusable/Loading";
 
 class GroupContainer extends React.Component<
   RouteComponentProps<{
@@ -83,7 +84,7 @@ class GroupContainer extends React.Component<
         <GroupsComponent groups={allGroups} showAll={showAll} />
       );
     } else {
-      return <p>Cargando...</p>;
+      return <Load/>;
     }
   }
 }
