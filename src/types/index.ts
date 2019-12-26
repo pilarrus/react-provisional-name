@@ -41,3 +41,7 @@ export type Groups = {
     groups: TypeGroup[] | string
   }
 };
+
+export type Groups2 = {
+  [adventureName: string]: TypeGroup[] | string;
+};
