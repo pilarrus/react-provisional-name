@@ -8,11 +8,6 @@ type PropsGroup = {
   group: TypeGroup;
   changeState: () => void;
 };
-/*type PartialUser = {
-  nick: string;
-  img: string;
-}
-type Users2 = PartialUser[];*/
 
 const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
   useEffect(() => {

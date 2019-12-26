@@ -14,14 +14,11 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   let adventureName = "";
-  //console.log(groups);
 
   const showAnyGroup = () => {
     let adventureNameArray = Object.keys(groups);
     let adventureNameCopy = adventureNameArray[0];
-    //console.log("--", adventureNameCopy);
     let groupsCopy = groups[adventureNameCopy];
-    //console.log("@@", groupsCopy);
     adventureName = " de " + adventureNameCopy;
     return Array.isArray(groupsCopy)
     ? (groupsCopy.map(group => <Group key={group.name} group={group} />))
