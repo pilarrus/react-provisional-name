@@ -22,10 +22,7 @@ const CompGroups2: React.FC<PropsCompGroups> = ({groups, showAll}) => {
     //console.log("--", adventureNameCopy);
     let groupsCopy = groups[adventureNameCopy];
     //console.log("@@", groupsCopy);
-    (typeof groupsCopy === "string") && (adventureName = " de " + adventureNameCopy);
-    /*if(typeof groupsCopy === "string") {
-      adventureName = " de " + adventureNameCopy;
-    }*/
+    adventureName = " de " + adventureNameCopy;
     return Array.isArray(groupsCopy)
     ? groupsCopy.map(group => (<Group key={group.name} group={group} />))
     : (<p key="key">{groupsCopy}</p>)
