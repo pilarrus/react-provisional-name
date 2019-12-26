@@ -16,7 +16,7 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
       <div className="profile__friends-box">
         {myFriends.map(friends =>
           friends.map(friend => (
-            <div className="friends_img">
+            <div className="friends_img" key={friend.id}>
               <img src={friend.img} alt="friend" className="image" />
               <div className="middle">
                 <span className="text">{friend.name}</span>

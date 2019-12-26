@@ -8,7 +8,7 @@ const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
   const contextColor = useContext(ColorContext);
   const contextLog = useContext(LoginContext);
 
-  console.log("CONTEXT EN NAV", contextLog);
+  //console.log("CONTEXT EN NAV", contextLog);
   return (
     <div className={`navbar ${contextColor.colorNav}`}>
       <div className="toggle-sidebar">
@@ -45,7 +45,6 @@ const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
             </button>
             <button
               onClick={() => {
-
                 contextColor.setColorNav("purple");
                 contextColor.setColorSide("darkpurple");
               }}
@@ -65,7 +64,8 @@ const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
 
         <li>
           <Link to="/login" onClick={() => contextLog.setLog(false)}>
-            <i className="fa fa-user"></i>{!contextLog.log ? "Login" : "Logout"}
+            <i className="fa fa-user"></i>
+            {!contextLog.log ? "Login" : "Logout"}
           </Link>
         </li>
       </ul>

@@ -1,5 +1,7 @@
 import { Button, Popconfirm, Table } from "antd";
+import "antd/dist/antd.css";
 import React from "react";
+
 export const Table2: React.FC = () => {
   const columns = [
     { title: "Fecha", dataIndex: "date", key: "date" },
@@ -58,11 +60,16 @@ export const Table2: React.FC = () => {
   return (
     <div className="profile__table">
       <h1>Este mes:</h1>
-      <Table
-        columns={columns}
-        expandedRowRender={record => <p style={{ margin: 0 }}>{record.time}</p>}
-        dataSource={data}
-      />
+      <div className="profile__table-box">
+        <Table
+          className="profile__table-t"
+          columns={columns}
+          expandedRowRender={record => (
+            <p style={{ margin: 0 }}>{record.time}</p>
+          )}
+          dataSource={data}
+        />
+      </div>
     </div>
   );
 };
