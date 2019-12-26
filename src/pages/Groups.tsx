@@ -20,7 +20,6 @@ class GroupContainer extends React.Component<
 
   _isMounted = false;
 
-  params = this.props.match.params;
 
   componentDidMount() {
     this._isMounted = true;
@@ -47,7 +46,8 @@ class GroupContainer extends React.Component<
       let adventuresID = Object.keys(this.state.fetchGroups);
       //console.log(adventuresID);
       //console.log("params",this.params);
-      if (Object.keys(this.params).length === 0) {
+      let params = this.props.match.params;
+      if (Object.keys(params).length === 0) {
         showAll = true;
         //console.log("showAll>", showAll);
         adventuresID.forEach(adventureID => {
@@ -76,7 +76,7 @@ class GroupContainer extends React.Component<
         let groups = this.state.fetchGroups[idFound].groups;
         //console.log(groups);
         allGroups[adventureName] = groups;
-        this.params = {};
+        //this.params = {};
       }
       //console.log("@@@", allGroups);
       return (
