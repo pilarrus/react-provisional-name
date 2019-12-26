@@ -10,7 +10,7 @@ type PropsCompGroups = {
   showAll: boolean;
 };
 
-const CompGroups2: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
+const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   let adventureName = "";
@@ -60,4 +60,4 @@ const CompGroups2: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
   );
 };
 
-export default CompGroups2;
+export default Groups;
