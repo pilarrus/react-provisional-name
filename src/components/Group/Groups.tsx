@@ -8,11 +8,11 @@ import Group from "./Group";
 type PropsCompGroups = {
   groups: Groups2;
   showAll: boolean;
-}
+};
 
-const CompGroups2: React.FC<PropsCompGroups> = ({groups, showAll}) => {
+const CompGroups2: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   let adventureName = "";
   //console.log(groups);
 
@@ -24,30 +24,40 @@ const CompGroups2: React.FC<PropsCompGroups> = ({groups, showAll}) => {
     //console.log("@@", groupsCopy);
     adventureName = " de " + adventureNameCopy;
     return Array.isArray(groupsCopy)
-    ? groupsCopy.map(group => (<Group key={group.name} group={group} />))
-    : (<p key="key">{groupsCopy}</p>)
-  }
+    ? (groupsCopy.map(group => <Group key={group.name} group={group} />))
+    : (<p key="key">{groupsCopy}</p>);
+  };
 
   const showAllGroups = () => {
     let adventureNames = Object.keys(groups);
     return adventureNames.map(adventureName => {
       let groupsCopy = groups[adventureName];
-      return Array.isArray(groupsCopy) && groupsCopy.map(group => (<Group key={group.name} group={group} />));
-    })
-  }
+      return (
+        Array.isArray(groupsCopy) && (
+          <div key={adventureName}>
+            <p>{adventureName}</p>
+            {groupsCopy.map(group => (
+              <Group key={group.name} group={group} />
+            ))}
+          </div>
+        )
+      );
+    });
+  };
 
   let showGroups = showAll ? showAllGroups() : showAnyGroup();
 
   return (
     <section>
       <Title title={`Grupos${adventureName}`} />
-      <div className="grupos__container">
-        {showGroups}
-      </div>
-      <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
-      {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)}/> : ""}
+      <div className="grupos__container">{showGroups}</div>
+      <ButtonRainbow
+        text="Añadir grupo"
+        changeState={() => setIsOpen(!isOpen)}
+      />
+      {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)} /> : ""}
     </section>
   );
-}
+};
 
 export default CompGroups2;
