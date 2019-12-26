@@ -1,62 +1,91 @@
-import React, { useState } from "react";
+import React from "react";
+import fetch from "../utils/mockFetch";
+import { Groups, Groups2 } from "../types";
 import { RouteComponentProps, withRouter } from "react-router";
-import AddGroup from "../components/Group/AddGroup";
-import Group from "../components/Group/Group";
-import ButtonRainbow from "../components/Reusable/ButtonRainbow";
-import Title from "../components/Reusable/Title";
-import fetchGrupos from "../fake-data/groups";
+import GroupsComponent from "../components/Group/Groups";
 
-let adventuresID = Object.keys(fetchGrupos);
-
-const Grupos: React.FC<RouteComponentProps<{
-  activityID?: string;
-}>> = RouteComponentProps => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  let params = RouteComponentProps.match.params;
-  //console.log(params);
-  if (Object.keys(params).length === 0) {
-    //console.log(RouteComponentProps);
-    return (
-      <section>
-        <Title title="Grupos" />
-        <div className="grupos__container">
-          {adventuresID.map(adventureID => {
-            //let adventure = fetchGrupos[adventureID].adventure;
-            let groups = fetchGrupos[adventureID].groups;
-            //console.log(groups);
-            //console.log(adventure);
-            return Array.isArray(groups)
-            ? groups.map(group => (<Group key={group.name} group={group} />))
-            : []
-          })}
-        </div>
-        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
-        {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)}/> : ""}
-      </section>
-    );
-  } else {
-    let activityID = RouteComponentProps.match.params.activityID;
-    //console.log(activityID);
-    let idFound = adventuresID.find(adventureID => adventureID === activityID);
-    //console.log("id-->>>", idFound);
-    //@ts-ignore
-    let groups = fetchGrupos[idFound].groups;
-    //console.log(groups);
-    return (
-      <section>
-        <Title title="Grupos" />
-        <div className="grupos__container">
-          { Array.isArray(groups)
-            ? groups.map(group => (<Group key={group.name} group={group} />))
-            : (<p key="key">{groups}</p>)
-          }
-        </div>
-        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
-        {isOpen && <AddGroup changeState={() => setIsOpen(!isOpen)}/>}
-      </section>
-    );
+class GroupContainer extends React.Component<
+  RouteComponentProps<{
+    activityID?: string;
+  }>,
+  { fetchGroups: Groups }
+> {
+  constructor(props: RouteComponentProps) {
+    super(props);
+    
+    this.state = {
+      fetchGroups: {}
+    };
   }
-};
 
-export default withRouter(Grupos);
+  _isMounted = false;
+
+  params = this.props.match.params;
+
+  componentDidMount() {
+    this._isMounted = true;
+    fetch<Groups>("/groups")
+      .then(response => response.json())
+      .then(fetchGroups => {
+        if (this._isMounted) {
+          this.setState({
+            fetchGroups
+          });
+        }
+      });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  render() {
+    let showAll: boolean;
+    let allGroups: Groups2 = {};
+
+    if (Object.keys(this.state.fetchGroups).length !== 0) {
+      let adventuresID = Object.keys(this.state.fetchGroups);
+      //console.log(adventuresID);
+      //console.log("params",this.params);
+      if (Object.keys(this.params).length === 0) {
+        showAll = true;
+        //console.log("showAll>", showAll);
+        adventuresID.forEach(adventureID => {
+          let adventureName = this.state.fetchGroups[adventureID].adventure;
+          //console.log("---", adventureName);
+          let groups = this.state.fetchGroups[adventureID].groups;
+          //console.log("groups>>>>>", groups);
+          (Array.isArray(groups)) && (allGroups[adventureName] = groups);
+          /*if (Array.isArray(groups)) {
+            allGroups[adventureName] = groups;
+          }*/
+        });
+      } else {
+        showAll = false;
+        //console.log("showAll>", showAll);
+        let activityID = this.props.match.params.activityID;
+        //console.log("activity...", activityID);
+        let idFound = adventuresID.find(
+          adventureID => adventureID === activityID
+        );
+        //console.log("id-->>>", idFound);
+        //@ts-ignore
+        let adventureName = this.state.fetchGroups[idFound].adventure;
+        //console.log("---", adventureName);
+        //@ts-ignore
+        let groups = this.state.fetchGroups[idFound].groups;
+        //console.log(groups);
+        allGroups[adventureName] = groups;
+        this.params = {};
+      }
+      //console.log("@@@", allGroups);
+      return (
+        <GroupsComponent groups={allGroups} showAll={showAll} />
+      );
+    } else {
+      return <p>Cargando...</p>;
+    }
+  }
+}
+
+export default withRouter(GroupContainer);
