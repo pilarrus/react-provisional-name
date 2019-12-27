@@ -1,10 +1,7 @@
 import React from "react";
 import Home from "./layout/Home";
 
-
 const App: React.FC = () => {
-
-
   return (
     <div data-testid="main">
       <Home />

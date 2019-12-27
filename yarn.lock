@@ -9686,25 +9686,6 @@ react-error-overlay@^6.0.1:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.1.tgz#b8d3cf9bb991c02883225c48044cb3ee20413e0f"
   integrity sha512-V9yoTr6MeZXPPd4nV/05eCBvGH9cGzc52FN8fs0O0TVQ3HYYf1n7EgZVtHbldRq5xU9zEzoXIITjYNIfxDDdUw==
 
-react-gesture-gallery@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-gesture-gallery/-/react-gesture-gallery-1.1.0.tgz#9c2bddeaa0ebb68681724f28f1cb1ea3d118b679"
-  integrity sha512-596ABR6cORz1WfjDTcmlTZwTl/dvfWAHx6INuegeCn1njHBV+y01jbxk9bik7yR+WKqW6WPOZwOWNxlxUuG4Mg==
-  dependencies:
-    "@types/react" "^16.8.10"
-    "@types/react-dom" "^16.8.3"
-    react-page-controller "^3.1.0"
-    tslib "^1.9.3"
-
-react-gesture-responder@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-gesture-responder/-/react-gesture-responder-2.1.0.tgz#204606dc23e388d6d51d0f27d4acf7ede2bd10ba"
-  integrity sha512-uXfFNOtSus5zo2u2WoXMmfAWLdbAYvubmA4AOk9UyLO9n7koVagvSHW7MOUEnhE+F6NeVuyTc+8pyZxLKwyxmg==
-  dependencies:
-    "@types/react" "^16.8.10"
-    "@types/react-dom" "^16.8.3"
-    tslib "^1.9.3"
-
 react-icons@^3.7.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.8.0.tgz#229de5904809696c9f46932bd9b6126b2522866e"
