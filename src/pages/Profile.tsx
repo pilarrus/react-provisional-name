@@ -4,7 +4,6 @@ import Form from "../components/Form/SocialHome";
 import Friends from "../components/Profile/Friends";
 import ProfileGroups from "../components/Profile/Groups";
 import Info from "../components/Profile/PersonalInfo";
-import TableAdventures from "../components/Profile/Table";
 import LoginContext from "../contexts/LoginContext";
 import { User } from "../types";
 
@@ -28,7 +27,6 @@ export const Profile: React.FC<RouteComponentProps<
         )}
 
         <ProfileGroups />
-        <TableAdventures />
       </div>
     );
   } else {

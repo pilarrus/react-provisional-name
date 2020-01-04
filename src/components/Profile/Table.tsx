@@ -1,8 +1,8 @@
-import { Button, Popconfirm, Table } from "antd";
+import { Button, Popconfirm } from "antd";
 import "antd/dist/antd.css";
 import React from "react";
 
-export const Table2: React.FC = () => {
+export const Table: React.FC = () => {
   const columns = [
     { title: "Fecha", dataIndex: "date", key: "date" },
     { title: "Día de la semana", dataIndex: "day", key: "day" },
@@ -11,7 +11,7 @@ export const Table2: React.FC = () => {
     {
       title: "No podré asistir",
       dataIndex: "",
-      key: "x",
+      key: "",
       render: () => (
         <Popconfirm
           title="¿Darte de baja de la aventura?"
@@ -26,7 +26,8 @@ export const Table2: React.FC = () => {
     }
   ];
 
-  function confirm() {
+  function confirm(e: any) {
+    console.log(e.value);
     console.log("confirmado");
   }
 
@@ -34,7 +35,7 @@ export const Table2: React.FC = () => {
     console.log(e);
   }
 
-  const data = [
+  /*const data = [
     {
       key: 1,
       date: "13-12-2019",
@@ -57,21 +58,52 @@ export const Table2: React.FC = () => {
       time: "10:00"
     }
   ];
+
+  */
   return (
     <div className="profile__table">
       <h1>Este mes:</h1>
       <div className="profile__table-box">
-        <Table
-          className="profile__table-t"
-          columns={columns}
-          expandedRowRender={record => (
-            <p style={{ margin: 0 }}>{record.time}</p>
-          )}
-          dataSource={data}
-        />
+        <table className="greenTable">
+          <thead>
+            <tr>
+              {columns.map(th => (
+                <th>{th.title}</th>
+              ))}
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colSpan={4}>
+                <div className="links">
+                  <a href="#">&laquo;</a>{" "}
+                  <a className="active" href="#">
+                    1
+                  </a>{" "}
+                  <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>{" "}
+                  <a href="#">&raquo;</a>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr>
+              <td>cell1_1</td>
+              <td>cell2_1</td>
+              <td>cell3_1</td>
+              <td>cell4_1</td>
+            </tr>
+            <tr>
+              <td>cell1_2</td>
+              <td>cell2_2</td>
+              <td>cell3_2</td>
+              <td>cell4_2</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
-export default Table2;
+export default Table;

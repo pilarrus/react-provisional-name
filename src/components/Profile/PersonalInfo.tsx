@@ -1,8 +1,7 @@
 import React from "react";
-import noimage from "../../images/profile/noimage.png";
 import icon from "../../images/profile/user.svg";
 import { User } from "../../types";
-
+import ImageProfile from "./ImageProfile";
 export const Info: React.FC<{
   user: User;
 }> = ({ user }) => {
@@ -24,16 +23,7 @@ export const Info: React.FC<{
           <img src={icon} alt="icon" className="icon" />
         </div>
       </div>
-      <div className="profile__info-picture">
-        <img
-          src={user.img === undefined ? noimage : user.img}
-          alt="you"
-          className="image"
-        />
-        <div className="middle">
-          <p className="text">Nivel {user.level}</p>
-        </div>
-      </div>
+      <ImageProfile user={user} />
     </div>
   );
 };
