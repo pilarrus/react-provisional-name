@@ -5,12 +5,10 @@ class Profile extends Component {
   render() {
     const { avatar } = this.props;
     return (
-      <div className="profile__info-picture">
-        <div
-          className="image"
-          style={{ backgroundImage: `url(${avatar})` }}
-        ></div>
-      </div>
+      <div
+        className="image"
+        style={{ backgroundImage: `url(${avatar})` }}
+      ></div>
     );
   }
 }

@@ -19,21 +19,23 @@
       }
     }
     &-picture {
-      display: flex;
-      justify-content: flex-end;
       width: 50%;
       position: relative;
-      padding: 10px;
 
       .image {
         border-radius: 20px;
+        background-position: center;
+        background-repeat: no-repeat;
         opacity: 1;
         display: block;
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
         transition: 0.5s ease;
         backface-visibility: hidden;
+        border: 1px solid #ccc;
+        width: 400px;
+        height: 400px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
 
       .middle {
