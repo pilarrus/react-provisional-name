@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import noimage from "../../../images/profile/noimage.png";
 import Avatar from "./Avatar";
 import GetAvatar from "./GetAvatar";
 
@@ -6,10 +7,12 @@ class FinalAvatar extends Component {
   constructor(props) {
     super(props);
     console.log(">>>>>>>>>>>", this.props.user.img);
+
+    const img = props.user.img === undefined ? noimage : props.user.img;
     this.state = {
       isAvatarDefault: true,
       profile: {
-        avatar: props.user.img
+        avatar: img
       }
     };
     this.updateAvatar = this.updateAvatar.bind(this);
@@ -29,7 +32,7 @@ class FinalAvatar extends Component {
   render() {
     const { profile, isAvatarDefault } = this.state;
     return (
-      <div>
+      <div className="getavatar">
         <GetAvatar
           avatar={profile.avatar}
           isAvatarDefault={isAvatarDefault}

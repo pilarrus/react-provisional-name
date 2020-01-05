@@ -46,6 +46,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
+        z-index: 111;
       }
       &:hover .image {
         opacity: 0.3;
@@ -61,6 +62,10 @@
         color: white;
         font-size: 16px;
         padding: 16px 32px;
+      }
+      .getavatar {
+        display: flex;
+        justify-content: center;
       }
     }
   }

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import icon from "../../../images/profile/anadir-imagen.svg";
 
 class GetAvatar extends Component {
   constructor(props) {
@@ -34,22 +35,27 @@ class GetAvatar extends Component {
   }
 
   render() {
+    const styleIcon = {
+      width: "50px",
+      height: "50px",
+      cursor: "pointer"
+    };
+    const styleInput = {
+      display: "none"
+    };
     const { isAvatarDefault, avatar } = this.props;
     return (
-      <div className="get-avatar">
-        <button
-          className="get-avatar__trigger"
-          type="button"
-          onClick={this.handleFilePicker}
-        >
-          Get IMAGE!
-        </button>
-
+      <div className="middle">
+        <label htmlFor="file">
+          <img src={icon} alt="icon" style={styleIcon} />
+        </label>
         <input
           type="file"
           ref={this.myFileField}
           className="get-avatar__upload-field"
           onChange={this.uploadImage}
+          id="file"
+          style={styleInput}
         />
 
         <div
