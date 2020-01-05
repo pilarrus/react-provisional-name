@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import icon from "../../images/profile/anadir-imagen.svg";
-import noimage from "../../images/profile/noimage.png";
 import { User } from "../../types";
+import FinalAvatar from "./Avatar/FinalAvatar";
 
 export const ImageProfile: React.FC<{
   user: User;
@@ -24,17 +24,11 @@ export const ImageProfile: React.FC<{
 
   const uploadHandler = () => {
     console.log(selectedFile);
-
-    const formData = new FormData();
-    console.log(formData);
   };
   return (
     <div className="profile__info-picture">
-      <img
-        src={user.img === undefined ? noimage : user.img}
-        alt="you"
-        className="image"
-      />
+      <FinalAvatar user={user} />
+
       <div className="middle">
         <label htmlFor="file">
           <img src={icon} alt="icon" style={styleIcon} />

@@ -5,6 +5,7 @@ class GetAvatar extends Component {
   constructor(props) {
     super(props);
 
+    console.log(props);
     this.fr = new FileReader();
     this.myFileField = React.createRef();
 

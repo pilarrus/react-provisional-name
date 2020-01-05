@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import Avatar from "../Profile/Avatar";
-import GetAvatar from "../Profile/GetAvatar";
-import defaultImage from "./defaultImage";
+import Avatar from "./Avatar";
+import GetAvatar from "./GetAvatar";
 
 class FinalAvatar extends Component {
   constructor(props) {
     super(props);
+    console.log(">>>>>>>>>>>", this.props.user.img);
     this.state = {
       isAvatarDefault: true,
       profile: {
-        avatar: defaultImage
+        avatar: props.user.img
       }
     };
     this.updateAvatar = this.updateAvatar.bind(this);
@@ -29,7 +29,7 @@ class FinalAvatar extends Component {
   render() {
     const { profile, isAvatarDefault } = this.state;
     return (
-      <div className="App">
+      <div>
         <GetAvatar
           avatar={profile.avatar}
           isAvatarDefault={isAvatarDefault}
