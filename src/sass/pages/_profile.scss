@@ -1,4 +1,5 @@
 .profile {
+  transition: 0.5s ease;
   // INFO DE ARRIBA
   background-color: rgba(235, 236, 232, 0.767);
   &__info {
@@ -39,7 +40,6 @@
       }
 
       .middle {
-        transition: 0.5s ease;
         opacity: 0;
         position: absolute;
         top: 80%;
@@ -218,9 +218,8 @@
 }
 
 .icon__friends {
+  display: block;
   img {
-    left: 20px;
-    bottom: 10px;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -229,4 +228,27 @@
 
 .ant-table-thead {
   background-color: blueviolet;
+}
+
+// AÑADIR AMIGOS
+
+.nofriends {
+  display: flex;
+  &-name {
+    background-color: #3b96c0;
+    color: white;
+    font-size: 16px;
+    padding: 10px 22px;
+  }
+}
+
+.icon__nofriends {
+  display: flex;
+  flex-direction: column;
+  img {
+    padding: 5px;
+    margin-top: 20px;
+    height: 40px;
+    cursor: pointer;
+  }
 }

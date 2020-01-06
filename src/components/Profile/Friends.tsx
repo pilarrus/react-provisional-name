@@ -1,6 +1,6 @@
 import React from "react";
 import users from "../../fake-data/usersRegisters";
-import icon from "../../images/profile/user.svg";
+import NoFriends from "./NoFriends";
 
 export const Friends: React.FC<{ friends: string[] }> = props => {
   /***
@@ -25,10 +25,8 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
             </div>
           ))
         )}
-        <div className="icon__friends">
-          <img src={icon} alt="icon" className="icon" />
-        </div>
       </div>
+      <NoFriends />
     </div>
   );
 };
