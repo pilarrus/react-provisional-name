@@ -3,6 +3,7 @@ import { RouteComponentProps } from "react-router";
 import Form from "../components/Form/SocialHome";
 import Friends from "../components/Profile/Friends";
 import ProfileGroups from "../components/Profile/Groups";
+import NoFriends from "../components/Profile/NoFriends";
 import Info from "../components/Profile/PersonalInfo";
 import LoginContext from "../contexts/LoginContext";
 import { User } from "../types";
@@ -23,7 +24,9 @@ export const Profile: React.FC<RouteComponentProps<
         {user.myFriends ? (
           <Friends friends={user.myFriends} />
         ) : (
-          <div>Todavía no tienes amig@s</div>
+          <div>
+            <NoFriends />
+          </div>
         )}
 
         <ProfileGroups />

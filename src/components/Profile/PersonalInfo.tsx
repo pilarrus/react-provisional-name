@@ -1,10 +1,16 @@
-import React from "react";
-import icon from "../../images/profile/user.svg";
+import React, { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 import { User } from "../../types";
 import ImageProfile from "./ImageProfile";
+
 export const Info: React.FC<{
   user: User;
 }> = ({ user }) => {
+  const contextUser = useContext(UserContext);
+
+  contextUser.setUser(user);
+  console.log("********PERSONAINFO", contextUser.user);
+
   return (
     <div className="profile__info">
       <div className="profile__info-name">
@@ -19,9 +25,6 @@ export const Info: React.FC<{
             {user.name}
           </span>
         </h1>
-        <div className="icon__friends">
-          <img src={icon} alt="icon" className="icon" />
-        </div>
       </div>
       <ImageProfile user={user} />
     </div>

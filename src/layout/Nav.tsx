@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import Logout from "../components/Profile/Logout";
 import ColorContext from "../contexts/ColorContext";
 import LoginContext from "../contexts/LoginContext";
 import logo from "../images/logos/logoBlanco.png";
@@ -64,8 +65,7 @@ const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
 
         <li>
           <Link to="/login" onClick={() => contextLog.setLog(false)}>
-            <i className="fa fa-user"></i>
-            {!contextLog.log ? "Login" : "Logout"}
+            {!contextLog.log ? "Login" : <Logout />}
           </Link>
         </li>
       </ul>
