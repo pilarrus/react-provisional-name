@@ -8,18 +8,17 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   const [persons, setPersons] = useState(false);
   const [add, setAdd] = useState(icon);
   let finalFriends = [] as User[];
+
   if (props.friends) {
     props.friends.forEach(friend => {
-      friend.forEach(element =>
-        users.forEach(user => {
-          console.log(element.name, " YYYY", user.name);
-          if (element.name === user.name) {
-            finalFriends.push(element);
-          }
-        })
-      );
+      console.log(friend);
+    });
+    users.forEach(user => {
+      console.log(user);
     });
   }
+
+  // include
   console.log("Variable", finalFriends);
   const sendRequest = () => {
     setAdd(send);
