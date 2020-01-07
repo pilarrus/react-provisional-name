@@ -2,11 +2,25 @@ import React, { useState } from "react";
 import users from "../../fake-data/usersRegisters";
 import send from "../../images/profile/mail.svg";
 import icon from "../../images/profile/user.svg";
+import { User } from "../../types";
 
-export const NoFriends: React.FC = () => {
+export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   const [persons, setPersons] = useState(false);
   const [add, setAdd] = useState(icon);
-
+  let finalFriends = [] as User[];
+  if (props.friends) {
+    props.friends.forEach(friend => {
+      friend.forEach(element =>
+        users.forEach(user => {
+          console.log(element.name, " YYYY", user.name);
+          if (element.name === user.name) {
+            finalFriends.push(element);
+          }
+        })
+      );
+    });
+  }
+  console.log("Variable", finalFriends);
   const sendRequest = () => {
     setAdd(send);
   };

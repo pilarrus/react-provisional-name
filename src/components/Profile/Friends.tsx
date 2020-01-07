@@ -12,6 +12,8 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
     return users.filter(option => option.nick === element);
   });
 
+  console.log("MY", myFriends);
+
   return (
     <div className="profile__friends">
       <div className="profile__friends-box">
@@ -26,7 +28,7 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
           ))
         )}
       </div>
-      <NoFriends />
+      <NoFriends friends={myFriends} />
     </div>
   );
 };
