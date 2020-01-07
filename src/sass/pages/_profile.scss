@@ -4,6 +4,7 @@
   background-color: rgba(235, 236, 232, 0.767);
   &__info {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
 
     // border: 10px solid white;
@@ -106,6 +107,7 @@
       padding: 35px;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
     }
   }
 
@@ -173,10 +175,10 @@
 
 //CAJA AMIGOS
 .friends_img {
-  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
+  width: 200px;
   //  background-color: violet;
 
   .image {
@@ -234,20 +236,32 @@
 
 .nofriends {
   display: flex;
+  flex-wrap: wrap;
+
   &-name {
     background-color: #3b96c0;
     color: white;
     font-size: 16px;
-    padding: 10px 22px;
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 50px;
+    width: 100px;
   }
 }
 
 .icon__nofriends {
   display: flex;
   flex-direction: column;
+  background-color: #3b96c0;
+  border-bottom-right-radius: 30px;
+  padding-bottom: 10px;
+  width: 100px;
+
   img {
-    padding: 5px;
     margin-top: 20px;
+    padding: 2px;
     height: 40px;
     cursor: pointer;
   }

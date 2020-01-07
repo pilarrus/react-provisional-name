@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import users from "../../fake-data/usersRegisters";
+import send from "../../images/profile/mail.svg";
 import icon from "../../images/profile/user.svg";
 
 export const NoFriends: React.FC = () => {
   const [persons, setPersons] = useState(false);
-  const [add, setAdd] = useState("+");
+  const [add, setAdd] = useState(icon);
 
-  const sendRequest = (event: any) => {
-    console.log(event);
-    setAdd("Send");
+  const sendRequest = () => {
+    setAdd(send);
   };
   return (
     <div className="profile__friends">
@@ -32,10 +32,10 @@ export const NoFriends: React.FC = () => {
                 <span onClick={sendRequest}>
                   <div className="icon__nofriends">
                     <img
-                      src={icon}
+                      src={add}
                       alt="icon"
                       className="icon"
-                      onClick={() => setAdd(add)}
+                      onClick={() => setAdd}
                     />
                   </div>
                 </span>
