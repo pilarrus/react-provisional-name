@@ -12,7 +12,7 @@
     padding: 18px;
 
     &-name {
-      width: 50%;
+      width: 500px;
       position: relative;
 
       img {
@@ -21,7 +21,7 @@
       }
     }
     &-picture {
-      width: 50%;
+      width: 500px;
       position: relative;
 
       .image {
@@ -62,7 +62,6 @@
         background-color: #3b96c0;
         color: white;
         font-size: 16px;
-        padding: 16px 32px;
       }
       .getavatar {
         display: flex;
@@ -178,7 +177,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  width: 200px;
+  width: 150px;
   //  background-color: violet;
 
   .image {
@@ -186,8 +185,8 @@
     padding: 10px;
     opacity: 1;
     display: block;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     transition: 0.5s ease;
     backface-visibility: hidden;
@@ -215,7 +214,8 @@
     background-color: #3b96c0;
     color: white;
     font-size: 16px;
-    padding: 16px 32px;
+    padding: 8px 23px;
+    border-radius: 10px;
   }
 }
 
@@ -237,6 +237,7 @@
 .nofriends {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   &-name {
     background-color: #3b96c0;
@@ -244,9 +245,9 @@
     font-size: 16px;
     display: block;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 2px;
     border-top-left-radius: 30px;
-    border-top-right-radius: 50px;
+    border-top-right-radius: 30px;
     width: 100px;
   }
 }
@@ -254,9 +255,11 @@
 .icon__nofriends {
   display: flex;
   flex-direction: column;
+
   background-color: #3b96c0;
   border-bottom-right-radius: 30px;
-  padding-bottom: 10px;
+  border-bottom-left-radius: 30px;
+  padding-bottom: 2px;
   width: 100px;
 
   img {
