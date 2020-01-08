@@ -33,10 +33,12 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
           <p>Lugar: {group.place}</p>
           <p>Tamaño máximo: {group.sizeGroup}</p>
           <p>Usuarios apuntados:</p>
+          <div className="container_avatars">
           {group.users !== [] &&
             users.map((user) => (
               <Avatar key={user.nick} nick={user.nick} img={user.img} />
             ))}
+          </div>
           <ButtonRainbow text="APUNTARME" />
         </div>
       </div>
