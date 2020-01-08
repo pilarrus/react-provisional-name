@@ -33,9 +33,11 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
         Array.isArray(groupsCopy) && (
           <div key={adventureName}>
             <p>{adventureName}</p>
+            <div className="groups__container--box">
             {groupsCopy.map(group => (
               <Group key={group.name} group={group} />
             ))}
+            </div>
           </div>
         )
       );
@@ -45,9 +47,9 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
   let showGroups = showAll ? showAllGroups() : showAnyGroup();
 
   return (
-    <section>
+    <section className="groups">
       <Title title={`Grupos${adventureName}`} />
-      <div className="grupos__container">{showGroups}</div>
+      <div className="groups__container">{showGroups}</div>
       <ButtonRainbow
         text="Añadir grupo"
         changeState={() => setIsOpen(!isOpen)}

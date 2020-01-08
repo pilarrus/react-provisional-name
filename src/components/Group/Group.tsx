@@ -9,7 +9,7 @@ type PropsGroup = {
 };
 
 const groupStyle = {
-  height: "200px",
+  //height: "200px",
   border: "1px solid black",
   borderRadius: "5px"
 };
@@ -35,7 +35,7 @@ export default class Group extends Component<PropsGroup> {
           <p>{group.place}</p>
           <FormatDate timestamp={group.timestamp} />
           <p>
-            Nº de usuarios apuntados: {group.users.length} de {group.sizeGroup}
+            Nº de usuarios: {group.users.length} de {group.sizeGroup}
           </p>
           <ButtonRainbow text="VER" changeState={this.handleState} />
         </div>
