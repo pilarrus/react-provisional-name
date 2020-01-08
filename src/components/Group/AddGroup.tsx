@@ -9,14 +9,14 @@ type PropsAddGroup = {
   changeState: () => void;
 };
 
-const AddGroup: React.FC<PropsAddGroup> = ({changeState}) => {
+const AddGroup: React.FC<PropsAddGroup> = ({ changeState }) => {
   const places = [
     { id: 1, name: "Buitrago de Lozoya" },
     { id: 2, name: "El Atazar" },
     { id: 3, name: "Guadarrama" },
     { id: 4, name: "Navacerrada" },
     { id: 5, name: "Rascafría" },
-    { id: 6, name: "San Martín de Valdeiglesias" },
+    { id: 6, name: "San Martín de Valdeiglesias" }
   ];
 
   useEffect(() => {
@@ -41,11 +41,16 @@ const AddGroup: React.FC<PropsAddGroup> = ({changeState}) => {
             <Select2 placeholder="Lugar" options={places} />
             <br />
             <DatePicker placeholder="Fecha" />
-            <TimePicker defaultOpenValue={moment('00:00:00', 'HH:mm:ss')} placeholder="Hora" />
+            <TimePicker
+              defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+              placeholder="Hora"
+            />
             <br />
-            <label htmlFor="" style={{color: "rgba(0,0,0,0.5)"}}>Tamaño máximo del grupo: </label>
+            <label htmlFor="" style={{ color: "rgba(0,0,0,0.5)" }}>
+              Tamaño máximo del grupo:{" "}
+            </label>
             <InputNumber min={2} max={35} defaultValue={10} />
-            <br/>
+            <br />
             <Button block>Crear grupo</Button>
           </form>
         </div>

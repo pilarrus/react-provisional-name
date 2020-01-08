@@ -21,6 +21,7 @@ const App: React.FC = () => {
       <ColorContext.Provider
         value={{ colorNav, colorSide, setColorNav, setColorSide }}
       >
+
         <Nav handleSideBar={handleSideBar} />
         <Sidebar sidebar={closeSideBar} />
         <Main sidebar={closeSideBar} />

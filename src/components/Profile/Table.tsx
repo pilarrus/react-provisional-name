@@ -1,14 +1,17 @@
-import { Button, Popconfirm, Table } from "antd";
+import { Button, Popconfirm } from "antd";
+import "antd/dist/antd.css";
 import React from "react";
-export const Table2: React.FC = () => {
+
+export const Table: React.FC = () => {
   const columns = [
-    { title: "Name", dataIndex: "name", key: "name" },
-    { title: "Age", dataIndex: "age", key: "age" },
-    { title: "Address", dataIndex: "address", key: "address" },
+    { title: "Fecha", dataIndex: "date", key: "date" },
+    { title: "Día de la semana", dataIndex: "day", key: "day" },
+    { title: "Lugar", dataIndex: "place", key: "place" },
+    { title: "Hora", dataIndex: "time", key: "time" },
     {
-      title: "Action",
+      title: "No podré asistir",
       dataIndex: "",
-      key: "x",
+      key: "",
       render: () => (
         <Popconfirm
           title="¿Darte de baja de la aventura?"
@@ -23,7 +26,8 @@ export const Table2: React.FC = () => {
     }
   ];
 
-  function confirm() {
+  function confirm(e: any) {
+    console.log(e.value);
     console.log("confirmado");
   }
 
@@ -31,80 +35,75 @@ export const Table2: React.FC = () => {
     console.log(e);
   }
 
-  const data = [
+  /*const data = [
     {
       key: 1,
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      description:
-        "My name is John Brown, I am 32 years old, living in New York No. 1 Lake Park."
+      date: "13-12-2019",
+      day: "Viernes",
+      place: "Guadarrama",
+      time: "10:00"
     },
     {
       key: 2,
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      description:
-        "My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park."
+      date: "13-12-2019",
+      day: "Viernes",
+      place: "Guadarrama",
+      time: "10:00"
     },
     {
       key: 3,
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-      description:
-        "My name is Joe Black, I am 32 years old, living in Sidney No. 1 Lake Park."
+      date: "13-12-2019",
+      day: "Viernes",
+      place: "Guadarrama",
+      time: "10:00"
     }
   ];
+
+  */
   return (
-    <div>
+    <div className="profile__table">
       <h1>Este mes:</h1>
-      <Table
-        className="profile-table"
-        columns={columns}
-        expandedRowRender={record => (
-          <p style={{ margin: 0 }}>{record.description}</p>
-        )}
-        dataSource={data}
-      />
+      <div className="profile__table-box">
+        <table className="greenTable">
+          <thead>
+            <tr>
+              {columns.map(th => (
+                <th>{th.title}</th>
+              ))}
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colSpan={4}>
+                <div className="links">
+                  <a href="#">&laquo;</a>{" "}
+                  <a className="active" href="#">
+                    1
+                  </a>{" "}
+                  <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>{" "}
+                  <a href="#">&raquo;</a>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr>
+              <td>cell1_1</td>
+              <td>cell2_1</td>
+              <td>cell3_1</td>
+              <td>cell4_1</td>
+            </tr>
+            <tr>
+              <td>cell1_2</td>
+              <td>cell2_2</td>
+              <td>cell3_2</td>
+              <td>cell4_2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
-export default Table2;
-/*
-
-  <table>
-        <tr>
-          <th>Fecha</th>
-          <th>Día de la semana</th>
-          <th>Aventura</th>
-          <th>Lugar</th>
-          <th>Hora</th>
-        </tr>
-        <tr>
-          <td>13</td>
-          <td>Viernes</td>
-          <td>Escalada</td>
-          <td>Guadarrama</td>
-          <td>10:00</td>
-        </tr>
-        <tr>
-          <td>Día 13</td>
-          <td>Viernes</td>
-          <td>Escalada</td>
-          <td>Guadarrama</td>
-          <td>10:00</td>
-        </tr>
-        <tr>
-          <td>Día 13</td>
-          <td>Viernes</td>
-          <td>Escalada</td>
-          <td>Guadarrama</td>
-          <td>10:00</td>
-        </tr>
-      </table>
-
-
-      */
+export default Table;

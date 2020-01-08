@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { RouteComponentProps } from "react-router";
+import Form from "../components/Form/SocialHome";
 import Friends from "../components/Profile/Friends";
+import ProfileGroups from "../components/Profile/Groups";
+import NoFriends from "../components/Profile/NoFriends";
 import Info from "../components/Profile/PersonalInfo";
-import Table2 from "../components/Profile/Table";
+import LoginContext from "../contexts/LoginContext";
 import { User } from "../types";
 
 export const Profile: React.FC<RouteComponentProps<
@@ -11,12 +14,25 @@ export const Profile: React.FC<RouteComponentProps<
   User
 >> = RouteComponentProps => {
   let user = RouteComponentProps.location.state; // datos que recibo del formulario de registro o del login
+  const contextLog = useContext(LoginContext);
 
-  return (
-    <div className="profile">
-      <Info user={user} />
-      {user.myFriends ? <Friends friends={user.myFriends} /> : null}
-      <Table2 />
-    </div>
-  );
+  if (user) {
+    contextLog.setLog(true);
+    return (
+      <div className="profile">
+        <Info user={user} />
+        {user.myFriends ? (
+          <Friends friends={user.myFriends} />
+        ) : (
+          <div>
+            <NoFriends />
+          </div>
+        )}
+
+        <ProfileGroups />
+      </div>
+    );
+  } else {
+    return <Form />;
+  }
 };

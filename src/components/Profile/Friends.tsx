@@ -1,5 +1,6 @@
 import React from "react";
 import users from "../../fake-data/usersRegisters";
+import NoFriends from "./NoFriends";
 
 export const Friends: React.FC<{ friends: string[] }> = props => {
   /***
@@ -11,17 +12,23 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
     return users.filter(option => option.nick === element);
   });
 
+  console.log("MY", myFriends);
+
   return (
-    <div className="friends">
-      <h1>Amig@s</h1>
-      {myFriends.map(friends =>
-        friends.map(friend => (
-          <div className="friends_img">
-            <span>{friend.name}</span>
-            <img src={friend.img} alt="friend" />
-          </div>
-        ))
-      )}
+    <div className="profile__friends">
+      <div className="profile__friends-box">
+        {myFriends.map(friends =>
+          friends.map(friend => (
+            <div className="friends_img" key={friend.id}>
+              <img src={friend.img} alt="friend" className="image" />
+              <div className="middle">
+                <span className="text">{friend.name}</span>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+      <NoFriends friends={myFriends} />
     </div>
   );
 };
