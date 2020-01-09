@@ -21,7 +21,7 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
     let groupsCopy = groups[adventureNameCopy];
     adventureName = " de " + adventureNameCopy;
     return Array.isArray(groupsCopy)
-    ? (groupsCopy.map(group => <Group key={group.name} group={group} />))
+    ? (groupsCopy.map(group => <Group key={group.name} group={group} adventureName={adventureName.replace(" de ", "",)} />))
     : (<p key="key">{groupsCopy}</p>);
   };
 
@@ -35,7 +35,7 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
             <p>{adventureName}</p>
             <div className="groups__container--box">
             {groupsCopy.map(group => (
-              <Group key={group.name} group={group} />
+              <Group key={group.name} group={group} adventureName={adventureName} />
             ))}
             </div>
           </div>

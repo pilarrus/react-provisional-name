@@ -26,7 +26,7 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
   return (
     <div id="id01" className="modal" onClick={changeState}>
       <div className="modal__content" onClick={e => e.stopPropagation()}>
-        <div className="modal__container group">
+        <div className="modal__container">
         <TitleSmall title={group.name}></TitleSmall>
           <div>
             Fecha: <FormatDate timestamp={group.timestamp} />
