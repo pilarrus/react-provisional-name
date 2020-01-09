@@ -1,0 +1,23 @@
+.groups {
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--box {
+      //display: flex;
+      align-content: space-evenly;
+    }
+  }
+}
+
+.group {
+  width: 350px;
+  padding: 10px;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #17a2b8;
+}
