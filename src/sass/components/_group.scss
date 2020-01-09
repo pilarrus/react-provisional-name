@@ -6,7 +6,9 @@
     align-items: center;
 
     &--box {
-      align-content: space-evenly;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
 }
@@ -17,6 +19,7 @@
   padding: 10px;
   margin: 10px 10px;
   color: white;
+  
   display: flex;
   align-items: flex-end;
   justify-content: space-between;

@@ -20,9 +20,17 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
     let adventureNameCopy = adventureNameArray[0];
     let groupsCopy = groups[adventureNameCopy];
     adventureName = " de " + adventureNameCopy;
-    return Array.isArray(groupsCopy)
-    ? (groupsCopy.map(group => <Group key={group.name} group={group} adventureName={adventureName.replace(" de ", "",)} />))
-    : (<p key="key">{groupsCopy}</p>);
+    return Array.isArray(groupsCopy) ? (
+      groupsCopy.map(group => (
+        <Group
+          key={group.name}
+          group={group}
+          adventureName={adventureName.replace(" de ", "")}
+        />
+      ))
+    ) : (
+      <p key="key">{groupsCopy}</p>
+    );
   };
 
   const showAllGroups = () => {
@@ -30,15 +38,13 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
     return adventureNames.map(adventureName => {
       let groupsCopy = groups[adventureName];
       return (
-        Array.isArray(groupsCopy) && (
-          <div key={adventureName}>
-            <p>{adventureName}</p>
-            <div className="groups__container--box">
-            {groupsCopy.map(group => (
-              <Group key={group.name} group={group} adventureName={adventureName} />
-            ))}
-            </div>
-          </div>
+        Array.isArray(groupsCopy) && groupsCopy.map(group => (
+              <Group
+                key={group.name}
+                group={group}
+                adventureName={adventureName}
+              />
+            )
         )
       );
     });
@@ -49,11 +55,13 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll }) => {
   return (
     <section className="groups">
       <Title title={`Grupos${adventureName}`} />
-      <div className="groups__container">{showGroups}</div>
-      <ButtonRainbow
-        text="Añadir grupo"
-        changeState={() => setIsOpen(!isOpen)}
-      />
+      <div className="groups__container">
+        <div className="groups__container--box">{showGroups}</div>
+        <ButtonRainbow
+          text="Añadir grupo"
+          changeState={() => setIsOpen(!isOpen)}
+        />
+      </div>
       {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)} /> : ""}
     </section>
   );

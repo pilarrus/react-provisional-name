@@ -21,7 +21,7 @@ export default class Group extends Component<PropsGroup> {
   render() {
     const { group } = this.props;
     const { adventureName } = this.props;
-console.log(group);
+    console.log(group);
     return (
       <>
         {this.state.isOpen && (
@@ -32,10 +32,8 @@ console.log(group);
           style={{ backgroundImage: "url(" + group.bg + ")" }}
         >
           <div className="group__container">
-            <div className="group__container--box">
-              <TitleSmall title={group.name}></TitleSmall>
-              <span>{adventureName}</span>
-            </div>
+            <TitleSmall title={group.name}></TitleSmall>
+            <span>{adventureName}</span>
           </div>
           <ButtonPlus changeState={this.handleState} />
         </div>
