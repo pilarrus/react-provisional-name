@@ -9,7 +9,6 @@ export const Info: React.FC<{
   const contextUser = useContext(UserContext);
 
   contextUser.setUser(user);
-  console.log("********PERSONAINFO", contextUser.user);
 
   return (
     <div className="profile__info">

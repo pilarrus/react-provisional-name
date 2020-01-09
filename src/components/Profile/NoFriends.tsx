@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import UserContext from "../../contexts/UserContext";
 import users from "../../fake-data/usersRegisters";
 import send from "../../images/profile/mail.svg";
 import icon from "../../images/profile/user.svg";
@@ -7,7 +8,7 @@ import { User } from "../../types";
 const NoFriend: React.FC<{ friend: User }> = ({ friend }) => {
   const [add, setAdd] = useState(icon);
   return (
-    <div className="friends_img" key={friend.id}>
+    <div className="friends_img">
       <img src={friend.img} alt="friend" className="image" />
       <div className="middle">
         <span className="nofriends-name">{friend.name}</span>
@@ -24,12 +25,13 @@ const NoFriend: React.FC<{ friend: User }> = ({ friend }) => {
 export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   const [persons, setPersons] = useState(false);
   let finalFriends = [] as User[];
-  //const contextUser = useContext(UserContext);
-
+  const contextUser = useContext(UserContext);
   if (props.friends) {
     let flatFriends = props.friends.flat();
     users.forEach(user => {
-      if (!flatFriends.includes(user)) finalFriends.push(user);
+      if (user !== contextUser.user) {
+        if (!flatFriends.includes(user)) finalFriends.push(user);
+      }
     });
   }
 
@@ -48,7 +50,7 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
       {persons ? (
         <div className="nofriends">
           {finalFriends.map(friend => (
-            <NoFriend friend={friend} />
+            <NoFriend friend={friend} key={friend.id} />
           ))}
         </div>
       ) : null}

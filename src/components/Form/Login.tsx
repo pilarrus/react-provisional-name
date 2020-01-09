@@ -3,7 +3,6 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 import dataUsers from "../../fake-data/usersRegisters";
 
 export const Login = (props: RouteComponentProps) => {
-  console.log("PPPPPP EN LOGIN", props);
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
