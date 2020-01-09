@@ -29,6 +29,7 @@ export type Users2 = PartialUser[];
 
 export type TypeGroup = {
   name: string,
+  bg: string,
   timestamp: number,
   place: string,
   sizeGroup: number,

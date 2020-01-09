@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { TypeGroup } from "../../types";
 import GroupModal from "./GroupModal";
 import TitleSmall from "../Reusable/TitleSmall";
-import climbing from "../../images/groups/climber.jpeg";
 import ButtonPlus from "../Reusable/ButtonPlus";
 
 type PropsGroup = {
@@ -22,7 +21,7 @@ export default class Group extends Component<PropsGroup> {
   render() {
     const { group } = this.props;
     const { adventureName } = this.props;
-
+console.log(group);
     return (
       <>
         {this.state.isOpen && (
@@ -30,7 +29,7 @@ export default class Group extends Component<PropsGroup> {
         )}
         <div
           className="group"
-          style={{ backgroundImage: "url(" + climbing + ")" }}
+          style={{ backgroundImage: "url(" + group.bg + ")" }}
         >
           <div className="group__container">
             <div className="group__container--box">
