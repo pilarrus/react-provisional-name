@@ -3,6 +3,7 @@ import { TypeGroup, Users2 } from "../../types";
 import ButtonRainbow from "../Reusable/ButtonRainbow";
 import FormatDate from "../Reusable/FormatDate";
 import Avatar from "./Avatar";
+import TitleSmall from "../Reusable/TitleSmall";
 
 type PropsGroup = {
   group: TypeGroup;
@@ -26,7 +27,7 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
     <div id="id01" className="modal" onClick={changeState}>
       <div className="modal__content" onClick={e => e.stopPropagation()}>
         <div className="modal__container group">
-          <p>{group.name}</p>
+        <TitleSmall title={group.name}></TitleSmall>
           <div>
             Fecha: <FormatDate timestamp={group.timestamp} />
           </div>

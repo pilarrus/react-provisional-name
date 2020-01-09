@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
-import Title from "../Reusable/Title";
+import { Button, DatePicker, Input, InputNumber, TimePicker } from "antd";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import adventures from "../../fake-data/adventures";
 import Select2 from "../Reusable/Select";
-import { Input, DatePicker, TimePicker, InputNumber, Button } from "antd";
-import moment from 'moment';
+import Title from "../Reusable/Title";
 
 type PropsAddGroup = {
   changeState: () => void;
 };
 
 const AddGroup: React.FC<PropsAddGroup> = ({ changeState }) => {
+  const [name, setName] = useState("");
+  console.log(">>>>>>>>>>>>><", name);
+
   const places = [
     { id: 1, name: "Buitrago de Lozoya" },
     { id: 2, name: "El Atazar" },
@@ -35,7 +38,10 @@ const AddGroup: React.FC<PropsAddGroup> = ({ changeState }) => {
         <div className="modal__container">
           <Title title="Añadir Grupo" />
           <form action="">
-            <Input placeholder="Nombre del grupo" />
+            <Input
+              placeholder="Nombre del grupo"
+              onChange={e => setName(e.target.value)}
+            />
             <br />
             <Select2 placeholder="Tipo de Actividad" options={adventures} />
             <Select2 placeholder="Lugar" options={places} />
