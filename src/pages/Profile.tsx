@@ -15,7 +15,6 @@ export const Profile: React.FC<RouteComponentProps<
 >> = RouteComponentProps => {
   let user = RouteComponentProps.location.state; // datos que recibo del formulario de registro o del login
   const contextLog = useContext(LoginContext);
-
   if (user) {
     contextLog.setLog(true);
     return (

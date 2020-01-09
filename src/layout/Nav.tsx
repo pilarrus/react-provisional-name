@@ -64,9 +64,7 @@ const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
         </li>
 
         <li>
-          <Link to="/login" onClick={() => contextLog.setLog(false)}>
-            {!contextLog.log ? "Login" : <Logout />}
-          </Link>
+          <Link to="/login">{!contextLog.log ? "Login" : <Logout />}</Link>
         </li>
       </ul>
     </div>
