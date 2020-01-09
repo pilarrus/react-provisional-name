@@ -4,25 +4,35 @@ import send from "../../images/profile/mail.svg";
 import icon from "../../images/profile/user.svg";
 import { User } from "../../types";
 
+const NoFriend: React.FC<{ friend: User }> = ({ friend }) => {
+  const [add, setAdd] = useState(icon);
+  return (
+    <div className="friends_img" key={friend.id}>
+      <img src={friend.img} alt="friend" className="image" />
+      <div className="middle">
+        <span className="nofriends-name">{friend.name}</span>
+        <span onClick={() => setAdd(send)}>
+          <div className="icon__nofriends">
+            <img src={add} alt="icon" className="icon" />
+          </div>
+        </span>
+      </div>
+    </div>
+  );
+};
+
 export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   const [persons, setPersons] = useState(false);
-  const [add, setAdd] = useState(icon);
   let finalFriends = [] as User[];
+  //const contextUser = useContext(UserContext);
 
   if (props.friends) {
-    props.friends.forEach(friend => {
-      console.log(friend);
-    });
+    let flatFriends = props.friends.flat();
     users.forEach(user => {
-      console.log(user);
+      if (!flatFriends.includes(user)) finalFriends.push(user);
     });
   }
 
-  // include
-  console.log("Variable", finalFriends);
-  const sendRequest = () => {
-    setAdd(send);
-  };
   return (
     <div className="profile__friends">
       <div className="profile__friends-box">
@@ -37,23 +47,8 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
       </div>
       {persons ? (
         <div className="nofriends">
-          {users.map(friend => (
-            <div className="friends_img" key={friend.id}>
-              <img src={friend.img} alt="friend" className="image" />
-              <div className="middle">
-                <span className="nofriends-name">{friend.name}</span>
-                <span onClick={sendRequest}>
-                  <div className="icon__nofriends">
-                    <img
-                      src={add}
-                      alt="icon"
-                      className="icon"
-                      onClick={() => setAdd}
-                    />
-                  </div>
-                </span>
-              </div>
-            </div>
+          {finalFriends.map(friend => (
+            <NoFriend friend={friend} />
           ))}
         </div>
       ) : null}
