@@ -1,5 +1,5 @@
 const data = {
-  dishes: [
+  imgs: [
     {
       index: 0,
       url:

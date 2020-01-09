@@ -7,16 +7,14 @@
   overflow: hidden;
 }
 
-.ant-carousel .slick-slide h3 {
+.ant-carousel .slick-slide {
   color: #fff;
 }
 .imgSlide {
   width: 100%;
-  height: auto;
+  height: 814px;
   display: block;
-}
-.imgSlide img {
-  height: auto;
-  max-width: 100%;
-  display: block;
+  object-fit: contain;
+
+  //background-size: cover;
 }
