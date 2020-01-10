@@ -21,7 +21,7 @@ export default class Group extends Component<PropsGroup> {
   render() {
     const { group } = this.props;
     const { adventureName } = this.props;
-    console.log(group);
+    
     return (
       <>
         {this.state.isOpen && (
