@@ -5,6 +5,7 @@ import FormatDate from "../Reusable/FormatDate";
 import Avatar from "./Avatar";
 import TitleSmall from "../Reusable/TitleSmall";
 import LoginContext from "../../contexts/LoginContext";
+import ButtonClose from "../Reusable/ButtonClose";
 
 type PropsGroup = {
   group: TypeGroup;
@@ -34,10 +35,12 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
       <div className="modal__content" onClick={e => e.stopPropagation()}>
         <div className="modal__container">
           <div className="modal_group">
+          <ButtonClose/>
             <div
               className="modal_group__title"
               style={{ backgroundImage: "url(" + group.bg + ")" }}
             >
+              
               <TitleSmall title={group.name}></TitleSmall>
             </div>
             <div className="modal_group__container">
