@@ -11,11 +11,12 @@
     @include abs-center;
     background-color: aliceblue;
     width: 50%;
+    border-radius: 2px;
   }
 
-  &__container {
+  /*&__container {
     padding: 2%;
-  }
+  }*/
 }
 
 .ant {
