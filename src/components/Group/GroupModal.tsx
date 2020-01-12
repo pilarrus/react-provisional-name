@@ -35,7 +35,7 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
       <div className="modal__content" onClick={e => e.stopPropagation()}>
         <div className="modal__container">
           <div className="modal_group">
-          <ButtonClose/>
+          <ButtonClose changeState={changeState}/>
             <div
               className="modal_group__title"
               style={{ backgroundImage: "url(" + group.bg + ")" }}
