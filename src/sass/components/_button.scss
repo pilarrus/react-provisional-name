@@ -9,6 +9,10 @@
   padding: 0.3rem 2.13rem;
   cursor: pointer;
 
+  &:focus {
+    outline-style: none;
+  }
+
   &--rainbow {
     width: fit-content;
     padding: 3px;
@@ -69,6 +73,10 @@
   &:hover {
     color: white;
     background-color: red;
-    border: 1.3px solid red;
+    //border: 1.3px solid red;
+  }
+
+  &:focus {
+    outline-style: none;
   }
 }
