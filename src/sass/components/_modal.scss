@@ -15,7 +15,7 @@
   }
 }
 
-.ant {
+/*.ant {
   &-input,
   &-select-selection,
   &-time-picker-input,
@@ -24,9 +24,51 @@
     margin: 5px;
     color: rgb(148, 151, 156);
     border: 1px solid rgb(148, 151, 156);
+  }*/
+
+  /*&-calendar-picker {
+    margin-right: 5px;
+  }*/
+//}
+.ant {
+  &-input,
+  &-select-selection,
+  &-time-picker-input,
+  &-input-number {
+    @include form-style-box;
+    font-family: $font-tittle;
   }
 
-  &-calendar-picker {
-    margin-right: 5px;
+  &-select-selection__rendered {
+    line-height: 11px;
+    margin: 0;
   }
+
+  &-calendar-picker, &-time-picker {
+    width: 100%;
+  }
+
+  &-calendar-picker-icon, &-time-picker-icon {
+    margin-top: -12px;
+  }
+
+  &-input-number {
+    padding: 0;
+    &-input {
+      padding: 0;
+    }
+  }
+
+  &-btn {
+    border: 2px solid rgb(97, 34, 75);
+    //background-color: rgb(97, 34, 75);
+  }
+}
+
+.modal_addGroup {
+  width: 300px;
+}
+
+.form__addGroup {
+  padding: 0 10px 10px 10px;
 }

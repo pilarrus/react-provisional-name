@@ -28,7 +28,6 @@ const Select2: React.FC<SelectType> = ({placeholder, options}) => {
   return (
     <Select
       showSearch
-      style={{ width: 200 }}
       placeholder={placeholder}
       optionFilterProp="children"
       onChange={onChange}
