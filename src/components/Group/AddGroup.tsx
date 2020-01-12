@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import adventures from "../../fake-data/adventures";
 import Select2 from "../Reusable/Select";
 import Title from "../Reusable/Title";
+import ButtonClose from "../Reusable/ButtonClose";
 
 type PropsAddGroup = {
   changeState: () => void;
@@ -35,6 +36,7 @@ const AddGroup: React.FC<PropsAddGroup> = ({ changeState }) => {
   return (
     <div className="modal" onClick={changeState}>
       <div className="modal__container" onClick={e => e.stopPropagation()}>
+        <ButtonClose changeState={changeState} />
         <Title title="Añadir Grupo" />
         <form action="">
           <Input
