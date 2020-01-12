@@ -2,6 +2,6 @@ import React from "react";
 import { User } from "../types";
 
 export default React.createContext({
-  user: undefined,
+  user: {} as User,
   setUser: (_user: User) => {}
 });
