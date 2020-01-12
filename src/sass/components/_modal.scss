@@ -7,16 +7,12 @@
   top: 0;
   left: 0;
 
-  &__content {
+  &__container {
     @include abs-center;
     background-color: aliceblue;
     width: 50%;
     border-radius: 2px;
   }
-
-  /*&__container {
-    padding: 2%;
-  }*/
 }
 
 .ant {

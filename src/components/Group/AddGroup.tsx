@@ -34,32 +34,30 @@ const AddGroup: React.FC<PropsAddGroup> = ({ changeState }) => {
 
   return (
     <div className="modal" onClick={changeState}>
-      <div className="modal__content" onClick={e => e.stopPropagation()}>
-        <div className="modal__container">
-          <Title title="Añadir Grupo" />
-          <form action="">
-            <Input
-              placeholder="Nombre del grupo"
-              onChange={e => setName(e.target.value)}
-            />
-            <br />
-            <Select2 placeholder="Tipo de Actividad" options={adventures} />
-            <Select2 placeholder="Lugar" options={places} />
-            <br />
-            <DatePicker placeholder="Fecha" />
-            <TimePicker
-              defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-              placeholder="Hora"
-            />
-            <br />
-            <label htmlFor="" style={{ color: "rgba(0,0,0,0.5)" }}>
-              Tamaño máximo del grupo:{" "}
-            </label>
-            <InputNumber min={2} max={35} defaultValue={10} />
-            <br />
-            <Button block>Crear grupo</Button>
-          </form>
-        </div>
+      <div className="modal__container" onClick={e => e.stopPropagation()}>
+        <Title title="Añadir Grupo" />
+        <form action="">
+          <Input
+            placeholder="Nombre del grupo"
+            onChange={e => setName(e.target.value)}
+          />
+          <br />
+          <Select2 placeholder="Tipo de Actividad" options={adventures} />
+          <Select2 placeholder="Lugar" options={places} />
+          <br />
+          <DatePicker placeholder="Fecha" />
+          <TimePicker
+            defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+            placeholder="Hora"
+          />
+          <br />
+          <label htmlFor="" style={{ color: "rgba(0,0,0,0.5)" }}>
+            Tamaño máximo del grupo:{" "}
+          </label>
+          <InputNumber min={2} max={35} defaultValue={10} />
+          <br />
+          <Button block>Crear grupo</Button>
+        </form>
       </div>
     </div>
   );
