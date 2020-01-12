@@ -32,7 +32,7 @@ export default class Group extends Component<PropsGroup> {
           style={{ backgroundImage: "url(" + group.bg + ")" }}
         >
           <div className="group__container">
-            <TitleSmall title={group.name}></TitleSmall>
+            <TitleSmall title={group.name} semiTransparent={false}></TitleSmall>
             <span>{adventureName}</span>
           </div>
           <ButtonPlus changeState={this.handleState} />

@@ -40,3 +40,10 @@ $color6: #ff1b5faf;
   font-weight: bold;
   color: white;
 }
+
+.bgSemiTransparent {
+  background-color: rgba(128, 128, 128, 0.6);
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-size: 1.5rem;
+}

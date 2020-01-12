@@ -41,7 +41,7 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
               style={{ backgroundImage: "url(" + group.bg + ")" }}
             >
               
-              <TitleSmall title={group.name}></TitleSmall>
+              <TitleSmall title={group.name} semiTransparent={true}></TitleSmall>
             </div>
             <div className="modal_group__container">
               <div className="modal_group__container--text">
