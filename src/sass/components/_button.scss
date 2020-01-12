@@ -28,7 +28,6 @@
     );
 
     background-clip: padding-box;
-    //border: 5px solid transparent;
     border-radius: 1em;
   }
 }
@@ -39,6 +38,10 @@
   background-color: transparent;
   border: 1.3px solid white;
   border-radius: 50%;
+  
+  &:focus {
+    outline-style: none;
+  }
 }
 
 .plus__icon {
@@ -55,6 +58,7 @@
   fill: red;
   padding: 4px;
   cursor: pointer;
+  
   &:hover {
     fill: white;
   }
@@ -73,7 +77,6 @@
   &:hover {
     color: white;
     background-color: red;
-    //border: 1.3px solid red;
   }
 
   &:focus {
