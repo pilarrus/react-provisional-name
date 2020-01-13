@@ -15,60 +15,68 @@
   }
 }
 
-/*.ant {
-  &-input,
-  &-select-selection,
-  &-time-picker-input,
-  &-input-number,
-  &-btn {
-    margin: 5px;
-    color: rgb(148, 151, 156);
-    border: 1px solid rgb(148, 151, 156);
-  }*/
-
-  /*&-calendar-picker {
-    margin-right: 5px;
-  }*/
-//}
-.ant {
-  &-input,
-  &-select-selection,
-  &-time-picker-input,
-  &-input-number {
-    @include form-style-box;
-    font-family: $font-tittle;
-  }
-
-  &-select-selection__rendered {
-    line-height: 11px;
-    margin: 0;
-  }
-
-  &-calendar-picker, &-time-picker {
-    width: 100%;
-  }
-
-  &-calendar-picker-icon, &-time-picker-icon {
-    margin-top: -12px;
-  }
-
-  &-input-number {
-    padding: 0;
-    &-input {
-      padding: 0;
-    }
-  }
-
-  &-btn {
-    border: 2px solid rgb(97, 34, 75);
-    //background-color: rgb(97, 34, 75);
-  }
-}
-
 .modal_addGroup {
   width: 300px;
 }
 
 .form__addGroup {
   padding: 0 10px 10px 10px;
+  //color: red;
+  //color: rgba($color: #000000, $alpha: .5);
+}
+
+.form-input {
+  @include form-style-box;
+  font-family: $font-tittle;
+}
+
+::-webkit-input-placeholder {
+  color: rgba($color: #000000, $alpha: 0.5);
+}
+
+:-moz-placeholder {
+  color: rgba($color: #000000, $alpha: 0.5);
+}
+
+::-moz-placeholder {
+  color: rgba($color: #000000, $alpha: 0.5);
+}
+
+:-ms-input-placeholder {
+  color: rgba($color: #000000, $alpha: 0.5);
+}
+
+select[value="Default"] {
+  color: rgba($color: #000000, $alpha: 0.5);
+}
+
+.button__addGroup {
+  width: 100%;
+  border: 2px solid rgb(97, 34, 75);
+  border-radius: 4px;
+  cursor: pointer;
+  height: 32px;
+  padding: 0 15px;
+  font-family: $font-tittle;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65);
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    border: 2px solid #1babffaf;
+    color: #1babffaf;
+  }
+}
+
+.advert {
+  color: orange;
+  text-align: center;
 }
