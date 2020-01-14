@@ -6,7 +6,7 @@ import GetAvatar from "./GetAvatar";
 class FinalAvatar extends Component {
   constructor(props) {
     super(props);
-    // console.log(">>>>>>>>>>>", this.props.user.img);
+    console.log(">>>>>>>>>>>IMAGEEEEEEEEEEEEN", this.props.user.img);
 
     const img = props.user.img === undefined ? noimage : props.user.img;
     this.state = {

@@ -1,0 +1,2 @@
+¿Cómo puedo guardar imágenes y leerlas sin hacer import?
+¿Cómo generalizar el acceso a los datos de firebase?

@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import Fire from "../components/FirebaseTest/Firebase";
 import LoginRegister from "../components/Form";
 import ApiAdventures from "../containers/ApiAdventures";
 import Adventures from "../pages/Adventures";
@@ -15,7 +14,6 @@ const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
 
   return (
     <div className={`main ${style}`}>
-      <Fire />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/adventures" component={ApiAdventures} />

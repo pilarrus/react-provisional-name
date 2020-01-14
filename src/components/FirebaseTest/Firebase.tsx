@@ -1,9 +1,7 @@
 import * as firebase from "firebase";
 import React, { useEffect, useState } from "react";
-import firebaseConfig from "../../enviroments/enviroment";
 import { Users } from "../../types";
 
-firebase.initializeApp(firebaseConfig);
 const Fire: React.FC = () => {
   const [fireData, setFireData] = useState([] as Users[]);
 

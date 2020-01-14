@@ -9,9 +9,7 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   const [persons, setPersons] = useState(false);
   let finalFriends = [] as User[];
   const contextUser = useContext(UserContext);
-  const { user } = useContext(UserContext);
 
-  console.log(">>>>>>>>>>", user);
   if (props.friends) {
     let flatFriends = props.friends.flat();
     users.forEach(user => {
