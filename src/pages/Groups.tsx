@@ -9,13 +9,14 @@ class GroupContainer extends React.Component<
   RouteComponentProps<{
     activityID?: string;
   }>,
-  { fetchGroups: Groups }
+  { fetchGroups: Groups; sortBy: string }
 > {
   constructor(props: RouteComponentProps) {
     super(props);
     
     this.state = {
-      fetchGroups: {}
+      fetchGroups: {},
+      sortBy: "alphabetical"
     };
   }
 
@@ -38,9 +39,15 @@ class GroupContainer extends React.Component<
     this._isMounted = false;
   }
 
+  setSortBy(x: string) {
+    this.setState({sortBy: x});
+  }
+
   render() {
     let showAll: boolean;
     let allGroups: Groups2 = {};
+
+    console.log("sortBy>>",this.state.sortBy);
 
     if (Object.keys(this.state.fetchGroups).length !== 0) {
       let adventuresID = Object.keys(this.state.fetchGroups);
@@ -64,11 +71,12 @@ class GroupContainer extends React.Component<
         let adventureName = this.state.fetchGroups[idFound].adventure;
         //@ts-ignore
         let groups = this.state.fetchGroups[idFound].groups;
-
         allGroups[adventureName] = groups;
       }
+      // Aquí ordeno allGroups si es un array!! Si es un string no hago nada
+      // Aqui this.setAllGroups(allGroups);
       return (
-        <GroupsComponent groups={allGroups} showAll={showAll} />
+        <GroupsComponent groups={allGroups} showAll={showAll} setSortBy={this.setSortBy.bind(this)} />
       );
       
     } else {
