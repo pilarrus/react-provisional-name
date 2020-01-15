@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
+import firebase from "../../enviroments/enviroment";
 import users from "../../fake-data/usersRegisters";
 import send from "../../images/profile/mail.svg";
 import icon from "../../images/profile/user.svg";
@@ -10,6 +11,8 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   let finalFriends = [] as User[];
   const contextUser = useContext(UserContext);
 
+  console.log(props.friends);
+
   if (props.friends) {
     let flatFriends = props.friends.flat();
     users.forEach(user => {
@@ -17,12 +20,17 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
         if (!flatFriends.includes(user)) finalFriends.push(user);
       }
     });
+  } else if (props.friends === undefined) {
+    users.forEach(user => {
+      if (user !== contextUser.user) {
+        finalFriends.push(user);
+      }
+    });
   }
 
-  /* if (contextUser.user) {
+  if (contextUser.user) {
     finalFriends.find(e => console.log(e.id !== contextUser.user.id));
   }
-  */
 
   return (
     <div className="profile__friends">
@@ -51,15 +59,39 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
 
 const NoFriend: React.FC<{ friend: User }> = ({ friend }) => {
   const [add, setAdd] = useState(icon);
+  const contextUser = useContext(UserContext);
+
+  const sendRequest = (friend: User) => {
+    setAdd(send);
+    const dbRef = firebase
+      .database()
+      .ref("users")
+      .child(`${friend.id}`)
+      .child("request");
+    const newRequest = dbRef.push([]);
+    newRequest.set(`${contextUser.user.nick}`);
+
+    /*   .child(`${friend.id}`)
+      .child("request")
+      .push(`${contextUser.user.nick}`)
+      .then();
+
+      */
+  };
 
   return (
     <div className="friends_img">
       <img src={friend.img} alt="friend" className="image" />
       <div className="middle">
         <span className="nofriends-name">{friend.name}</span>
-        <span onClick={() => setAdd(send)}>
+        <span>
           <div className="icon__nofriends">
-            <img src={add} alt="icon" className="icon" />
+            <img
+              src={add}
+              alt="icon"
+              className="icon"
+              onClick={() => sendRequest(friend)}
+            />
           </div>
         </span>
       </div>

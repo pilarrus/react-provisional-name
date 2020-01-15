@@ -20,6 +20,7 @@ export const Login = (props: RouteComponentProps) => {
       .ref()
       .child("users");
 
+    console.log(data);
     data.on("value", snapshot => {
       setFireData(snapshot.val());
     });
