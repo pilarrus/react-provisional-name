@@ -6,7 +6,7 @@ const ButtonPlus: React.FC<{ changeState?: () => void }> = ({
 }) => (
   <button className="button-plus" onClick={changeState}>
     <svg className="plus__icon">
-      <use xlinkHref={icon_plus+`#icon-plus`}></use>
+      <use xlinkHref={icon_plus + `#icon-plus`}></use>
     </svg>
   </button>
 );

@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import adventures from "../../fake-data/adventures";
-import fetchGroups from "../../fake-data/groupsCopy";
+import fetchGroups from "../../fake-data/groups";
 import Title from "../Reusable/Title";
 import ButtonClose from "../Reusable/ButtonClose";
 import LoginContext from "../../contexts/LoginContext";
 import UserContext from "../../contexts/UserContext";
+import { Groups } from "../../types";
 
-type PropsAddGroup = {
+type AddGroupProps = {
   changeState: () => void;
 };
 
@@ -30,19 +31,13 @@ const getCurrentHour = () => {
   return fullHour;
 };
 
-const getNameGroups = () => {
-  let adventuresID = Object.keys(fetchGroups);
-  let groups: string[] = [];
-  adventuresID.forEach(adventureID => {
-    let groupsCopy = fetchGroups[adventureID].groups;
-    if (Array.isArray(groupsCopy)) {
-      groupsCopy.forEach(group => groups.push(group.name));
-    }
-  });
-  return groups;
+const getNameGroups = (groups: Groups) => {
+  let nameGroups: string[] = [];
+  groups.forEach(group => nameGroups.push(group.name));
+  return nameGroups;
 };
 
-const AddGroup: React.FC<PropsAddGroup> = ({ changeState }) => {
+const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   const [name, setName] = useState("");
   const [activity, setActivity] = useState("");
   const [place, setPlace] = useState("");
@@ -50,9 +45,9 @@ const AddGroup: React.FC<PropsAddGroup> = ({ changeState }) => {
   const [time, setTime] = useState("");
   const [maxSize, setMaxSize] = useState("");
   const [nowDate] = useState(getCurrentDate());
-  const [namesGroups] = useState(getNameGroups());
+  const [nameGroups] = useState(getNameGroups(fetchGroups));
 
-  let nameExist = namesGroups.includes(name);
+  let nameExist = nameGroups.includes(name);
 
   console.log("name>>>", name);
   console.log("activity>>>", activity);
@@ -61,7 +56,7 @@ const AddGroup: React.FC<PropsAddGroup> = ({ changeState }) => {
   console.log("time>>>", time);
   console.log("maxSize>>>", maxSize);
   console.log("fetchGroups>>>", fetchGroups);
-  console.log("nameGroup>>>", namesGroups);
+  console.log("nameGroup>>>", nameGroups);
 
   const places = [
     { id: 1, name: "Buitrago de Lozoya" },

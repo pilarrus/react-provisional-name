@@ -22,7 +22,8 @@ export default [
     place: "Buitrago de Lozoya",
     maxSize: 10,
     users: [
-      {nick: "Anita", img: ana}, {nick: "Paroar", img: pablo}
+      { nick: "Anita", img: ana },
+      { nick: "Paroar", img: pablo }
     ]
   },
   {
@@ -45,7 +46,10 @@ export default [
     timestamp: 1607783400,
     place: "Rascafría",
     maxSize: 10,
-    users: [{nick: "Albertillo", img: alberto}, {nick: "Marcela", img: marcela}]
+    users: [
+      { nick: "Albertillo", img: alberto },
+      { nick: "Marcela", img: marcela }
+    ]
   },
   {
     id: "4",
@@ -56,7 +60,7 @@ export default [
     timestamp: 1576236600,
     place: "San Martín de Valdeiglesias",
     sizeGroup: 10,
-    users: [{nick: "Anita", img: ana}]
+    users: [{ nick: "Anita", img: ana }]
   },
   {
     id: "5",
@@ -78,6 +82,10 @@ export default [
     timestamp: 1598005800,
     place: "Navacerrada",
     sizeGroup: 10,
-    users: [{nick: "Anita", img: ana}, {nick: "Paroar", img: pablo}, {nick: "Pilarusi", img: pili}]
+    users: [
+      { nick: "Anita", img: ana },
+      { nick: "Paroar", img: pablo },
+      { nick: "Pilarusi", img: pili }
+    ]
   }
 ] as Groups;

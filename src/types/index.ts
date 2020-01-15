@@ -23,18 +23,9 @@ export type Users = User[];
 
 export type PartialUser = {
   nick: string;
-  img: string
-}
-export type Users2 = PartialUser[];
-
-export type TypeGroup = {
-  name: string,
-  bg: string,
-  timestamp: number,
-  place: string,
-  sizeGroup: number,
-  users: PartialUser[] | []
+  img: string;
 };
+export type Users2 = PartialUser[];
 
 export type Group = {
   id: string;
@@ -45,18 +36,7 @@ export type Group = {
   timestamp: number;
   place: string;
   maxSize: number;
-  users: PartialUser[] | []
-}
+  users: PartialUser[] | [];
+};
 
 export type Groups = Group[];
-
-export type Groups3 = {
-  [id: string] : {
-    adventure: string,
-    groups: TypeGroup[] | string
-  }
-};
-
-export type Groups2 = {
-  [adventureName: string]: TypeGroup[] | string;
-};

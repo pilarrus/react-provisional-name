@@ -1,5 +1,5 @@
 import adventures from "../fake-data/adventures";
-import groups from "../fake-data/groupsCopy";
+import groups from "../fake-data/groups";
 
 type JSONResponse<T> = {
   json: () => Promise<T>;

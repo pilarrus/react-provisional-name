@@ -1,10 +1,10 @@
-import { Groups2 } from "../types";
+import { Groups, Group } from "../types";
 
 const convertDegreesToThermalSensation = (degrees: number): string => {
   let thermalSensation;
-  if(degrees <= 15) {
+  if (degrees <= 15) {
     thermalSensation = "cold";
-  } else if (degrees > 15 && degrees <30) {
+  } else if (degrees > 15 && degrees < 30) {
     thermalSensation = "warmth";
   } else {
     thermalSensation = "very hot";
@@ -12,19 +12,15 @@ const convertDegreesToThermalSensation = (degrees: number): string => {
   return thermalSensation;
 };
 
-const sorted = (x: string, y: string) => {
-  if(x < y) return -1;
+const compareTo = (x: Group, y: Group) => {
+  if (x.name_adventure < y.name_adventure) return -1;
   else if (x > y) return 1;
   return 0;
-}
+};
 
-const sortByTypeAdventure = (groups: Groups2) => {
-  let keys = Object.keys(groups).sort(sorted);
-  let sortedGroups: Groups2 = {};
-  keys.forEach(key => {
-    sortedGroups[key] = groups[key];
-  })
+const sortByTypeAdventure = (groups: Groups) => {
+  let sortedGroups: Groups = groups.sort(compareTo);
   return sortedGroups;
-}
+};
 
-export {convertDegreesToThermalSensation, sorted, sortByTypeAdventure};
+export { convertDegreesToThermalSensation, compareTo, sortByTypeAdventure };

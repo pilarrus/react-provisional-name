@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { TypeGroup, Users2 } from "../../types";
+import { Group, Users2 } from "../../types";
 import ButtonRainbow from "../Reusable/ButtonRainbow";
 import FormatDate from "../Reusable/FormatDate";
 import Avatar from "./Avatar";
@@ -7,12 +7,12 @@ import TitleSmall from "../Reusable/TitleSmall";
 import LoginContext from "../../contexts/LoginContext";
 import ButtonClose from "../Reusable/ButtonClose";
 
-type PropsGroup = {
-  group: TypeGroup;
+type GroupModalProps = {
+  group: Group;
   changeState: () => void;
 };
 
-const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
+const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
   const [signOn, setSignOn] = useState(false);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const GroupModal: React.FC<PropsGroup> = ({ group, changeState }) => {
               <p>
                 Participarán{" "}
                 {Array.isArray(group.users) ? group.users.length : 0} de{" "}
-                {group.sizeGroup}
+                {group.maxSize}
               </p>
             </div>
             <div className="modal_group__container--avatars">

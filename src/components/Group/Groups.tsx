@@ -1,68 +1,77 @@
 import React, { useState } from "react";
-import { Groups2 } from "../../types";
+import { Groups } from "../../types";
 import Title from "../Reusable/Title";
 import ButtonRainbow from "../Reusable/ButtonRainbow";
 import AddGroup from "./AddGroup";
 import Group from "./Group";
 
-type PropsCompGroups = {
-  groups: Groups2;
+type GroupsProps = {
+  groups: Groups;
   showAll: boolean;
   setSortBy: (sortBy: string) => void;
+  adventureName?: string;
 };
 
-const Groups: React.FC<PropsCompGroups> = ({ groups, showAll, setSortBy }) => {
+const GroupsComponent: React.FC<GroupsProps> = ({
+  groups,
+  showAll,
+  setSortBy,
+  adventureName
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log("groups>>>",groups);
+  console.log("groups>>>", groups);
 
-  let adventureName = "";
+  let adventureNameCopy = "";
+  let sortOptions = [
+    ["alphabetical", "Orden alfabético"],
+    ["latestDate", "Fecha más reciente"],
+    ["typeAdventure", "Tipo de aventura"]
+  ];
+
+  const showNoGroup = () => <p>Aún no hay grupos, crea uno</p>;
 
   const showAnyGroup = () => {
-    let adventureNameArray = Object.keys(groups);
-    let adventureNameCopy = adventureNameArray[0];
-    let groupsCopy = groups[adventureNameCopy];
-    adventureName = " de " + adventureNameCopy;
-    return Array.isArray(groupsCopy) ? (
-      groupsCopy.map(group => (
-        <Group
-          key={group.name}
-          group={group}
-          adventureName={adventureName.replace(" de ", "")}
-        />
-      ))
-    ) : (
-      <p key="key">{groupsCopy}</p>
-    );
+    sortOptions = [
+      ["alphabetical", "Orden alfabético"],
+      ["latestDate", "Fecha más reciente"]
+    ];
+    adventureNameCopy = " de " + adventureName;
+    if (groups.length !== 0) {
+      return groups.map(group => <Group key={group.name} group={group} />);
+    } else {
+      return showNoGroup();
+    }
   };
 
   const showAllGroups = () => {
-    let adventureNames = Object.keys(groups);
-    return adventureNames.map(adventureName => {
-      let groupsCopy = groups[adventureName];
-      return (
-        Array.isArray(groupsCopy) && groupsCopy.map(group => (
-              <Group
-                key={group.name}
-                group={group}
-                adventureName={adventureName}
-              />
-            )
-        )
-      );
-    });
+    return groups.map(group => <Group key={group.name} group={group} />);
   };
 
   let showGroups = showAll ? showAllGroups() : showAnyGroup();
 
+  console.log(sortOptions);
+
   return (
     <section className="groups">
-      <Title title={`Grupos${adventureName}`} />
-      <select name="" id="" defaultValue="Default" onChange={e => setSortBy(e.target.value)}>
-        <option value="Default" disabled>Ordenar por</option>
-        <option value="alphabetical">Orden alfabético</option>
-        <option value="latestDate">Fecha más reciente</option>
-        <option value="typeAdventure">Tipo de aventura</option>
-      </select>
+      <Title title={`Grupos${adventureNameCopy}`} />
+      {groups.length >= 2 && (
+        <select
+          name=""
+          id=""
+          defaultValue="Default"
+          onChange={e => setSortBy(e.target.value)}
+        >
+          <option value="Default" disabled>
+            Ordenar por
+          </option>
+          {sortOptions.map(sortOption => (
+            <option key={sortOption[0]} value={sortOption[0]}>
+              {sortOption[1]}
+            </option>
+          ))}
+        </select>
+      )}
+
       <div className="groups__container">
         <div className="groups__container--box">{showGroups}</div>
         <ButtonRainbow
@@ -75,4 +84,4 @@ const Groups: React.FC<PropsCompGroups> = ({ groups, showAll, setSortBy }) => {
   );
 };
 
-export default Groups;
+export default GroupsComponent;

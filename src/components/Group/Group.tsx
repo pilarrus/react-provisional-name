@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import { TypeGroup } from "../../types";
+import { Group } from "../../types";
 import GroupModal from "./GroupModal";
 import TitleSmall from "../Reusable/TitleSmall";
 import ButtonPlus from "../Reusable/ButtonPlus";
 
-type PropsGroup = {
-  group: TypeGroup;
-  adventureName: string;
+type GroupProps = {
+  group: Group;
 };
 
-export default class Group extends Component<PropsGroup> {
+export default class GroupComponent extends Component<GroupProps> {
   state = {
     isOpen: false
   };
@@ -20,8 +19,7 @@ export default class Group extends Component<PropsGroup> {
 
   render() {
     const { group } = this.props;
-    const { adventureName } = this.props;
-    
+
     return (
       <>
         {this.state.isOpen && (
@@ -33,7 +31,7 @@ export default class Group extends Component<PropsGroup> {
         >
           <div className="group__container">
             <TitleSmall title={group.name} semiTransparent={false}></TitleSmall>
-            <span>{adventureName}</span>
+            <span>{group.name_adventure}</span>
           </div>
           <ButtonPlus changeState={this.handleState} />
         </div>

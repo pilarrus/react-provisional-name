@@ -6,7 +6,7 @@ const ButtonClose: React.FC<{ changeState?: () => void }> = ({
 }) => (
   <button className="button-close" onClick={changeState}>
     <svg className="cross__icon">
-      <use xlinkHref={icon_cross+`#icon-cross`}></use>
+      <use xlinkHref={icon_cross + `#icon-cross`}></use>
     </svg>
   </button>
 );
