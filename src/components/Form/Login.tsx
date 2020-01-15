@@ -1,14 +1,9 @@
-import * as firebase from "firebase";
 import React, { FormEvent, useEffect, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import firebaseConfig from "../../enviroments/enviroment";
-import dataUsers from "../../fake-data/usersRegisters";
+import firebase from "../../enviroments/enviroment";
 import { Users } from "../../types";
 
-console.log("PARA NO PERDER LO ANTERIOR", dataUsers);
-
 //INICIALIZAR FIREBASE
-firebase.initializeApp(firebaseConfig);
 
 export const Login = (props: RouteComponentProps) => {
   const [name, setUsername] = useState("");
