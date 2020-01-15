@@ -36,7 +36,21 @@ export type TypeGroup = {
   users: PartialUser[] | []
 };
 
-export type Groups = {
+export type Group = {
+  id: string;
+  name: string;
+  id_adventure: string;
+  name_adventure: string;
+  bg: string;
+  timestamp: number;
+  place: string;
+  maxSize: number;
+  users: PartialUser[] | []
+}
+
+export type Groups = Group[];
+
+export type Groups3 = {
   [id: string] : {
     adventure: string,
     groups: TypeGroup[] | string

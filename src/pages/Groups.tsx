@@ -1,6 +1,6 @@
 import React from "react";
 import fetch from "../utils/mockFetch";
-import { Groups, Groups2 } from "../types";
+import { Groups3, Groups2 } from "../types";
 import { RouteComponentProps, withRouter } from "react-router";
 import GroupsComponent from "../components/Group/Groups";
 import Load from "../components/Reusable/Loading";
@@ -9,7 +9,7 @@ class GroupContainer extends React.Component<
   RouteComponentProps<{
     activityID?: string;
   }>,
-  { fetchGroups: Groups; sortBy: string }
+  { fetchGroups: Groups3; sortBy: string }
 > {
   constructor(props: RouteComponentProps) {
     super(props);
@@ -24,7 +24,7 @@ class GroupContainer extends React.Component<
 
   componentDidMount() {
     this._isMounted = true;
-    fetch<Groups>("/groups")
+    fetch<Groups3>("/groups")
       .then(response => response.json())
       .then(fetchGroups => {
         if (this._isMounted) {

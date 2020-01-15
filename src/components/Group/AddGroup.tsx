@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import adventures from "../../fake-data/adventures";
-import fetchGroups from "../../fake-data/groups";
+import fetchGroups from "../../fake-data/groupsCopy";
 import Title from "../Reusable/Title";
 import ButtonClose from "../Reusable/ButtonClose";
 import LoginContext from "../../contexts/LoginContext";
