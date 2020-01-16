@@ -3,6 +3,7 @@ import UserContext from "../../contexts/UserContext";
 import firebase from "../../enviroments/enviroment";
 import users from "../../fake-data/usersRegisters";
 import send from "../../images/profile/mail.svg";
+import iconNo from "../../images/profile/no.svg";
 import icon from "../../images/profile/user.svg";
 import { User } from "../../types";
 
@@ -11,7 +12,7 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   let finalFriends = [] as User[];
   const contextUser = useContext(UserContext);
 
-  console.log(props.friends);
+  //console.log(props.friends);
 
   if (props.friends) {
     let flatFriends = props.friends.flat();
@@ -28,9 +29,9 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
     });
   }
 
-  if (contextUser.user) {
+  /*if (contextUser.user) {
     finalFriends.find(e => console.log(e.id !== contextUser.user.id));
-  }
+  }*/
 
   return (
     <div className="profile__friends">
@@ -62,21 +63,34 @@ const NoFriend: React.FC<{ friend: User }> = ({ friend }) => {
   const contextUser = useContext(UserContext);
 
   const sendRequest = (friend: User) => {
-    setAdd(send);
     const dbRef = firebase
       .database()
       .ref("users")
-      .child(`${friend.id}`)
-      .child("request");
+      .child(`${friend.id}/request`);
+
     const newRequest = dbRef.push([]);
-    newRequest.set(`${contextUser.user.nick}`);
 
-    /*   .child(`${friend.id}`)
-      .child("request")
-      .push(`${contextUser.user.nick}`)
-      .then();
+    //RECUPERAR LAS SOLICITUDES QUE TIENE EL SOLICITADO PARA VER SI ESTÁ REPETIDA:
+    dbRef.orderByKey().on("value", function(data) {
+      const dataRequests = data.val();
 
-      */
+      if (dataRequests !== null) {
+        const requests = Object.values(dataRequests);
+
+        if (!requests.includes(contextUser.user.nick)) {
+          //console.log("enviada");
+          setAdd(send);
+          newRequest.set(`${contextUser.user.nick}`);
+        } else {
+          //console.log("ya sois amigos");
+          setAdd(iconNo);
+        }
+      } else {
+        //console.log("enviadaaaaa");
+        setAdd(send);
+        newRequest.set(`${contextUser.user.nick}`);
+      }
+    });
   };
 
   return (

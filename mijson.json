@@ -17,10 +17,7 @@
         "Marcela"
       ],
       "img": "ana.jpeg?alt=media&token=4d7ef6c3-87e3-4309-917f-1c523eae5461",
-      "gender": "female",
-      "request": [
-        "Anita"
-      ]
+      "gender": "female"
     },
     {
       "id": 1,
@@ -36,8 +33,7 @@
         "Marcela"
       ],
       "img": "pablo.jpeg?alt=media&token=d3af7c73-4942-4935-9184-a03a784ed3b9",
-      "gender": "male",
-      "request": []
+      "gender": "male"
     },
     {
       "id": 2,
@@ -54,8 +50,7 @@
         "Anita"
       ],
       "img": "pili.jpg?alt=media&token=2a01537d-8dd3-4048-b4e8-0aa1ee4df7c4",
-      "gender": "female",
-      "request": 0
+      "gender": "female"
     },
     {
       "id": 3,
@@ -74,8 +69,7 @@
         "Marcela"
       ],
       "img": "alberto.jpeg?alt=media&token=677bdea0-8536-4ae5-a335-7da57e7926e1",
-      "gender": "male",
-      "request": []
+      "gender": "male"
     },
     {
       "id": 4,
@@ -89,8 +83,7 @@
       ],
       "myFriends": [],
       "img": "marcela.jpg?alt=media&token=23636e76-a934-44db-ad84-f7c544885dca",
-      "gender": "female",
-      "request": []
+      "gender": "female"
     },
     {
       "id": 5,
@@ -106,8 +99,7 @@
         "Paroar"
       ],
       "img": "javier.jpeg?alt=media&token=a82e3919-3c38-4690-bf22-b41f8c80ff74",
-      "gender": "male",
-      "request": []
+      "gender": "male"
     },
     {
       "id": 6,
@@ -121,8 +113,7 @@
       ],
       "myFriends": [],
       "img": "bryan.jpeg?alt=media&token=db157ddf-2bc4-41b6-97fb-f1e801dda508",
-      "gender": "male",
-      "request": []
+      "gender": "male"
     },
     {
       "id": 7,
@@ -136,8 +127,7 @@
       ],
       "myFriends": [],
       "img": "paco.jpeg?alt=media&token=6a7d733e-cbd1-40a0-9167-18bb5fe036fa",
-      "gender": "male",
-      "request": []
+      "gender": "male"
     }
   ]
 }
