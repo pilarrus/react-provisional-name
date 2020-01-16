@@ -1,6 +1,6 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import firebase from "../../enviroments/enviroment";
+import {fire} from "../../enviroments/enviroment";
 import { Users } from "../../types";
 
 //INICIALIZAR FIREBASE
@@ -15,7 +15,7 @@ export const Login = (props: RouteComponentProps) => {
 
   //LEER DATOS DE FIREBASE:
   useEffect(() => {
-    const data = firebase
+    const data = fire
       .database()
       .ref()
       .child("users");

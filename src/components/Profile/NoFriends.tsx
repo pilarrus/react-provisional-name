@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
-import firebase from "../../enviroments/enviroment";
+import {fire} from "../../enviroments/enviroment";
 import users from "../../fake-data/usersRegisters";
 import send from "../../images/profile/mail.svg";
 import icon from "../../images/profile/user.svg";
 import { User } from "../../types";
+
 
 export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   const [persons, setPersons] = useState(false);
@@ -63,7 +64,7 @@ const NoFriend: React.FC<{ friend: User }> = ({ friend }) => {
 
   const sendRequest = (friend: User) => {
     setAdd(send);
-    const dbRef = firebase
+    const dbRef = fire
       .database()
       .ref("users")
       .child(`${friend.id}`)

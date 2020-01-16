@@ -1,21 +1,23 @@
 import React from "react";
 import fetch from "../utils/mockFetch";
-import { Groups, Groups2 } from "../types";
+import { Groups } from "../types";
 import { RouteComponentProps, withRouter } from "react-router";
 import GroupsComponent from "../components/Group/Groups";
 import Load from "../components/Reusable/Loading";
+import adventures from "../fake-data/adventures";
 
 class GroupContainer extends React.Component<
   RouteComponentProps<{
     activityID?: string;
   }>,
-  { fetchGroups: Groups }
+  { fetchGroups: Groups; sortBy: string }
 > {
   constructor(props: RouteComponentProps) {
     super(props);
-    
+
     this.state = {
-      fetchGroups: {}
+      fetchGroups: [],
+      sortBy: "alphabetical"
     };
   }
 
@@ -38,41 +40,58 @@ class GroupContainer extends React.Component<
     this._isMounted = false;
   }
 
+  setSortBy(x: string) {
+    this.setState({ sortBy: x });
+  }
+
   render() {
     let showAll: boolean;
-    let allGroups: Groups2 = {};
+    let groups: Groups = [];
 
-    if (Object.keys(this.state.fetchGroups).length !== 0) {
-      let adventuresID = Object.keys(this.state.fetchGroups);
+    console.log("sortBy>>", this.state.sortBy);
+
+    if (this.state.fetchGroups.length !== 0) {
       let params = this.props.match.params;
 
       if (Object.keys(params).length === 0) {
         showAll = true;
-        adventuresID.forEach(adventureID => {
-          let adventureName = this.state.fetchGroups[adventureID].adventure;
-          let groups = this.state.fetchGroups[adventureID].groups;
-          (Array.isArray(groups)) && (allGroups[adventureName] = groups);
-        });
-
+        groups = this.state.fetchGroups;
+        console.log(groups);
+        //Ordeno groups según sortBy
+        return (
+          <GroupsComponent
+            groups={groups}
+            showAll={showAll}
+            setSortBy={this.setSortBy.bind(this)}
+          />
+        );
       } else {
         showAll = false;
-        let activityID = this.props.match.params.activityID;
-        let idFound = adventuresID.find(
-          adventureID => adventureID === activityID
+        let activityID = params.activityID;
+        let adventureCopy = adventures.find(
+          adventure => adventure.id === activityID
         );
-        //@ts-ignore
-        let adventureName = this.state.fetchGroups[idFound].adventure;
-        //@ts-ignore
-        let groups = this.state.fetchGroups[idFound].groups;
-
-        allGroups[adventureName] = groups;
+        let nameAdventure = "";
+        if (adventureCopy !== undefined) {
+          nameAdventure = adventureCopy.name;
+        }
+        this.state.fetchGroups.forEach(group => {
+          if (group.id_adventure === activityID) {
+            groups.push(group);
+          }
+        });
+        //Ordeno groups según sortBy
+        return (
+          <GroupsComponent
+            groups={groups}
+            showAll={showAll}
+            setSortBy={this.setSortBy.bind(this)}
+            adventureName={nameAdventure}
+          />
+        );
       }
-      return (
-        <GroupsComponent groups={allGroups} showAll={showAll} />
-      );
-      
     } else {
-      return <Load/>;
+      return <Load />;
     }
   }
 }
