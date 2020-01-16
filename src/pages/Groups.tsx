@@ -5,6 +5,7 @@ import { RouteComponentProps, withRouter } from "react-router";
 import GroupsComponent from "../components/Group/Groups";
 import Load from "../components/Reusable/Loading";
 import adventures from "../fake-data/adventures";
+import { sortGroups } from "../utils/functions";
 
 class GroupContainer extends React.Component<
   RouteComponentProps<{
@@ -48,16 +49,14 @@ class GroupContainer extends React.Component<
     let showAll: boolean;
     let groups: Groups = [];
 
-    console.log("sortBy>>", this.state.sortBy);
-
     if (this.state.fetchGroups.length !== 0) {
       let params = this.props.match.params;
 
       if (Object.keys(params).length === 0) {
         showAll = true;
         groups = this.state.fetchGroups;
-        console.log(groups);
-        //Ordeno groups según sortBy
+
+        groups = sortGroups(this.state.sortBy, groups);
         return (
           <GroupsComponent
             groups={groups}
@@ -80,7 +79,8 @@ class GroupContainer extends React.Component<
             groups.push(group);
           }
         });
-        //Ordeno groups según sortBy
+
+        groups = sortGroups(this.state.sortBy, groups);
         return (
           <GroupsComponent
             groups={groups}

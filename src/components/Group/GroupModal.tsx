@@ -48,8 +48,8 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
               <p>{group.place}</p>
               <p>
                 Participarán{" "}
-                {Array.isArray(group.users) ? group.users.length : 0} de{" "}
-                {group.maxSize}
+                {Array.isArray(group.users) ? group.users.length : 0}
+                {" de " + group.maxSize}
               </p>
             </div>
             <div className="modal_group__container--avatars">

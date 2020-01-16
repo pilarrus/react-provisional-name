@@ -19,8 +19,41 @@ const compareTo = (x: Group, y: Group) => {
 };
 
 const sortByTypeAdventure = (groups: Groups) => {
-  let sortedGroups: Groups = groups.sort(compareTo);
-  return sortedGroups;
+  return groups.sort(compareTo);
 };
 
-export { convertDegreesToThermalSensation, compareTo, sortByTypeAdventure };
+const sortGroups = (sortBy: string, groups: Groups) => {
+  switch (sortBy) {
+    case "alphabetical":
+      return groups.sort((x: Group, y: Group) => {
+        if (x.name < y.name) return -1;
+        else if (x > y) return 1;
+        return 0;
+      });
+    case "latestDate":
+      return groups.sort((x: Group, y: Group) => {
+        if (x.timestamp < y.timestamp) return -1;
+        else if (x > y) return 1;
+        return 0;
+      });
+    case "typeAdventure":
+      return groups.sort((x: Group, y: Group) => {
+        if (x.name_adventure < y.name_adventure) return -1;
+        else if (x > y) return 1;
+        return 0;
+      });
+    default:
+      return groups.sort((x: Group, y: Group) => {
+        if (x.name < y.name) return -1;
+        else if (x > y) return 1;
+        return 0;
+      });
+  }
+};
+
+export {
+  convertDegreesToThermalSensation,
+  compareTo,
+  sortByTypeAdventure,
+  sortGroups
+};

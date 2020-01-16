@@ -19,7 +19,6 @@ const GroupsComponent: React.FC<GroupsProps> = ({
   adventureName
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log("groups>>>", groups);
 
   let adventureNameCopy = "";
   let sortOptions = [
@@ -48,8 +47,6 @@ const GroupsComponent: React.FC<GroupsProps> = ({
   };
 
   let showGroups = showAll ? showAllGroups() : showAnyGroup();
-
-  console.log(sortOptions);
 
   return (
     <section className="groups">
