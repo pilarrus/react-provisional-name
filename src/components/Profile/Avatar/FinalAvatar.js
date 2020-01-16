@@ -6,9 +6,9 @@ import GetAvatar from "./GetAvatar";
 class FinalAvatar extends Component {
   constructor(props) {
     super(props);
-    // console.log(">>>>>>>>>>>", this.props.user.img);
 
-    const img = props.user.img === undefined ? noimage : props.user.img;
+    const fireImg = `https://firebasestorage.googleapis.com/v0/b/provisional-name.appspot.com/o/${props.user.img}`;
+    const img = this.props.user.img === undefined ? noimage : fireImg;
     this.state = {
       isAvatarDefault: true,
       profile: {
@@ -38,7 +38,6 @@ class FinalAvatar extends Component {
           isAvatarDefault={isAvatarDefault}
           updateAvatar={this.updateAvatar}
         />
-
         <Avatar avatar={profile.avatar} />
       </div>
     );
@@ -46,3 +45,5 @@ class FinalAvatar extends Component {
 }
 
 export default FinalAvatar;
+
+//    const img = require("../../../images/profile/alberto.jpeg");

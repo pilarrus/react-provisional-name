@@ -1,10 +1,10 @@
 import alberto from "../images/profile/alberto.jpeg";
 import ana from "../images/profile/ana.jpeg";
 import bryan from "../images/profile/bryan.jpeg";
-import paco from "../images/profile/javier.jpeg";
-import javier from "../images/profile/javier2.jpeg";
+import javier from "../images/profile/javier.jpeg";
 import marcela from "../images/profile/marcela.jpg";
 import pablo from "../images/profile/pablo.jpeg";
+import paco from "../images/profile/paco.jpeg";
 import pili from "../images/profile/pili.jpg";
 import { Users } from "../types";
 

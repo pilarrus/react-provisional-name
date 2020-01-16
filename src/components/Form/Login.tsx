@@ -1,19 +1,37 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import dataUsers from "../../fake-data/usersRegisters";
+import firebase from "../../enviroments/enviroment";
+import { Users } from "../../types";
+
+//INICIALIZAR FIREBASE
 
 export const Login = (props: RouteComponentProps) => {
-  console.log("PPPPPP EN LOGIN", props);
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  //DATOS FIREBASE GUARDADOS EN FIREDATA:
+  const [fireData, setFireData] = useState([] as Users[]);
+
+  //LEER DATOS DE FIREBASE:
+  useEffect(() => {
+    const data = firebase
+      .database()
+      .ref()
+      .child("users");
+
+    console.log(data);
+    data.on("value", snapshot => {
+      setFireData(snapshot.val());
+    });
+  }, []);
+
   const submit = (event: FormEvent) => {
     event.preventDefault();
 
-    const user = dataUsers.find(
-      u => u.name === name && u.password === password
-    );
+    const user = fireData
+      .flat()
+      .find(u => u.name === name && u.password === password);
 
     if (user) {
       props.history.push("/profile", user);

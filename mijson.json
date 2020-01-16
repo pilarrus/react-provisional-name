@@ -1,0 +1,143 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "nick": "Anita",
+      "password": "123",
+      "level": "principiante",
+      "email": "anita@aventura.com",
+      "name": "Ana",
+      "myGroups": [],
+      "myFriends": [
+        "Paroar",
+        "Pilarusi",
+        "Albertillo",
+        "Javier",
+        "Bryan",
+        "Marcela"
+      ],
+      "img": "ana.jpeg?alt=media&token=4d7ef6c3-87e3-4309-917f-1c523eae5461",
+      "gender": "female",
+      "request": [
+        "Anita"
+      ]
+    },
+    {
+      "id": 1,
+      "nick": "Paroar",
+      "password": "123",
+      "level": "principiante",
+      "email": "pablito@aventura.com",
+      "name": "Pablo",
+      "myGroups": [
+        "enanitos del VoxQ"
+      ],
+      "myFriends": [
+        "Marcela"
+      ],
+      "img": "pablo.jpeg?alt=media&token=d3af7c73-4942-4935-9184-a03a784ed3b9",
+      "gender": "male",
+      "request": []
+    },
+    {
+      "id": 2,
+      "nick": "Pilarusi",
+      "password": "123",
+      "level": "principiante",
+      "email": "pili@aventura.com",
+      "name": "Pilar",
+      "myGroups": [
+        "enanitos del VoxQ"
+      ],
+      "myFriends": [
+        "Albertillo",
+        "Anita"
+      ],
+      "img": "pili.jpg?alt=media&token=2a01537d-8dd3-4048-b4e8-0aa1ee4df7c4",
+      "gender": "female",
+      "request": 0
+    },
+    {
+      "id": 3,
+      "nick": "Albertillo",
+      "password": "123",
+      "level": "principiante",
+      "email": "alberto@aventura.com",
+      "name": "Alberto",
+      "myGroups": [
+        "enanitos del VoxQ"
+      ],
+      "myFriends": [
+        "Pilarusi",
+        "Anita",
+        "Paroar",
+        "Marcela"
+      ],
+      "img": "alberto.jpeg?alt=media&token=677bdea0-8536-4ae5-a335-7da57e7926e1",
+      "gender": "male",
+      "request": []
+    },
+    {
+      "id": 4,
+      "nick": "Marcela",
+      "password": "123",
+      "level": "principiante",
+      "email": "marcerla@aventura.com",
+      "name": "Marcela",
+      "myGroups": [
+        "enanitos del VoxQ"
+      ],
+      "myFriends": [],
+      "img": "marcela.jpg?alt=media&token=23636e76-a934-44db-ad84-f7c544885dca",
+      "gender": "female",
+      "request": []
+    },
+    {
+      "id": 5,
+      "nick": "Javier",
+      "password": "123",
+      "level": "principiante",
+      "email": "javier@aventura.com",
+      "name": "Javier",
+      "myGroups": [
+        "enanitos del VoxQ"
+      ],
+      "myFriends": [
+        "Paroar"
+      ],
+      "img": "javier.jpeg?alt=media&token=a82e3919-3c38-4690-bf22-b41f8c80ff74",
+      "gender": "male",
+      "request": []
+    },
+    {
+      "id": 6,
+      "nick": "Bryan",
+      "password": "123",
+      "level": "principiante",
+      "email": "bryan@aventura.com",
+      "name": "Bryan",
+      "myGroups": [
+        "enanitos del VoxQ"
+      ],
+      "myFriends": [],
+      "img": "bryan.jpeg?alt=media&token=db157ddf-2bc4-41b6-97fb-f1e801dda508",
+      "gender": "male",
+      "request": []
+    },
+    {
+      "id": 7,
+      "nick": "Paco",
+      "password": "123",
+      "level": "principiante",
+      "email": "paco@aventura.com",
+      "name": "Paco",
+      "myGroups": [
+        "enanitos del VoxQ"
+      ],
+      "myFriends": [],
+      "img": "paco.jpeg?alt=media&token=6a7d733e-cbd1-40a0-9167-18bb5fe036fa",
+      "gender": "male",
+      "request": []
+    }
+  ]
+}

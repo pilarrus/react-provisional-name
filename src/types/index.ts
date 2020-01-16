@@ -17,6 +17,7 @@ export type User = {
   myFriends: string[];
   gender: string;
   img: string;
+  request: string[];
 };
 
 export type Users = User[];
