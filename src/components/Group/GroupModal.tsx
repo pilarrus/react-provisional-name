@@ -61,6 +61,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
             <ButtonRainbow
               text="APUNTARME"
               changeState={() => setSignOn(!signOn)}
+              disabled={group.users.length === group.maxSize}
             />
             {signOn
               ? contextLog.log

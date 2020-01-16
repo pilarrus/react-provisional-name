@@ -74,6 +74,7 @@ const GroupsComponent: React.FC<GroupsProps> = ({
         <ButtonRainbow
           text="Añadir grupo"
           changeState={() => setIsOpen(!isOpen)}
+          disabled={false}
         />
       </div>
       {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)} /> : ""}
