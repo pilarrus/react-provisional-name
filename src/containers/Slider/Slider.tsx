@@ -1,6 +1,7 @@
 import { Carousel } from "antd";
 import "antd/dist/antd.css";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Slider extends Component {
   constructor(props: Readonly<{}>) {
@@ -19,19 +20,60 @@ class Slider extends Component {
       slidesToScroll: 1
     };
     return (
-      <div>
-        <Carousel {...props} autoplay effect="fade">
-          <div className="imgSlide imgSlide1">
-            <img
-              src="https://images.unsplash.com/photo-1464306208223-e0b4495a5553?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              alt=""
-            />
+      <Carousel {...props} effect="fade">
+        <div className="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+            alt=""
+          />
+          <div className="hero-text">
+            <h1>I am Jane Doe</h1>
+            <h2 className="hero-subText">And I'm a Photographer</h2>
+            <Link to="#">
+              <i className="hero-link">Hire me</i>
+            </Link>
           </div>
-          <div className="imgSlide imgSlide2"></div>
-          <div className="imgSlide imgSlide3"></div>
-          <div className="imgSlide imgSlide4"></div>
-        </Carousel>
-      </div>
+        </div>
+        <div className="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+            alt=""
+          />
+          <div className="hero-text">
+            <h1>I am Jane Doe</h1>
+            <h2 className="hero-subText">And I'm a Photographer</h2>
+            <Link to="#">
+              <i className="hero-link">Hire me</i>
+            </Link>
+          </div>
+        </div>
+        <div className="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+            alt=""
+          />
+          <div className="hero-text">
+            <h1>I am Jane Doe</h1>
+            <h2 className="hero-subText">And I'm a Photographer</h2>
+            <Link to="#">
+              <i className="hero-link">Hire me</i>
+            </Link>
+          </div>
+        </div>
+        <div className="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+            alt=""
+          />
+          <div className="hero-text">
+            <h1>I am Jane Doe</h1>
+            <h2 className="hero-subText">And I'm a Photographer</h2>
+            <Link to="#">
+              <i className="hero-link">Hire me</i>
+            </Link>
+          </div>
+        </div>
+      </Carousel>
     );
   }
 }
