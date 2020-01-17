@@ -1,6 +1,7 @@
 import { Groups } from "../types";
 import alberto from "../images/profile/alberto.jpeg";
 import ana from "../images/profile/ana.jpeg";
+import javier from "../images/profile/javier2.jpeg";
 import marcela from "../images/profile/marcela.jpg";
 import pablo from "../images/profile/pablo.jpeg";
 import pili from "../images/profile/pili.jpg";
@@ -18,9 +19,9 @@ export default [
     id_adventure: "1",
     name_adventure: "Escalada",
     bg: climbing,
-    timestamp: 1579102200,
+    timestamp: 1604838600,
     place: "Buitrago de Lozoya",
-    maxSize: 10,
+    maxSize: 6,
     users: [
       { nick: "Anita", img: ana },
       { nick: "Paroar", img: pablo }
@@ -32,9 +33,9 @@ export default [
     id_adventure: "3",
     name_adventure: "Rafting",
     bg: rafting,
-    timestamp: 1581957000,
+    timestamp: 1600016400,
     place: "Guadarrama",
-    maxSize: 10,
+    maxSize: 12,
     users: []
   },
   {
@@ -53,13 +54,13 @@ export default [
   },
   {
     id: "4",
-    name: "Ciudadanos caminando",
+    name: "Ciudadanos motorizados",
     id_adventure: "5",
     name_adventure: "Moto de agua",
     bg: jet_ski,
-    timestamp: 1576236600,
+    timestamp: 1587054600,
     place: "San Martín de Valdeiglesias",
-    sizeGroup: 10,
+    maxSize: 15,
     users: [{ nick: "Anita", img: ana }]
   },
   {
@@ -68,9 +69,9 @@ export default [
     id_adventure: "5",
     name_adventure: "Moto de agua",
     bg: jet_ski2,
-    timestamp: 1577705400,
+    timestamp: 1592899200,
     place: "El Atazar",
-    sizeGroup: 10,
+    maxSize: 8,
     users: []
   },
   {
@@ -81,11 +82,14 @@ export default [
     bg: hiking,
     timestamp: 1598005800,
     place: "Navacerrada",
-    sizeGroup: 10,
+    maxSize: 6,
     users: [
       { nick: "Anita", img: ana },
       { nick: "Paroar", img: pablo },
-      { nick: "Pilarusi", img: pili }
+      { nick: "Pilarusi", img: pili },
+      { nick: "Marcela", img: marcela },
+      { nick: "Albertillo", img: alberto },
+      { nick: "Javier", img: javier },
     ]
   }
 ] as Groups;

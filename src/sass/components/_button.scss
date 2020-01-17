@@ -8,6 +8,10 @@
   background-color: #fff;
   padding: 0.3rem 2.13rem;
   cursor: pointer;
+  
+  &:disabled {
+    cursor: not-allowed;
+  }
 
   &:focus {
     outline-style: none;
