@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import firebase from "../../enviroments/enviroment";
 import users from "../../fake-data/usersRegisters";
@@ -78,20 +78,28 @@ const NoFriend: React.FC<{ friend: User }> = ({ friend }) => {
         const requests = Object.values(dataRequests);
 
         if (!requests.includes(contextUser.user.nick)) {
-          //console.log("enviada");
+          console.log("enviada");
           setAdd(send);
           newRequest.set(`${contextUser.user.nick}`);
         } else {
-          //console.log("ya sois amigos");
+          console.log("ya sois amigos");
           setAdd(iconNo);
         }
       } else {
-        //console.log("enviadaaaaa");
+        console.log("enviadaaaaa");
         setAdd(send);
         newRequest.set(`${contextUser.user.nick}`);
       }
     });
   };
+
+  const componentIsMounted = useRef(false);
+  useEffect(() => {
+    componentIsMounted.current = true;
+    return () => {
+      componentIsMounted.current = false;
+    };
+  }, []);
 
   return (
     <div className="friends_img">

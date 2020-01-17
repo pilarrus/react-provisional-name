@@ -42,11 +42,12 @@ export const Info: React.FC<{
           .ref("users")
           .child(`${contextUser.user.id}/myFriends`);
 
-        const key = contextUser.user.myFriends.length.toString;
-        console.log(key);
+        const key = contextUser.user.myFriends.length.toString();
+
+        //console.log(key);
         //NO CONSIGO GUARDAR EL NÚMERO
         //EL MÉTODO UPDATE NO GENERA EL ID QUE GENERA FIREBASE POR DEFECTO
-        dbRef.update({ key: element });
+        dbRef.update({ [key]: element });
       }
     });
   };
