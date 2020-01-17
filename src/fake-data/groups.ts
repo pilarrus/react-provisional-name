@@ -1,7 +1,7 @@
 import { Groups } from "../types";
 import alberto from "../images/profile/alberto.jpeg";
 import ana from "../images/profile/ana.jpeg";
-import javier from "../images/profile/javier2.jpeg";
+import javier from "../images/profile/javier.jpeg";
 import marcela from "../images/profile/marcela.jpg";
 import pablo from "../images/profile/pablo.jpeg";
 import pili from "../images/profile/pili.jpg";
