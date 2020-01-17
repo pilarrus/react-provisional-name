@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
-import {fire} from "../../enviroments/enviroment";
+import fire from "../../enviroments/enviroment";
 import users from "../../fake-data/usersRegisters";
 import send from "../../images/profile/mail.svg";
 import icon from "../../images/profile/user.svg";

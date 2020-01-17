@@ -1,0 +1,233 @@
+{
+  "db": {
+    "users": [
+      {
+        "id": 0,
+        "nick": "Anita",
+        "password": "123",
+        "level": "principiante",
+        "email": "anita@aventura.com",
+        "name": "Ana",
+        "myGroups": [],
+        "myFriends": [
+          "Paroar",
+          "Pilarusi",
+          "Albertillo",
+          "Javier",
+          "Bryan",
+          "Marcela"
+        ],
+        "img": "users%2Fana.jpeg?alt=media&token=13fcaab9-f80b-4f6b-80ec-f4077afaae7d",
+        "gender": "female",
+        "request": ["Anita"]
+      },
+      {
+        "id": 1,
+        "nick": "Paroar",
+        "password": "123",
+        "level": "principiante",
+        "email": "pablito@aventura.com",
+        "name": "Pablo",
+        "myGroups": ["enanitos del VoxQ"],
+        "myFriends": ["Marcela"],
+        "img": "users%2Fpablo.jpeg?alt=media&token=f4682ab4-e294-49b5-9b7c-02b8004b13cf",
+        "gender": "male",
+        "request": []
+      },
+      {
+        "id": 2,
+        "nick": "Pilarusi",
+        "password": "123",
+        "level": "principiante",
+        "email": "pili@aventura.com",
+        "name": "Pilar",
+        "myGroups": ["enanitos del VoxQ"],
+        "myFriends": ["Albertillo", "Anita"],
+        "img": "users%2Fpili.jpg?alt=media&token=ad64a403-6506-4b42-be77-12439e86163f",
+        "gender": "female",
+        "request": 0
+      },
+      {
+        "id": 3,
+        "nick": "Albertillo",
+        "password": "123",
+        "level": "principiante",
+        "email": "alberto@aventura.com",
+        "name": "Alberto",
+        "myGroups": ["enanitos del VoxQ"],
+        "myFriends": ["Pilarusi", "Anita", "Paroar", "Marcela"],
+        "img": "users%2Falberto.jpeg?alt=media&token=29d01831-5658-46e9-8a1b-2bd0b2c340b7",
+        "gender": "male",
+        "request": []
+      },
+      {
+        "id": 4,
+        "nick": "Marcela",
+        "password": "123",
+        "level": "principiante",
+        "email": "marcerla@aventura.com",
+        "name": "Marcela",
+        "myGroups": ["enanitos del VoxQ"],
+        "myFriends": [],
+        "img": "users%2Fmarcela.jpg?alt=media&token=345fc20a-c586-47b8-b032-05868e5fe7d0",
+        "gender": "female",
+        "request": []
+      },
+      {
+        "id": 5,
+        "nick": "Javier",
+        "password": "123",
+        "level": "principiante",
+        "email": "javier@aventura.com",
+        "name": "Javier",
+        "myGroups": ["enanitos del VoxQ"],
+        "myFriends": ["Paroar"],
+        "img": "users%2Fjavier.jpeg?alt=media&token=4de01c8e-3a08-498c-94f9-95c229b7c6fb",
+        "gender": "male",
+        "request": []
+      },
+      {
+        "id": 6,
+        "nick": "Bryan",
+        "password": "123",
+        "level": "principiante",
+        "email": "bryan@aventura.com",
+        "name": "Bryan",
+        "myGroups": ["enanitos del VoxQ"],
+        "myFriends": [],
+        "img": "users%2Fbryan.jpeg?alt=media&token=1dd62b77-4ba5-4376-b19f-adcea8a67a68",
+        "gender": "male",
+        "request": []
+      },
+      {
+        "id": 7,
+        "nick": "Paco",
+        "password": "123",
+        "level": "principiante",
+        "email": "paco@aventura.com",
+        "name": "Paco",
+        "myGroups": ["enanitos del VoxQ"],
+        "myFriends": [],
+        "img": "users%2Fpaco.jpeg?alt=media&token=a5086905-d266-4b11-932e-9747d8700440",
+        "gender": "male",
+        "request": []
+      }
+    ],
+    "groups": [
+      {
+        "id": "1",
+        "name": "No seas psoe que quiero ir a la montaña",
+        "id_adventure": "1",
+        "name_adventure": "Escalada",
+        "bg": "groups%2Fclimber.jpeg?alt=media&token=73c0dbb3-eb9e-442c-a038-e172b78c3069",
+        "timestamp": 1604838600,
+        "place": "Buitrago de Lozoya",
+        "maxSize": 6,
+        "users": [
+          {
+            "nick": "Anita",
+            "img": "users%2Fana.jpeg?alt=media&token=13fcaab9-f80b-4f6b-80ec-f4077afaae7d"
+          },
+          {
+            "nick": "Paroar",
+            "img": "users%2Fpablo.jpeg?alt=media&token=f4682ab4-e294-49b5-9b7c-02b8004b13cf"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Menos Madrid y más campo",
+        "id_adventure": "3",
+        "name_adventure": "Rafting",
+        "bg": "groups%2Frafting.jpg?alt=media&token=fda86092-2355-4723-b0f1-abbac0a8b9ed",
+        "timestamp": 1600016400,
+        "place": "Guadarrama",
+        "maxSize": 12,
+        "users": []
+      },
+      {
+        "id": "3",
+        "name": "Podemos ir al río",
+        "id_adventure": "3",
+        "name_adventure": "Rafting",
+        "bg": "groups%2Frafting2.jpg?alt=media&token=31404bb9-55d4-41bf-ab8a-4ff185eab6a0",
+        "timestamp": 1607783400,
+        "place": "Rascafría",
+        "maxSize": 10,
+        "users": [
+          {
+            "nick": "Albertillo",
+            "img": "users%2Falberto.jpeg?alt=media&token=29d01831-5658-46e9-8a1b-2bd0b2c340b7"
+          },
+          {
+            "nick": "Marcela",
+            "img": "users%2Fmarcela.jpg?alt=media&token=345fc20a-c586-47b8-b032-05868e5fe7d0"
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "name": "Ciudadanos motorizados",
+        "id_adventure": "5",
+        "name_adventure": "Moto de agua",
+        "bg": "groups%2Fjet_ski.jpg?alt=media&token=ab58732f-6d8d-4c3b-87b8-5951c23018ef",
+        "timestamp": 1587054600,
+        "place": "San Martín de Valdeiglesias",
+        "maxSize": 15,
+        "users": [
+          {
+            "nick": "Anita",
+            "img": "users%2Fana.jpeg?alt=media&token=13fcaab9-f80b-4f6b-80ec-f4077afaae7d"
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "name": "Pepe y Pepa se van de juerga",
+        "id_adventure": "5",
+        "name_adventure": "Moto de agua",
+        "bg": "groups%2Fjet_ski2.jpg?alt=media&token=e8f94226-8223-429f-9541-99e483cae131",
+        "timestamp": 1592899200,
+        "place": "El Atazar",
+        "maxSize": 8,
+        "users": []
+      },
+      {
+        "id": "6",
+        "name": "Enanitos en el VoxQue",
+        "id_adventure": "7",
+        "name_adventure": "Senderismo",
+        "bg": "groups%2Fhiking.jpg?alt=media&token=7259b78b-8158-483c-a22d-05fa2745c12f",
+        "timestamp": 1598005800,
+        "place": "Navacerrada",
+        "maxSize": 6,
+        "users": [
+          {
+            "nick": "Anita",
+            "img": "users%2Fana.jpeg?alt=media&token=13fcaab9-f80b-4f6b-80ec-f4077afaae7d"
+          },
+          {
+            "nick": "Paroar",
+            "img": "users%2Fpablo.jpeg?alt=media&token=f4682ab4-e294-49b5-9b7c-02b8004b13cf"
+          },
+          {
+            "nick": "Pilarusi",
+            "img": "users%2Fpili.jpg?alt=media&token=ad64a403-6506-4b42-be77-12439e86163f"
+          },
+          {
+            "nick": "Marcela",
+            "img": "users%2Fmarcela.jpg?alt=media&token=345fc20a-c586-47b8-b032-05868e5fe7d0"
+          },
+          {
+            "nick": "Albertillo",
+            "img": "users%2Falberto.jpeg?alt=media&token=29d01831-5658-46e9-8a1b-2bd0b2c340b7"
+          },
+          {
+            "nick": "Javier",
+            "img": "users%2Fjavier.jpeg?alt=media&token=4de01c8e-3a08-498c-94f9-95c229b7c6fb"
+          }
+        ]
+      }
+    ]
+  }
+}
