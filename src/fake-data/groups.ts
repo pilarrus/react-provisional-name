@@ -89,7 +89,7 @@ export default [
       { nick: "Pilarusi", img: pili },
       { nick: "Marcela", img: marcela },
       { nick: "Albertillo", img: alberto },
-      { nick: "Javier", img: javier },
+      { nick: "Javier", img: javier }
     ]
   }
 ] as Groups;
