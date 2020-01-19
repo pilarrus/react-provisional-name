@@ -15,6 +15,7 @@ import {
 } from "../../utils/functions";
 import ButtonClose from "../Reusable/ButtonClose";
 import Title from "../Reusable/Title";
+import GroupsContext from "../../contexts/GroupsContext";
 
 type AddGroupProps = {
   changeState: () => void;
@@ -52,6 +53,9 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   console.log("Log", contextLog.log);
   const contextUser = useContext(UserContext);
   console.log("user>>>", getUser(contextUser));
+
+  let contextGroups = useContext(GroupsContext);
+  console.log("contextGroups>>>>>>", contextGroups);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
