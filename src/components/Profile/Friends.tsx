@@ -12,6 +12,7 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
     return users.filter(option => option.nick === element);
   });
 
+  console.log(myFriends);
   return (
     <div className="profile__friends">
       <div className="profile__friends-box">
