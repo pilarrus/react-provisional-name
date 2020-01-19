@@ -7,7 +7,7 @@ type AvatarProps = {
 
 const Avatar: React.FC<AvatarProps> = ({ nick, img }) => {
   const style = {
-    backgroundImage: "url(" + img + ")",
+    backgroundImage: "url(https://firebasestorage.googleapis.com/v0/b/react-9cbc4.appspot.com/o/" + img + ")",
     backgroundPosition: "top",
     backgroundSize: "cover"
   };

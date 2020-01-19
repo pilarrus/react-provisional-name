@@ -1,10 +1,11 @@
 import React from "react";
-import fetch from "../utils/mockFetch";
-import { Groups } from "../types";
 import { RouteComponentProps, withRouter } from "react-router";
 import GroupsComponent from "../components/Group/Groups";
 import Load from "../components/Reusable/Loading";
+import fire from "../enviroments/enviroment";
 import adventures from "../fake-data/adventures";
+import GroupService from "../services/groupServices";
+import { Groups } from "../types";
 import { sortGroups } from "../utils/functions";
 
 class GroupContainer extends React.Component<
@@ -26,15 +27,17 @@ class GroupContainer extends React.Component<
 
   componentDidMount() {
     this._isMounted = true;
-    fetch<Groups>("/groups")
-      .then(response => response.json())
-      .then(fetchGroups => {
-        if (this._isMounted) {
-          this.setState({
-            fetchGroups
-          });
-        }
-      });
+
+    let groupService: GroupService;
+    groupService = new GroupService(fire);
+
+    groupService.find().then(fetchGroups => {
+      if (this._isMounted) {
+        this.setState({
+          fetchGroups
+        });
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -67,6 +70,7 @@ class GroupContainer extends React.Component<
       } else {
         showAll = false;
         let activityID = params.activityID;
+
         let adventureCopy = adventures.find(
           adventure => adventure.id === activityID
         );
@@ -74,6 +78,7 @@ class GroupContainer extends React.Component<
         if (adventureCopy !== undefined) {
           nameAdventure = adventureCopy.name;
         }
+
         this.state.fetchGroups.forEach(group => {
           if (group.id_adventure === activityID) {
             groups.push(group);

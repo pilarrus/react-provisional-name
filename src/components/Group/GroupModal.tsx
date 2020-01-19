@@ -37,7 +37,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
           <ButtonClose changeState={changeState} />
           <div
             className="modal_group__title"
-            style={{ backgroundImage: "url(" + group.bg + ")" }}
+            style={{ backgroundImage: "url(https://firebasestorage.googleapis.com/v0/b/react-9cbc4.appspot.com/o/" + group.bg + ")" }}
           >
             <TitleSmall title={group.name} semiTransparent={true}></TitleSmall>
           </div>

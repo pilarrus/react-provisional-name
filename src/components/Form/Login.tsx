@@ -18,6 +18,7 @@ export const Login = (props: RouteComponentProps) => {
     const data = fire
       .database()
       .ref()
+      .child("db")
       .child("users");
 
     console.log(data);

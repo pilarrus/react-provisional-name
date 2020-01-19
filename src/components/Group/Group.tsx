@@ -27,7 +27,7 @@ export default class GroupComponent extends Component<GroupProps> {
         )}
         <div
           className="group"
-          style={{ backgroundImage: "url(" + group.bg + ")" }}
+          style={{ backgroundImage: "url(https://firebasestorage.googleapis.com/v0/b/react-9cbc4.appspot.com/o/" + group.bg + ")" }}
         >
           <div className="group__container">
             <TitleSmall title={group.name} semiTransparent={false}></TitleSmall>
