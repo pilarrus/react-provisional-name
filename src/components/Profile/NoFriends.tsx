@@ -3,7 +3,7 @@ import UserContext from "../../contexts/UserContext";
 import users from "../../fake-data/usersRegisters";
 import icon from "../../images/profile/user.svg";
 import { User } from "../../types";
-import NoFriend from "./Friend";
+import NoFriend from "./NoFriend";
 
 export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
   const [persons, setPersons] = useState(false);
@@ -47,7 +47,11 @@ export const NoFriends: React.FC<{ friends?: User[][] }> = props => {
         <div className="nofriends">
           {finalFriends.map(friend =>
             friend.id !== contextUser.user.id ? (
-              <NoFriend friend={friend} key={friend.id} />
+              <NoFriend
+                friend={friend}
+                key={friend.id}
+                conectUser={contextUser.user}
+              />
             ) : null
           )}
         </div>

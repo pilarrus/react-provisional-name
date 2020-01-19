@@ -17,14 +17,15 @@ export const Info: React.FC<{
     width: "30px"
   };
 
+  const dbRef = firebase.database().ref("users");
   contextUser.setUser(user);
-
+  console.log(fireUsers);
   useEffect(() => {
     if (user.request) {
       setRequest(Object.values(user.request));
     }
-    const dbRef = firebase.database().ref("users");
-    dbRef.on("value", function(data) {
+
+    dbRef.on("child_added", function(data) {
       setFireUsers(data.val());
     });
   }, [user]);
@@ -35,29 +36,14 @@ export const Info: React.FC<{
   //añadir como amigo en friends y eliminar de request
   const addFriend = (friend: string) => {
     console.log("ACEPTO A:", friend);
-    fireUsers.forEach(element => {
-      if (element.nick === friend) {
-        const dbRef = firebase
-          .database()
-          .ref("users")
-          .child(`${contextUser.user.id}/myFriends`);
-
-        const key = contextUser.user.myFriends.length.toString();
-
-        //console.log(key);
-        //NO CONSIGO GUARDAR EL NÚMERO
-        //EL MÉTODO UPDATE NO GENERA EL ID QUE GENERA FIREBASE POR DEFECTO
-        dbRef.update({ [key]: element });
-      }
-    });
+    const key = contextUser.user.myFriends.length;
+    dbRef.child(`${contextUser.user.id}/myFriends`).update({ [key]: friend });
+    dbRef.child(`${contextUser.user.id}/request`).remove();
   };
 
   //borrar de request
   const removeFriend = (friend: string) => {
     console.log("RECHAZO A:", friend);
-    fireUsers.forEach(element =>
-      element.nick === friend ? console.log(element) : null
-    );
   };
   return (
     <div className="profile__info">
