@@ -7,6 +7,7 @@ import adventures from "../fake-data/adventures";
 import GroupService from "../services/groupServices";
 import { Groups } from "../types";
 import { sortGroups } from "../utils/functions";
+import Error from "../pages/Error";
 
 class GroupContainer extends React.Component<
   RouteComponentProps<{
@@ -70,6 +71,8 @@ class GroupContainer extends React.Component<
       } else {
         showAll = false;
         let activityID = params.activityID;
+        //console.log("activityID>>>>>>>>", activityID);
+        if (parseInt(activityID as string) < 0 || parseInt(activityID as string) > 9) return <Error/>;
 
         let adventureCopy = adventures.find(
           adventure => adventure.id === activityID

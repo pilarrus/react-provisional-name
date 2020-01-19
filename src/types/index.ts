@@ -41,3 +41,8 @@ export type Group = {
 };
 
 export type Groups = Group[];
+
+export type contextUserType = {
+  user: User;
+  setUser: (_user: User) => void;
+};

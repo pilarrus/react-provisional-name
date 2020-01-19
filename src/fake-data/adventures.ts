@@ -11,7 +11,7 @@ import { TypeAdventure } from "../types";
 
 export default [
   {
-    id: "1",
+    id: "0",
     name: "Escalada",
     photo: climbing,
     info:
@@ -19,7 +19,7 @@ export default [
     thermalSensation: "warmth"
   },
   {
-    id: "2",
+    id: "1",
     name: "Tirolinas",
     photo: zip_lines,
     info:
@@ -27,7 +27,7 @@ export default [
     thermalSensation: "warmth"
   },
   {
-    id: "3",
+    id: "2",
     name: "Rafting",
     photo: rafting,
     info:
@@ -35,7 +35,7 @@ export default [
     thermalSensation: "very hot"
   },
   {
-    id: "4",
+    id: "3",
     name: "Piragüísmo",
     photo: canoeing,
     info:
@@ -43,7 +43,7 @@ export default [
     thermalSensation: "very hot"
   },
   {
-    id: "5",
+    id: "4",
     name: "Moto de agua",
     photo: jet_ski,
     info:
@@ -51,7 +51,7 @@ export default [
     thermalSensation: "very hot"
   },
   {
-    id: "6",
+    id: "5",
     name: "Quad",
     photo: quad,
     info:
@@ -59,7 +59,7 @@ export default [
     thermalSensation: "warmth"
   },
   {
-    id: "7",
+    id: "6",
     name: "Senderismo",
     photo: hiking,
     info:
@@ -67,7 +67,7 @@ export default [
     thermalSensation: "cold"
   },
   {
-    id: "8",
+    id: "7",
     name: "Ski",
     photo: ski,
     info:
@@ -75,7 +75,7 @@ export default [
     thermalSensation: "cold"
   },
   {
-    id: "9",
+    id: "8",
     name: "Snowboard",
     photo: snowboard,
     info:

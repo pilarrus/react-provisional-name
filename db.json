@@ -115,9 +115,9 @@
     ],
     "groups": [
       {
-        "id": "1",
+        "id": "0",
         "name": "No seas psoe que quiero ir a la montaña",
-        "id_adventure": "1",
+        "id_adventure": "0",
         "name_adventure": "Escalada",
         "bg": "groups%2Fclimber.jpeg?alt=media&token=73c0dbb3-eb9e-442c-a038-e172b78c3069",
         "timestamp": 1604838600,
@@ -135,9 +135,9 @@
         ]
       },
       {
-        "id": "2",
+        "id": "1",
         "name": "Menos Madrid y más campo",
-        "id_adventure": "3",
+        "id_adventure": "2",
         "name_adventure": "Rafting",
         "bg": "groups%2Frafting.jpg?alt=media&token=fda86092-2355-4723-b0f1-abbac0a8b9ed",
         "timestamp": 1600016400,
@@ -146,9 +146,9 @@
         "users": []
       },
       {
-        "id": "3",
+        "id": "2",
         "name": "Podemos ir al río",
-        "id_adventure": "3",
+        "id_adventure": "2",
         "name_adventure": "Rafting",
         "bg": "groups%2Frafting2.jpg?alt=media&token=31404bb9-55d4-41bf-ab8a-4ff185eab6a0",
         "timestamp": 1607783400,
@@ -166,9 +166,9 @@
         ]
       },
       {
-        "id": "4",
+        "id": "3",
         "name": "Ciudadanos motorizados",
-        "id_adventure": "5",
+        "id_adventure": "4",
         "name_adventure": "Moto de agua",
         "bg": "groups%2Fjet_ski.jpg?alt=media&token=ab58732f-6d8d-4c3b-87b8-5951c23018ef",
         "timestamp": 1587054600,
@@ -182,9 +182,9 @@
         ]
       },
       {
-        "id": "5",
+        "id": "4",
         "name": "Pepe y Pepa se van de juerga",
-        "id_adventure": "5",
+        "id_adventure": "4",
         "name_adventure": "Moto de agua",
         "bg": "groups%2Fjet_ski2.jpg?alt=media&token=e8f94226-8223-429f-9541-99e483cae131",
         "timestamp": 1592899200,
@@ -193,9 +193,9 @@
         "users": []
       },
       {
-        "id": "6",
+        "id": "5",
         "name": "Enanitos en el VoxQue",
-        "id_adventure": "7",
+        "id_adventure": "6",
         "name_adventure": "Senderismo",
         "bg": "groups%2Fhiking.jpg?alt=media&token=7259b78b-8158-483c-a22d-05fa2745c12f",
         "timestamp": 1598005800,

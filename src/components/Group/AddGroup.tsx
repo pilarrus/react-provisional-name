@@ -1,40 +1,23 @@
-import React, { useEffect, useState, useContext } from "react";
-import adventures from "../../fake-data/adventures";
-import fetchGroups from "../../fake-data/groups";
-import Title from "../Reusable/Title";
-import ButtonClose from "../Reusable/ButtonClose";
+import React, { useContext, useEffect, useState } from "react";
 import LoginContext from "../../contexts/LoginContext";
 import UserContext from "../../contexts/UserContext";
-import { Groups } from "../../types";
+import adventures from "../../fake-data/adventures";
+import fetchGroups from "../../fake-data/groups";
+import {
+  createGroup,
+  getAdventure,
+  getCurrentDate,
+  getCurrentHour,
+  //getLastID,
+  getNameGroups,
+  getTimestamp,
+  getUser
+} from "../../utils/functions";
+import ButtonClose from "../Reusable/ButtonClose";
+import Title from "../Reusable/Title";
 
 type AddGroupProps = {
   changeState: () => void;
-};
-
-const getCurrentDate = () => {
-  let fullDate = new Date();
-  let day = fullDate.getDate();
-  let dayCopy = day < 10 ? `0${day}` : day;
-  let month = fullDate.getMonth() + 1;
-  let monthCopy = month < 10 ? `0${month}` : month;
-  let year = fullDate.getFullYear();
-  let date = year + "-" + monthCopy + "-" + dayCopy;
-  return date;
-};
-
-const getCurrentHour = () => {
-  let fullDate = new Date();
-  let hour = fullDate.getHours();
-  let hourCopy = ++hour;
-  let minutes = fullDate.getMinutes();
-  let fullHour = `${hourCopy}:${minutes}`;
-  return fullHour;
-};
-
-const getNameGroups = (groups: Groups) => {
-  let nameGroups: string[] = [];
-  groups.forEach(group => nameGroups.push(group.name));
-  return nameGroups;
 };
 
 const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
@@ -55,8 +38,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   console.log("date>>>", date);
   console.log("time>>>", time);
   console.log("maxSize>>>", maxSize);
-  console.log("fetchGroups>>>", fetchGroups);
-  console.log("nameGroup>>>", nameGroups);
 
   const places = [
     { id: 1, name: "Buitrago de Lozoya" },
@@ -68,12 +49,9 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   ];
 
   const contextLog = useContext(LoginContext);
-  console.log("Log", contextLog);
-  const contextUSer = useContext(UserContext);
-  console.log(contextUSer.user);
-  /*contextUSer.user !== undefined
-  ? console.log("User", contextUSer.user.nick)
-  : console.log(null);*/
+  console.log("Log", contextLog.log);
+  const contextUser = useContext(UserContext);
+  console.log("user>>>", getUser(contextUser));
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -84,6 +62,45 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [changeState]);
+
+  const completedForm = () => {
+    return (
+      name === "" ||
+      activity === "" ||
+      place === "" ||
+      date === "" ||
+      time === "" ||
+      maxSize === "" ||
+      nameExist ||
+      contextLog.log === false
+    );
+  };
+
+  if (!completedForm()) {
+    let id = "22";//getLastID(groups);
+    let id_adventure = "";
+    let name_adventure = "";
+    let adventure = getAdventure(activity, adventures);
+    if (typeof adventure !== undefined) {
+      //@ts-ignore
+      id_adventure = adventure.id;
+      //@ts-ignore
+      name_adventure = adventure.name;
+    }
+    let user = getUser(contextUser);
+    let group = createGroup(
+      id,
+      name,
+      id_adventure,
+      name_adventure,
+      getTimestamp(date, time),
+      place,
+      parseInt(maxSize),
+      //@ts-ignore
+      user
+    );
+    console.log(group);
+  }
 
   return (
     <div className="modal" onClick={changeState}>
@@ -196,16 +213,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
           <button
             type="submit"
             className="button__addGroup"
-            disabled={
-              name === "" ||
-              activity === "" ||
-              place === "" ||
-              date === "" ||
-              time === "" ||
-              maxSize === "" ||
-              nameExist ||
-              contextLog.log === false
-            }
+            disabled={completedForm()}
           >
             Crear grupo
           </button>

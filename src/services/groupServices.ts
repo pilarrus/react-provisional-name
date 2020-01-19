@@ -33,7 +33,9 @@ class GroupService {
   /*
   public findByUser(user: PartialUser) {}
 
-  public save(group: Group, userOwner: PartialUser) {}
+  public save(group: Group) {}
+
+  public save2(group: Group, userOwner: PartialUser) {}
 
   public removeFromUser(group: Group, userOwner: User) {}*/
 }
