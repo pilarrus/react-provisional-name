@@ -32,7 +32,7 @@ class NoFriend extends React.Component<{ friend: User; conectUser: User }> {
     if (users[friend.id].request) {
       key = users[friend.id].request.length;
 
-      users[friend.id].request.map(e => {
+      users[friend.id].request.forEach(e => {
         if (e === conectUser.nick) {
           exist = true;
         }

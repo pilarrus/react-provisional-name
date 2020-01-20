@@ -17,7 +17,6 @@ export const Profile: React.FC<RouteComponentProps<
   {},
   User
 >> = RouteComponentProps => {
-  let user = RouteComponentProps.location.state; // datos que recibo del formulario de registro o del login
   const contextLog = useContext(LoginContext); // El usuario conectado
   const dbRef = firebase.database().ref("users"); // referencia a users de firebase
   const [request, setRequest] = useState([] as string[]);
@@ -27,11 +26,13 @@ export const Profile: React.FC<RouteComponentProps<
     width: "30px"
   };
 
+  const [user, setUser] = useState(RouteComponentProps.location.state);
+
   useEffect(() => {
     if (user.request) {
       setRequest(user.request);
     }
-  }, []);
+  }, [user.request]);
 
   const addFriend = (friend: string) => {
     //AÑADIR A AMIGOS CUANDO SE ACEPTA LA AMISTAD:
@@ -50,7 +51,6 @@ export const Profile: React.FC<RouteComponentProps<
         entries.forEach(element => {
           if (element[1] === friend) {
             var num = element[0];
-            console.log(num);
             dbRef
               .child(`${contextUser.user.id}/request`)
               .child(num.toString())
@@ -60,13 +60,43 @@ export const Profile: React.FC<RouteComponentProps<
       }
     });
 
-    /*dbRef.on("value", snap => {
-      contextUser.setUser(snap.val());
-    });*/
+    //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
+    dbRef.on("value", snap => {
+      snap.forEach(e => {
+        const newVal: User = e.val();
+        if (newVal.id === user.id) {
+          setUser(newVal);
+        }
+      });
+    });
   };
 
   const removeFriend = (friend: string) => {
     console.log("RECHAZO A:", friend);
+    contextUser.user.request.forEach(element => {
+      if (element === friend) {
+        const entries = Object.entries(contextUser.user.request);
+        entries.forEach(element => {
+          if (element[1] === friend) {
+            var num = element[0];
+            dbRef
+              .child(`${contextUser.user.id}/request`)
+              .child(num.toString())
+              .remove();
+          }
+        });
+      }
+    });
+
+    //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
+    dbRef.on("value", snap => {
+      snap.forEach(e => {
+        const newVal: User = e.val();
+        if (newVal.id === user.id) {
+          setUser(newVal);
+        }
+      });
+    });
   };
 
   if (user) {
