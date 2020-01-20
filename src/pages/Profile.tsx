@@ -110,7 +110,8 @@ export const Profile: React.FC<RouteComponentProps<
         <Info user={user} />
         <div className="request">
           {user.request ? (
-            <div onClick={() => setDisplay(!display)}>
+            <div className="request-aviso" onClick={() => setDisplay(!display)}>
+              <p>¡Tienes nuevas solicitudes de amistad!</p>
               <div>
                 <img src={bell} alt="icon" className="request-icon" />
               </div>
@@ -122,7 +123,7 @@ export const Profile: React.FC<RouteComponentProps<
                 ? request.map(e => (
                     <div key={e} className="request-friends-box">
                       <div>
-                        <span>{e}</span>
+                        <p>{e}</p>
                         <span onClick={() => addFriend(e)}>
                           <img
                             src={iconSi}

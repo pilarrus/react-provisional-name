@@ -1,42 +1,65 @@
 .request {
-  background-color: red;
+  background-color: rgba(222, 223, 222, 0.884);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin: 10px;
+  border-radius: 20px;
 
   div {
     display: flex;
     justify-content: center;
   }
   &-icon {
-    background-color: #17a2b8;
-    border-radius: 50%;
-    padding: 5px;
-    width: 40px;
+    width: 35px;
+    cursor: pointer;
 
     &:hover {
       animation: shake 0.5s ease infinite;
     }
   }
 
+  &-aviso {
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding: 18px 0px;
+
+    div {
+      background-color: #17a2b8;
+      border-radius: 50%;
+      padding: 10px;
+    }
+  }
+
   &-friends {
-    background-color: grey;
     padding: 10px;
     width: 50%;
-    display: flex;
-    flex-direction: column;
 
     &-box {
       display: flex;
       flex-direction: column;
+      margin: 0px 5px;
 
       div {
-        background-color: brown;
+        background-color: lightgrey;
         padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-bottom: 0px;
+          margin-right: 7px;
+        }
 
         span {
-          background-color: chartreuse;
+          cursor: pointer;
+          margin: 0px 3px;
+        }
+        span:hover {
+          opacity: 0.8;
         }
       }
     }
