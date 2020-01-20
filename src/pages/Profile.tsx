@@ -29,11 +29,12 @@ export const Profile: React.FC<RouteComponentProps<
 
   useEffect(() => {
     if (user.request) {
-      setRequest(Object.values(user.request));
+      setRequest(user.request);
     }
   }, []);
 
   const addFriend = (friend: string) => {
+    //AÑADIR A AMIGOS CUANDO SE ACEPTA LA AMISTAD:
     var key;
     if (contextUser.user.myFriends) {
       key = contextUser.user.myFriends.length;
@@ -41,7 +42,27 @@ export const Profile: React.FC<RouteComponentProps<
       key = 0;
     }
     dbRef.child(`${contextUser.user.id}/myFriends`).update({ [key]: friend });
-    dbRef.child(`${contextUser.user.id}/request`).remove();
+
+    //BORRAR DE REQUEST CUANDO SE ACEPTA LA AMISTAD:
+    contextUser.user.request.forEach(element => {
+      if (element === friend) {
+        const entries = Object.entries(contextUser.user.request);
+        entries.forEach(element => {
+          if (element[1] === friend) {
+            var num = element[0];
+            console.log(num);
+            dbRef
+              .child(`${contextUser.user.id}/request`)
+              .child(num.toString())
+              .remove();
+          }
+        });
+      }
+    });
+
+    /*dbRef.on("value", snap => {
+      contextUser.setUser(snap.val());
+    });*/
   };
 
   const removeFriend = (friend: string) => {

@@ -1,6 +1,7 @@
 import React from "react";
 import firebase from "../../enviroments/enviroment";
 import send from "../../images/profile/mail.svg";
+import nosend from "../../images/profile/no.svg";
 import icon from "../../images/profile/user.svg";
 import { User, Users } from "../../types";
 
@@ -25,20 +26,29 @@ class NoFriend extends React.Component<{ friend: User; conectUser: User }> {
   }
   sendRequest = (friend: User, users: Users) => {
     const conectUser = this.props.conectUser;
-    console.log(users);
-    //  const request = users.find(user => user.id === friend.id);
+    var key;
+    var exist = false;
 
-    /*  if (request) {
-      const values = Object.values(request.request);
-      console.log("Values", values);
-      console.log("conect user", conectUser);
+    if (users[friend.id].request) {
+      key = users[friend.id].request.length;
 
-      values.forEach(e => {
-        console.log(e);
+      users[friend.id].request.map(e => {
+        if (e === conectUser.nick) {
+          exist = true;
+        }
       });
-    }*/
-    this.setState({ add: send });
-    this.dbRef.child(`${friend.id}/request`).push(conectUser.nick);
+    } else {
+      key = 0;
+    }
+
+    if (!exist) {
+      this.setState({ add: send });
+      this.dbRef
+        .child(`${friend.id}/request`)
+        .update({ [key]: conectUser.nick });
+    } else {
+      this.setState({ add: nosend });
+    }
   };
   render() {
     // console.log(this.state.fireDataUsers);
