@@ -8,6 +8,7 @@ import Info from "../components/Profile/PersonalInfo";
 import LoginContext from "../contexts/LoginContext";
 import UserContext from "../contexts/UserContext";
 import firebase from "../enviroments/enviroment";
+import bell from "../images/profile/campana.svg";
 import iconNo from "../images/profile/no.svg";
 import iconSi from "../images/profile/si.svg";
 import { User } from "../types";
@@ -35,7 +36,7 @@ export const Profile: React.FC<RouteComponentProps<
   }, [user.request]);
 
   const addFriend = (friend: string) => {
-    //AÑADIR A AMIGOS CUANDO SE ACEPTA LA AMISTAD:
+    //AÑADIR A AMIGOS DEL USUARIO QUE ACEPTA LA AMISTAD:
     var key;
     if (contextUser.user.myFriends) {
       key = contextUser.user.myFriends.length;
@@ -43,6 +44,9 @@ export const Profile: React.FC<RouteComponentProps<
       key = 0;
     }
     dbRef.child(`${contextUser.user.id}/myFriends`).update({ [key]: friend });
+
+    // AÑADIR AL USUARIO QUE SOLICITA LA AMISTAD EL USUARIO QUE ACEPTA LA AMISTAD
+    //SI ME APETECE LO HAGO, DE MOMENTO NO ME APETECE
 
     //BORRAR DE REQUEST CUANDO SE ACEPTA LA AMISTAD:
     contextUser.user.request.forEach(element => {
@@ -103,37 +107,46 @@ export const Profile: React.FC<RouteComponentProps<
     contextLog.setLog(true);
     return (
       <div className="profile">
-        {user.request ? (
-          <div onClick={() => setDisplay(!display)}>{request.length}</div>
-        ) : null}
         <Info user={user} />
-        {display ? (
-          <div>
-            {user.request
-              ? request.map(e => (
-                  <div key={e}>
-                    <span>{e}</span>
-                    <span onClick={() => addFriend(e)}>
-                      <img
-                        src={iconSi}
-                        alt="iconsi"
-                        className="icon"
-                        style={style}
-                      />
-                    </span>
-                    <span onClick={() => removeFriend(e)}>
-                      <img
-                        src={iconNo}
-                        alt="iconno"
-                        className="icon"
-                        style={style}
-                      />
-                    </span>
-                  </div>
-                ))
-              : null}
-          </div>
-        ) : null}
+        <div className="request">
+          {user.request ? (
+            <div onClick={() => setDisplay(!display)}>
+              <div>
+                <img src={bell} alt="icon" className="request-icon" />
+              </div>
+            </div>
+          ) : null}
+          {display ? (
+            <div className="request-friends">
+              {user.request
+                ? request.map(e => (
+                    <div key={e} className="request-friends-box">
+                      <div>
+                        <span>{e}</span>
+                        <span onClick={() => addFriend(e)}>
+                          <img
+                            src={iconSi}
+                            alt="iconsi"
+                            className="icon"
+                            style={style}
+                          />
+                        </span>
+                        <span onClick={() => removeFriend(e)}>
+                          <img
+                            src={iconNo}
+                            alt="iconno"
+                            className="icon"
+                            style={style}
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  ))
+                : null}
+            </div>
+          ) : null}
+        </div>
+
         {user.myFriends ? (
           <Friends friends={user.myFriends} />
         ) : (
