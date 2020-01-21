@@ -1,4 +1,4 @@
-import { Groups } from "../types/index";
+import { Groups, Group } from "../types/index";
 class GroupService {
   private firebase: firebase.app.App;
 
@@ -14,13 +14,11 @@ class GroupService {
         .child("db")
         .child("groups");
 
-      data.on("value", snapshot => {
-        return resolve(snapshot.val());
-      });
+      data.on("value", snapshot => resolve(snapshot.val()));
     });
   }
 
-  public findByAdventure(id: string) {
+  /*public findByAdventure(id: string) {
     return new Promise(resolve => {
       let groupsPromise: Promise<Groups> = this.find();
 
@@ -29,15 +27,23 @@ class GroupService {
         return resolve(groups);
       });
     });
+  }*/
+
+  //public findByUser(user: PartialUser) {}
+
+  public save(group: Group) {
+    this.firebase
+      .database()
+      .ref()
+      .child("db")
+      .child("groups")
+      .child(`${group.id}/`)
+      .update(group);
   }
-  /*
-  public findByUser(user: PartialUser) {}
 
-  public save(group: Group) {}
+  //public save2(group: Group, userOwner: PartialUser) {}
 
-  public save2(group: Group, userOwner: PartialUser) {}
-
-  public removeFromUser(group: Group, userOwner: User) {}*/
+  //public removeFromUser(group: Group, userOwner: User) {}
 }
 
 export default GroupService;

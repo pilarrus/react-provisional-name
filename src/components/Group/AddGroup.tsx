@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import LoginContext from "../../contexts/LoginContext";
 import UserContext from "../../contexts/UserContext";
+import GroupsContext from "../../contexts/GroupsContext";
 import adventures from "../../fake-data/adventures";
+import ButtonClose from "../Reusable/ButtonClose";
+import Title from "../Reusable/Title";
 import {
   createGroup,
   getAdventure,
@@ -12,9 +15,9 @@ import {
   getTimestamp,
   getUser
 } from "../../utils/functions";
-import ButtonClose from "../Reusable/ButtonClose";
-import Title from "../Reusable/Title";
-import GroupsContext from "../../contexts/GroupsContext";
+import GroupService from "../../services/groupServices";
+import fire from "../../enviroments/enviroment";
+
 
 type AddGroupProps = {
   changeState: () => void;
@@ -95,7 +98,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
       name_adventure = adventure.name;
     }
     let user = getUser(contextUser);
-    let group = createGroup(
+    var group = createGroup(
       id,
       name,
       id_adventure,
@@ -108,6 +111,9 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
     );
     console.log(group);
   }
+
+  //let groupService: GroupService;
+  let groupService = new GroupService(fire);
 
   return (
     <div className="modal" onClick={changeState}>
@@ -221,6 +227,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
             type="submit"
             className="button__addGroup"
             disabled={completedForm()}
+            onClick={() => groupService.save(group)}
           >
             Crear grupo
           </button>
