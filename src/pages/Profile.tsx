@@ -79,7 +79,6 @@ export const Profile: React.FC<RouteComponentProps<
   };
 
   const removeFriend = (friend: string) => {
-    console.log("RECHAZO A:", friend);
     contextUser.user.request.forEach(element => {
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
