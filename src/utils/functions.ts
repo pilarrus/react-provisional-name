@@ -59,8 +59,10 @@ const getCurrentHour = () => {
 };
 
 const getLastID = (groups: Groups) => {
-  let lastGroup = groups[groups.length-1];
-  return lastGroup.id;
+  let allIDs: number[] = [];
+  groups.forEach(group => allIDs.push(parseInt(group.id)));
+  let lastID = Math.max(...allIDs);
+  return lastID;
 }
 
 const getNameGroups = (groups: Groups) => {

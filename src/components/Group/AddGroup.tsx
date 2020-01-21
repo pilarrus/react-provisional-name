@@ -7,7 +7,7 @@ import {
   getAdventure,
   getCurrentDate,
   getCurrentHour,
-  //getLastID,
+  getLastID,
   getNameGroups,
   getTimestamp,
   getUser
@@ -24,7 +24,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   let contextGroups = useContext(GroupsContext);
   //console.log("contextGroups>>>>>>", contextGroups.groups);
   let groups = contextGroups.groups;
-  //console.log("g",groups);
+  console.log("g",groups);
 
   const [name, setName] = useState("");
   const [activity, setActivity] = useState("");
@@ -43,6 +43,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   console.log("date>>>", date);
   console.log("time>>>", time);
   console.log("maxSize>>>", maxSize);
+  console.log("lastID>>", getLastID(groups));
 
   const places = [
     { id: 1, name: "Buitrago de Lozoya" },
@@ -82,7 +83,8 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   };
 
   if (!completedForm()) {
-    let id = "22";//getLastID(groups);
+    let lastID = getLastID(groups)+1;
+    let id = String(lastID);
     let id_adventure = "";
     let name_adventure = "";
     let adventure = getAdventure(activity, adventures);
