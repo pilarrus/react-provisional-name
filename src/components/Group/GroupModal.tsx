@@ -6,6 +6,7 @@ import Avatar from "./Avatar";
 import TitleSmall from "../Reusable/TitleSmall";
 import LoginContext from "../../contexts/LoginContext";
 import ButtonClose from "../Reusable/ButtonClose";
+import { Redirect } from "react-router-dom";
 
 type GroupModalProps = {
   group: Group;
@@ -68,7 +69,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
                 ? console.log(
                     "Añadir usuario al grupo y mostrar mensaje de éxito"
                   )
-                : console.log("Redirigir a Login")
+                : <Redirect to='/login'/>//console.log("Redirigir a Login")
               : console.log("nada")}
           </div>
         </div>

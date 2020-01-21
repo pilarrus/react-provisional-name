@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import GroupsContext from "../../contexts/GroupsContext";
 import LoginContext from "../../contexts/LoginContext";
 import UserContext from "../../contexts/UserContext";
-import GroupsContext from "../../contexts/GroupsContext";
+import fire from "../../enviroments/enviroment";
 import adventures from "../../fake-data/adventures";
-import ButtonClose from "../Reusable/ButtonClose";
-import Title from "../Reusable/Title";
+import GroupService from "../../services/groupServices";
 import {
   createGroup,
   getAdventure,
@@ -15,9 +15,8 @@ import {
   getTimestamp,
   getUser
 } from "../../utils/functions";
-import GroupService from "../../services/groupServices";
-import fire from "../../enviroments/enviroment";
-
+import ButtonClose from "../Reusable/ButtonClose";
+import Title from "../Reusable/Title";
 
 type AddGroupProps = {
   changeState: () => void;
@@ -25,9 +24,8 @@ type AddGroupProps = {
 
 const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   let contextGroups = useContext(GroupsContext);
-  //console.log("contextGroups>>>>>>", contextGroups.groups);
+  
   let groups = contextGroups.groups;
-  console.log("g",groups);
 
   const [name, setName] = useState("");
   const [activity, setActivity] = useState("");
@@ -40,14 +38,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
 
   let nameExist = nameGroups.includes(name);
 
-  console.log("name>>>", name);
-  console.log("activity>>>", activity);
-  console.log("place>>>", place);
-  console.log("date>>>", date);
-  console.log("time>>>", time);
-  console.log("maxSize>>>", maxSize);
-  console.log("lastID>>", getLastID(groups));
-
   const places = [
     { id: 1, name: "Buitrago de Lozoya" },
     { id: 2, name: "El Atazar" },
@@ -58,9 +48,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   ];
 
   const contextLog = useContext(LoginContext);
-  console.log("Log", contextLog.log);
   const contextUser = useContext(UserContext);
-  console.log("user>>>", getUser(contextUser));
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -86,18 +74,12 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   };
 
   if (!completedForm()) {
-    let lastID = getLastID(groups)+1;
+    let lastID = getLastID(groups) + 1;
     let id = String(lastID);
-    let id_adventure = "";
-    let name_adventure = "";
     let adventure = getAdventure(activity, adventures);
-    if (typeof adventure !== undefined) {
-      //@ts-ignore
-      id_adventure = adventure.id;
-      //@ts-ignore
-      name_adventure = adventure.name;
-    }
-    let user = getUser(contextUser);
+    let id_adventure = adventure!.id;
+    let name_adventure = adventure!.name;
+    var user = getUser(contextUser);
     var group = createGroup(
       id,
       name,
@@ -106,13 +88,10 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
       getTimestamp(date, time),
       place,
       parseInt(maxSize),
-      //@ts-ignore
-      user
+      user!
     );
-    console.log(group);
   }
 
-  //let groupService: GroupService;
   let groupService = new GroupService(fire);
 
   return (
@@ -227,7 +206,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
             type="submit"
             className="button__addGroup"
             disabled={completedForm()}
-            onClick={() => groupService.save(group)}
+            onClick={() => groupService.save(group, user!)}
           >
             Crear grupo
           </button>

@@ -1,4 +1,4 @@
-import { Groups, Group } from "../types/index";
+import { Groups, Group, PartialUser, Users } from '../types/index';
 class GroupService {
   private firebase: firebase.app.App;
 
@@ -18,6 +18,18 @@ class GroupService {
     });
   }
 
+  public findUsers(): Promise<Users> {
+    return new Promise(resolve => {
+      let data = this.firebase
+        .database()
+        .ref()
+        .child("db")
+        .child("users");
+
+      data.on("value", snapshot => resolve(snapshot.val()));
+    });
+  }
+
   /*public findByAdventure(id: string) {
     return new Promise(resolve => {
       let groupsPromise: Promise<Groups> = this.find();
@@ -31,7 +43,7 @@ class GroupService {
 
   //public findByUser(user: PartialUser) {}
 
-  public save(group: Group) {
+  public save(group: Group, userOwner: PartialUser) {
     this.firebase
       .database()
       .ref()
@@ -39,9 +51,20 @@ class GroupService {
       .child("groups")
       .child(`${group.id}/`)
       .update(group);
+
+    this.saveGroupInUser(group, userOwner);
   }
 
-  //public save2(group: Group, userOwner: PartialUser) {}
+
+  public saveGroupInUser(group: Group, userOwner: PartialUser) {
+      let usersPromise: Promise<Users> = this.findUsers();
+
+      usersPromise.then(users => {
+        let userFound = users.find(user => user.nick === userOwner.nick);
+        let newKey = userFound!.myGroups.length;
+        this.firebase.database().ref().child("db").child("users").child(`${userFound!.id}/myGroups/`).update({[newKey]: group.name});
+      });
+  }
 
   //public removeFromUser(group: Group, userOwner: User) {}
 }
