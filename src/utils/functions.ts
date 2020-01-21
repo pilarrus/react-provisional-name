@@ -78,7 +78,7 @@ const getTimestamp = (date: string, time: string) => {
   let hour = parseInt(time.substr(0, 2));
   let minutes = parseInt(time.substr(3, 2));
   let dateObj = new Date(year, month, day, hour, minutes);
-  return dateObj.getTime();
+  return dateObj.getTime()/1000;
 };
 
 const getUser = (contextUser: contextUserType) => {
