@@ -17,7 +17,7 @@ export const Login = (props: RouteComponentProps) => {
   useEffect(() => {
     const data = firebase
       .database()
-      .ref()
+      .ref("db")
       .child("users");
 
     data.on("value", snapshot => {

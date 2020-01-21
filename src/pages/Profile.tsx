@@ -19,7 +19,10 @@ export const Profile: React.FC<RouteComponentProps<
   User
 >> = RouteComponentProps => {
   const contextLog = useContext(LoginContext); // El usuario conectado
-  const dbRef = firebase.database().ref("users"); // referencia a users de firebase
+  const dbRef = firebase
+    .database()
+    .ref("db")
+    .child("users"); // referencia a users de firebase
   const [request, setRequest] = useState([] as string[]);
   const contextUser = useContext(UserContext);
   const [display, setDisplay] = useState(false);

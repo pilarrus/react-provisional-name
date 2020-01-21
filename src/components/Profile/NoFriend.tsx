@@ -12,12 +12,15 @@ class NoFriend extends React.Component<{ friend: User; conectUser: User }> {
     charge: false
   };
 
-  dbRef = firebase.database().ref("users");
+  dbRef = firebase
+    .database()
+    .ref("db")
+    .child("users");
 
   componentDidMount() {
     const data = firebase
       .database()
-      .ref()
+      .ref("db")
       .child("users");
 
     data.on("value", snapshot => {
