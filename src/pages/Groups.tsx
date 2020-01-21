@@ -2,12 +2,13 @@ import React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import GroupsComponent from "../components/Group/Groups";
 import Load from "../components/Reusable/Loading";
+import GroupsContext from "../contexts/GroupsContext";
 import fire from "../enviroments/enviroment";
 import adventures from "../fake-data/adventures";
+import Error from "../pages/Error";
 import GroupService from "../services/groupServices";
 import { Groups } from "../types";
 import { sortGroups } from "../utils/functions";
-import Error from "../pages/Error";
 
 class GroupContainer extends React.Component<
   RouteComponentProps<{
@@ -24,6 +25,8 @@ class GroupContainer extends React.Component<
     };
   }
 
+  static contextType = GroupsContext; // Crea una variable this.context, de forma magic
+
   _isMounted = false;
 
   componentDidMount() {
@@ -37,6 +40,9 @@ class GroupContainer extends React.Component<
         this.setState({
           fetchGroups
         });
+        //console.log(this.context);
+        this.context.setGroups(fetchGroups); // Aquí uso la variable magic
+        //console.log("con>>>",this.context.groups);
       }
     });
   }
@@ -72,7 +78,11 @@ class GroupContainer extends React.Component<
         showAll = false;
         let activityID = params.activityID;
         //console.log("activityID>>>>>>>>", activityID);
-        if (parseInt(activityID as string) < 0 || parseInt(activityID as string) > 9) return <Error/>;
+        if (
+          parseInt(activityID as string) < 0 ||
+          parseInt(activityID as string) > 9
+        )
+          return <Error />;
 
         let adventureCopy = adventures.find(
           adventure => adventure.id === activityID

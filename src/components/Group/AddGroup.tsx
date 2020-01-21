@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import LoginContext from "../../contexts/LoginContext";
 import UserContext from "../../contexts/UserContext";
 import adventures from "../../fake-data/adventures";
-import fetchGroups from "../../fake-data/groups";
 import {
   createGroup,
   getAdventure,
@@ -22,6 +21,11 @@ type AddGroupProps = {
 };
 
 const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
+  let contextGroups = useContext(GroupsContext);
+  //console.log("contextGroups>>>>>>", contextGroups.groups);
+  let groups = contextGroups.groups;
+  //console.log("g",groups);
+
   const [name, setName] = useState("");
   const [activity, setActivity] = useState("");
   const [place, setPlace] = useState("");
@@ -29,7 +33,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   const [time, setTime] = useState("");
   const [maxSize, setMaxSize] = useState("");
   const [nowDate] = useState(getCurrentDate());
-  const [nameGroups] = useState(getNameGroups(fetchGroups));
+  const [nameGroups] = useState(getNameGroups(groups));
 
   let nameExist = nameGroups.includes(name);
 
@@ -53,9 +57,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   console.log("Log", contextLog.log);
   const contextUser = useContext(UserContext);
   console.log("user>>>", getUser(contextUser));
-
-  let contextGroups = useContext(GroupsContext);
-  console.log("contextGroups>>>>>>", contextGroups);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
