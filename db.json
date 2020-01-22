@@ -22,8 +22,7 @@
           "Marcela"
         ],
         "img": "users%2Fana.jpeg?alt=media&token=13fcaab9-f80b-4f6b-80ec-f4077afaae7d",
-        "gender": "female",
-        "request": ["Anita"]
+        "gender": "female"
       },
       {
         "id": 1,
@@ -38,8 +37,7 @@
         ],
         "myFriends": ["Marcela"],
         "img": "users%2Fpablo.jpeg?alt=media&token=f4682ab4-e294-49b5-9b7c-02b8004b13cf",
-        "gender": "male",
-        "request": []
+        "gender": "male"
       },
       {
         "id": 2,
@@ -51,8 +49,7 @@
         "myGroups": ["Enanitos en el VoxQue"],
         "myFriends": ["Albertillo", "Anita"],
         "img": "users%2Fpili.jpg?alt=media&token=ad64a403-6506-4b42-be77-12439e86163f",
-        "gender": "female",
-        "request": 0
+        "gender": "female"
       },
       {
         "id": 3,
@@ -69,8 +66,7 @@
         ],
         "myFriends": ["Pilarusi", "Anita", "Paroar", "Marcela"],
         "img": "users%2Falberto.jpeg?alt=media&token=29d01831-5658-46e9-8a1b-2bd0b2c340b7",
-        "gender": "male",
-        "request": []
+        "gender": "male"
       },
       {
         "id": 4,
@@ -82,8 +78,7 @@
         "myGroups": ["Enanitos en el VoxQue", "Podemos ir al río"],
         "myFriends": [],
         "img": "users%2Fmarcela.jpg?alt=media&token=345fc20a-c586-47b8-b032-05868e5fe7d0",
-        "gender": "female",
-        "request": []
+        "gender": "female"
       },
       {
         "id": 5,
@@ -95,8 +90,7 @@
         "myGroups": ["Enanitos en el VoxQue"],
         "myFriends": ["Paroar"],
         "img": "users%2Fjavier.jpeg?alt=media&token=4de01c8e-3a08-498c-94f9-95c229b7c6fb",
-        "gender": "male",
-        "request": []
+        "gender": "male"
       },
       {
         "id": 6,
@@ -105,11 +99,10 @@
         "level": "principiante",
         "email": "bryan@aventura.com",
         "name": "Bryan",
-        "myGroups": ["enanitos del VoxQ"],
+        "myGroups": ["Enanitos en el VoxQue"],
         "myFriends": [],
         "img": "users%2Fbryan.jpeg?alt=media&token=1dd62b77-4ba5-4376-b19f-adcea8a67a68",
-        "gender": "male",
-        "request": []
+        "gender": "male"
       },
       {
         "id": 7,
@@ -118,7 +111,7 @@
         "level": "principiante",
         "email": "paco@aventura.com",
         "name": "Paco",
-        "myGroups": ["enanitos del VoxQ"],
+        "myGroups": ["Enanitos en el VoxQue"],
         "myFriends": [],
         "img": "users%2Fpaco.jpeg?alt=media&token=a5086905-d266-4b11-932e-9747d8700440",
         "gender": "male",
@@ -217,7 +210,7 @@
       {
         "id": "5",
         "name": "Enanitos en el VoxQue",
-        "id_adventure": "6",
+        "id_adventure": "8",
         "name_adventure": "Senderismo",
         "bg": "groups%2Fhiking.jpg?alt=media&token=7259b78b-8158-483c-a22d-05fa2745c12f",
         "timestamp": 1598005800,
@@ -247,6 +240,16 @@
           {
             "nick": "Javier",
             "img": "users%2Fjavier.jpeg?alt=media&token=4de01c8e-3a08-498c-94f9-95c229b7c6fb"
+          }
+          ,
+          {
+            "nick": "Paco",
+            "img": "users%2Fpaco.jpeg?alt=media&token=a5086905-d266-4b11-932e-9747d8700440"
+          }
+          ,
+          {
+            "nick": "Bryan",
+            "img": "users%2Fbryan.jpeg?alt=media&token=1dd62b77-4ba5-4376-b19f-adcea8a67a68"
           }
         ]
       }

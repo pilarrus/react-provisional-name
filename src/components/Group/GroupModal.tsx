@@ -1,12 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
+import LoginContext from "../../contexts/LoginContext";
+import UserContext from "../../contexts/UserContext";
 import { Group, Users2 } from "../../types";
+import { userSignOnGroup } from "../../utils/functions";
+import ButtonClose from "../Reusable/ButtonClose";
 import ButtonRainbow from "../Reusable/ButtonRainbow";
 import FormatDate from "../Reusable/FormatDate";
-import Avatar from "./Avatar";
 import TitleSmall from "../Reusable/TitleSmall";
-import LoginContext from "../../contexts/LoginContext";
-import ButtonClose from "../Reusable/ButtonClose";
-import { Redirect } from "react-router-dom";
+import Avatar from "./Avatar";
 
 type GroupModalProps = {
   group: Group;
@@ -27,7 +29,19 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
   }, [changeState]);
 
   const contextLog = useContext(LoginContext);
-  console.log(">>>", contextLog.log);
+  let login = contextLog.log;
+  console.log("login>>>", login);
+  const contextUser = useContext(UserContext);
+  let user = contextUser.user;
+  console.log("user>>>", user);
+
+  const subscribeMe = (text: string) => (
+    <ButtonRainbow
+      text={text}
+      changeState={() => setSignOn(false)}
+      disabled={group.users.length === group.maxSize}
+    />
+  );
 
   let users: Users2 = group.users;
 
@@ -38,7 +52,12 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
           <ButtonClose changeState={changeState} />
           <div
             className="modal_group__title"
-            style={{ backgroundImage: "url(https://firebasestorage.googleapis.com/v0/b/react-9cbc4.appspot.com/o/" + group.bg + ")" }}
+            style={{
+              backgroundImage:
+                "url(https://firebasestorage.googleapis.com/v0/b/react-9cbc4.appspot.com/o/" +
+                group.bg +
+                ")"
+            }}
           >
             <TitleSmall title={group.name} semiTransparent={true}></TitleSmall>
           </div>
@@ -59,18 +78,27 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
                   <Avatar key={user.nick} nick={user.nick} img={user.img} />
                 ))}
             </div>
-            <ButtonRainbow
-              text="APUNTARME"
-              changeState={() => setSignOn(!signOn)}
-              disabled={group.users.length === group.maxSize}
-            />
-            {signOn
-              ? contextLog.log
-                ? console.log(
-                    "Añadir usuario al grupo y mostrar mensaje de éxito"
-                  )
-                : <Redirect to='/login'/>//console.log("Redirigir a Login")
-              : console.log("nada")}
+
+            {login
+              ? userSignOnGroup(group, user)
+                ? //Muestra DESAPUNTARME, si click -> deleteFromUser(group, user);
+                  subscribeMe("DESAPUNTARME")
+                : //Muestra APUNTARME, si click -> saveGroupInUser(group, user);
+                  subscribeMe("APUNTARME")
+              : //Muestra APUNTARME, si click -> redirige a Login/Register
+                subscribeMe("APUNTARME")}
+
+            {signOn ? (
+              contextLog.log ? (
+                console.log(
+                  "Añadir usuario al grupo y mostrar mensaje de éxito"
+                )
+              ) : (
+                <Redirect to="/login" />
+              ) //console.log("Redirigir a Login")
+            ) : (
+              console.log("nada")
+            )}
           </div>
         </div>
       </div>

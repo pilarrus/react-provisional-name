@@ -1,4 +1,4 @@
-import { Groups, Group, TypeAdventure, contextUserType, PartialUser } from "../types";
+import { Groups, Group, TypeAdventure, contextUserType, PartialUser, User } from "../types";
 
 const convertDegreesToThermalSensation = (degrees: number): string => {
   let thermalSensation;
@@ -131,6 +131,11 @@ const sortGroups = (sortBy: string, groups: Groups) => {
   }
 };
 
+const userSignOnGroup = (group: Group, user: User) => {
+  let groupExist = user.myGroups.find(groupUser => groupUser === group.name);
+  return (groupExist ? true : false);
+};
+
 export {
   convertDegreesToThermalSensation,
   createGroup,
@@ -143,5 +148,6 @@ export {
   getUser,
   compareTo,
   sortByTypeAdventure,
-  sortGroups
+  sortGroups,
+  userSignOnGroup
 };

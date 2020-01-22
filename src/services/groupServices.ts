@@ -1,4 +1,4 @@
-import { Groups, Group, PartialUser, Users } from '../types/index';
+import { Groups, Group, PartialUser, Users, User } from '../types/index';
 class GroupService {
   private firebase: firebase.app.App;
 
@@ -43,7 +43,7 @@ class GroupService {
 
   //public findByUser(user: PartialUser) {}
 
-  public save(group: Group, userOwner: PartialUser) {
+  public save(group: Group, userOwner: PartialUser | User) {
     this.firebase
       .database()
       .ref()
@@ -56,7 +56,7 @@ class GroupService {
   }
 
 
-  public saveGroupInUser(group: Group, userOwner: PartialUser) {
+  public saveGroupInUser(group: Group, userOwner: PartialUser | User) {
       let usersPromise: Promise<Users> = this.findUsers();
 
       usersPromise.then(users => {
