@@ -17,11 +17,9 @@ export const Login = (props: RouteComponentProps) => {
   useEffect(() => {
     const data = fire
       .database()
-      .ref()
-      .child("db")
+      .ref("db")
       .child("users");
 
-    console.log(data);
     data.on("value", snapshot => {
       setFireData(snapshot.val());
     });

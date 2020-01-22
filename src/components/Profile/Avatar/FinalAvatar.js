@@ -7,7 +7,7 @@ class FinalAvatar extends Component {
   constructor(props) {
     super(props);
 
-    const fireImg = `https://firebasestorage.googleapis.com/v0/b/provisional-name.appspot.com/o/${props.user.img}`;
+    const fireImg = `https://firebasestorage.googleapis.com/v0/b/react-9cbc4.appspot.com/o/${props.user.img}`;
     const img = this.props.user.img === undefined ? noimage : fireImg;
     this.state = {
       isAvatarDefault: true,
