@@ -30,7 +30,6 @@ export const Profile: React.FC<RouteComponentProps<
     width: "30px"
   };
 
-  console.log(">>>>>>>>>>>>>>>", RouteComponentProps);
   const [user, setUser] = useState(RouteComponentProps.location.state);
 
   useEffect(() => {
@@ -55,10 +54,10 @@ export const Profile: React.FC<RouteComponentProps<
     //BORRAR DE REQUEST CUANDO SE ACEPTA LA AMISTAD:
     contextUser.user.request.forEach(element => {
       if (element === friend) {
-        //const entries = Object.entries(contextUser.user.request);
-        [].map.call(contextUser.user.request, element => {
+        const entries = Object.entries(contextUser.user.request);
+        entries.forEach(element => {
           if (element[1] === friend) {
-            var num: number = element[0];
+            var num = element[0];
             dbRef
               .child(`${contextUser.user.id}/request`)
               .child(num.toString())
@@ -66,20 +65,21 @@ export const Profile: React.FC<RouteComponentProps<
           }
         });
       }
+    });
 
-      //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
-      dbRef.on("value", snap => {
-        snap.forEach(e => {
-          const newVal: User = e.val();
-          if (newVal.id === user.id) {
-            setUser(newVal);
-          }
-        });
+    //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
+    dbRef.on("value", snap => {
+      snap.forEach(e => {
+        const newVal: User = e.val();
+        if (newVal.id === user.id) {
+          setUser(newVal);
+        }
       });
     });
   };
 
   const removeFriend = (friend: string) => {
+    console.log("RECHAZO A:", friend);
     contextUser.user.request.forEach(element => {
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
@@ -120,7 +120,6 @@ export const Profile: React.FC<RouteComponentProps<
               </div>
             </div>
           ) : null}
-
           {display ? (
             <div className="request-friends">
               {user.request
