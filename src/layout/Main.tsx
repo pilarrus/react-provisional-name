@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import LoginRegister from "../components/Form";
 import ApiAdventures from "../containers/ApiAdventures";
-import Slider from "../containers/Slider/Slider";
 import Adventures from "../pages/Adventures";
 import Error from "../pages/Error";
 import Groups from "../pages/Groups";
@@ -15,7 +14,6 @@ const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
 
   return (
     <div className={`main ${style}`}>
-      <Slider />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/adventures" component={ApiAdventures} />

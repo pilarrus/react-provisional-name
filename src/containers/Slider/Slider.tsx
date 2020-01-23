@@ -2,6 +2,9 @@ import { Carousel } from "antd";
 import "antd/dist/antd.css";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import forest from "../../images/slider/forest.jpg";
+import freezer from "../../images/slider/freezer.jpg";
+import sheet from "../../images/slider/sheet.jpg";
 
 class Slider extends Component {
   constructor(props: Readonly<{}>) {
@@ -15,17 +18,14 @@ class Slider extends Component {
     const props = {
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 300,
       slidesToShow: 1,
       slidesToScroll: 1
     };
     return (
-      <Carousel {...props} effect="fade">
+      <Carousel {...props} autoplay effect="fade">
         <div className="hero-image">
-          <img
-            src="https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-            alt=""
-          />
+          <img src={forest} alt="forest" />
           <div className="hero-text">
             <h1>I am Jane Doe</h1>
             <h2 className="hero-subText">And I'm a Photographer</h2>
@@ -35,10 +35,7 @@ class Slider extends Component {
           </div>
         </div>
         <div className="hero-image">
-          <img
-            src="https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-            alt=""
-          />
+          <img src={sheet} alt="sheet" />
           <div className="hero-text">
             <h1>I am Jane Doe</h1>
             <h2 className="hero-subText">And I'm a Photographer</h2>
@@ -48,10 +45,7 @@ class Slider extends Component {
           </div>
         </div>
         <div className="hero-image">
-          <img
-            src="https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-            alt=""
-          />
+          <img src={freezer} alt="" />
           <div className="hero-text">
             <h1>I am Jane Doe</h1>
             <h2 className="hero-subText">And I'm a Photographer</h2>
@@ -61,10 +55,7 @@ class Slider extends Component {
           </div>
         </div>
         <div className="hero-image">
-          <img
-            src="https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-            alt=""
-          />
+          <img src={sheet} alt="" />
           <div className="hero-text">
             <h1>I am Jane Doe</h1>
             <h2 className="hero-subText">And I'm a Photographer</h2>
