@@ -13,9 +13,9 @@ const Sidebar: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
   return (
     <div className={`sidebar ${context.colorSide} ${sidebar ? "" : style.classClose}`}>
       <ul>
+        <li><Link to="/">Home</Link></li>
         <li><Link to="/adventures">Aventuras</Link></li>
         <li><Link to="/groups">Grupos</Link></li>
-        <li><Link to="/">Eventos</Link></li>
         <li><Link to="/">Nosotros</Link></li>
         <li><Link to="/">Contacto</Link></li>
         <li>

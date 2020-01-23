@@ -9,6 +9,8 @@ import ButtonRainbow from "../Reusable/ButtonRainbow";
 import FormatDate from "../Reusable/FormatDate";
 import TitleSmall from "../Reusable/TitleSmall";
 import Avatar from "./Avatar";
+import GroupService from "../../services/groupServices";
+import fire from "../../enviroments/enviroment";
 
 type GroupModalProps = {
   group: Group;
@@ -35,6 +37,8 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
   let user = contextUser.user;
   console.log("user>>>", user);
 
+  //const noLogin = ()
+
   const subscribeMe = (text: string) => (
     <ButtonRainbow
       text={text}
@@ -44,6 +48,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
   );
 
   let users: Users2 = group.users;
+  let groupService = new GroupService(fire);
 
   return (
     <div id="id01" className="modal" onClick={changeState}>
@@ -79,14 +84,33 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
                 ))}
             </div>
 
-            {login
-              ? userSignOnGroup(group, user)
-                ? //Muestra DESAPUNTARME, si click -> deleteFromUser(group, user);
-                  subscribeMe("DESAPUNTARME")
-                : //Muestra APUNTARME, si click -> saveGroupInUser(group, user);
-                  subscribeMe("APUNTARME")
-              : //Muestra APUNTARME, si click -> redirige a Login/Register
-                subscribeMe("APUNTARME")}
+            {login ? (
+              userSignOnGroup(group, user) ? (
+                //Muestra DESAPUNTARME, si click -> deleteFromUser(group, user);
+                subscribeMe("DESAPUNTARME")
+              ) : (
+                //Muestra APUNTARME, si click -> saveGroupInUser(group, user);
+                //subscribeMe("APUNTARME")
+                <ButtonRainbow
+                text="APUNTARME"
+                changeState={() => {
+                  setSignOn(true);
+                  groupService.saveGroupInUser(group, user);
+                }}
+                disabled={group.users.length === group.maxSize}
+              />
+              )
+            ) : (
+              //Muestra APUNTARME, si click -> redirige a Login/Register
+              <ButtonRainbow
+                text="APUNTARME"
+                changeState={() => {
+                  setSignOn(true);
+                  return <Redirect to="/login" />
+                }}
+                disabled={group.users.length === group.maxSize}
+              />
+            )}
 
             {signOn ? (
               contextLog.log ? (

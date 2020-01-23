@@ -64,6 +64,22 @@ class GroupService {
         let newKey = userFound!.myGroups.length;
         this.firebase.database().ref().child("db").child("users").child(`${userFound!.id}/myGroups/`).update({[newKey]: group.name});
       });
+      this.saveUserInGroup(group, userOwner);
+  }
+
+  public saveUserInGroup(group: Group, user: PartialUser | User) {
+    let u: PartialUser = {nick: user.nick, img: user.img};
+    let groupsPromise: Promise<Groups> = this.find();
+    groupsPromise.then(groupPromise => {
+      let groupFound = groupPromise.find(g => g.id === group.id);
+      let newKey = groupFound!.users.length;
+      this.firebase
+      .database()
+      .ref()
+      .child("db")
+      .child("groups")
+      .child(`${group.id}/users`).update({[newKey]: u});
+    });
   }
 
   //public removeFromUser(group: Group, userOwner: User) {}
