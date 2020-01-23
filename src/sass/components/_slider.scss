@@ -24,12 +24,24 @@
   transform: translate(-50%, -50%);
   color: white;
   margin: 0;
+  /*animation-name: ejemplo;
+  animation-duration: 0.65s;*/
   opacity: 0;
   transition: 0.65s;
   h1 {
     font-size: 3.5em;
   }
 }
+/*@keyframes ejemplo {
+  0% {
+    opacity: 0;
+    top: 60%;
+  }
+  100% {
+    opacity: 1;
+    top: 50%;
+  }
+}*/
 .hero-text:hover {
   opacity: 1;
   top: 50%;

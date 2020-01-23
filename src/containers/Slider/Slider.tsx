@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import forest from "../../images/slider/forest.jpg";
 import freezer from "../../images/slider/freezer.jpg";
+import people from "../../images/slider/people.jpg";
 import sheet from "../../images/slider/sheet.jpg";
 
 class Slider extends Component {
@@ -55,10 +56,10 @@ class Slider extends Component {
           </div>
         </div>
         <div className="hero-image">
-          <img src={sheet} alt="" />
+          <img src={people} alt="" />
           <div className="hero-text">
-            <h1>I am Jane Doe</h1>
-            <h2 className="hero-subText">And I'm a Photographer</h2>
+            <h1>UNETE</h1>
+            <h2 className="hero-subText">A nuestra red social </h2>
             <Link to="#">
               <i className="hero-link">Hire me</i>
             </Link>
