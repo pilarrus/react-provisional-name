@@ -33,7 +33,7 @@ export const ProfileGroups: React.FC = () => {
         </Modal>
       ) : openCreate ? (
         <Modal handle={setOpenCreate}>
-          <AddGroup changeState={() => setOpenCreate(!openCreate)} />
+          <AddGroup viewMore={() => setOpenCreate(!openCreate)} />
         </Modal>
       ) : null}
     </div>

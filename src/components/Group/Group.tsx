@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Group } from "../../types";
-import GroupModal from "./GroupModal";
-import TitleSmall from "../Reusable/TitleSmall";
 import ButtonPlus from "../Reusable/ButtonPlus";
+import TitleSmall from "../Reusable/TitleSmall";
+import GroupModal from "./GroupModal";
 
 type GroupProps = {
   group: Group;
@@ -10,11 +10,11 @@ type GroupProps = {
 
 export default class GroupComponent extends Component<GroupProps> {
   state = {
-    isOpen: false
+    viewMore: false
   };
 
-  handleState = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+  handleViewMore = () => {
+    this.setState({ viewMore: !this.state.viewMore });
   };
 
   render() {
@@ -22,18 +22,23 @@ export default class GroupComponent extends Component<GroupProps> {
 
     return (
       <>
-        {this.state.isOpen && (
-          <GroupModal group={group} changeState={this.handleState} />
+        {this.state.viewMore && (
+          <GroupModal group={group} viewMore={this.handleViewMore} />
         )}
         <div
           className="group"
-          style={{ backgroundImage: "url(https://firebasestorage.googleapis.com/v0/b/react-9cbc4.appspot.com/o/" + group.bg + ")" }}
+          style={{
+            backgroundImage:
+              "url(https://firebasestorage.googleapis.com/v0/b/react-9cbc4.appspot.com/o/" +
+              group.bg +
+              ")"
+          }}
         >
           <div className="group__container">
             <TitleSmall title={group.name} semiTransparent={false}></TitleSmall>
             <span>{group.name_adventure}</span>
           </div>
-          <ButtonPlus changeState={this.handleState} />
+          <ButtonPlus viewMore={this.handleViewMore} />
         </div>
       </>
     );

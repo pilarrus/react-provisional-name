@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import LoginContext from "../../contexts/LoginContext";
 import UserContext from "../../contexts/UserContext";
+import fire from "../../enviroments/enviroment";
+import GroupService from "../../services/groupServices";
 import { Group, Users2 } from "../../types";
 import { userSignOnGroup } from "../../utils/functions";
 import ButtonClose from "../Reusable/ButtonClose";
@@ -9,52 +11,40 @@ import ButtonRainbow from "../Reusable/ButtonRainbow";
 import FormatDate from "../Reusable/FormatDate";
 import TitleSmall from "../Reusable/TitleSmall";
 import Avatar from "./Avatar";
-import GroupService from "../../services/groupServices";
-import fire from "../../enviroments/enviroment";
 
 type GroupModalProps = {
   group: Group;
-  changeState: () => void;
+  viewMore: () => void;
 };
 
-const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
-  const [signOn, setSignOn] = useState(false);
+const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
+  const [subscribeMe, setSubscribeMe] = useState(false);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.keyCode === 27) {
-        changeState();
+        viewMore();
       }
     };
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
-  }, [changeState]);
+  }, [viewMore]);
 
   const contextLog = useContext(LoginContext);
-  let login = contextLog.log;
-  console.log("login>>>", login);
+  let online = contextLog.log;
+  console.log("online>>>", online);
   const contextUser = useContext(UserContext);
-  let user = contextUser.user;
-  console.log("user>>>", user);
-
-  //const noLogin = ()
-
-  const subscribeMe = (text: string) => (
-    <ButtonRainbow
-      text={text}
-      changeState={() => setSignOn(false)}
-      disabled={group.users.length === group.maxSize}
-    />
-  );
+  let userOnline = contextUser.user;
+  console.log("userOnline>>>", userOnline);
 
   let users: Users2 = group.users;
   let groupService = new GroupService(fire);
 
   return (
-    <div id="id01" className="modal" onClick={changeState}>
+    <div id="id01" className="modal" onClick={viewMore}>
       <div className="modal__container" onClick={e => e.stopPropagation()}>
         <div className="modal_group">
-          <ButtonClose changeState={changeState} />
+          <ButtonClose viewMore={viewMore} />
           <div
             className="modal_group__title"
             style={{
@@ -84,49 +74,43 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
                 ))}
             </div>
 
-            {login ? (
-              userSignOnGroup(group, user) ? (
+            {online ? (
+              userSignOnGroup(group, userOnline) ? (
                 //Muestra DESAPUNTARME, si click -> deleteFromUser(group, user);
-                subscribeMe("DESAPUNTARME")
+                <ButtonRainbow
+                  text="DESAPUNTARME"
+                  changeState={() => {
+                    setSubscribeMe(false);
+                    //groupService.deleteFromUser(group, user);
+                  }}
+                />
               ) : (
                 //Muestra APUNTARME, si click -> saveGroupInUser(group, user);
                 //subscribeMe("APUNTARME")
                 <ButtonRainbow
-                text="APUNTARME"
-                changeState={() => {
-                  setSignOn(true);
-                  groupService.saveGroupInUser(group, user, true);
-                }}
-                disabled={group.users.length === group.maxSize}
-              />
+                  text="APUNTARME"
+                  changeState={() => {
+                    setSubscribeMe(true);
+                    groupService.saveGroupInUser(group, userOnline, true);
+                  }}
+                  disabled={group.users.length === group.maxSize}
+                />
               )
             ) : (
               //Muestra APUNTARME, si click -> redirige a Login/Register
               <ButtonRainbow
                 text="APUNTARME"
                 changeState={() => {
-                  setSignOn(true);
-                  return <Redirect to="/login" />
+                  setSubscribeMe(true);
+                  return <Redirect to="/login" />;
                 }}
                 disabled={group.users.length === group.maxSize}
               />
             )}
-
-            {signOn ? (
-              contextLog.log ? (
-                console.log(
-                  "Añadir usuario al grupo y mostrar mensaje de éxito"
-                )
-              ) : (
-                <Redirect to="/login" />
-              ) //console.log("Redirigir a Login")
-            ) : (
-              console.log("nada")
-            )}
           </div>
         </div>
       </div>
-      {console.log(">>>Apuntarme", signOn)}
+      {console.log("subscribeMe>>>", subscribeMe)}
     </div>
   );
 };

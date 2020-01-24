@@ -1,4 +1,4 @@
-import { Groups, Group, PartialUser, Users, User } from '../types/index';
+import { Group, Groups, PartialUser, User, Users } from "../types/index";
 class GroupService {
   private firebase: firebase.app.App;
 
@@ -11,8 +11,7 @@ class GroupService {
       let data = this.firebase
         .database()
         .ref()
-        .child("db")
-        .child("groups");
+        .child("db/groups")
 
       data.on("value", snapshot => resolve(snapshot.val()));
     });
@@ -55,32 +54,42 @@ class GroupService {
     this.saveGroupInUser(group, userOwner);
   }
 
+  public saveGroupInUser(
+    group: Group,
+    userOwner: PartialUser | User,
+    flat?: boolean
+  ) {
+    let usersPromise: Promise<Users> = this.findUsers();
 
-  public saveGroupInUser(group: Group, userOwner: PartialUser | User, flat?: boolean) {
-      let usersPromise: Promise<Users> = this.findUsers();
-
-      usersPromise.then(users => {
-        let userFound = users.find(user => user.nick === userOwner.nick);
-        let newKey = userFound!.myGroups.length;
-        this.firebase.database().ref().child("db").child("users").child(`${userFound!.id}/myGroups/`).update({[newKey]: group.name});
-      });
-      if(flat) {
-        this.saveUserInGroup(group, userOwner);
-      }
+    usersPromise.then(users => {
+      let userFound = users.find(user => user.nick === userOwner.nick);
+      let newKey = userFound!.myGroups.length;
+      this.firebase
+        .database()
+        .ref()
+        .child("db")
+        .child("users")
+        .child(`${userFound!.id}/myGroups/`)
+        .update({ [newKey]: group.name });
+    });
+    if (flat) {
+      this.saveUserInGroup(group, userOwner);
+    }
   }
 
   public saveUserInGroup(group: Group, user: PartialUser | User) {
-    let u: PartialUser = {nick: user.nick, img: user.img};
+    let u: PartialUser = { nick: user.nick, img: user.img };
     let groupsPromise: Promise<Groups> = this.find();
     groupsPromise.then(groupPromise => {
       let groupFound = groupPromise.find(g => g.id === group.id);
       let newKey = groupFound!.users.length;
       this.firebase
-      .database()
-      .ref()
-      .child("db")
-      .child("groups")
-      .child(`${group.id}/users`).update({[newKey]: u});
+        .database()
+        .ref()
+        .child("db")
+        .child("groups")
+        .child(`${group.id}/users`)
+        .update({ [newKey]: u });
     });
   }
 

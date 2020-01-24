@@ -19,12 +19,11 @@ import ButtonClose from "../Reusable/ButtonClose";
 import Title from "../Reusable/Title";
 
 type AddGroupProps = {
-  changeState: () => void;
+  viewMore: () => void;
 };
 
-const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
+const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
   let contextGroups = useContext(GroupsContext);
-  
   let groups = contextGroups.groups;
 
   const [name, setName] = useState("");
@@ -53,12 +52,12 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.keyCode === 27) {
-        changeState();
+        viewMore();
       }
     };
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
-  }, [changeState]);
+  }, [viewMore]);
 
   const completedForm = () => {
     return (
@@ -95,12 +94,12 @@ const AddGroup: React.FC<AddGroupProps> = ({ changeState }) => {
   let groupService = new GroupService(fire);
 
   return (
-    <div className="modal" onClick={changeState}>
+    <div className="modal" onClick={viewMore}>
       <div
         className="modal__container modal_addGroup"
         onClick={e => e.stopPropagation()}
       >
-        <ButtonClose changeState={changeState} />
+        <ButtonClose viewMore={viewMore} />
         <Title title="Añadir Grupo" />
 
         <form action="" className="form__addGroup">

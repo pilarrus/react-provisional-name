@@ -77,7 +77,7 @@ const GroupsComponent: React.FC<GroupsProps> = ({
           disabled={false}
         />
       </div>
-      {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)} /> : ""}
+      {isOpen ? <AddGroup viewMore={() => setIsOpen(!isOpen)} /> : ""}
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ButtonRainbow: React.FC<{ text: string; changeState?: () => void; disabled: boolean }> = ({
+const ButtonRainbow: React.FC<{ text: string; changeState?: () => void; disabled?: boolean }> = ({
   text,
   changeState,
   disabled
