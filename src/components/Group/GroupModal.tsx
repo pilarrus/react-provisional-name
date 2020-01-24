@@ -95,7 +95,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, changeState }) => {
                 text="APUNTARME"
                 changeState={() => {
                   setSignOn(true);
-                  groupService.saveGroupInUser(group, user);
+                  groupService.saveGroupInUser(group, user, true);
                 }}
                 disabled={group.users.length === group.maxSize}
               />

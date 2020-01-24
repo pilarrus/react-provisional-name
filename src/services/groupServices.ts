@@ -56,7 +56,7 @@ class GroupService {
   }
 
 
-  public saveGroupInUser(group: Group, userOwner: PartialUser | User) {
+  public saveGroupInUser(group: Group, userOwner: PartialUser | User, flat?: boolean) {
       let usersPromise: Promise<Users> = this.findUsers();
 
       usersPromise.then(users => {
@@ -64,7 +64,9 @@ class GroupService {
         let newKey = userFound!.myGroups.length;
         this.firebase.database().ref().child("db").child("users").child(`${userFound!.id}/myGroups/`).update({[newKey]: group.name});
       });
-      this.saveUserInGroup(group, userOwner);
+      if(flat) {
+        this.saveUserInGroup(group, userOwner);
+      }
   }
 
   public saveUserInGroup(group: Group, user: PartialUser | User) {
