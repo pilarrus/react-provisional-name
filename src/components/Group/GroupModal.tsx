@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import LoginContext from "../../contexts/LoginContext";
 import UserContext from "../../contexts/UserContext";
+import subscribeMeGroupContext from "../../contexts/SubscribMeGroupContext";
 import fire from "../../enviroments/enviroment";
 import GroupService from "../../services/groupServices";
 import { Group, Users2 } from "../../types";
@@ -36,11 +37,11 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
   const contextUser = useContext(UserContext);
   let userOnline = contextUser.user;
   console.log("userOnline>>>", userOnline);
+  let subscribeMeGroup = useContext(subscribeMeGroupContext);
+  console.log("subscribeMeGroup>>>", subscribeMeGroup);
 
   let users: Users2 = group.users;
   let groupService = new GroupService(fire);
-
-  //let numUsers: number = countUsers(users);
 
   return (
     <div id="id01" className="modal" onClick={viewMore}>
@@ -76,8 +77,10 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                 ))}
             </div>
 
-            {online ? (
-              userSignOnGroup(group, userOnline) ? (
+            {online
+            ? (
+              userSignOnGroup(group, userOnline)
+              ? (
                 //Muestra DESAPUNTARME, si click -> removeFromUser(group, user);
                 <ButtonRainbow
                   text="DESAPUNTARME"
@@ -85,8 +88,8 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                     setSubscribeMe(false);
                     groupService.removeGroupFromUser(group, userOnline);
                   }}
-                />
-              ) : (
+                />)
+              : (
                 //Muestra APUNTARME, si click -> saveGroupInUser(group, user);
                 //subscribeMe("APUNTARME")
                 <ButtonRainbow
@@ -96,19 +99,22 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                     groupService.saveGroupInUser(group, userOnline, true);
                   }}
                   disabled={group.users.length === group.maxSize}
-                />
-              )
-            ) : (
+                />))
+            : (
               //Muestra APUNTARME, si click -> redirige a Login/Register
               <ButtonRainbow
                 text="APUNTARME"
                 changeState={() => {
                   setSubscribeMe(true);
-                  return <Redirect to="/login" />;
+                  subscribeMeGroup.setGroup(group);
+                  subscribeMeGroup.setSubscribMe(true);
                 }}
                 disabled={group.users.length === group.maxSize}
               />
             )}
+            {
+              subscribeMeGroup.subscribMe ? <Redirect to="/login" /> : ""
+            }
           </div>
         </div>
       </div>

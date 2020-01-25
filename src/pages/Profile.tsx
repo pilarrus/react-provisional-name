@@ -6,12 +6,18 @@ import ProfileGroups from "../components/Profile/Groups";
 import NoFriends from "../components/Profile/NoFriends";
 import Info from "../components/Profile/PersonalInfo";
 import LoginContext from "../contexts/LoginContext";
+import subscribeMeGroupContext from "../contexts/SubscribMeGroupContext";
 import UserContext from "../contexts/UserContext";
-import firebase from "../enviroments/enviroment";
+import {
+  default as fire,
+  default as firebase
+} from "../enviroments/enviroment";
 import bell from "../images/profile/campana.svg";
 import iconNo from "../images/profile/no.svg";
 import iconSi from "../images/profile/si.svg";
+import GroupService from "../services/groupServices";
 import { User } from "../types";
+import { userSignOnGroup } from "../utils/functions";
 
 export const Profile: React.FC<RouteComponentProps<
   {},
@@ -29,6 +35,9 @@ export const Profile: React.FC<RouteComponentProps<
   const style = {
     width: "30px"
   };
+
+  let subscribeMeGroup = useContext(subscribeMeGroupContext);
+  console.log("subscribeMeGroup>>>", subscribeMeGroup);
 
   const [user, setUser] = useState(RouteComponentProps.location.state);
 
@@ -106,8 +115,22 @@ export const Profile: React.FC<RouteComponentProps<
     });
   };
 
+
   if (user) {
     contextLog.setLog(true);
+    if (
+      contextLog.log &&
+      subscribeMeGroup.subscribMe &&
+      !userSignOnGroup(subscribeMeGroup.group, user)
+    ) {
+      let groupService = new GroupService(fire);
+      groupService.saveGroupInUser(
+        subscribeMeGroup.group,
+        user,
+        true
+      );
+      subscribeMeGroup.setSubscribMe(false);
+    }
     return (
       <div className="profile">
         <Info user={user} />
