@@ -62,10 +62,11 @@ const getCurrentDate = () => {
 
 const getCurrentHour = () => {
   let fullDate = new Date();
-  let hour = fullDate.getHours();
-  let hourCopy = ++hour;
+  let hour = fullDate.getHours()+1;
+  let hourCopy = hour < 10 ? `0${hour}` : hour;
   let minutes = fullDate.getMinutes();
-  return `${hourCopy}:${minutes}`;
+  let minutesCopy = minutes < 10 ? `0${minutes}` : minutes;
+  return `${hourCopy}:${minutesCopy}`;
 };
 
 const getLastID = (groups: Groups) => {

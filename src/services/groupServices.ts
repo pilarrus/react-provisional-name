@@ -74,7 +74,7 @@ class GroupService {
           .database()
           .ref()
           .child(`db/users/${userFound!.id}/`)
-          .update({["myGroups"]: {[0]: group.name}})
+          .update({"myGroups": {0: group.name}})
           .catch(e => console.log("saveGroupInUser>>", e));
       }
     });
