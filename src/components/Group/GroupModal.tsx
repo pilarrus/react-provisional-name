@@ -5,7 +5,7 @@ import UserContext from "../../contexts/UserContext";
 import fire from "../../enviroments/enviroment";
 import GroupService from "../../services/groupServices";
 import { Group, Users2 } from "../../types";
-import { userSignOnGroup } from "../../utils/functions";
+import { userSignOnGroup, countUsers } from "../../utils/functions";
 import ButtonClose from "../Reusable/ButtonClose";
 import ButtonRainbow from "../Reusable/ButtonRainbow";
 import FormatDate from "../Reusable/FormatDate";
@@ -40,6 +40,8 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
   let users: Users2 = group.users;
   let groupService = new GroupService(fire);
 
+  //let numUsers: number = countUsers(users);
+
   return (
     <div id="id01" className="modal" onClick={viewMore}>
       <div className="modal__container" onClick={e => e.stopPropagation()}>
@@ -63,7 +65,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
               <p>{group.place}</p>
               <p>
                 Participarán{" "}
-                {Array.isArray(group.users) ? group.users.length : 0}
+                {Array.isArray(group.users) ? countUsers(users) : 0}
                 {" de " + group.maxSize}
               </p>
             </div>
@@ -76,12 +78,12 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
 
             {online ? (
               userSignOnGroup(group, userOnline) ? (
-                //Muestra DESAPUNTARME, si click -> deleteFromUser(group, user);
+                //Muestra DESAPUNTARME, si click -> removeFromUser(group, user);
                 <ButtonRainbow
                   text="DESAPUNTARME"
                   changeState={() => {
                     setSubscribeMe(false);
-                    //groupService.deleteFromUser(group, user);
+                    groupService.removeGroupFromUser(group, userOnline);
                   }}
                 />
               ) : (

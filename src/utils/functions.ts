@@ -12,6 +12,16 @@ const convertDegreesToThermalSensation = (degrees: number): string => {
   return thermalSensation;
 };
 
+const countUsers = (users: PartialUser[]): number => {
+  var count = 0;
+  for(let i = 0; i < users.length; i++) {
+    if(users[i] !== undefined) {
+      count = count+1;
+    }
+  }
+  return count;
+};
+
 const createGroup = (
   id: string,
   name: string,
@@ -138,6 +148,7 @@ const userSignOnGroup = (group: Group, user: User) => {
 
 export {
   convertDegreesToThermalSensation,
+  countUsers,
   createGroup,
   getAdventure,
   getCurrentDate,

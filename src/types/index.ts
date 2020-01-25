@@ -37,7 +37,7 @@ export type Group = {
   timestamp: number;
   place: string;
   maxSize: number;
-  users: PartialUser[] | [];
+  users: PartialUser[];
 };
 
 export type Groups = Group[];

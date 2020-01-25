@@ -11,7 +11,7 @@ class GroupService {
       let data = this.firebase
         .database()
         .ref()
-        .child("db/groups")
+        .child("db/groups");
 
       data.on("value", snapshot => resolve(snapshot.val()));
     });
@@ -22,8 +22,7 @@ class GroupService {
       let data = this.firebase
         .database()
         .ref()
-        .child("db")
-        .child("users");
+        .child("db/users/");
 
       data.on("value", snapshot => resolve(snapshot.val()));
     });
@@ -42,16 +41,15 @@ class GroupService {
 
   //public findByUser(user: PartialUser) {}
 
-  public save(group: Group, userOwner: PartialUser | User) {
+  public save(group: Group, user: PartialUser | User) {
     this.firebase
       .database()
       .ref()
-      .child("db")
-      .child("groups")
-      .child(`${group.id}/`)
-      .update(group);
+      .child(`db/groups/${group.id}/`)
+      .update(group)
+      .catch(e => console.log("save>>", e));
 
-    this.saveGroupInUser(group, userOwner);
+    this.saveGroupInUser(group, user);
   }
 
   public saveGroupInUser(
@@ -63,14 +61,22 @@ class GroupService {
 
     usersPromise.then(users => {
       let userFound = users.find(user => user.nick === userOwner.nick);
-      let newKey = userFound!.myGroups.length;
-      this.firebase
-        .database()
-        .ref()
-        .child("db")
-        .child("users")
-        .child(`${userFound!.id}/myGroups/`)
-        .update({ [newKey]: group.name });
+      if (userFound!.myGroups) {
+        let newKey = userFound!.myGroups.length;
+        this.firebase
+          .database()
+          .ref()
+          .child(`db/users/${userFound!.id}/myGroups/`)
+          .update({ [newKey]: group.name })
+          .catch(e => console.log("saveGroupInUser>>", e));
+      } else {
+        this.firebase
+          .database()
+          .ref()
+          .child(`db/users/${userFound!.id}/`)
+          .update({["myGroups"]: {[0]: group.name}})
+          .catch(e => console.log("saveGroupInUser>>", e));
+      }
     });
     if (flat) {
       this.saveUserInGroup(group, userOwner);
@@ -86,14 +92,53 @@ class GroupService {
       this.firebase
         .database()
         .ref()
-        .child("db")
-        .child("groups")
-        .child(`${group.id}/users`)
-        .update({ [newKey]: u });
+        .child(`db/groups/${group.id}/users`)
+        .update({ [newKey]: u })
+        .catch(e => console.log("saveUserInGroup>>", e));
     });
   }
 
-  //public removeFromUser(group: Group, userOwner: User) {}
+  public removeGroupFromUser(group: Group, userOwner: User) {
+    let groupsOfUserPromise: Promise<String[]> = new Promise(resolve => {
+      this.firebase
+        .database()
+        .ref()
+        .child(`db/users/${userOwner.id}/myGroups/`)
+        .on("value", snapshot => resolve(snapshot.val()));
+    });
+
+    let indexRemove = groupsOfUserPromise.then(groupsOfUser =>
+      groupsOfUser.indexOf(group.name)
+    );
+
+    indexRemove.then(index =>
+      this.firebase
+        .database()
+        .ref()
+        .child(`db/users/${userOwner.id}/myGroups/${index}`)
+        .remove()
+        .catch(e => console.log(`No se ha borrado el grupo del usuario: ${e}`))
+    );
+
+    this.removeUserFromGroup(group, userOwner);
+  }
+
+  public removeUserFromGroup(group: Group, user: User) {
+    let groupsPromise: Promise<Groups> = this.find();
+
+    groupsPromise.then(groups => {
+      let foundGroup = groups.find(g => g.name === group.name);
+      let users = foundGroup!.users;
+      console.log("userNick>>", user.nick);
+      let indexRemove = users!.findIndex(u => u.nick === user.nick);
+      console.log("indexRemove>>", indexRemove);
+      this.firebase
+        .database()
+        .ref()
+        .child(`db/groups/${group.id}/users/${indexRemove}`)
+        .remove();
+    });
+  }
 }
 
 export default GroupService;
