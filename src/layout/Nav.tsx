@@ -68,9 +68,6 @@ const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
             {!contextLog.log ? <Link to="/login">Login </Link> : <Logout />}
           </span>
         </li>
-        <div>
-          <span className="notification">3</span>
-        </div>
       </ul>
     </div>
   );
