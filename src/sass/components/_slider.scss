@@ -1,16 +1,14 @@
 .ant-carousel .slick-slide {
   text-align: center;
   color: #fff;
-  line-height: 160px;
   background: #000000;
   overflow: hidden;
 }
 
 .hero-image {
-  height: 814px;
+  height: 882px;
   img {
     width: 100%;
-    display: block;
     margin-left: auto;
     margin-right: auto;
     transition: 0.65s;
@@ -28,6 +26,10 @@
   transition: 0.65s;
   h1 {
     font-size: 3.5em;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-size: 2.5em;
   }
 }
 .hero-image:hover {
@@ -38,9 +40,6 @@
 .hero-text:hover {
   opacity: 1;
   top: 50%;
-}
-.hero-subText {
-  font-size: 2.5em;
 }
 .hero-link {
   font-size: 1.5em;

@@ -4,8 +4,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import forest from "../../images/slider/forest.jpg";
 import freezer from "../../images/slider/freezer.jpg";
+import group from "../../images/slider/group.jpeg";
 import people from "../../images/slider/people.jpg";
-import sheet from "../../images/slider/sheet.jpg";
 
 class Slider extends Component {
   constructor(props: Readonly<{}>) {
@@ -24,23 +24,23 @@ class Slider extends Component {
       slidesToScroll: 1
     };
     return (
-      <Carousel {...props} autoplay effect="fade">
+      <Carousel {...props} effect="fade">
         <div className="hero-image">
           <img src={forest} alt="forest" />
           <div className="hero-text">
-            <h1>I am Jane Doe</h1>
-            <h2 className="hero-subText">And I'm a Photographer</h2>
-            <Link to="#">
+            <h1>Visita</h1>
+            <h2 className="hero-subText">nuestras aventuras</h2>
+            <Link to="/adventures">
               <i className="hero-link">Hire me</i>
             </Link>
           </div>
         </div>
         <div className="hero-image">
-          <img src={sheet} alt="sheet" />
-          <div className="hero-text">
-            <h1>I am Jane Doe</h1>
-            <h2 className="hero-subText">And I'm a Photographer</h2>
-            <Link to="#">
+          <img src={group} alt="sheet" />
+          <div className="hero-text hero-text-white">
+            <h1>UNETE</h1>
+            <h2 className="hero-subText">A nuestros grupos</h2>
+            <Link to="/groups">
               <i className="hero-link">Hire me</i>
             </Link>
           </div>
@@ -60,7 +60,7 @@ class Slider extends Component {
           <div className="hero-text">
             <h1>UNETE</h1>
             <h2 className="hero-subText">A nuestra red social </h2>
-            <Link to="#">
+            <Link to="/login">
               <i className="hero-link">Hire me</i>
             </Link>
           </div>
