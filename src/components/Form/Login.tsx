@@ -20,9 +20,15 @@ export const Login = (props: RouteComponentProps) => {
       .ref("db")
       .child("users");
 
-    data.on("value", snapshot => {
+    const cbk = (snapshot: firebase.database.DataSnapshot) => {
       setFireData(snapshot.val());
-    });
+    };
+
+    data.on("value", cbk);
+
+    return () => {
+      data.off("value", cbk);
+    };
   }, []);
 
   const submit = (event: FormEvent) => {

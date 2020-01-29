@@ -102,7 +102,13 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
         <ButtonClose viewMore={viewMore} />
         <Title title="Añadir Grupo" />
 
-        <form action="" className="form__addGroup">
+        <form
+          action=""
+          className="form__addGroup"
+          onSubmit={e => {
+            e.preventDefault();
+          }}
+        >
           {!contextLog.log && (
             <span className="advert">
               Es necesario iniciar sesión para crear un grupo
