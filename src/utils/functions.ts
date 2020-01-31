@@ -1,4 +1,4 @@
-import { Groups, Group, TypeAdventure, contextUserType, PartialUser, User } from "../types";
+import { Groups, Group, TypeAdventure, contextUserType, PartialUser, User, Users } from "../types";
 
 const convertDegreesToThermalSensation = (degrees: number): string => {
   let thermalSensation;
@@ -12,14 +12,17 @@ const convertDegreesToThermalSensation = (degrees: number): string => {
   return thermalSensation;
 };
 
-const countUsers = (users: PartialUser[]): number => {
-  var count = 0;
-  for(let i = 0; i < users.length; i++) {
-    if(users[i] !== undefined) {
-      count = count+1;
+const countUsers = (users: PartialUser[] | Users): number => {
+  if(users !== undefined) {
+    var count = 0;
+    for(let i = 0; i < users.length; i++) {
+      if(users[i] !== undefined) {
+        count = count+1;
+      }
     }
+    return count;
   }
-  return count;
+  return 0;
 };
 
 const createGroup = (
@@ -30,9 +33,10 @@ const createGroup = (
   timestamp: number,
   place: string,
   maxSize: number,
-  user: PartialUser
+  user: User
 ): Group => {
-  let users = [user];
+  let u: PartialUser = { nick: user.nick, img: user.img };
+  let users = [u];
   return {
     id: id,
     name: name,
@@ -143,8 +147,12 @@ const sortGroups = (sortBy: string, groups: Groups) => {
 };
 
 const userSignOnGroup = (group: Group, user: User) => {
-  let groupExist = user.myGroups.find(groupUser => groupUser === group.name);
-  return (groupExist ? true : false);
+  if(user.myGroups) {
+    let groupExist = user.myGroups.find(groupUser => groupUser === group.name);
+    return (groupExist ? true : false);
+  } else {
+    return false;
+  }
 };
 
 export {

@@ -6,7 +6,6 @@ import GroupsContext from "../contexts/GroupsContext";
 import fire from "../enviroments/enviroment";
 import adventures from "../fake-data/adventures";
 import Error from "../pages/Error";
-import GroupService from "../services/groupServices";
 import { Groups } from "../types";
 import { sortGroups } from "../utils/functions";
 
@@ -14,46 +13,48 @@ class GroupContainer extends React.Component<
   RouteComponentProps<{
     activityID?: string;
   }>,
-  { fetchGroups: Groups; sortBy: string }
+  { fetchGroups: Groups; sortBy: string; data: firebase.database.Reference }
 > {
   constructor(props: RouteComponentProps) {
     super(props);
 
     this.state = {
       fetchGroups: [],
-      sortBy: "alphabetical"
+      sortBy: "alphabetical",
+      data: fire
+      .database()
+      .ref("db/groups")
     };
+
+    this.cbk = this.cbk.bind(this);
   }
 
-  static contextType = GroupsContext; // Crea una variable this.context, de forma magic
-
-  _isMounted = false;
+  static contextType = GroupsContext; // Crea la variable mágica this.context
 
   componentDidMount() {
-    this._isMounted = true;
-
-    let groupService: GroupService;
-    groupService = new GroupService(fire);
-
-    groupService.find().then(fetchGroups => {
-      if (this._isMounted) {
-        this.setState({
-          fetchGroups
-        });
-        //console.log(this.context);
-        this.context.setGroups(fetchGroups); // Aquí uso la variable magic
-        //console.log("con>>>",this.context.groups);
-      }
-    });
+    this.state.data.on("value", this.cbk);
   }
 
   componentWillUnmount() {
-    this._isMounted = false;
+    this.state.data.off("value", this.cbk);
+  }
+
+  handleGroups(groups: Groups) {
+    this.setState({
+      fetchGroups: groups
+    });
+    //console.log("this.context>>>", this.context);
+    this.context.setGroups(this.state.fetchGroups); // this.context es una variable mágica
+    //console.log("context.groups>>>",this.context.groups);
   }
 
   setSortBy(x: string) {
     this.setState({ sortBy: x });
   }
+
+  cbk(snapshot: firebase.database.DataSnapshot) {
+    this.handleGroups(snapshot.val());
+  };
 
   render() {
     let showAll: boolean;
@@ -77,7 +78,7 @@ class GroupContainer extends React.Component<
       } else {
         showAll = false;
         let activityID = params.activityID;
-        //console.log("activityID>>>>>>>>", activityID);
+        
         if (
           parseInt(activityID as string) < 0 ||
           parseInt(activityID as string) > 9
@@ -87,10 +88,7 @@ class GroupContainer extends React.Component<
         let adventureCopy = adventures.find(
           adventure => adventure.id === activityID
         );
-        let nameAdventure = "";
-        if (adventureCopy !== undefined) {
-          nameAdventure = adventureCopy.name;
-        }
+        let nameAdventure = adventureCopy!.name;
 
         this.state.fetchGroups.forEach(group => {
           if (group.id_adventure === activityID) {

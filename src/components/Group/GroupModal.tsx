@@ -71,7 +71,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
               </p>
             </div>
             <div className="modal_group__container--avatars">
-              {group.users !== [] &&
+              {group.users &&
                 users.map(user => (
                   <Avatar key={user.nick} nick={user.nick} img={user.img} />
                 ))}
@@ -87,6 +87,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                   changeState={() => {
                     setSubscribeMe(false);
                     groupService.removeGroupFromUser(group, userOnline);
+                    viewMore();
                   }}
                 />)
               : (
@@ -98,7 +99,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                     setSubscribeMe(true);
                     groupService.saveGroupInUser(group, userOnline, true);
                   }}
-                  disabled={group.users.length === group.maxSize}
+                  disabled={countUsers(group.users) === group.maxSize}
                 />))
             : (
               //Muestra APUNTARME, si click -> redirige a Login/Register
@@ -109,7 +110,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                   subscribeMeGroup.setGroup(group);
                   subscribeMeGroup.setSubscribMe(true);
                 }}
-                disabled={group.users.length === group.maxSize}
+                disabled={countUsers(group.users) === group.maxSize}
               />
             )}
             {

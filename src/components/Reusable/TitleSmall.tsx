@@ -1,6 +1,6 @@
 import React from "react";
 
-const TitleSmall: React.FC<{ title: string; semiTransparent: boolean }> = ({
+const TitleSmall: React.FC<{ title: string; semiTransparent?: boolean }> = ({
   title,
   semiTransparent
 }) => {

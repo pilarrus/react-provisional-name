@@ -35,7 +35,7 @@ export default class GroupComponent extends Component<GroupProps> {
           }}
         >
           <div className="group__container">
-            <TitleSmall title={group.name} semiTransparent={false}></TitleSmall>
+            <TitleSmall title={group.name}></TitleSmall>
             <span>{group.name_adventure}</span>
           </div>
           <ButtonPlus viewMore={this.handleViewMore} />
