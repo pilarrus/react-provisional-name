@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import LoginContext from "../../contexts/LoginContext";
 import subscribeMeGroupContext from "../../contexts/SubscribMeGroupContext";
@@ -19,7 +19,10 @@ type GroupModalProps = {
 };
 
 const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
-  //const [subscribeMe, setSubscribeMe] = useState(false);
+  const [save, setSave] = useState(false);
+  const [remove, setRemove] = useState(false);
+  console.log("save->", save, " remove->", remove);
+
   const contextLog = useContext(LoginContext);
   let online = contextLog.log;
   //console.log("online>>>", online);
@@ -52,7 +55,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
     return () => {
       userFire.off("value", cbk);
     };
-  }, []);
+  }, [save, remove]);
 
   let users: Users2 = group.users;
   let groupService = new GroupService(fire);
@@ -96,18 +99,17 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                 <ButtonRainbow
                   text="DESAPUNTARME"
                   changeState={() => {
-                    //setSubscribeMe(false);
+                    setRemove(true);
                     groupService.removeGroupFromUser(group, userOnline);
                     viewMore();
                   }}
                 />
               ) : (
                 //Muestra APUNTARME, si click -> saveGroupInUser(group, user);
-                //subscribeMe("APUNTARME")
                 <ButtonRainbow
                   text="APUNTARME"
                   changeState={() => {
-                    //setSubscribeMe(true);
+                    setSave(true);
                     groupService.saveGroupInUser(group, userOnline, true);
                   }}
                   disabled={count(group.users) === group.maxSize}
@@ -118,7 +120,6 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
               <ButtonRainbow
                 text="APUNTARME"
                 changeState={() => {
-                  //setSubscribeMe(true);
                   subscribeMeGroup.setGroup(group);
                   subscribeMeGroup.setSubscribMe(true);
                 }}
