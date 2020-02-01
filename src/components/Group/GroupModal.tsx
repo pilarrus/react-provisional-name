@@ -5,7 +5,7 @@ import subscribeMeGroupContext from "../../contexts/SubscribMeGroupContext";
 import UserContext from "../../contexts/UserContext";
 import fire from "../../enviroments/enviroment";
 import GroupService from "../../services/groupServices";
-import { Group, Users2 } from "../../types";
+import { Group, Users2, User } from "../../types";
 import { count, userSignOnGroup } from "../../utils/functions";
 import ButtonClose from "../Reusable/ButtonClose";
 import ButtonRainbow from "../Reusable/ButtonRainbow";
@@ -43,18 +43,25 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
   }, [viewMore]);
 
   useEffect(() => {
-    console.log("UserFire");
-    const userFire = fire.database().ref(`db/users/${contextUser.user.id}`);
+    const data = fire.database().ref(`db/users`);
 
     const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      contextUser.setUser(snapshot.val());
+      if(contextUser.user) {
+        snapshot.forEach(u => {
+          const newVal: User = u.val();
+          if (newVal.id === contextUser.user.id) {
+            contextUser.setUser(newVal);
+          }
+        });
+      }
     };
 
-    userFire.on("value", cbk);
+    data.on("value", cbk);
 
     return () => {
-      userFire.off("value", cbk);
-    };
+      data.off("value", cbk);
+    }
+
   }, [save, remove]);
 
   let users: Users2 = group.users;
@@ -95,7 +102,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
 
             {online ? (
               userSignOnGroup(group, userOnline) ? (
-                //Muestra DESAPUNTARME, si click -> removeFromUser(group, user);
+                // Usuario online y apuntado al grupo
                 <ButtonRainbow
                   text="DESAPUNTARME"
                   changeState={() => {
@@ -105,7 +112,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                   }}
                 />
               ) : (
-                //Muestra APUNTARME, si click -> saveGroupInUser(group, user);
+                // Usuario online pero no apuntado al grupo
                 <ButtonRainbow
                   text="APUNTARME"
                   changeState={() => {
@@ -116,7 +123,7 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                 />
               )
             ) : (
-              //Muestra APUNTARME, si click -> redirige a Login/Register
+              // Usuario offline
               <ButtonRainbow
                 text="APUNTARME"
                 changeState={() => {
@@ -130,7 +137,6 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
           </div>
         </div>
       </div>
-      {/*console.log("subscribeMe>>>", subscribeMe)*/}
     </div>
   );
 };
