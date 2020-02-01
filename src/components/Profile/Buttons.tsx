@@ -18,24 +18,22 @@ export const ProfileGroups: React.FC = () => {
         className="profile__groups-b1 heading heading--stroke heading--shadow"
         style={style}
       >
-        Aventuras de la semana
+        Mis grupos
       </button>
       <button
         onClick={() => setOpenCreate(!openCreate)}
         className="profile__groups-b1 heading heading--stroke heading--shadow"
         style={style}
       >
-        Crear aventura
+        Crear grupo
       </button>
-      {openGroups ? (
-        <Modal handle={setOpenGroups}>
+      {openGroups 
+      ? (<Modal handle={setOpenGroups}>
           <Groups />
-        </Modal>
-      ) : openCreate ? (
-        <Modal handle={setOpenCreate}>
-          <AddGroup viewMore={() => setOpenCreate(!openCreate)} />
-        </Modal>
-      ) : null}
+        </Modal>)
+      : openCreate
+        ? (<AddGroup viewMore={() => setOpenCreate(!openCreate)} />)
+        : null}
     </div>
   );
 };

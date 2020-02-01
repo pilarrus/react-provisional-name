@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import Form from "../components/Form/SocialHome";
 import Friends from "../components/Profile/Friends";
-import ProfileGroups from "../components/Profile/Groups";
+import ButtonsGroups from "../components/Profile/Buttons";
 import NoFriends from "../components/Profile/NoFriends";
 import Info from "../components/Profile/PersonalInfo";
 import LoginContext from "../contexts/LoginContext";
@@ -18,6 +18,7 @@ import iconSi from "../images/profile/si.svg";
 import GroupService from "../services/groupServices";
 import { User } from "../types";
 import { userSignOnGroup } from "../utils/functions";
+import MyGroups from "../components/Profile/MyGroups";
 
 export const Profile: React.FC<RouteComponentProps<
   {},
@@ -182,7 +183,8 @@ export const Profile: React.FC<RouteComponentProps<
           </div>
         )}
 
-        <ProfileGroups />
+        <ButtonsGroups />
+        {user ? <MyGroups groups={user.myGroups}/> : ""}
       </div>
     );
   } else {
