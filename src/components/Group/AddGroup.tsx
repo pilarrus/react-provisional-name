@@ -18,6 +18,7 @@ import ButtonClose from "../Reusable/ButtonClose";
 import Title from "../Reusable/Title";
 import municipalities from "../Weather/municipality_codes";
 import { Redirect } from "react-router-dom";
+import { User } from "../../types";
 
 type AddGroupProps = {
   viewMore: () => void;
@@ -31,6 +32,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [maxSize, setMaxSize] = useState("");
+  const [save, setSave] = useState(false);
   
   let contextGroups = useContext(GroupsContext);
   let groups = contextGroups.groups;
@@ -51,22 +53,44 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [viewMore]);
 
-  /*useEffect(() => {
-    console.log("UserFire");
-    const userFire = fire
+  useEffect(() => {
+    console.log("GroupsFire------------");
+    const groupsFire = fire
     .database()
-    .ref(`db/users/${contextUser.user.id}`);
+    .ref(`db/groups`);
 
     const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      contextUser.setUser(snapshot.val());
+      contextGroups.setGroups(snapshot.val());
     }
 
-    userFire.on("value", cbk);
+    groupsFire.on("value", cbk);
     
     return () => {
-      userFire.off("value", cbk);
+      groupsFire.off("value", cbk);
     };
-  }, []);*/
+  }, [save]);
+
+  useEffect(() => {
+    const data = fire.database().ref(`db/users`);
+
+    const cbk = (snapshot: firebase.database.DataSnapshot) => {
+      if(contextUser.user) {
+        snapshot.forEach(u => {
+          const newVal: User = u.val();
+          if (newVal.id === contextUser.user.id) {
+            contextUser.setUser(newVal);
+          }
+        });
+      }
+    };
+
+    data.on("value", cbk);
+
+    return () => {
+      data.off("value", cbk);
+    }
+
+  }, [save]);
 
   const completedForm = () => {
     return (
@@ -214,6 +238,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
             className="button__addGroup"
             disabled={completedForm()}
             onClick={() => {
+              setSave(true);
               groupService.save(group, user!)
               viewMore();
             }}
