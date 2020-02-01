@@ -31,22 +31,12 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [maxSize, setMaxSize] = useState("");
-  //const [nowDate] = useState(getCurrentDate());
-  //const [nameGroups] = useState(getNameGroups(groups));
+  
   let contextGroups = useContext(GroupsContext);
   let groups = contextGroups.groups;
   let nameGroups = getNameGroups(groups);
   let nameExist = nameGroups.includes(name);
   let nowDate = getCurrentDate();
-
-  /*const places = [
-    { id: 1, name: "Buitrago de Lozoya" },
-    { id: 2, name: "El Atazar" },
-    { id: 3, name: "Guadarrama" },
-    { id: 4, name: "Navacerrada" },
-    { id: 5, name: "Rascafría" },
-    { id: 6, name: "San Martín de Valdeiglesias" }
-  ];*/
 
   const contextLog = useContext(LoginContext);
   const contextUser = useContext(UserContext);
@@ -60,6 +50,23 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [viewMore]);
+
+  /*useEffect(() => {
+    console.log("UserFire");
+    const userFire = fire
+    .database()
+    .ref(`db/users/${contextUser.user.id}`);
+
+    const cbk = (snapshot: firebase.database.DataSnapshot) => {
+      contextUser.setUser(snapshot.val());
+    }
+
+    userFire.on("value", cbk);
+    
+    return () => {
+      userFire.off("value", cbk);
+    };
+  }, []);*/
 
   const completedForm = () => {
     return (
@@ -80,7 +87,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
     let adventure = getAdventure(activity, adventures);
     let id_adventure = adventure!.id;
     let name_adventure = adventure!.name;
-    //var user = getUser(contextUser);
     var user = contextUser.user
     var group = createGroup(
       id,
@@ -113,9 +119,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
           }}
         >
           {!contextLog.log && (
-            /*<span className="advert">
-              Es necesario iniciar sesión para crear un grupo
-            </span>*/
             <Redirect to="/login" />
           )}
           <input
@@ -159,10 +162,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
             <option value="Default" disabled>
               Lugar
             </option>
-            {municipalities.map(municipality => <option key={municipality.codmun}>{municipality.label}</option>)
-            /*places.map(place => (
-              <option key={place.id}>{place.name}</option>
-            ))*/}
+            {municipalities.map(municipality => <option key={municipality.codmun}>{municipality.label}</option>)}
           </select>
           <br />
 
@@ -170,7 +170,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
             type="date"
             min={nowDate}
             name="date"
-            placeholder="Fecha"
             className="form-input"
             onChange={e => setDate(e.target.value)}
             required
@@ -181,7 +180,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
             <input
               type="time"
               name="time"
-              placeholder="Hora"
               className="form-input"
               onChange={e => setTime(e.target.value)}
               required
@@ -192,7 +190,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
               name="time"
               min={getCurrentHour()}
               max="23:59"
-              placeholder="Hora"
               className="form-input"
               onChange={e => setTime(e.target.value)}
               required

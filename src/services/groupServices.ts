@@ -12,26 +12,27 @@ class GroupService {
       .ref(`db/groups/${group.id}`)
       .update(group, e => {
         if (e) {
-          console.log("Error: No se ha guardado el grupo");
+          console.log("Error: Grupo NO guardado");
         } else {
-          console.log("El grupo se ha guardado");
+          console.log("Grupo guardado");
           this.saveGroupInUser(group, user);
         }
       });
   }
 
-  public saveGroupInUser(group: Group, userOwner: User, flat?: boolean) {
-    let newKey = userOwner.myGroups ? userOwner.myGroups.length : 0;
+  public saveGroupInUser(group: Group, user: User, flat?: boolean) {
+    let newKey = user.myGroups ? user.myGroups.length : 0;
+    console.log("newKeyGroup>>>", newKey);
     this.firebase
       .database()
-      .ref(`db/users/${userOwner.id}/myGroups`)
+      .ref(`db/users/${user.id}/myGroups`)
       .update({ [newKey]: group.name }, e => {
         if (e) {
-          console.log("Error: No se ha guardado el grupo en el usuario", e);
+          console.log("Error: Grupo NO guardado en usuario");
         } else {
-          console.log("Se ha guardado correctamente el grupo en el usuario");
+          console.log("Grupo guardado en usuario");
           if (flat) {
-            this.saveUserInGroup(group, userOwner);
+            this.saveUserInGroup(group, user);
           }
         }
       });
@@ -39,30 +40,31 @@ class GroupService {
 
   public saveUserInGroup(group: Group, user: PartialUser | User) {
     let u: PartialUser = { nick: user.nick, img: user.img };
-    let newKey = group.users ? group!.users.length : 0;
+    let newKey = group.users ? group.users.length : 0;
+    console.log("newKeyUser>>>", newKey);
     this.firebase
       .database()
       .ref(`db/groups/${group.id}/users`)
       .update({ [newKey]: u }, e => {
         if (e) {
-          console.log("Error: No se ha guardado el usuario en el grupo>>", e);
+          console.log("Error: No se ha guardado el usuario en el grupo>>");
         } else {
           console.log("Se ha guardado correctamente el usuario en el grupo");
         }
       });
   }
 
-  public removeGroupFromUser(group: Group, userOwner: User) {
-    let index = userOwner.myGroups.indexOf(group.name);
+  public removeGroupFromUser(group: Group, user: User) {
+    let index = user.myGroups.indexOf(group.name);
     this.firebase
       .database()
-      .ref(`db/users/${userOwner.id}/myGroups/${index}`)
+      .ref(`db/users/${user.id}/myGroups/${index}`)
       .remove(e => {
         if (e) {
           console.log("No se ha eliminado el grupo del usuario");
         } else {
           console.log("Se ha eliminado el grupo del usuario");
-          this.removeUserFromGroup(group, userOwner);
+          this.removeUserFromGroup(group, user);
         }
       });
   }

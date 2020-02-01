@@ -37,7 +37,7 @@ export const Profile: React.FC<RouteComponentProps<
   };
 
   let subscribeMeGroup = useContext(subscribeMeGroupContext);
-  console.log("subscribeMeGroup>>>", subscribeMeGroup);
+  //console.log("subscribeMeGroup>>>", subscribeMeGroup);
 
   const [user, setUser] = useState(RouteComponentProps.location.state);
 
@@ -88,7 +88,7 @@ export const Profile: React.FC<RouteComponentProps<
   };
 
   const removeFriend = (friend: string) => {
-    console.log("RECHAZO A:", friend);
+    //console.log("RECHAZO A:", friend);
     contextUser.user.request.forEach(element => {
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);

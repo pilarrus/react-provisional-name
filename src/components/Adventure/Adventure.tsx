@@ -12,7 +12,6 @@ const AdventureComponent = (props: {
     backgroundPosition: "top",
     backgroundSize: "cover"
   };
-  console.log("PILI FOTO", props.photo);
   return (
     <Link to={`/groups/${props.id}`}>
       <div className="adventure" data-testid="adventure" style={style}>
