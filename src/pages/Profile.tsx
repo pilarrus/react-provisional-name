@@ -38,7 +38,6 @@ export const Profile: React.FC<RouteComponentProps<
   };
 
   let subscribeMeGroup = useContext(subscribeMeGroupContext);
-  //console.log("subscribeMeGroup>>>", subscribeMeGroup);
 
   const [user, setUser] = useState(RouteComponentProps.location.state);
 
@@ -118,6 +117,7 @@ export const Profile: React.FC<RouteComponentProps<
 
 
   if (user) {
+    console.log("contextUSer>>>", contextUser.user);
     contextLog.setLog(true);
     if (
       contextLog.log &&
@@ -184,7 +184,7 @@ export const Profile: React.FC<RouteComponentProps<
         )}
 
         <ButtonsGroups />
-        {user ? <MyGroups groups={user.myGroups}/> : ""}
+        {contextUser.user ? <MyGroups user={contextUser.user} setUser={contextUser.setUser} /> : ""}
       </div>
     );
   } else {
