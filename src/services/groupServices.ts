@@ -40,6 +40,7 @@ class GroupService {
 
   public saveUserInGroup(group: Group, user: PartialUser | User) {
     let u: PartialUser = { nick: user.nick, img: user.img };
+    console.log("myGroups", group.users, "length", group.users.length)
     let newKey = group.users ? group.users.length : 0;
     console.log("newKeyUser>>>", newKey);
     this.firebase

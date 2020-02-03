@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Groups from "../../pages/Groups";
 import AddGroup from "../Group/AddGroup";
-import Modal from "./Modal";
+import { contextUserType } from "../../types";
+import MyGroups from "./MyGroups";
 
-export const ProfileGroups: React.FC = () => {
+export const ProfileGroups: React.FC<contextUserType> = ({ user, setUser }) => {
   const [openGroups, setOpenGroups] = useState(false);
   const [openCreate, setOpenCreate] = useState(false);
 
@@ -12,6 +12,7 @@ export const ProfileGroups: React.FC = () => {
   };
 
   return (
+    <>
     <div className="profile__groups">
       <button
         onClick={() => setOpenGroups(!openGroups)}
@@ -20,6 +21,7 @@ export const ProfileGroups: React.FC = () => {
       >
         Mis grupos
       </button>
+      
       <button
         onClick={() => setOpenCreate(!openCreate)}
         className="profile__groups-b1 heading heading--stroke heading--shadow"
@@ -27,14 +29,16 @@ export const ProfileGroups: React.FC = () => {
       >
         Crear grupo
       </button>
-      {openGroups 
-      ? (<Modal handle={setOpenGroups}>
-          <Groups />
-        </Modal>)
-      : openCreate
+
+      {openCreate
         ? (<AddGroup viewMore={() => setOpenCreate(!openCreate)} />)
         : null}
-    </div>
+      </div>
+      
+      {openGroups 
+      ? (<MyGroups user={user} setUser={setUser} />)
+      : null}
+      </>
   );
 };
 

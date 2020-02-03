@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import groupsContext from "../../contexts/GroupsContext";
-//import UserContext from "../../contexts/UserContext";
 import fire from "../../enviroments/enviroment";
 import GroupService from "../../services/groupServices";
 import { User } from "../../types";
@@ -12,13 +11,14 @@ type myGroupsProps = {
   user: User;
   setUser: (_user: User) => void;
 };
+
 const MyGroups: React.FC<myGroupsProps> = ({ user, setUser }) => {
   const contextGroups = useContext(groupsContext);
   const [userOnline, setUserOnline] = useState(user);
   const [remove, setRemove] = useState(false);
 
-
   useEffect(() => {
+    console.log("user----------------------")
     const data = fire.database().ref(`db/users`);
     const cbk = (snapshot: firebase.database.DataSnapshot) => {
       snapshot.forEach(u => {
@@ -47,7 +47,7 @@ const MyGroups: React.FC<myGroupsProps> = ({ user, setUser }) => {
                 <ButtonDelete
                   deleteGroup={() => {
                     setRemove(true);
-                    groupService.removeGroupFromUser(myGroup!, userOnline);
+                    groupService.removeGroupFromUser(myGroup!, user);
                   }
                   }
                 />

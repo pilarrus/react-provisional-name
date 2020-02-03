@@ -71,6 +71,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
   }, [save]);
 
   useEffect(() => {
+    console.log("UsersFire------------");
     const data = fire.database().ref(`db/users`);
 
     const cbk = (snapshot: firebase.database.DataSnapshot) => {

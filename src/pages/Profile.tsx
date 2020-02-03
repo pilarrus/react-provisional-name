@@ -18,7 +18,6 @@ import iconSi from "../images/profile/si.svg";
 import GroupService from "../services/groupServices";
 import { User } from "../types";
 import { userSignOnGroup } from "../utils/functions";
-import MyGroups from "../components/Profile/MyGroups";
 
 export const Profile: React.FC<RouteComponentProps<
   {},
@@ -117,7 +116,7 @@ export const Profile: React.FC<RouteComponentProps<
 
 
   if (user) {
-    console.log("contextUSer>>>", contextUser.user);
+    //console.log("contextUSer>>>", contextUser.user);
     contextLog.setLog(true);
     if (
       contextLog.log &&
@@ -183,8 +182,7 @@ export const Profile: React.FC<RouteComponentProps<
           </div>
         )}
 
-        <ButtonsGroups />
-        {contextUser.user ? <MyGroups user={contextUser.user} setUser={contextUser.setUser} /> : ""}
+        {contextUser.user ? <ButtonsGroups user={contextUser.user} setUser={contextUser.setUser} /> : ""}
       </div>
     );
   } else {
