@@ -8,23 +8,36 @@ const Sidebar: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
 
   const style = {
     classClose: "oculta"
-  }
+  };
 
   return (
-    <div className={`sidebar ${context.colorSide} ${sidebar ? "" : style.classClose}`}>
+    <div
+      className={`sidebar ${context.colorSide} ${
+        sidebar ? "" : style.classClose
+      }`}
+    >
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/adventures">Aventuras</Link></li>
-        <li><Link to="/groups">Grupos</Link></li>
-        <li><Link to="/">Nosotros</Link></li>
-        <li><Link to="/">Contacto</Link></li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/adventures">Aventuras</Link>
+        </li>
+        <li>
+          <Link to="/groups">Grupos</Link>
+        </li>
+        <li>
+          <Link to="/build">Nosotros</Link>
+        </li>
+        <li>
+          <Link to="/build">Contacto</Link>
+        </li>
+
         <li>
           <ApiWeather />
         </li>
-
       </ul>
     </div>
-
   );
 };
 
