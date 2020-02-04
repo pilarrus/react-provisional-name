@@ -42,7 +42,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
 
   const contextLog = useContext(LoginContext);
   const contextUser = useContext(UserContext);
-  //console.log('--------contextUser--------', contextUser.user);
+  console.log('--------contextUser--------', contextUser.user);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -55,6 +55,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
   }, [viewMore]);
 
   const updateContextGroup = () => {
+    //console.log("updateContextGroup___________addGroup")
     const groupsFire = fire
     .database()
     .ref(`db/groups`);
@@ -67,6 +68,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
   };
 
   const updateContextUser = () => {
+    //console.log("updateContextUser***************addGroup")
     const usersFire = fire
     .database()
     .ref(`db/users`);

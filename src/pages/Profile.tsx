@@ -49,7 +49,7 @@ export const Profile: React.FC<RouteComponentProps<
     }
   }, [user.request]);
 
-  /*const updateContextUser = () => {
+  const updateContextUser = () => {
     const usersFire = fire
     .database()
     .ref(`db/users`);
@@ -66,7 +66,7 @@ export const Profile: React.FC<RouteComponentProps<
     };
 
     usersFire.once("value", cbk);
-  };*/
+  };
 
   const addFriend = (friend: string) => {
     //AÑADIR A AMIGOS DEL USUARIO QUE ACEPTA LA AMISTAD:
@@ -151,6 +151,7 @@ export const Profile: React.FC<RouteComponentProps<
         user,
         true
       );
+      updateContextUser();
       subscribeMeGroup.setSubscribMe(false);
     }
     return (

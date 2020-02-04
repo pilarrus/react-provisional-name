@@ -4,28 +4,28 @@ import { User } from "../../types";
 import ImageProfile from "./ImageProfile";
 
 export const Info: React.FC<{
-  user: User;
-}> = ({ user }) => {
+  user?: User;
+}> = () => {
   const contextUser = useContext(UserContext);
-
-  contextUser.setUser(user);
+  let userOnline = contextUser.user;
+  //contextUser.setUser(user);
 
   return (
     <div className="profile__info">
       <div className="profile__info-name">
         <h1 className="heading heading--stroke heading--shadow">
-          {user.gender === "male"
+          {userOnline.gender === "male"
             ? "Bienvenido"
-            : user.gender === "female"
+            : userOnline.gender === "female"
             ? "Bienvenida"
             : "Bienvenid@"}
           <br></br>
           <span className="heading heading--stroke heading--shadow">
-            {user.name}
+            {userOnline.name}
           </span>
         </h1>
       </div>
-      <ImageProfile user={user} />
+      <ImageProfile user={userOnline} />
     </div>
   );
 };
