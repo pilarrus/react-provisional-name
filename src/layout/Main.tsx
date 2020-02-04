@@ -7,6 +7,7 @@ import Error from "../pages/Error";
 import Groups from "../pages/Groups";
 import Home from "../pages/Home";
 import { Profile } from "../pages/Profile";
+import Footer from "./Footer";
 
 const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
   let style = "";
@@ -24,6 +25,7 @@ const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
         <Route exact path="/login" component={LoginRegister} />
         <Route component={Error} />
       </Switch>
+      <Footer />
     </div>
   );
 };
