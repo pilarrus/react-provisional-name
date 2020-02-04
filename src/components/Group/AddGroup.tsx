@@ -32,16 +32,17 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [maxSize, setMaxSize] = useState("");
-  const [save, setSave] = useState(false);
   
   let contextGroups = useContext(GroupsContext);
   let groups = contextGroups.groups;
+  //console.log('--------contextGroups--------', contextGroups.groups);
   let nameGroups = getNameGroups(groups);
   let nameExist = nameGroups.includes(name);
   let nowDate = getCurrentDate();
 
   const contextLog = useContext(LoginContext);
   const contextUser = useContext(UserContext);
+  //console.log('--------contextUser--------', contextUser.user);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -53,8 +54,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [viewMore]);
 
-  useEffect(() => {
-    console.log("GroupsFire------------");
+  const updateContextGroup = () => {
     const groupsFire = fire
     .database()
     .ref(`db/groups`);
@@ -63,16 +63,13 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
       contextGroups.setGroups(snapshot.val());
     }
 
-    groupsFire.on("value", cbk);
-    
-    return () => {
-      groupsFire.off("value", cbk);
-    };
-  }, [save]);
+    groupsFire.once("value", cbk);
+  };
 
-  useEffect(() => {
-    console.log("UsersFire------------");
-    const data = fire.database().ref(`db/users`);
+  const updateContextUser = () => {
+    const usersFire = fire
+    .database()
+    .ref(`db/users`);
 
     const cbk = (snapshot: firebase.database.DataSnapshot) => {
       if(contextUser.user) {
@@ -85,13 +82,8 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
       }
     };
 
-    data.on("value", cbk);
-
-    return () => {
-      data.off("value", cbk);
-    }
-
-  }, [save]);
+    usersFire.once("value", cbk);
+  };
 
   const completedForm = () => {
     return (
@@ -239,9 +231,10 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
             className="button__addGroup"
             disabled={completedForm()}
             onClick={() => {
-              setSave(true);
               groupService.save(group, user!)
               viewMore();
+              updateContextGroup();
+              updateContextUser();
             }}
           >
             Crear grupo
