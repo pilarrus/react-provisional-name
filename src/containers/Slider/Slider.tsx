@@ -31,7 +31,7 @@ class Slider extends Component {
             <h1>Visita</h1>
             <h2 className="hero-subText">nuestras aventuras</h2>
             <Link to="/adventures">
-              <i className="hero-link">Hire me</i>
+              <i className="hero-link">Click aquí</i>
             </Link>
           </div>
         </div>
@@ -41,7 +41,7 @@ class Slider extends Component {
             <h1>UNETE</h1>
             <h2 className="hero-subText">A nuestros grupos</h2>
             <Link to="/groups">
-              <i className="hero-link">Hire me</i>
+              <i className="hero-link">Click aquí</i>
             </Link>
           </div>
         </div>
@@ -51,7 +51,7 @@ class Slider extends Component {
             <h1>I am Jane Doe</h1>
             <h2 className="hero-subText">And I'm a Photographer</h2>
             <Link to="#">
-              <i className="hero-link">Hire me</i>
+              <i className="hero-link">Click aquí</i>
             </Link>
           </div>
         </div>
@@ -61,7 +61,7 @@ class Slider extends Component {
             <h1>UNETE</h1>
             <h2 className="hero-subText">A nuestra red social </h2>
             <Link to="/login">
-              <i className="hero-link">Hire me</i>
+              <i className="hero-link">Click aquí</i>
             </Link>
           </div>
         </div>
