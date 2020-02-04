@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import AddGroup from "../Group/AddGroup";
-import { contextUserType } from "../../types";
 import MyGroups from "./MyGroups";
 
-export const ProfileGroups: React.FC<contextUserType> = ({ user, setUser }) => {
+export const ProfileGroups: React.FC = () => {
   const [openGroups, setOpenGroups] = useState(false);
   const [openCreate, setOpenCreate] = useState(false);
 
@@ -36,7 +35,7 @@ export const ProfileGroups: React.FC<contextUserType> = ({ user, setUser }) => {
       </div>
       
       {openGroups 
-      ? (<MyGroups user={user} setUser={setUser} />)
+      ? (<MyGroups />)
       : null}
       </>
   );

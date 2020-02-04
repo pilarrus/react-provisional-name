@@ -30,7 +30,7 @@ export const Profile: React.FC<RouteComponentProps<
     .ref("db")
     .child("users"); // referencia a users de firebase
   const [request, setRequest] = useState([] as string[]);
-  const contextUser = useContext(UserContext);
+  
   const [display, setDisplay] = useState(false);
   const style = {
     width: "30px"
@@ -40,11 +40,33 @@ export const Profile: React.FC<RouteComponentProps<
 
   const [user, setUser] = useState(RouteComponentProps.location.state);
 
+  const contextUser = useContext(UserContext);
+  console.log('--------contextUser--------Profile', contextUser.user);
+
   useEffect(() => {
     if (user.request) {
       setRequest(user.request);
     }
   }, [user.request]);
+
+  /*const updateContextUser = () => {
+    const usersFire = fire
+    .database()
+    .ref(`db/users`);
+
+    const cbk = (snapshot: firebase.database.DataSnapshot) => {
+      if(contextUser.user) {
+        snapshot.forEach(u => {
+          const newVal: User = u.val();
+          if (newVal.id === contextUser.user.id) {
+            contextUser.setUser(newVal);
+          }
+        });
+      }
+    };
+
+    usersFire.once("value", cbk);
+  };*/
 
   const addFriend = (friend: string) => {
     //AÑADIR A AMIGOS DEL USUARIO QUE ACEPTA LA AMISTAD:
@@ -182,7 +204,7 @@ export const Profile: React.FC<RouteComponentProps<
           </div>
         )}
 
-        {contextUser.user ? <ButtonsGroups user={contextUser.user} setUser={contextUser.setUser} /> : ""}
+        {contextUser.user ? <ButtonsGroups /> : ""}
       </div>
     );
   } else {

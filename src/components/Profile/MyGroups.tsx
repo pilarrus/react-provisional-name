@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import groupsContext from "../../contexts/GroupsContext";
 import fire from "../../enviroments/enviroment";
 import GroupService from "../../services/groupServices";
@@ -6,18 +6,19 @@ import { User } from "../../types";
 import { count } from "../../utils/functions";
 import ButtonDelete from "../Reusable/ButtonDelete";
 import FormatDate from "../Reusable/FormatDate";
+import UserContext from "../../contexts/UserContext";
 
-type myGroupsProps = {
-  user: User;
-  setUser: (_user: User) => void;
-};
-
-const MyGroups: React.FC<myGroupsProps> = ({ user, setUser }) => {
+const MyGroups: React.FC = () => {
   const contextGroups = useContext(groupsContext);
-  const [userOnline, setUserOnline] = useState(user);
-  const [remove, setRemove] = useState(false);
+  console.log('--------contextGroups--------', contextGroups.groups);
+  //const [userOnline, setUserOnline] = useState(user);
+  //const [remove, setRemove] = useState(false);
 
-  useEffect(() => {
+  const contextUser = useContext(UserContext);
+  let userOnline = contextUser.user;
+  console.log('--------contextUser--------MyGroups', contextUser.user);
+
+  /*useEffect(() => {
     console.log("user----------------------")
     const data = fire.database().ref(`db/users`);
     const cbk = (snapshot: firebase.database.DataSnapshot) => {
@@ -33,7 +34,38 @@ const MyGroups: React.FC<myGroupsProps> = ({ user, setUser }) => {
     return () => {
       data.off("value", cbk);
     };
-  }, [remove]);
+  }, [remove]);*/
+
+  const updateContextGroup = () => {
+    const groupsFire = fire
+    .database()
+    .ref(`db/groups`);
+
+    const cbk = (snapshot: firebase.database.DataSnapshot) => {
+      contextGroups.setGroups(snapshot.val());
+    }
+
+    groupsFire.once("value", cbk);
+  };
+
+  const updateContextUser = () => {
+    const usersFire = fire
+    .database()
+    .ref(`db/users`);
+
+    const cbk = (snapshot: firebase.database.DataSnapshot) => {
+      if(contextUser.user) {
+        snapshot.forEach(u => {
+          const newVal: User = u.val();
+          if (newVal.id === contextUser.user.id) {
+            contextUser.setUser(newVal);
+          }
+        });
+      }
+    };
+
+    usersFire.once("value", cbk);
+  };
 
   return (
     <div className="profile-myGroups">
@@ -46,8 +78,10 @@ const MyGroups: React.FC<myGroupsProps> = ({ user, setUser }) => {
               <div key={myGroup!.id} className="myGroup">
                 <ButtonDelete
                   deleteGroup={() => {
-                    setRemove(true);
-                    groupService.removeGroupFromUser(myGroup!, user);
+                    //setRemove(true);
+                    groupService.removeGroupFromUser(myGroup!, userOnline);
+                    updateContextGroup();
+                    updateContextUser();
                   }
                   }
                 />
