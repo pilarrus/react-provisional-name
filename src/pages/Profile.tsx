@@ -44,12 +44,14 @@ export const Profile: React.FC<RouteComponentProps<
   console.log('--------contextUser--------Profile', contextUser.user);
 
   useEffect(() => {
+    console.log("useEffect");
     if (user.request) {
       setRequest(user.request);
     }
   }, [user.request]);
 
   const updateContextUser = () => {
+    console.log("updateContextUser");
     const usersFire = fire
     .database()
     .ref(`db/users`);
@@ -59,6 +61,7 @@ export const Profile: React.FC<RouteComponentProps<
         snapshot.forEach(u => {
           const newVal: User = u.val();
           if (newVal.id === contextUser.user.id) {
+            setUser(newVal);
             contextUser.setUser(newVal);
           }
         });
@@ -69,6 +72,7 @@ export const Profile: React.FC<RouteComponentProps<
   };
 
   const addFriend = (friend: string) => {
+    console.log("addFriend");
     //AÑADIR A AMIGOS DEL USUARIO QUE ACEPTA LA AMISTAD:
     var key;
     if (contextUser.user.myFriends) {
@@ -83,6 +87,7 @@ export const Profile: React.FC<RouteComponentProps<
 
     //BORRAR DE REQUEST CUANDO SE ACEPTA LA AMISTAD:
     contextUser.user.request.forEach(element => {
+      console.log("borrar request");
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
         entries.forEach(element => {
@@ -99,10 +104,12 @@ export const Profile: React.FC<RouteComponentProps<
 
     //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
     dbRef.once("value", snap => {
+      console.log("actualizar datos");
       snap.forEach(e => {
         const newVal: User = e.val();
         if (newVal.id === user.id) {
           setUser(newVal);
+          contextUser.setUser(newVal);
         }
       });
     });
@@ -110,6 +117,7 @@ export const Profile: React.FC<RouteComponentProps<
 
   const removeFriend = (friend: string) => {
     //console.log("RECHAZO A:", friend);
+    console.log("rachazar");
     contextUser.user.request.forEach(element => {
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
@@ -127,10 +135,12 @@ export const Profile: React.FC<RouteComponentProps<
 
     //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
     dbRef.once("value", snap => {
+      console.log("actualizar user");
       snap.forEach(e => {
         const newVal: User = e.val();
         if (newVal.id === user.id) {
           setUser(newVal);
+          contextUser.setUser(newVal);
         }
       });
     });
@@ -138,7 +148,6 @@ export const Profile: React.FC<RouteComponentProps<
 
 
   if (user) {
-    //console.log("contextUSer>>>", contextUser.user);
     contextLog.setLog(true);
     if (
       contextLog.log &&
