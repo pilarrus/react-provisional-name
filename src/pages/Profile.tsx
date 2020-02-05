@@ -98,7 +98,7 @@ export const Profile: React.FC<RouteComponentProps<
     });
 
     //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
-    dbRef.on("value", snap => {
+    dbRef.once("value", snap => {
       snap.forEach(e => {
         const newVal: User = e.val();
         if (newVal.id === user.id) {
@@ -126,7 +126,7 @@ export const Profile: React.FC<RouteComponentProps<
     });
 
     //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
-    dbRef.on("value", snap => {
+    dbRef.once("value", snap => {
       snap.forEach(e => {
         const newVal: User = e.val();
         if (newVal.id === user.id) {
@@ -156,7 +156,7 @@ export const Profile: React.FC<RouteComponentProps<
     }
     return (
       <div className="profile">
-        <Info user={user} />
+        {contextUser.user ? <Info user={contextUser.user} /> : <Info user={user} />}
         <div className="request">
           {user.request ? (
             <div className="request-aviso" onClick={() => setDisplay(!display)}>
