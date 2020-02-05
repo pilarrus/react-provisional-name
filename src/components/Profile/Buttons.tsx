@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import AddGroup from "../Group/AddGroup";
 import MyGroups from "./MyGroups";
+import { User } from "../../types";
 
-export const ProfileGroups: React.FC = () => {
+type ButtonsProps = {
+  user: User,
+  setUser: (user: User) => void
+}
+
+export const ProfileGroups: React.FC<ButtonsProps> = ({user, setUser}) => {
   const [openGroups, setOpenGroups] = useState(false);
   const [openCreate, setOpenCreate] = useState(false);
 
@@ -35,7 +41,7 @@ export const ProfileGroups: React.FC = () => {
       </div>
       
       {openGroups 
-      ? (<MyGroups />)
+      ? (<MyGroups user={user} setUser={setUser} />)
       : null}
       </>
   );

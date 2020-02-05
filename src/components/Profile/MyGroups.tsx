@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import groupsContext from "../../contexts/GroupsContext";
 import fire from "../../enviroments/enviroment";
 import GroupService from "../../services/groupServices";
@@ -8,13 +8,16 @@ import ButtonDelete from "../Reusable/ButtonDelete";
 import FormatDate from "../Reusable/FormatDate";
 import UserContext from "../../contexts/UserContext";
 
-const MyGroups: React.FC = () => {
+type ButtonsProps = {
+  user: User,
+  setUser: (user: User) => void
+}
+
+const MyGroups: React.FC<ButtonsProps> = ({user, setUser}) => {
   const contextGroups = useContext(groupsContext);
   console.log('--------contextGroups--------', contextGroups.groups);
 
   const contextUser = useContext(UserContext);
-  const [userOnline, setUserOnline] = useState(contextUser.user);
-  //let userOnline = contextUser.user;
   console.log('--------contextUser--------MyGroups', contextUser.user);
 
   const updateContextGroup = () => {
@@ -32,29 +35,14 @@ const MyGroups: React.FC = () => {
 
   const updateContextUser = () => {
     console.log("updateContextUser***************")
-    const usersFire = fire.database().ref(`db/users/${userOnline.id}`);
-    
+    const usersFire = fire.database().ref(`db/users/${user.id}`);
 
     const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      let user: User = snapshot.val();
-      console.log("........................",user);
-      contextUser.setUser(user);
-      setUserOnline(user);
+      let newUser: User = snapshot.val();
+      console.log("........................",newUser);
+      setUser(newUser);
+      contextUser.setUser(newUser);
     };
-
-    /*const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      if(contextUser.user) {
-        snapshot.forEach(u => {
-          const newVal: User = u.val();
-          //console.log("newValue>>", newVal);
-          if (newVal.id === contextUser.user.id) {
-            console.log("newValue>>", newVal);
-            contextUser.setUser(newVal);
-            setUserOnline(newVal);
-          }
-        });
-      }
-    };*/
 
     usersFire.once("value", cbk);
   };
@@ -62,15 +50,15 @@ const MyGroups: React.FC = () => {
   return (
     <div className="profile-myGroups">
       <div className="myGroups__cointainer">
-        {userOnline.myGroups ? (
-          userOnline.myGroups.map(group => {
+        {user.myGroups ? (
+          user.myGroups.map(group => {
             let myGroup = contextGroups.groups.find(g => g.name === group);
             let groupService = new GroupService(fire);
             return (
               <div key={myGroup!.id} className="myGroup">
                 <ButtonDelete
                   deleteGroup={() => {
-                    groupService.removeGroupFromUser(myGroup!, userOnline);
+                    groupService.removeGroupFromUser(myGroup!, user);
                     updateContextGroup();
                     updateContextUser();
                   }

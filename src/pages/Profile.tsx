@@ -214,7 +214,7 @@ export const Profile: React.FC<RouteComponentProps<
           </div>
         )}
 
-        {contextUser.user ? <ButtonsGroups /> : ""}
+        <ButtonsGroups user={user} setUser={setUser} />
       </div>
     );
   } else {
