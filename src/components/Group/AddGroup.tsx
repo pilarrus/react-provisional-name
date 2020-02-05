@@ -22,9 +22,10 @@ import { User } from "../../types";
 
 type AddGroupProps = {
   viewMore: () => void;
+  setUser?: (user: User) => void
 };
 
-const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
+const AddGroup: React.FC<AddGroupProps> = ({ viewMore, setUser }) => {
   
   const [name, setName] = useState("");
   const [activity, setActivity] = useState("");
@@ -79,6 +80,9 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
           const newVal: User = u.val();
           if (newVal.id === contextUser.user.id) {
             contextUser.setUser(newVal);
+            if (typeof setUser === 'function') {
+              setUser(newVal);
+            }
           }
         });
       }

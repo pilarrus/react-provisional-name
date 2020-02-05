@@ -36,7 +36,7 @@ export const ProfileGroups: React.FC<ButtonsProps> = ({user, setUser}) => {
       </button>
 
       {openCreate
-        ? (<AddGroup viewMore={() => setOpenCreate(!openCreate)} />)
+        ? (<AddGroup viewMore={() => setOpenCreate(!openCreate)} setUser={setUser} />)
         : null}
       </div>
       
