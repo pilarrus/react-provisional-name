@@ -22,10 +22,11 @@ import { User } from "../../types";
 
 type AddGroupProps = {
   viewMore: () => void;
+  adventureName?: string;
   setUser?: (user: User) => void
 };
 
-const AddGroup: React.FC<AddGroupProps> = ({ viewMore, setUser }) => {
+const AddGroup: React.FC<AddGroupProps> = ({ viewMore, adventureName, setUser }) => {
   
   const [name, setName] = useState("");
   const [activity, setActivity] = useState("");
@@ -169,7 +170,9 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore, setUser }) => {
             <option value="Default" disabled>
               Tipo de actividad
             </option>
-            {adventures.map(adventure => (
+            {typeof adventureName !== 'undefined'
+            ? <option key={adventureName}>{adventureName}</option>
+            : adventures.map(adventure => (
               <option key={adventure.id}>{adventure.name}</option>
             ))}
           </select>

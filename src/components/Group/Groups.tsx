@@ -77,7 +77,11 @@ const GroupsComponent: React.FC<GroupsProps> = ({
           disabled={false}
         />
       </div>
-      {isOpen ? <AddGroup viewMore={() => setIsOpen(!isOpen)} /> : ""}
+      {isOpen
+      ? typeof adventureName !== 'undefined'
+        ? <AddGroup viewMore={() => setIsOpen(!isOpen)} adventureName={adventureName} />
+        : <AddGroup viewMore={() => setIsOpen(!isOpen)} />
+      : ""}
     </section>
   );
 };
