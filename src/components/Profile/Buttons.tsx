@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import AddGroup from "../Group/AddGroup";
 import MyGroups from "./MyGroups";
-import { User } from "../../types";
+import { ContextUserType } from "../../types";
 
-type ButtonsProps = {
-  user: User,
-  setUser: (user: User) => void
-}
-
-export const ProfileGroups: React.FC<ButtonsProps> = ({user, setUser}) => {
+export const ProfileGroups: React.FC<ContextUserType> = ({user, setUser}) => {
   const [openGroups, setOpenGroups] = useState(false);
   const [openCreate, setOpenCreate] = useState(false);
 

@@ -18,7 +18,7 @@ import iconNo from "../images/profile/no.svg";
 import iconSi from "../images/profile/si.svg";
 import GroupService from "../services/groupServices";
 import { User } from "../types";
-import { userSignOnGroup } from "../utils/functions";
+import { userSignOnGroup, updateGroups, updateUser } from "../utils/functions";
 
 export const Profile: React.FC<RouteComponentProps<
   {},
@@ -40,6 +40,7 @@ export const Profile: React.FC<RouteComponentProps<
   let subscribeMeGroup = useContext(subscribeMeGroupContext);
 
   const [user, setUser] = useState(RouteComponentProps.location.state);
+  console.log("_____________USER_____________", user);
 
   const contextUser = useContext(UserContext);
   console.log('--------contextUser--------Profile', contextUser.user);
@@ -53,40 +54,6 @@ export const Profile: React.FC<RouteComponentProps<
       setRequest(user.request);
     }
   }, [user.request]);
-
-  const updateContextUser = () => {
-    console.log("updateContextUser");
-    const usersFire = fire
-    .database()
-    .ref(`db/users`);
-
-    const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      if(contextUser.user) {
-        snapshot.forEach(u => {
-          const newVal: User = u.val();
-          if (newVal.id === contextUser.user.id) {
-            setUser(newVal);
-            contextUser.setUser(newVal);
-          }
-        });
-      }
-    };
-
-    usersFire.once("value", cbk);
-  };
-
-  const updateContextGroup = () => {
-    console.log("updateContextGroup___________addGroup")
-    const groupsFire = fire
-    .database()
-    .ref(`db/groups`);
-
-    const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      contextGroups.setGroups(snapshot.val());
-    }
-
-    groupsFire.once("value", cbk);
-  };
 
   const addFriend = (friend: string) => {
     console.log("addFriend");
@@ -177,8 +144,8 @@ export const Profile: React.FC<RouteComponentProps<
         user,
         true
       );
-      updateContextUser();
-      updateContextGroup();
+      updateUser(user, contextUser.setUser, setUser);
+      updateGroups(contextGroups.setGroups);
       subscribeMeGroup.setSubscribMe(false);
     }
     return (

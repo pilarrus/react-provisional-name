@@ -12,7 +12,9 @@ import {
   getCurrentHour,
   getLastID,
   getNameGroups,
-  getTimestamp
+  getTimestamp,
+  updateGroups,
+  updateUser
 } from "../../utils/functions";
 import ButtonClose from "../Reusable/ButtonClose";
 import Title from "../Reusable/Title";
@@ -44,7 +46,7 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore, adventureName, setUser })
 
   const contextLog = useContext(LoginContext);
   const contextUser = useContext(UserContext);
-  console.log('--------contextUser--------', contextUser.user);
+  //console.log('--------contextUser--------', contextUser.user);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -55,42 +57,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore, adventureName, setUser })
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [viewMore]);
-
-  const updateContextGroup = () => {
-    //console.log("updateContextGroup___________addGroup")
-    const groupsFire = fire
-    .database()
-    .ref(`db/groups`);
-
-    const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      contextGroups.setGroups(snapshot.val());
-    }
-
-    groupsFire.once("value", cbk);
-  };
-
-  const updateContextUser = () => {
-    //console.log("updateContextUser***************addGroup")
-    const usersFire = fire
-    .database()
-    .ref(`db/users`);
-
-    const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      if(contextUser.user) {
-        snapshot.forEach(u => {
-          const newVal: User = u.val();
-          if (newVal.id === contextUser.user.id) {
-            contextUser.setUser(newVal);
-            if (typeof setUser === 'function') {
-              setUser(newVal);
-            }
-          }
-        });
-      }
-    };
-
-    usersFire.once("value", cbk);
-  };
 
   const completedForm = () => {
     return (
@@ -242,8 +208,8 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore, adventureName, setUser })
             onClick={() => {
               groupService.save(group, user!)
               viewMore();
-              updateContextGroup();
-              updateContextUser();
+              updateGroups(contextGroups.setGroups);
+              updateUser(user, contextUser.setUser, setUser);;
             }}
           >
             Crear grupo
