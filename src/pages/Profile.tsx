@@ -8,6 +8,7 @@ import Info from "../components/Profile/PersonalInfo";
 import LoginContext from "../contexts/LoginContext";
 import subscribeMeGroupContext from "../contexts/SubscribMeGroupContext";
 import UserContext from "../contexts/UserContext";
+import GroupsContext from "../contexts/GroupsContext";
 import {
   default as fire,
   default as firebase
@@ -43,6 +44,9 @@ export const Profile: React.FC<RouteComponentProps<
   const contextUser = useContext(UserContext);
   console.log('--------contextUser--------Profile', contextUser.user);
 
+  const contextGroups = useContext(GroupsContext);
+  console.log('--------contextGroups--------Profile', contextGroups.groups);
+
   useEffect(() => {
     console.log("useEffect");
     if (user.request) {
@@ -69,6 +73,19 @@ export const Profile: React.FC<RouteComponentProps<
     };
 
     usersFire.once("value", cbk);
+  };
+
+  const updateContextGroup = () => {
+    console.log("updateContextGroup___________addGroup")
+    const groupsFire = fire
+    .database()
+    .ref(`db/groups`);
+
+    const cbk = (snapshot: firebase.database.DataSnapshot) => {
+      contextGroups.setGroups(snapshot.val());
+    }
+
+    groupsFire.once("value", cbk);
   };
 
   const addFriend = (friend: string) => {
@@ -161,6 +178,7 @@ export const Profile: React.FC<RouteComponentProps<
         true
       );
       updateContextUser();
+      updateContextGroup();
       subscribeMeGroup.setSubscribMe(false);
     }
     return (
