@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { ContextUserType } from "../../types";
 import AddGroup from "../Group/AddGroup";
 import MyGroups from "./MyGroups";
-import { ContextUserType } from "../../types";
 
 export const ProfileGroups: React.FC<ContextUserType> = ({user, setUser}) => {
   const [openGroups, setOpenGroups] = useState(false);
@@ -31,13 +31,13 @@ export const ProfileGroups: React.FC<ContextUserType> = ({user, setUser}) => {
       </button>
 
       {openCreate
-        ? (<AddGroup viewMore={() => setOpenCreate(!openCreate)} setUser={setUser} />)
+        ? <AddGroup viewMore={() => setOpenCreate(!openCreate)} setUser={setUser} />
         : null}
       </div>
       
-      {openGroups 
-      ? (<MyGroups user={user} setUser={setUser} />)
-      : null}
+      {openGroups && openCreate
+      ? (<MyGroups user={user} setUser={setUser} zIndex={-2} />)
+      : openGroups ? <MyGroups user={user} setUser={setUser} /> : null}
       </>
   );
 };

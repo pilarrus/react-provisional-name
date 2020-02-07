@@ -8,16 +8,20 @@ import ButtonDelete from "../Reusable/ButtonDelete";
 import FormatDate from "../Reusable/FormatDate";
 import UserContext from "../../contexts/UserContext";
 
-const MyGroups: React.FC<ContextUserType> = ({user, setUser}) => {
+const MyGroups: React.FC<ContextUserType & {zIndex?: number}> = ({user, setUser, zIndex}) => {
   const contextGroups = useContext(groupsContext);
   console.log('--------contextGroups--------', contextGroups.groups);
 
   const contextUser = useContext(UserContext);
   console.log('--------contextUser--------MyGroups', contextUser.user);
 
+  const style = {
+    "zIndex": (typeof zIndex !== 'undefined') ? zIndex : 0
+  };
+
   return (
     <div className="profile-myGroups">
-      <div className="myGroups__cointainer">
+      <div className="myGroups__cointainer" style={style}>
         {user.myGroups ? (
           user.myGroups.map(group => {
             let myGroup = contextGroups.groups.find(g => g.name === group);
