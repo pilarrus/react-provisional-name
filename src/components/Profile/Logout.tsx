@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, RouteComponentProps, withRouter } from "react-router-dom";
 import LoginContext from "../../contexts/LoginContext";
 import UserContext from "../../contexts/UserContext";
+import { User } from "../../types";
 
 const Logout: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
   const contextLog = useContext(LoginContext);
@@ -24,7 +25,10 @@ const Logout: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
           <Link
             to="/login"
             style={style}
-            onClick={() => contextLog.setLog(false)}
+            onClick={() => {
+              contextLog.setLog(false);
+              contextUser.setUser({} as User);
+            }}
           >
             Logout
           </Link>
