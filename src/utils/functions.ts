@@ -163,7 +163,7 @@ const updateGroups = (setGroupsContext: (_groups: Groups) => void) => {
     setGroupsContext(snapshot.val());
   };
 
-  groupsFire.once("value", cbk);
+  groupsFire.once("value", cbk).catch(e => console.log(e));
 };
 
 const updateUser = (
