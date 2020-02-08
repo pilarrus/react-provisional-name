@@ -151,7 +151,7 @@ export const Profile: React.FC<RouteComponentProps<
     return (
       <div className="profile">
         {contextUser.user ? <Info user={contextUser.user} /> : <Info user={user} />}
-        <div className="request">
+        <div className="request" onSubmit={e => e.preventDefault}>
           {user.request ? (
             <div className="request-aviso" onClick={() => setDisplay(!display)}>
               <p>¡Tienes nuevas solicitudes de amistad!</p>
