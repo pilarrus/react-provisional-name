@@ -1,11 +1,11 @@
 import React from "react";
 
 const name = (title: string) => {
-  return title === "Nuestras aventuras"
-    ? "redclass" : title === "Grupos"
-      ? "clearblueclass" : title === "Eventos"
-        ? "greenclass" : title === "Nosotros"
-          ? "purpleclass" : title === "Contacto"
+  return title.toLowerCase().includes('aventuras')
+    ? "redclass" : title.toLowerCase().includes('grupos')
+      ? "clearblueclass" : title.toLowerCase().includes('contacto')
+        ? "greenclass" : title.toLowerCase().includes('nosotros')
+          ? "purpleclass" : title.toLowerCase().includes('home')
             ? "yellowclass" : "defaultclass";
 
 }

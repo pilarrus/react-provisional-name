@@ -19,13 +19,23 @@ $color6: #ff1b5faf;
   background-color: $color6;
 }
 
-.clearblueclass {
+.purpleclass {
   @include title();
   background-color: $color4;
 }
+
+.greenclass {
+  @include title();
+  background-color: $color3;
+}
+
+.clearblueclass {
+  @include title();
+  background-color: $color2;
+}
 .defaultclass {
   @include title();
-  background-color: #1babffaf;
+  background-color: $color1;
 }
 
 // background-color: #79aefe;

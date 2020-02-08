@@ -16,7 +16,7 @@ const Sidebar: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/adventures">Aventuras</Link></li>
         <li><Link to="/groups">Grupos</Link></li>
-        <li><Link to="/">Nosotros</Link></li>
+        <li><Link to="/aboutus">Nosotros</Link></li>
         <li><Link to="/">Contacto</Link></li>
         <li>
           <ApiWeather />

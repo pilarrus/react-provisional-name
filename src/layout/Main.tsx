@@ -7,6 +7,7 @@ import Error from "../pages/Error";
 import Groups from "../pages/Groups";
 import Home from "../pages/Home";
 import { Profile } from "../pages/Profile";
+import AboutUs from "../pages/AboutUs";
 
 const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
   let style = "";
@@ -21,7 +22,7 @@ const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
         <Route exact path="/groups/:activityID" component={Groups} />
         <Route exact path="/groups" component={Groups} />
         <Route exact path="/profile" component={Profile} />
-
+        <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/login" component={LoginRegister} />
         <Route component={Error} />
       </Switch>
