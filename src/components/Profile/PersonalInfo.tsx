@@ -5,9 +5,8 @@ import ImageProfile from "./ImageProfile";
 
 export const Info: React.FC<{
   user: User;
-}> = ({ user }) => {
+}> = ({user}) => {
   const contextUser = useContext(UserContext);
-
   contextUser.setUser(user);
 
   return (

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import LoginContext from "../../contexts/LoginContext";
 import subscribeMeGroupContext from "../../contexts/SubscribMeGroupContext";
@@ -19,18 +19,12 @@ type GroupModalProps = {
 };
 
 const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
-  const [save, setSave] = useState(false);
-  const [remove, setRemove] = useState(false);
-  console.log("save->", save, " remove->", remove);
-
   const contextLog = useContext(LoginContext);
   let online = contextLog.log;
-  //console.log("online>>>", online);
   const contextUser = useContext(UserContext);
   let userOnline = contextUser.user;
-  console.log("userOnline>>>", userOnline);
+  //console.log('--------contextUser--------', contextUser.user);
   let subscribeMeGroup = useContext(subscribeMeGroupContext);
-  //console.log("subscribeMeGroup>>>", subscribeMeGroup);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -42,8 +36,10 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [viewMore]);
 
-  useEffect(() => {
-    const data = fire.database().ref(`db/users`);
+  const updateContextUser = () => {
+    const usersFire = fire
+    .database()
+    .ref(`db/users`);
 
     const cbk = (snapshot: firebase.database.DataSnapshot) => {
       if(contextUser.user) {
@@ -56,13 +52,8 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
       }
     };
 
-    data.on("value", cbk);
-
-    return () => {
-      data.off("value", cbk);
-    }
-
-  }, [save, remove]);
+    usersFire.once("value", cbk);
+  };
 
   let users: Users2 = group.users;
   let groupService = new GroupService(fire);
@@ -106,9 +97,9 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                 <ButtonRainbow
                   text="DESAPUNTARME"
                   changeState={() => {
-                    setRemove(true);
                     groupService.removeGroupFromUser(group, userOnline);
                     viewMore();
+                    updateContextUser();
                   }}
                 />
               ) : (
@@ -116,8 +107,8 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
                 <ButtonRainbow
                   text="APUNTARME"
                   changeState={() => {
-                    setSave(true);
                     groupService.saveGroupInUser(group, userOnline, true);
+                    updateContextUser();
                   }}
                   disabled={count(group.users) === group.maxSize}
                 />

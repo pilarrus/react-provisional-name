@@ -1,7 +1,8 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState, useContext } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import fire from "../../enviroments/enviroment";
 import { Users } from "../../types";
+import UserContext from "../../contexts/UserContext";
 
 //INICIALIZAR FIREBASE
 
@@ -12,6 +13,9 @@ export const Login = (props: RouteComponentProps) => {
 
   //DATOS FIREBASE GUARDADOS EN FIREDATA:
   const [fireData, setFireData] = useState([] as Users[]);
+
+  // PARA ESTABLECER EL USUARIO EN EL CONTEXTO ANTES DE REDIRIGIRLO A PROFILE
+  const contextUser = useContext(UserContext);
 
   //LEER DATOS DE FIREBASE:
   useEffect(() => {
@@ -39,6 +43,8 @@ export const Login = (props: RouteComponentProps) => {
       .find(u => u.name === name && u.password === password);
 
     if (user) {
+      // ESTABLECER EL USUARIO EN EL CONTEXTO ANTES DE REDIRIGIRLO A PROFILE
+      contextUser.setUser(user);
       props.history.push("/profile", user);
     } else {
       setMessage("Introduce los datos correctos");

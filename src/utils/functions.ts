@@ -1,4 +1,13 @@
-import { Groups, Group, TypeAdventure, contextUserType, PartialUser, User, Users } from "../types";
+import fire from "../enviroments/enviroment";
+import {
+  ContextUserType,
+  Group,
+  Groups,
+  PartialUser,
+  TypeAdventure,
+  User,
+  Users
+} from "../types";
 
 const convertDegreesToThermalSensation = (degrees: number): string => {
   let thermalSensation;
@@ -13,11 +22,11 @@ const convertDegreesToThermalSensation = (degrees: number): string => {
 };
 
 const count = (x: PartialUser[] | Users): number => {
-  if(x !== undefined) {
+  if (x !== undefined) {
     var count = 0;
-    for(let i = 0; i < x.length; i++) {
-      if(x[i] !== undefined) {
-        count = count+1;
+    for (let i = 0; i < x.length; i++) {
+      if (x[i] !== undefined) {
+        count = count + 1;
       }
     }
     return count;
@@ -66,7 +75,7 @@ const getCurrentDate = () => {
 
 const getCurrentHour = () => {
   let fullDate = new Date();
-  let hour = fullDate.getHours()+1;
+  let hour = fullDate.getHours() + 1;
   let hourCopy = hour < 10 ? `0${hour}` : hour;
   let minutes = fullDate.getMinutes();
   let minutesCopy = minutes < 10 ? `0${minutes}` : minutes;
@@ -78,7 +87,7 @@ const getLastID = (groups: Groups) => {
   groups.forEach(group => allIDs.push(parseInt(group.id)));
   let lastID = Math.max(...allIDs);
   return lastID;
-}
+};
 
 const getNameGroups = (groups: Groups) => {
   let nameGroups: string[] = [];
@@ -93,10 +102,10 @@ const getTimestamp = (date: string, time: string) => {
   let hour = parseInt(time.substr(0, 2));
   let minutes = parseInt(time.substr(3, 2));
   let dateObj = new Date(year, month, day, hour, minutes);
-  return dateObj.getTime()/1000;
+  return dateObj.getTime() / 1000;
 };
 
-const getUser = (contextUser: contextUserType) => {
+const getUser = (contextUser: ContextUserType) => {
   if (contextUser.user !== undefined) {
     let user: PartialUser = {
       nick: contextUser.user.nick,
@@ -146,10 +155,46 @@ const sortGroups = (sortBy: string, groups: Groups) => {
   }
 };
 
+const updateGroups = (setGroupsContext: (_groups: Groups) => void) => {
+  console.log("updateContextGroup___________***");
+  const groupsFire = fire.database().ref(`db/groups`);
+
+  const cbk = (snapshot: firebase.database.DataSnapshot) => {
+    setGroupsContext(snapshot.val());
+  };
+
+  groupsFire.once("value", cbk).catch(e => console.log(e));
+};
+
+const updateUser = (
+  user: User,
+  setUserContext: (_user: User) => void,
+  setUserState?: (_user: User) => void
+) => {
+  console.log("updateContextUser************___");
+  const usersFire = fire.database().ref(`db/users`);
+
+  const cbk = (snapshot: firebase.database.DataSnapshot) => {
+    if (user) {
+      snapshot.forEach(u => {
+        const newVal: User = u.val();
+        if (newVal.id === user.id) {
+          setUserContext(newVal);
+          if (typeof setUserState === "function") {
+            setUserState(newVal);
+          }
+        }
+      });
+    }
+  };
+
+  usersFire.once("value", cbk);
+};
+
 const userSignOnGroup = (group: Group, user: User) => {
-  if(user.myGroups) {
+  if (user.myGroups) {
     let groupExist = user.myGroups.find(groupUser => groupUser === group.name);
-    return (groupExist ? true : false);
+    return groupExist ? true : false;
   } else {
     return false;
   }
@@ -169,5 +214,7 @@ export {
   compareTo,
   sortByTypeAdventure,
   sortGroups,
+  updateGroups,
+  updateUser,
   userSignOnGroup
 };

@@ -13,7 +13,12 @@ const FormatDate: React.FC<DateProps> = ({ timestamp }) => {
   let minutes = date.getMinutes();
   let min = minutes < 10 ? `0${minutes}` : minutes;
 
-  return <p>{day + "/" + month + "/" + year + " " + hour + ":" + min}</p>;
+  return (
+    <p className="formatDate">
+      <span className="formatDate__date">{day + "/" + month + "/" + year}</span>
+      <span className="formatDate__hour">{hour + ":" + min}</span>
+    </p>
+  );
 };
 
 export default FormatDate;

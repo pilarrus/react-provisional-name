@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Groups from "../../pages/Groups";
+import { ContextUserType } from "../../types";
 import AddGroup from "../Group/AddGroup";
-import Modal from "./Modal";
+import MyGroups from "./MyGroups";
 
-export const ProfileGroups: React.FC = () => {
+export const ProfileGroups: React.FC<ContextUserType> = ({user, setUser}) => {
   const [openGroups, setOpenGroups] = useState(false);
   const [openCreate, setOpenCreate] = useState(false);
 
@@ -12,31 +12,33 @@ export const ProfileGroups: React.FC = () => {
   };
 
   return (
+    <>
     <div className="profile__groups">
       <button
         onClick={() => setOpenGroups(!openGroups)}
         className="profile__groups-b1 heading heading--stroke heading--shadow"
         style={style}
       >
-        Aventuras de la semana
+        Mis grupos
       </button>
+      
       <button
         onClick={() => setOpenCreate(!openCreate)}
         className="profile__groups-b1 heading heading--stroke heading--shadow"
         style={style}
       >
-        Crear aventura
+        Crear grupo
       </button>
-      {openGroups ? (
-        <Modal handle={setOpenGroups}>
-          <Groups />
-        </Modal>
-      ) : openCreate ? (
-        <Modal handle={setOpenCreate}>
-          <AddGroup viewMore={() => setOpenCreate(!openCreate)} />
-        </Modal>
-      ) : null}
-    </div>
+
+      {openCreate
+        ? <AddGroup viewMore={() => setOpenCreate(!openCreate)} setUser={setUser} />
+        : null}
+      </div>
+      
+      {openGroups && openCreate
+      ? (<MyGroups user={user} setUser={setUser} zIndex={-2} />)
+      : openGroups ? <MyGroups user={user} setUser={setUser} /> : null}
+      </>
   );
 };
 

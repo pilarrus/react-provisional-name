@@ -27,10 +27,10 @@ const Sidebar: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
           <Link to="/groups">Grupos</Link>
         </li>
         <li>
-          <Link to="/build">Nosotros</Link>
+          <Link to="/aboutus">Nosotros</Link>
         </li>
         <li>
-          <Link to="/build">Contacto</Link>
+          <Link to="/contact">Contacto</Link>
         </li>
 
         <li>

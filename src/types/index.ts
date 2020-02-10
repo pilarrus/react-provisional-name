@@ -42,7 +42,12 @@ export type Group = {
 
 export type Groups = Group[];
 
-export type contextUserType = {
+export type ContextUserType = {
   user: User;
   setUser: (_user: User) => void;
 };
+
+export type ContextGroupsType = {
+  groups: Groups;
+  setGroups: (_group: Group) => void;
+}

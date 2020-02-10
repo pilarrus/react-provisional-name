@@ -4,6 +4,7 @@ import Title from "../Reusable/Title";
 import ButtonRainbow from "../Reusable/ButtonRainbow";
 import AddGroup from "./AddGroup";
 import Group from "./Group";
+import SelectOrder from "../Reusable/SelectOrder";
 
 type GroupsProps = {
   groups: Groups;
@@ -52,21 +53,7 @@ const GroupsComponent: React.FC<GroupsProps> = ({
     <section className="groups">
       <Title title={`Grupos${adventureNameCopy}`} />
       {groups.length >= 2 && (
-        <select
-          name=""
-          id=""
-          defaultValue="Default"
-          onChange={e => setSortBy(e.target.value)}
-        >
-          <option value="Default" disabled>
-            Ordenar por
-          </option>
-          {sortOptions.map(sortOption => (
-            <option key={sortOption[0]} value={sortOption[0]}>
-              {sortOption[1]}
-            </option>
-          ))}
-        </select>
+        <SelectOrder options={sortOptions} setSortBy={setSortBy} />
       )}
 
       <div className="groups__container">
@@ -77,7 +64,11 @@ const GroupsComponent: React.FC<GroupsProps> = ({
           disabled={false}
         />
       </div>
-      {isOpen ? <AddGroup viewMore={() => setIsOpen(!isOpen)} /> : ""}
+      {isOpen
+      ? typeof adventureName !== 'undefined'
+        ? <AddGroup viewMore={() => setIsOpen(!isOpen)} adventureName={adventureName} />
+        : <AddGroup viewMore={() => setIsOpen(!isOpen)} />
+      : ""}
     </section>
   );
 };

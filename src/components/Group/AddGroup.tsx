@@ -12,7 +12,9 @@ import {
   getCurrentHour,
   getLastID,
   getNameGroups,
-  getTimestamp
+  getTimestamp,
+  updateGroups,
+  updateUser
 } from "../../utils/functions";
 import ButtonClose from "../Reusable/ButtonClose";
 import Title from "../Reusable/Title";
@@ -22,9 +24,11 @@ import { User } from "../../types";
 
 type AddGroupProps = {
   viewMore: () => void;
+  adventureName?: string;
+  setUser?: (user: User) => void
 };
 
-const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
+const AddGroup: React.FC<AddGroupProps> = ({ viewMore, adventureName, setUser }) => {
   
   const [name, setName] = useState("");
   const [activity, setActivity] = useState("");
@@ -32,16 +36,17 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [maxSize, setMaxSize] = useState("");
-  const [save, setSave] = useState(false);
   
   let contextGroups = useContext(GroupsContext);
   let groups = contextGroups.groups;
+  //console.log('--------contextGroups--------', contextGroups.groups);
   let nameGroups = getNameGroups(groups);
   let nameExist = nameGroups.includes(name);
   let nowDate = getCurrentDate();
 
   const contextLog = useContext(LoginContext);
   const contextUser = useContext(UserContext);
+  //console.log('--------contextUser--------', contextUser.user);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
@@ -52,45 +57,6 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [viewMore]);
-
-  useEffect(() => {
-    console.log("GroupsFire------------");
-    const groupsFire = fire
-    .database()
-    .ref(`db/groups`);
-
-    const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      contextGroups.setGroups(snapshot.val());
-    }
-
-    groupsFire.on("value", cbk);
-    
-    return () => {
-      groupsFire.off("value", cbk);
-    };
-  }, [save]);
-
-  useEffect(() => {
-    const data = fire.database().ref(`db/users`);
-
-    const cbk = (snapshot: firebase.database.DataSnapshot) => {
-      if(contextUser.user) {
-        snapshot.forEach(u => {
-          const newVal: User = u.val();
-          if (newVal.id === contextUser.user.id) {
-            contextUser.setUser(newVal);
-          }
-        });
-      }
-    };
-
-    data.on("value", cbk);
-
-    return () => {
-      data.off("value", cbk);
-    }
-
-  }, [save]);
 
   const completedForm = () => {
     return (
@@ -170,7 +136,9 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
             <option value="Default" disabled>
               Tipo de actividad
             </option>
-            {adventures.map(adventure => (
+            {typeof adventureName !== 'undefined'
+            ? <option key={adventureName}>{adventureName}</option>
+            : adventures.map(adventure => (
               <option key={adventure.id}>{adventure.name}</option>
             ))}
           </select>
@@ -238,9 +206,10 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore }) => {
             className="button__addGroup"
             disabled={completedForm()}
             onClick={() => {
-              setSave(true);
               groupService.save(group, user!)
               viewMore();
+              updateGroups(contextGroups.setGroups);
+              updateUser(user, contextUser.setUser, setUser);;
             }}
           >
             Crear grupo

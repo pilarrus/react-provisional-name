@@ -1,0 +1,26 @@
+.contact {
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+
+    &--location {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+    }
+
+    &--box {
+      border-radius: 20px;
+      margin: 10px 10px 30px 10px;
+      padding: 30px;
+      background-color: rgba(222, 223, 222, 0.884);
+
+      &-form {
+        min-width: 210px;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+      }
+    }
+  }
+}
