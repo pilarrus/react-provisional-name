@@ -3,7 +3,22 @@ import React from "react";
 class Footer extends React.Component {
   render() {
     return (
-      <div className="footer">aqui va el footer con las redes sociales</div>
+      <div className="footer">
+        <ul>
+          <li>
+            <i></i>
+          </li>
+          <li>
+            <i></i>
+          </li>
+          <li>
+            <i></i>
+          </li>
+          <li>
+            <i></i>
+          </li>
+        </ul>
+      </div>
     );
   }
 }
