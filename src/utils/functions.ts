@@ -156,7 +156,7 @@ const sortGroups = (sortBy: string, groups: Groups) => {
 };
 
 const updateGroups = (setGroupsContext: (_groups: Groups) => void) => {
-  console.log("updateContextGroup___________***");
+  //console.log("updateContextGroup___________***");
   const groupsFire = fire.database().ref(`db/groups`);
 
   const cbk = (snapshot: firebase.database.DataSnapshot) => {
