@@ -1,62 +1,73 @@
-import React from "react";
-import { Gallery, GalleryImage } from "react-gesture-gallery";
+import { Carousel } from "antd";
+import "antd/dist/antd.css";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import forest from "../../images/slider/forest.jpg";
+import freezer from "../../images/slider/freezer.jpg";
+import group from "../../images/slider/group.jpeg";
+import people from "../../images/slider/people.jpg";
 
-const INITIAL_INDEX = 0;
-const images = [
-  {
-    src:
-      "https://images.unsplash.com/photo-1557958114-3d2440207108?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-  },
-  {
-    src:
-      "https://images.unsplash.com/photo-1495895828857-6bbf2f319e73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-  },
-  {
-    src:
-      "https://images.unsplash.com/photo-1540326768851-b1d06f9bd481?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-  },
-  {
-    src:
-      "https://images.unsplash.com/photo-1493274850009-b6b4ed3ed3a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1288&q=80"
-  },
-
-
-
-];
-
-function Slider() {
-  const [index, setIndex] = React.useState(INITIAL_INDEX);
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      if (index === images.length - 1) {
-        setIndex(INITIAL_INDEX);
-      } else {
-        setIndex(index + 1);
-      }
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [index]);
-
-  return (
-    <div
-      style={{
-        backgroundColor: "rgba(255, 255, 255, 0.6)",
-        width: "100%",
-        height: "40vh"
-      }}
-    >
-      <Gallery
-        index={index}
-        onRequestChange={i => {
-          setIndex(i);
-        }}
-      >
-        {images.map(img => (
-          <GalleryImage objectFit="cover" key={img.src} src={img.src} />
-        ))}
-      </Gallery>
-    </div>
-  );
+class Slider extends Component {
+  constructor(props: Readonly<{}>) {
+    super(props);
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+  }
+  next() {}
+  previous() {}
+  render() {
+    const props = {
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+    return (
+      <Carousel {...props} autoplay effect="fade">
+        <div className="hero-image">
+          <img src={forest} alt="forest" />
+          <div className="hero-text">
+            <h1>Visita</h1>
+            <h2 className="hero-subText">nuestras aventuras</h2>
+            <Link to="/adventures">
+              <i className="hero-link">Click aquí</i>
+            </Link>
+          </div>
+        </div>
+        <div className="hero-image">
+          <img src={group} alt="sheet" />
+          <div className="hero-text hero-text-white">
+            <h1>UNETE</h1>
+            <h2 className="hero-subText">A nuestros grupos</h2>
+            <Link to="/groups">
+              <i className="hero-link">Click aquí</i>
+            </Link>
+          </div>
+        </div>
+        <div className="hero-image">
+          <img src={freezer} alt="" />
+          <div className="hero-text">
+            <h1>I am Jane Doe</h1>
+            <h2 className="hero-subText">And I'm a Photographer</h2>
+            <Link to="#">
+              <i className="hero-link">Click aquí</i>
+            </Link>
+          </div>
+        </div>
+        <div className="hero-image">
+          <img src={people} alt="" />
+          <div className="hero-text">
+            <h1>UNETE</h1>
+            <h2 className="hero-subText">A nuestra red social </h2>
+            <Link to="/login">
+              <i className="hero-link">Click aquí</i>
+            </Link>
+          </div>
+        </div>
+      </Carousel>
+    );
+  }
 }
 
 export default Slider;

@@ -1,8 +1,8 @@
-import React, { FormEvent, useEffect, useState, useContext } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
 import fire from "../../enviroments/enviroment";
 import { Users } from "../../types";
-import UserContext from "../../contexts/UserContext";
 
 //INICIALIZAR FIREBASE
 
