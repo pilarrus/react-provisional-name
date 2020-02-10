@@ -1,7 +1,10 @@
 import alberto from "../images/profile/alberto.jpeg";
-import ana from "../images/profile/ana.jpg";
+import ana from "../images/profile/ana.jpeg";
+import bryan from "../images/profile/bryan.jpeg";
+import javier from "../images/profile/javier.jpeg";
 import marcela from "../images/profile/marcela.jpg";
-import pablo from "../images/profile/pablo.jpg";
+import pablo from "../images/profile/pablo.jpeg";
+import paco from "../images/profile/paco.jpeg";
 import pili from "../images/profile/pili.jpg";
 import { Users } from "../types";
 
@@ -14,7 +17,14 @@ export default [
     email: "anita@aventura.com",
     name: "Ana",
     myGroups: [],
-    myFriends: ["Paroar", "Pilarusi", "Albertillo"],
+    myFriends: [
+      "Paroar",
+      "Pilarusi",
+      "Albertillo",
+      "Javier",
+      "Bryan",
+      "Marcela"
+    ],
     img: ana,
     gender: "female"
   },
@@ -65,5 +75,41 @@ export default [
     myFriends: [],
     img: marcela,
     gender: "female"
+  },
+  {
+    id: 5,
+    nick: "Javier",
+    password: "123",
+    level: "principiante",
+    email: "javier@aventura.com",
+    name: "Javier",
+    myGroups: ["enanitos del VoxQ"],
+    myFriends: ["Paroar"],
+    img: javier,
+    gender: "male"
+  },
+  {
+    id: 6,
+    nick: "Bryan",
+    password: "123",
+    level: "principiante",
+    email: "bryan@aventura.com",
+    name: "Bryan",
+    myGroups: ["enanitos del VoxQ"],
+    myFriends: [],
+    img: bryan,
+    gender: "male"
+  },
+  {
+    id: 7,
+    nick: "Paco",
+    password: "123",
+    level: "principiante",
+    email: "paco@aventura.com",
+    name: "Paco",
+    myGroups: ["enanitos del VoxQ"],
+    myFriends: [],
+    img: paco,
+    gender: "male"
   }
 ] as Users;

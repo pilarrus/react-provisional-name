@@ -1,29 +1,56 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import dataUsers from "../../fake-data/usersRegisters";
+import UserContext from "../../contexts/UserContext";
+import fire from "../../enviroments/enviroment";
+import { Users } from "../../types";
+
+//INICIALIZAR FIREBASE
 
 export const Login = (props: RouteComponentProps) => {
-  //console.log(props);
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  //DATOS FIREBASE GUARDADOS EN FIREDATA:
+  const [fireData, setFireData] = useState([] as Users[]);
+
+  // PARA ESTABLECER EL USUARIO EN EL CONTEXTO ANTES DE REDIRIGIRLO A PROFILE
+  const contextUser = useContext(UserContext);
+
+  //LEER DATOS DE FIREBASE:
+  useEffect(() => {
+    const data = fire
+      .database()
+      .ref("db")
+      .child("users");
+
+    const cbk = (snapshot: firebase.database.DataSnapshot) => {
+      setFireData(snapshot.val());
+    };
+
+    data.on("value", cbk);
+
+    return () => {
+      data.off("value", cbk);
+    };
+  }, []);
+
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    //Comprobar que existe, si existe enviar la info
-    const user = dataUsers.find(
-      u => u.name === name && u.password === password
-    );
+
+    const user = fireData
+      .flat()
+      .find(u => u.name === name && u.password === password);
 
     if (user) {
+      // ESTABLECER EL USUARIO EN EL CONTEXTO ANTES DE REDIRIGIRLO A PROFILE
+      contextUser.setUser(user);
       props.history.push("/profile", user);
     } else {
       setMessage("Introduce los datos correctos");
       setUsername("");
       setPassword("");
     }
-
-    // preguntar: por qué me obliga a retornar algo
   };
 
   return (

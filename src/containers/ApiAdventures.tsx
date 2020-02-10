@@ -43,7 +43,7 @@ class ApiAdventures extends React.Component {
     }
     fetch(
       `${config.aemet.urltemperature}/${selectedOption.codpro +
-      selectedOption.codmun}?api_key=${config.aemet.apiKey}`
+        selectedOption.codmun}?api_key=${config.aemet.apiKey}`
     )
       .then(response => response.json())
       .then(response => fetch(response.datos).then(response => response.json()))
@@ -61,9 +61,7 @@ class ApiAdventures extends React.Component {
     this.setState({ selectedOption });
   };
 
-
   render() {
-
     if (this.state.lenght > 0) {
       let degree = this.state.dataTemperature.max;
       let thermalSensationAPI: string = convertDegreesToThermalSensation(
@@ -72,7 +70,7 @@ class ApiAdventures extends React.Component {
       return (
         <div data-testid="home-page" className="main__homepage">
           <AdventuresContainer thermalSensationAPI={thermalSensationAPI} />
-        </div >
+        </div>
       );
     } else {
       return (
@@ -85,4 +83,3 @@ class ApiAdventures extends React.Component {
 }
 
 export default ApiAdventures;
-

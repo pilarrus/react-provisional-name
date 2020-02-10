@@ -19,13 +19,23 @@ $color6: #ff1b5faf;
   background-color: $color6;
 }
 
-.clearblueclass {
+.purpleclass {
   @include title();
   background-color: $color4;
 }
+
+.greenclass {
+  @include title();
+  background-color: $color3;
+}
+
+.clearblueclass {
+  @include title();
+  background-color: $color2;
+}
 .defaultclass {
   @include title();
-  background-color: #1babffaf;
+  background-color: $color1;
 }
 
 // background-color: #79aefe;
@@ -33,3 +43,17 @@ $color6: #ff1b5faf;
 // background-color: #279636;
 // background-color: #7d5d81;
 // background-color: #ead24c;
+
+.titleSmall {
+  font-size: 1.3rem;
+  font-family: $font-tittle;
+  font-weight: bold;
+  color: white;
+}
+
+.bgSemiTransparent {
+  background-color: rgba(128, 128, 128, 0.6);
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-size: 1.5rem;
+}

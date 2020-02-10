@@ -1,12 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import Logout from "../components/Profile/Logout";
 import ColorContext from "../contexts/ColorContext";
+import LoginContext from "../contexts/LoginContext";
 import logo from "../images/logos/logoBlanco.png";
 //change: (option: any) => void;
 const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
-  const context = useContext(ColorContext);
+  const contextColor = useContext(ColorContext);
+  const contextLog = useContext(LoginContext);
+
+  //console.log("CONTEXT EN NAV", contextLog);
   return (
-    <div className={`navbar ${context.colorNav}`}>
+    <div className={`navbar ${contextColor.colorNav}`}>
       <div className="toggle-sidebar">
         <div onClick={handleSideBar}>
           <span></span>
@@ -25,32 +30,32 @@ const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
           <div className="options">
             <button
               onClick={() => {
-                context.setColorNav("cyan");
-                context.setColorSide("black");
+                contextColor.setColorNav("cyan");
+                contextColor.setColorSide("black");
               }}
             >
               Tema original
             </button>
             <button
               onClick={() => {
-                context.setColorNav("green");
-                context.setColorSide("darkgreen");
+                contextColor.setColorNav("green");
+                contextColor.setColorSide("darkgreen");
               }}
             >
               Tema verde
             </button>
             <button
               onClick={() => {
-                context.setColorNav("purple");
-                context.setColorSide("darkpurple");
+                contextColor.setColorNav("purple");
+                contextColor.setColorSide("darkpurple");
               }}
             >
               Tema morado
             </button>
             <button
               onClick={() => {
-                context.setColorNav("red");
-                context.setColorSide("darkred");
+                contextColor.setColorNav("red");
+                contextColor.setColorSide("darkred");
               }}
             >
               Tema rojo
@@ -59,9 +64,9 @@ const Nav: React.FC<{ handleSideBar: any }> = ({ handleSideBar }) => {
         </li>
 
         <li>
-          <Link to="/login">
-            <i className="fa fa-user"></i>Login
-          </Link>
+          <span>
+            {!contextLog.log ? <Link to="/login">Login </Link> : <Logout />}
+          </span>
         </li>
       </ul>
     </div>

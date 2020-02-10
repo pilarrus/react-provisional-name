@@ -1,0 +1,4 @@
+1. Cómo dar a Mi perfil y volver a perfil, por qué no funciona el route 
+2. Cómo dar a enviar amistad y que solo se envíe a esa persona //done
+
+

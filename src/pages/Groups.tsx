@@ -1,78 +1,115 @@
-import React, { useState } from "react";
+import React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
-import AddGroup from "../components/AddGroup";
-import Group from "../components/Group";
-import ButtonRainbow from "../components/Reusable/ButtonRainbow";
-import Title from "../components/Reusable/Title";
-import fetchGrupos from "../fake-data/groups";
+import GroupsComponent from "../components/Group/Groups";
+import Load from "../components/Reusable/Loading";
+import GroupsContext from "../contexts/GroupsContext";
+import fire from "../enviroments/enviroment";
+import adventures from "../fake-data/adventures";
+import Error from "../pages/Error";
+import { Groups } from "../types";
+import { sortGroups } from "../utils/functions";
 
-let adventuresID = Object.keys(fetchGrupos);
+class GroupContainer extends React.Component<
+  RouteComponentProps<{
+    activityID?: string;
+  }>,
+  { fetchGroups: Groups; sortBy: string; data: firebase.database.Reference }
+> {
+  constructor(props: RouteComponentProps) {
+    super(props);
 
-const Grupos: React.FC<RouteComponentProps<{
-  activityID?: string;
-}>> = RouteComponentProps => {
-  const [isOpen, setIsOpen] = useState(false);
+    this.state = {
+      fetchGroups: [],
+      sortBy: "alphabetical",
+      data: fire
+      .database()
+      .ref("db/groups")
+    };
 
-  let params = RouteComponentProps.match.params;
-  //console.log(params);
-  if (Object.keys(params).length === 0) {
-    //console.log(RouteComponentProps);
-    return (
-      <section>
-        <Title title="Grupos" />
-        <div className="grupos__container">
-          {adventuresID.map(adventureID => {
-            //let adventure = fetchGrupos[adventureID].adventure;
-            let groups = fetchGrupos[adventureID].groups;
-            //console.log(groups);
-            //console.log(adventure);
-            if (Array.isArray(groups)) {
-              return groups.map(group => (
-                <Group key={group.name} group={group} />
-              ));
-            } else {
-              return [];
-            }
-          })}
-        </div>
-        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
-        {isOpen ? <AddGroup changeState={() => setIsOpen(!isOpen)}/> : ""}
-      </section>
-    );
-  } else {
-    let activityID = RouteComponentProps.match.params.activityID;
-    //console.log(activityID);
-    return (
-      <section>
-        <Title title="Grupos" />
-        <div className="grupos__container">
-          {adventuresID.map(adventureID => {
-            if (adventureID === activityID) {
-              //console.log(activityID);
-              //console.log(adventureID);
-              let groups = fetchGrupos[adventureID].groups;
-              //console.log(groups);
-              if (Array.isArray(groups)) {
-                return groups.map(group => (
-                  <Group key={group.name} group={group} />
-                ));
-              } else {
-                return (
-                  <div key="key">
-                    <p>{groups}</p>
-                  </div>
-                );
-              }
-            } else {
-              return [];
-            }
-          })}
-        </div>
-        <ButtonRainbow text="Añadir grupo" changeState={() => setIsOpen(!isOpen)}/>
-        {isOpen && <AddGroup changeState={() => setIsOpen(!isOpen)}/>}
-      </section>
-    );
+    this.cbk = this.cbk.bind(this);
   }
-};
 
-export default withRouter(Grupos);
+  static contextType = GroupsContext; // Crea la variable mágica this.context
+
+  componentDidMount() {
+    this.state.data.on("value", this.cbk);
+  }
+
+  componentWillUnmount() {
+    this.state.data.off("value", this.cbk);
+  }
+
+  handleGroups(groups: Groups) {
+    this.setState({
+      fetchGroups: groups
+    });
+    //console.log("this.context>>>", this.context);
+    this.context.setGroups(this.state.fetchGroups); // this.context es una variable mágica
+    //console.log("context.groups>>>",this.context.groups);
+  }
+
+  setSortBy(x: string) {
+    this.setState({ sortBy: x });
+  }
+
+  cbk(snapshot: firebase.database.DataSnapshot) {
+    this.handleGroups(snapshot.val());
+  };
+
+  render() {
+    let showAll: boolean;
+    let groups: Groups = [];
+
+    if (this.state.fetchGroups.length !== 0) {
+      let params = this.props.match.params;
+
+      if (Object.keys(params).length === 0) {
+        showAll = true;
+        groups = this.state.fetchGroups;
+
+        groups = sortGroups(this.state.sortBy, groups);
+        return (
+          <GroupsComponent
+            groups={groups}
+            showAll={showAll}
+            setSortBy={this.setSortBy.bind(this)}
+          />
+        );
+      } else {
+        showAll = false;
+        let activityID = params.activityID;
+        
+        if (
+          parseInt(activityID as string) < 0 ||
+          parseInt(activityID as string) > 9
+        )
+          return <Error />;
+
+        let adventureCopy = adventures.find(
+          adventure => adventure.id === activityID
+        );
+        let nameAdventure = adventureCopy!.name;
+
+        this.state.fetchGroups.forEach(group => {
+          if (group.id_adventure === activityID) {
+            groups.push(group);
+          }
+        });
+
+        groups = sortGroups(this.state.sortBy, groups);
+        return (
+          <GroupsComponent
+            groups={groups}
+            showAll={showAll}
+            setSortBy={this.setSortBy.bind(this)}
+            adventureName={nameAdventure}
+          />
+        );
+      }
+    } else {
+      return <Load />;
+    }
+  }
+}
+
+export default withRouter(GroupContainer);

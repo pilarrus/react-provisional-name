@@ -11,7 +11,11 @@
 @import "layout/main";
 @import "layout/footer";
 
+
+@import "components/avatar";
 @import "components/button";
+@import "components/formatDate";
+@import "components/group";
 @import "components/modal";
 @import "components/title";
 @import "components/loading";
@@ -19,5 +23,11 @@
 @import "components/form";
 @import "components/weather";
 
+@import "pages/about-us";
 @import "pages/adventures";
+@import "pages/contact";
 @import "pages/profile";
+@import "pages/profile-myGroups";
+@import "pages/profile-title";
+@import "pages/profile-table";
+@import "pages/profile-request";

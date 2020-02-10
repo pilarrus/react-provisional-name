@@ -17,21 +17,37 @@ export type User = {
   myFriends: string[];
   gender: string;
   img: string;
+  request: string[];
 };
 
 export type Users = User[];
 
-export type TypeGroup = {
-  name: string,
-  timestamp: number,
-  place: string,
-  sizeGroup: number,
-  users: string[]
+export type PartialUser = {
+  nick: string;
+  img: string;
+};
+export type Users2 = PartialUser[];
+
+export type Group = {
+  id: string;
+  name: string;
+  id_adventure: string;
+  name_adventure: string;
+  bg: string;
+  timestamp: number;
+  place: string;
+  maxSize: number;
+  users: PartialUser[];
 };
 
-export type Groups = {
-  [id: string] : {
-    adventure: string,
-    groups: TypeGroup[] | string
-  }
+export type Groups = Group[];
+
+export type ContextUserType = {
+  user: User;
+  setUser: (_user: User) => void;
 };
+
+export type ContextGroupsType = {
+  groups: Groups;
+  setGroups: (_group: Group) => void;
+}
