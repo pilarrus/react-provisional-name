@@ -43,10 +43,10 @@ export const Profile: React.FC<RouteComponentProps<
   console.log("_____________USER_____________", user);
 
   const contextUser = useContext(UserContext);
-  console.log('--------contextUser--------Profile', contextUser.user);
+  //console.log('--------contextUser--------Profile', contextUser.user);
 
   const contextGroups = useContext(GroupsContext);
-  console.log('--------contextGroups--------Profile', contextGroups.groups);
+  //console.log('--------contextGroups--------Profile', contextGroups.groups);
 
   useEffect(() => {
     console.log("useEffect");
