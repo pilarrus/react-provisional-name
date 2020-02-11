@@ -71,6 +71,12 @@ class GroupService {
   }
 
   public removeUserFromGroup(group: Group, user: User) {
+    console.log("!!!!!!!", user);
+    let u = {nick: user.nick, img: user.img};
+    console.log("!!!!!!!", u);
+    console.log("!!!!!!!!", group.users);
+    //let index = group.users.indexOf(u);
+    //console.log("!!!!!!!!", index);
     let index = group.users.findIndex(u => u.nick === user.nick);
     this.firebase
       .database()
