@@ -19,11 +19,30 @@ const MyGroups: React.FC<ContextUserType & {zIndex?: number}> = ({user, setUser,
     "zIndex": (typeof zIndex !== 'undefined') ? zIndex : 0
   };
 
+  const myGroup = () => {
+    let groups = Object.values(user.myGroups);
+    let myGroup: string[] = [];
+    groups.forEach(group => {
+      if(typeof group !== 'undefined') {
+        myGroup.push(group);
+      }
+    });
+    return myGroup;
+  };
+
+  let groups = user.myGroups
+  ? Array.isArray(user.myGroups)
+    ? user.myGroups
+    : myGroup()
+  : "Aún no tienes grupos";
+
+  console.log("??????????", groups);
+
   return (
     <div className="profile-myGroups">
       <div className="myGroups__cointainer" style={style}>
-        {user.myGroups ? (
-          user.myGroups.map(group => {
+        {typeof groups !== 'string' ? (
+          groups.map(group => {
             let myGroup = contextGroups.groups.find(g => g.name === group);
             let groupService = new GroupService(fire);
             return (
@@ -52,7 +71,7 @@ const MyGroups: React.FC<ContextUserType & {zIndex?: number}> = ({user, setUser,
             );
           })
         ) : (
-          <span>Aún no tienes grupos</span>
+        <span>{groups}</span>
         )}
       </div>
     </div>
