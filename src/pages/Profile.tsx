@@ -30,6 +30,8 @@ export const Profile: React.FC<RouteComponentProps<
     .database()
     .ref("db")
     .child("users"); // referencia a users de firebase
+
+  //@ts-ignore
   const [request, setRequest] = useState([] as string[]);
 
   const [display, setDisplay] = useState(false);
@@ -70,10 +72,18 @@ export const Profile: React.FC<RouteComponentProps<
     //SI ME APETECE LO HAGO, DE MOMENTO NO ME APETECE
 
     //BORRAR DE REQUEST CUANDO SE ACEPTA LA AMISTAD:
-    contextUser.user.request.forEach(element => {
+
+    let r2 = contextUser.user.request;
+    //console.log("REEEEEEEEEEEEEEEQUEST2", r2);
+
+    if (!Array.isArray(r2)) {
+      r2 = Object.values(r2);
+    }
+    r2.forEach(element => {
       //console.log("borrar request");
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
+        console.log("ENTRIES", entries);
         entries.forEach(element => {
           if (element[1] === friend) {
             var num = element[0];
@@ -141,7 +151,13 @@ export const Profile: React.FC<RouteComponentProps<
       subscribeMeGroup.setSubscribMe(false);
     }
 
-    const r = user.request;
+    let r = user.request;
+
+    if (r) {
+      if (!Array.isArray(r)) {
+        r = Object.values(r);
+      }
+    }
 
     console.log("MI RRRRRRRRRRRRR", r);
     return (
@@ -163,7 +179,7 @@ export const Profile: React.FC<RouteComponentProps<
           {display ? (
             <div className="request-friends">
               {user.request
-                ? request.map(e => (
+                ? r.map(e => (
                     <div key={e} className="request-friends-box">
                       <div>
                         <p>{e}</p>
