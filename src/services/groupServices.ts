@@ -57,7 +57,8 @@ class GroupService {
 
   public removeGroupFromUser(group: Group, user: User) {
     let index = user.myGroups.indexOf(group.name);
-    this.firebase
+    let nicks = group.users.map(user => user.nick);
+    return this.firebase
       .database()
       .ref(`db/users/${user.id}/myGroups/${index}`)
       .remove(e => {
@@ -65,19 +66,21 @@ class GroupService {
           console.log("No se ha eliminado el grupo del usuario");
         } else {
           console.log("Se ha eliminado el grupo del usuario");
-          this.removeUserFromGroup(group, user);
+          this.removeUserFromGroup(group, nicks, user);
         }
       });
   }
 
-  public removeUserFromGroup(group: Group, user: User) {
-    console.log("!!!!!!!", user);
-    let u = {nick: user.nick, img: user.img};
-    console.log("!!!!!!!", u);
-    console.log("!!!!!!!!", group.users);
+  public removeUserFromGroup(group: Group, nicks: string[], user: User) {
+    console.log("userRemove>>>", user);
+    let u = { nick: user.nick, img: user.img };
+    console.log("partialUser>>>", u);
+    console.log("grupos>>>", nicks);
     //let index = group.users.indexOf(u);
     //console.log("!!!!!!!!", index);
-    let index = group.users.findIndex(u => u.nick === user.nick);
+    let index = nicks.findIndex(nick => {
+      return nick === user.nick;
+    });
     this.firebase
       .database()
       .ref(`db/groups/${group.id}/users/${index}`)
