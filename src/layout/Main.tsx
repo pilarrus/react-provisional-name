@@ -29,7 +29,7 @@ const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
         <Route exact path="/login" component={LoginRegister} />
         <Route component={Error} />
       </Switch>
-      <Footer />
+     
     </div>
   );
 };
