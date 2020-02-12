@@ -100,8 +100,6 @@ export const Profile: React.FC<RouteComponentProps<
   };
 
   const removeFriend = (friend: string) => {
-    //console.log("RECHAZO A:", friend);
-    //console.log("rachazar");
     contextUser.user.request.forEach(element => {
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
@@ -119,7 +117,6 @@ export const Profile: React.FC<RouteComponentProps<
 
     //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
     dbRef.once("value", snap => {
-      //console.log("actualizar user");
       snap.forEach(e => {
         const newVal: User = e.val();
         if (newVal.id === user.id) {
@@ -143,6 +140,10 @@ export const Profile: React.FC<RouteComponentProps<
       updateGroups(contextGroups.setGroups);
       subscribeMeGroup.setSubscribMe(false);
     }
+
+    const r = user.request;
+
+    console.log("MI RRRRRRRRRRRRR", r);
     return (
       <div className="profile">
         {contextUser.user ? (
