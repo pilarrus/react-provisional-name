@@ -25,7 +25,7 @@ class Slider extends Component {
     return (
       <Carousel {...props} autoplay effect="fade">
         <div className="hero-image">
-          <img src={forest} alt="forest" />
+          <img src={forest} alt="forest" className="img-slider"/>
           <div className="hero-text">
             <h1>Visita</h1>
             <h2 className="hero-subText">nuestras aventuras</h2>

@@ -6,7 +6,7 @@
 }
 
 .hero-image {
-  height: 882px;
+  height: 100%;
   img {
     width: 100%;
     margin-left: auto;
@@ -22,7 +22,7 @@
   transform: translate(-50%, -50%);
   color: white;
   margin: 0;
-  //opacity: 0;
+  opacity: 0;
   transition: 0.65s;
   h1 {
     font-size: 3.5em;
@@ -36,15 +36,24 @@
   img {
     filter: blur(6px);
   }
+  .hero-text:hover {
+    opacity: 1;
+    top: 50%;
+  }
 }
-.hero-text:hover {
-  opacity: 1;
-  top: 50%;
-}
+
 .hero-link {
   font-size: 1.5em;
   color: white;
   border: white solid 2px;
   padding: 2%;
   border-radius: 3%;
+}
+
+#homepage {
+  height: 882px;
+}
+
+.img-slider {
+  //fit-content();
 }
