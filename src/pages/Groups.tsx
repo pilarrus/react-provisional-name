@@ -21,9 +21,7 @@ class GroupContainer extends React.Component<
     this.state = {
       fetchGroups: [],
       sortBy: "alphabetical",
-      data: fire
-      .database()
-      .ref("db/groups")
+      data: fire.database().ref("db/groups")
     };
 
     this.cbk = this.cbk.bind(this);
@@ -44,7 +42,7 @@ class GroupContainer extends React.Component<
       fetchGroups: groups
     });
     //console.log("this.context>>>", this.context);
-    this.context.setGroups(this.state.fetchGroups); // this.context es una variable mágica
+    this.context.setGroups(groups); // this.context es una variable mágica
     //console.log("context.groups>>>",this.context.groups);
   }
 
@@ -54,7 +52,7 @@ class GroupContainer extends React.Component<
 
   cbk(snapshot: firebase.database.DataSnapshot) {
     this.handleGroups(snapshot.val());
-  };
+  }
 
   render() {
     let showAll: boolean;
@@ -78,7 +76,7 @@ class GroupContainer extends React.Component<
       } else {
         showAll = false;
         let activityID = params.activityID;
-        
+
         if (
           parseInt(activityID as string) < 0 ||
           parseInt(activityID as string) > 9
