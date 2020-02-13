@@ -8,7 +8,14 @@ export const Friends: React.FC<{ friends: string[] }> = props => {
    por cada amigo filtra los usuarios (usersRegisters) del json que coincidan con el amigo mapeado
    con ello se obtiene el objeto con la imagen
   ***/
-  var myFriends = props.friends.map(element => {
+
+  // console.log("mifriendsssssssssss", props.friends);
+
+  let f = props.friends;
+  if (!Array.isArray(f)) {
+    f = Object.values(f);
+  }
+  var myFriends = f.map(element => {
     return users.filter(option => option.nick === element);
   });
 

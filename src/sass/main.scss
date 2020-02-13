@@ -4,6 +4,7 @@
 
 @import "base/base";
 @import "base/typography";
+@import "base/mediaquerys";
 
 @import "layout/colors";
 @import "layout/nav";
@@ -31,3 +32,4 @@
 @import "pages/profile-title";
 @import "pages/profile-table";
 @import "pages/profile-request";
+@import "pages/build";

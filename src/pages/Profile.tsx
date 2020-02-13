@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import Form from "../components/Form/SocialHome";
-import Friends from "../components/Profile/Friends";
 import ButtonsGroups from "../components/Profile/Buttons";
+import Friends from "../components/Profile/Friends";
 import NoFriends from "../components/Profile/NoFriends";
 import Info from "../components/Profile/PersonalInfo";
+import GroupsContext from "../contexts/GroupsContext";
 import LoginContext from "../contexts/LoginContext";
 import subscribeMeGroupContext from "../contexts/SubscribMeGroupContext";
 import UserContext from "../contexts/UserContext";
-import GroupsContext from "../contexts/GroupsContext";
 import {
   default as fire,
   default as firebase
@@ -18,7 +18,7 @@ import iconNo from "../images/profile/no.svg";
 import iconSi from "../images/profile/si.svg";
 import GroupService from "../services/groupServices";
 import { User } from "../types";
-import { userSignOnGroup, updateGroups, updateUser } from "../utils/functions";
+import { updateGroups, updateUser, userSignOnGroup } from "../utils/functions";
 
 export const Profile: React.FC<RouteComponentProps<
   {},
@@ -30,8 +30,10 @@ export const Profile: React.FC<RouteComponentProps<
     .database()
     .ref("db")
     .child("users"); // referencia a users de firebase
+
+  //@ts-ignore
   const [request, setRequest] = useState([] as string[]);
-  
+
   const [display, setDisplay] = useState(false);
   const style = {
     width: "30px"
@@ -40,13 +42,13 @@ export const Profile: React.FC<RouteComponentProps<
   let subscribeMeGroup = useContext(subscribeMeGroupContext);
 
   const [user, setUser] = useState(RouteComponentProps.location.state);
-  console.log("_____________USER_____________", user);
+  //console.log("_____________USER_____________", user);
 
   const contextUser = useContext(UserContext);
-  console.log('--------contextUser--------Profile', contextUser.user);
+  //console.log('--------contextUser--------Profile', contextUser.user);
 
   const contextGroups = useContext(GroupsContext);
-  console.log('--------contextGroups--------Profile', contextGroups.groups);
+  //console.log('--------contextGroups--------Profile', contextGroups.groups);
 
   useEffect(() => {
     console.log("useEffect");
@@ -56,7 +58,7 @@ export const Profile: React.FC<RouteComponentProps<
   }, [user.request]);
 
   const addFriend = (friend: string) => {
-    console.log("addFriend");
+    //console.log("addFriend");
     //AÑADIR A AMIGOS DEL USUARIO QUE ACEPTA LA AMISTAD:
     var key;
     if (contextUser.user.myFriends) {
@@ -70,10 +72,18 @@ export const Profile: React.FC<RouteComponentProps<
     //SI ME APETECE LO HAGO, DE MOMENTO NO ME APETECE
 
     //BORRAR DE REQUEST CUANDO SE ACEPTA LA AMISTAD:
-    contextUser.user.request.forEach(element => {
-      console.log("borrar request");
+
+    let r2 = contextUser.user.request;
+    //console.log("REEEEEEEEEEEEEEEQUEST2", r2);
+
+    if (!Array.isArray(r2)) {
+      r2 = Object.values(r2);
+    }
+    r2.forEach(element => {
+      //console.log("borrar request");
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
+        console.log("ENTRIES", entries);
         entries.forEach(element => {
           if (element[1] === friend) {
             var num = element[0];
@@ -88,7 +98,7 @@ export const Profile: React.FC<RouteComponentProps<
 
     //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
     dbRef.once("value", snap => {
-      console.log("actualizar datos");
+      //console.log("actualizar datos");
       snap.forEach(e => {
         const newVal: User = e.val();
         if (newVal.id === user.id) {
@@ -100,8 +110,6 @@ export const Profile: React.FC<RouteComponentProps<
   };
 
   const removeFriend = (friend: string) => {
-    //console.log("RECHAZO A:", friend);
-    console.log("rachazar");
     contextUser.user.request.forEach(element => {
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
@@ -119,7 +127,6 @@ export const Profile: React.FC<RouteComponentProps<
 
     //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
     dbRef.once("value", snap => {
-      console.log("actualizar user");
       snap.forEach(e => {
         const newVal: User = e.val();
         if (newVal.id === user.id) {
@@ -130,7 +137,6 @@ export const Profile: React.FC<RouteComponentProps<
     });
   };
 
-
   if (user) {
     contextLog.setLog(true);
     if (
@@ -139,18 +145,28 @@ export const Profile: React.FC<RouteComponentProps<
       !userSignOnGroup(subscribeMeGroup.group, user)
     ) {
       let groupService = new GroupService(fire);
-      groupService.saveGroupInUser(
-        subscribeMeGroup.group,
-        user,
-        true
-      );
+      groupService.saveGroupInUser(subscribeMeGroup.group, user, true);
       updateUser(user, contextUser.setUser, setUser);
       updateGroups(contextGroups.setGroups);
       subscribeMeGroup.setSubscribMe(false);
     }
+
+    let r = user.request;
+
+    if (r) {
+      if (!Array.isArray(r)) {
+        r = Object.values(r);
+      }
+    }
+
+    console.log("MI RRRRRRRRRRRRR", r);
     return (
       <div className="profile">
-        {contextUser.user ? <Info user={contextUser.user} /> : <Info user={user} />}
+        {contextUser.user ? (
+          <Info user={contextUser.user} />
+        ) : (
+          <Info user={user} />
+        )}
         <div className="request" onSubmit={e => e.preventDefault}>
           {user.request ? (
             <div className="request-aviso" onClick={() => setDisplay(!display)}>
@@ -163,7 +179,7 @@ export const Profile: React.FC<RouteComponentProps<
           {display ? (
             <div className="request-friends">
               {user.request
-                ? request.map(e => (
+                ? r.map(e => (
                     <div key={e} className="request-friends-box">
                       <div>
                         <p>{e}</p>

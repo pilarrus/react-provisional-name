@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import Title from "../components/Reusable/Title";
 
 const Contact: React.FC = () => {
@@ -9,9 +9,9 @@ const Contact: React.FC = () => {
   console.log("email", email);
   console.log("msg", msg);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    alert("Se envió correctamente");
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    alert("Se envió correctamente");
   };
 
   return (
@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
           <form
             action=""
             className="contact__container--box-form"
-            onSubmit={() => handleSubmit}
+            onSubmit={handleSubmit}
           >
             <input
               type="text"

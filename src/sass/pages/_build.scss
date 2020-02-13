@@ -1,0 +1,16 @@
+.construccion {
+  &-img {
+    position: absolute;
+    height: 100%;
+  }
+  &-p {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+
+    padding: 50px;
+    color: rgb(22, 165, 58);
+    font-weight: lighter;
+    margin-left: 400px;
+  }
+}
