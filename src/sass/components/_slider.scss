@@ -36,10 +36,10 @@
   img {
     filter: blur(6px);
   }
-}
-.hero-text:hover {
-  opacity: 1;
-  top: 50%;
+  .hero-text {
+    opacity: 1;
+    top: 50%;
+  }
 }
 .hero-link {
   font-size: 1.5em;
