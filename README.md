@@ -1,5 +1,3 @@
-# RAMA ELISA
-
 # FIRST STEPS
 
 - Install google-chrome
