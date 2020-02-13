@@ -1,4 +1,50 @@
-.Gesture-view{
- // display: block !important;
-  height: 100% !important;
+.ant-carousel .slick-slide {
+  text-align: center;
+  color: #fff;
+  background: #000000;
+  overflow: hidden;
+}
+
+.hero-image {
+  height: 882px;
+  img {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.65s;
+  }
+}
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  margin: 0;
+  //opacity: 0;
+  transition: 0.65s;
+  h1 {
+    font-size: 3.5em;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-size: 2.5em;
+  }
+}
+.hero-image:hover {
+  img {
+    filter: blur(6px);
+  }
+}
+.hero-text:hover {
+  opacity: 1;
+  top: 50%;
+}
+.hero-link {
+  font-size: 1.5em;
+  color: white;
+  border: white solid 2px;
+  padding: 2%;
+  border-radius: 3%;
 }

@@ -2,13 +2,13 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import LoginRegister from "../components/Form";
 import ApiAdventures from "../containers/ApiAdventures";
+import AboutUs from "../pages/AboutUs";
 import Adventures from "../pages/Adventures";
+import Contact from "../pages/Contact";
 import Error from "../pages/Error";
 import Groups from "../pages/Groups";
 import Home from "../pages/Home";
 import { Profile } from "../pages/Profile";
-import AboutUs from "../pages/AboutUs";
-import Contact from "../pages/Contact";
 
 const Main: React.FC<{ sidebar: boolean }> = ({ sidebar }) => {
   let style = "";
