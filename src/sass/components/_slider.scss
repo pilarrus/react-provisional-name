@@ -1,4 +1,11 @@
+.ant-carousel {
+  height: 600px;
+  width: 100%;
+}
+
 .ant-carousel .slick-slide {
+  width: 100%;
+  height: 600px;
   text-align: center;
   color: #fff;
   background: #000000;
@@ -6,9 +13,16 @@
 }
 
 .hero-image {
+  width: 100%;
   height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   img {
+    height: 100%;
     width: 100%;
+    object-fit: cover;
     margin-left: auto;
     margin-right: auto;
     transition: 0.65s;
@@ -17,12 +31,12 @@
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   margin: 0;
-  opacity: 0;
+  //opacity: 0;
   transition: 0.65s;
   h1 {
     font-size: 3.5em;
@@ -36,10 +50,10 @@
   img {
     filter: blur(6px);
   }
-  .hero-text:hover {
+  /*.hero-text:hover {
     opacity: 1;
     top: 50%;
-  }
+  }*/
 }
 
 .hero-link {
@@ -51,9 +65,5 @@
 }
 
 #homepage {
-  height: 882px;
-}
-
-.img-slider {
-  //fit-content();
+  position: relative;
 }
