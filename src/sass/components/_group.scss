@@ -5,6 +5,10 @@
     flex-direction: column;
     align-items: center;
 
+    .select-order {
+      align-self: flex-end;
+    }
+
     &--box {
       display: flex;
       flex-wrap: wrap;

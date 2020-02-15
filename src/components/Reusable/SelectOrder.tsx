@@ -8,8 +8,7 @@ type SelectOrderProps = {
 const SelectOrder: React.FC<SelectOrderProps> = ({options, setSortBy}) => {
   return (
     <select
-      name=""
-      id=""
+      className="select-order"
       defaultValue="Default"
       onChange={e => setSortBy(e.target.value)}
     >

@@ -52,11 +52,11 @@ const GroupsComponent: React.FC<GroupsProps> = ({
   return (
     <section className="groups">
       <Title title={`Grupos${adventureNameCopy}`} />
+      
+      <div className="groups__container">
       {groups.length >= 2 && (
         <SelectOrder options={sortOptions} setSortBy={setSortBy} />
       )}
-
-      <div className="groups__container">
         <div className="groups__container--box">{showGroups}</div>
         <ButtonRainbow
           text="Añadir grupo"
