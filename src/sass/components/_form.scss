@@ -7,6 +7,9 @@
     height: 400px;
     margin: $separateSection;
 
+    @media only screen and (max-width: 600px) {
+      justify-content: normal;
+    }
     &-container {
       width: 1000px;
       display: flex;
@@ -23,7 +26,7 @@
   }
 
   &__left {
-    width: 40%;
+    width: 50%;
     min-width: 320px;
     display: flex;
     justify-content: center;
@@ -39,13 +42,18 @@
   }
 
   &__right {
-    width: 60%;
+    width: 50%;
     min-width: 400px;
     padding: 40px 40px 40px 120px;
     background-color: rgba(255, 255, 255, 0.493);
     clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: 1126px) {
+      background-color: transparent;
+      padding: 40px;
+    }
 
     .form {
       animation: fadein 1s;
