@@ -14,7 +14,7 @@ const Title: React.FC<{ title: string }> = ({
   title,
 }) => (
 
-    <div>
+    <div className="divtitle">
       <h1 className={name(title)}>{title}</h1>
     </div>
   );
