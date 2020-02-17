@@ -1,26 +1,25 @@
 .groups {
-  /*display: flex;
-  justify-content: center;*/
-
   &__container {
     //width: calc(100% - 250px);
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .select-order {
-      align-self: flex-end;
-    }
+    
 
     &--box {
-      /*display: flex;
-      flex-wrap: wrap;
-      justify-content: center;*/
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(min-content, 1fr));
       grid-column-gap: 20px;
       grid-row-gap: 20px;
+
+      .select-order {
+        align-self: flex-end;
+        grid-column: 1 / -1;
+        justify-self: flex-end;
+      }
     }
+
     @media only screen and (max-width: 1300px) {
       &--box {
         grid-template-columns: repeat(2, 1fr);
@@ -28,6 +27,7 @@
         grid-row-gap: 20px;
       }
     }
+
     @media only screen and (max-width: 990px) {
       &--box {
         grid-template-columns: repeat(1, 1fr);
