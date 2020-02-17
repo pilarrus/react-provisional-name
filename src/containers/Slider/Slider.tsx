@@ -36,7 +36,7 @@ class Slider extends Component {
         </div>
         <div className="hero-image">
           <img src={group} alt="sheet" />
-          <div className="hero-text hero-text-white">
+          <div className="hero-text">
             <h1>Únete</h1>
             <h2 className="hero-subText"> a nuestros grupos</h2>
             <Link to="/groups">
