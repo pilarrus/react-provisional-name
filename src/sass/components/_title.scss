@@ -14,6 +14,11 @@ $color6: #ff1b5faf;
   color: white;
 }
 
+@media only screen and (max-width: 480px) {
+  @mixin title() {
+    font-size: 1rem;
+  }
+}
 .redclass {
   @include title();
   background-color: $color6;
@@ -56,4 +61,14 @@ $color6: #ff1b5faf;
   padding: 2px 5px;
   border-radius: 2px;
   font-size: 1.5rem;
+}
+
+.divtitle {
+  width: 100%;
+}
+
+@media only screen and (max-width: 425px) {
+  .divtitle {
+    width: 450px;
+  }
 }
