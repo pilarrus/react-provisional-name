@@ -54,12 +54,10 @@ const GroupsComponent: React.FC<GroupsProps> = ({
       <Title title={`Grupos${adventureNameCopy}`} />
 
       <div className="groups__container">
-        <div className="groups__container--box">
-          {groups.length >= 2 && (
-            <SelectOrder options={sortOptions} setSortBy={setSortBy} />
-          )}
-          {showGroups}
-        </div>
+        {groups.length >= 2 && (
+          <SelectOrder options={sortOptions} setSortBy={setSortBy} />
+        )}
+        <div className="groups__container--box">{showGroups}</div>
         <ButtonRainbow
           text="Añadir grupo"
           changeState={() => setIsOpen(!isOpen)}
