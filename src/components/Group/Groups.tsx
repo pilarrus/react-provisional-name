@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Groups } from "../../types";
-import Title from "../Reusable/Title";
 import ButtonRainbow from "../Reusable/ButtonRainbow";
+import SelectOrder from "../Reusable/SelectOrder";
+import Title from "../Reusable/Title";
 import AddGroup from "./AddGroup";
 import Group from "./Group";
-import SelectOrder from "../Reusable/SelectOrder";
 
 type GroupsProps = {
   groups: Groups;
@@ -52,23 +52,32 @@ const GroupsComponent: React.FC<GroupsProps> = ({
   return (
     <section className="groups">
       <Title title={`Grupos${adventureNameCopy}`} />
-      
+
       <div className="groups__container">
-      {groups.length >= 2 && (
-        <SelectOrder options={sortOptions} setSortBy={setSortBy} />
-      )}
-        <div className="groups__container--box">{showGroups}</div>
+        <div className="groups__container--box">
+          {groups.length >= 2 && (
+            <SelectOrder options={sortOptions} setSortBy={setSortBy} />
+          )}
+          {showGroups}
+        </div>
         <ButtonRainbow
           text="Añadir grupo"
           changeState={() => setIsOpen(!isOpen)}
           disabled={false}
         />
       </div>
-      {isOpen
-      ? typeof adventureName !== 'undefined'
-        ? <AddGroup viewMore={() => setIsOpen(!isOpen)} adventureName={adventureName} />
-        : <AddGroup viewMore={() => setIsOpen(!isOpen)} />
-      : ""}
+      {isOpen ? (
+        typeof adventureName !== "undefined" ? (
+          <AddGroup
+            viewMore={() => setIsOpen(!isOpen)}
+            adventureName={adventureName}
+          />
+        ) : (
+          <AddGroup viewMore={() => setIsOpen(!isOpen)} />
+        )
+      ) : (
+        ""
+      )}
     </section>
   );
 };
