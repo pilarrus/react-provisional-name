@@ -8,7 +8,8 @@
   }
 
   &__container {
-    width: calc(100% - 250px);
+    width: 100%;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,9 +18,10 @@
 
     &--box {
       display: grid;
-      grid-template-columns: repeat(3, minmax(min-content, 1fr));
+      grid-template-columns: repeat(3, minmax(210px, 360px));
       grid-column-gap: 20px;
       grid-row-gap: 20px;
+      margin-bottom: 20px;
 
       .select-order {
         align-self: flex-end;
@@ -30,7 +32,7 @@
 
     @media only screen and (max-width: 1910px) {
       &--box {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(210px, 360px));
         grid-column-gap: 20px;
         grid-row-gap: 20px;
       }
@@ -38,23 +40,23 @@
 
     @media only screen and (max-width: 1700px) {
       &--box {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(210px, 360px));
         grid-column-gap: 20px;
         grid-row-gap: 20px;
       }
     }
 
-    @media only screen and (max-width: 1300px) {
+    @media only screen and (max-width: 1260px) {
       &--box {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(210px, 360px));
         grid-column-gap: 20px;
         grid-row-gap: 20px;
       }
     }
 
-    @media only screen and (max-width: 990px) {
+    @media only screen and (max-width: 740px) {
       &--box {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, minmax(210px, 360px));
         grid-column-gap: 20px;
         grid-row-gap: 20px;
       }
@@ -63,10 +65,8 @@
 }
 
 .group {
-  width: 340px;
   height: 180px;
   padding: 10px;
-  margin: 10px 10px;
   color: white;
 
   display: flex;
@@ -74,7 +74,7 @@
   justify-content: space-between;
 
   background-size: cover;
-  background-position: 0 -75px;
+  background-position: center;
   border: 1px solid black;
   border-radius: 5px;
 
@@ -88,7 +88,7 @@
   &__title {
     height: 190px;
     background-size: cover;
-    background-position: 0 -85px;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
