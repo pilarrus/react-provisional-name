@@ -1,9 +1,10 @@
 $color1: #79aefe;
-$color2: #314190;
-$color3: #279636;
-$color4: #7d5d81;
+$color2: #314190be;
+$color3: #279636a9;
+$color4: #7d5d81ab;
 $color5: #ead24c;
 $color6: #ff1b5faf;
+$color7: #814c4ca9;
 
 @mixin title() {
   padding: 5px;
@@ -31,7 +32,16 @@ $color6: #ff1b5faf;
 
 .clearblueclass {
   @include title();
+  background-color: $color1;
+}
+.blueclass {
+  @include title();
   background-color: $color2;
+}
+
+.secondpurpleclass {
+  @include title();
+  background-color: $color7;
 }
 .defaultclass {
   @include title();
