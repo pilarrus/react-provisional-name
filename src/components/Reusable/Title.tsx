@@ -2,15 +2,15 @@ import React from "react";
 
 const name = (title: string) => {
   return title.toLowerCase().includes("aventuras")
-    ? "redclass"
-    : title.toLowerCase().includes("grupos")
     ? "clearblueclass"
+    : title.toLowerCase().includes("grupos")
+    ? "blueclass"
     : title.toLowerCase().includes("contacto")
-    ? "greenclass"
-    : title.toLowerCase().includes("nosotros")
     ? "purpleclass"
-    : title.toLowerCase().includes("home")
-    ? "yellowclass"
+    : title.toLowerCase().includes("nosotros")
+    ? "greenclass"
+    : title.toLowerCase().includes("accede a nuestra red social")
+    ? "secondpurpleclass"
     : "defaultclass";
 };
 
