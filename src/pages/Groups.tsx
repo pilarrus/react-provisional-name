@@ -41,9 +41,7 @@ class GroupContainer extends React.Component<
     this.setState({
       fetchGroups: groups
     });
-    //console.log("this.context>>>", this.context);
     this.context.setGroups(groups); // this.context es una variable mágica
-    //console.log("context.groups>>>",this.context.groups);
   }
 
   setSortBy(x: string) {

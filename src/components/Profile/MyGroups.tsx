@@ -10,10 +10,8 @@ import UserContext from "../../contexts/UserContext";
 
 const MyGroups: React.FC<ContextUserType & {zIndex?: number}> = ({user, setUser, zIndex}) => {
   const contextGroups = useContext(groupsContext);
-  console.log('--------contextGroups--------', contextGroups.groups);
 
   const contextUser = useContext(UserContext);
-  console.log('--------contextUser--------MyGroups', contextUser.user);
 
   const style = {
     "zIndex": (typeof zIndex !== 'undefined') ? zIndex : 0
@@ -35,8 +33,6 @@ const MyGroups: React.FC<ContextUserType & {zIndex?: number}> = ({user, setUser,
     ? user.myGroups
     : myGroup()
   : "Aún no tienes grupos";
-
-  console.log("??????????", groups);
 
   return (
     <div className="profile-myGroups">

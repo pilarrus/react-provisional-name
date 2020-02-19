@@ -156,7 +156,6 @@ const sortGroups = (sortBy: string, groups: Groups) => {
 };
 
 const updateGroups = (setGroupsContext: (_groups: Groups) => void) => {
-  //console.log("updateContextGroup___________***");
   const groupsFire = fire.database().ref(`db/groups`);
 
   const cbk = (snapshot: firebase.database.DataSnapshot) => {
@@ -171,7 +170,6 @@ const updateUser = (
   setUserContext: (_user: User) => void,
   setUserState?: (_user: User) => void
 ) => {
-  console.log("updateContextUser************___");
   const usersFire = fire.database().ref(`db/users`);
 
   const cbk = (snapshot: firebase.database.DataSnapshot) => {

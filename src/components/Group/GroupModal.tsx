@@ -23,7 +23,6 @@ const GroupModal: React.FC<GroupModalProps> = ({ group, viewMore }) => {
   let online = contextLog.log;
   const contextUser = useContext(UserContext);
   let userOnline = contextUser.user;
-  //console.log('--------contextUser--------', contextUser.user);
   let subscribeMeGroup = useContext(subscribeMeGroupContext);
 
   useEffect(() => {

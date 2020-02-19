@@ -42,23 +42,18 @@ export const Profile: React.FC<RouteComponentProps<
   let subscribeMeGroup = useContext(subscribeMeGroupContext);
 
   const [user, setUser] = useState(RouteComponentProps.location.state);
-  //console.log("_____________USER_____________", user);
 
   const contextUser = useContext(UserContext);
-  //console.log('--------contextUser--------Profile', contextUser.user);
 
   const contextGroups = useContext(GroupsContext);
-  //console.log('--------contextGroups--------Profile', contextGroups.groups);
 
   useEffect(() => {
-    console.log("useEffect");
     if (user.request) {
       setRequest(user.request);
     }
   }, [user.request]);
 
   const addFriend = (friend: string) => {
-    //console.log("addFriend");
     //AÑADIR A AMIGOS DEL USUARIO QUE ACEPTA LA AMISTAD:
     var key;
     if (contextUser.user.myFriends) {
@@ -74,16 +69,13 @@ export const Profile: React.FC<RouteComponentProps<
     //BORRAR DE REQUEST CUANDO SE ACEPTA LA AMISTAD:
 
     let r2 = contextUser.user.request;
-    //console.log("REEEEEEEEEEEEEEEQUEST2", r2);
 
     if (!Array.isArray(r2)) {
       r2 = Object.values(r2);
     }
     r2.forEach(element => {
-      //console.log("borrar request");
       if (element === friend) {
         const entries = Object.entries(contextUser.user.request);
-        console.log("ENTRIES", entries);
         entries.forEach(element => {
           if (element[1] === friend) {
             var num = element[0];
@@ -98,7 +90,6 @@ export const Profile: React.FC<RouteComponentProps<
 
     //ACTUALIZAR DATOS DEL USUARIO CONECTADO CON LOS NUEVOS DATOS DE FIREBASE
     dbRef.once("value", snap => {
-      //console.log("actualizar datos");
       snap.forEach(e => {
         const newVal: User = e.val();
         if (newVal.id === user.id) {
@@ -158,8 +149,7 @@ export const Profile: React.FC<RouteComponentProps<
         r = Object.values(r);
       }
     }
-
-    console.log("MI RRRRRRRRRRRRR", r);
+    
     return (
       <div className="profile">
         {contextUser.user ? (

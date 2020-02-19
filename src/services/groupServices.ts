@@ -22,7 +22,6 @@ class GroupService {
 
   public saveGroupInUser(group: Group, user: User, flat?: boolean) {
     let newKey = user.myGroups ? user.myGroups.length : 0;
-    console.log("newKeyGroup>>>", newKey);
     this.firebase
       .database()
       .ref(`db/users/${user.id}/myGroups`)
@@ -40,9 +39,7 @@ class GroupService {
 
   public saveUserInGroup(group: Group, user: PartialUser | User) {
     let u: PartialUser = { nick: user.nick, img: user.img };
-    //console.log("myGroups", group.users, "length", group.users.length)
     let newKey = group.users ? group.users.length : 0;
-    console.log("newKeyUser>>>", newKey);
     this.firebase
       .database()
       .ref(`db/groups/${group.id}/users`)
@@ -72,12 +69,6 @@ class GroupService {
   }
 
   public removeUserFromGroup(group: Group, nicks: string[], user: User) {
-    console.log("userRemove>>>", user);
-    let u = { nick: user.nick, img: user.img };
-    console.log("partialUser>>>", u);
-    console.log("grupos>>>", nicks);
-    //let index = group.users.indexOf(u);
-    //console.log("!!!!!!!!", index);
     let index = nicks.findIndex(nick => {
       return nick === user.nick;
     });

@@ -39,14 +39,14 @@ const AddGroup: React.FC<AddGroupProps> = ({ viewMore, adventureName, setUser })
   
   let contextGroups = useContext(GroupsContext);
   let groups = contextGroups.groups;
-  //console.log('--------contextGroups--------', contextGroups.groups);
+
   let nameGroups = getNameGroups(groups);
   let nameExist = nameGroups.includes(name);
   let nowDate = getCurrentDate();
 
   const contextLog = useContext(LoginContext);
   const contextUser = useContext(UserContext);
-  //console.log('--------contextUser--------', contextUser.user);
+
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {

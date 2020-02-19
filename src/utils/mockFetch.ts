@@ -1,5 +1,4 @@
 import adventures from "../fake-data/adventures";
-import groups from "../fake-data/groups";
 
 type JSONResponse<T> = {
   json: () => Promise<T>;
@@ -16,10 +15,6 @@ const mockFetch = <T>(url: string): Promise<JSONResponse<T>> =>
         case "/adventures": {
           // @ts-ignore
           return resolve(jsonResponse(adventures));
-        }
-        case "/groups": {
-          // @ts-ignore
-          return resolve(jsonResponse(groups));
         }
         default: {
           reject("Invalid end point");
